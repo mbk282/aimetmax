@@ -1,65 +1,139 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      {/* Hero */}
+      <section className="mx-auto max-w-5xl px-6 py-20">
+        <div className="flex flex-col-reverse items-start gap-10 md:flex-row md:items-center">
+          <div className="max-w-2xl">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              AI werkend krijgen in jouw organisatie
+            </h1>
+            <p className="mt-6 text-lg text-gray-600">
+              Ik ben Max van den Broek, AI-expert. Ik geef trainingen, bouw
+              prototypes en help teams om AI echt te gaan gebruiken. Van
+              Copilot-training tot AI-strategie.
+            </p>
+            <div className="mt-8 flex gap-4">
+              <Link
+                href="/contact"
+                className="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-700"
+              >
+                Neem contact op
+              </Link>
+              <Link
+                href="/tools"
+                className="rounded-lg border border-gray-300 px-6 py-3 font-medium text-gray-700 hover:bg-gray-50"
+              >
+                Bekijk gratis AI-tools
+              </Link>
+            </div>
+          </div>
+          <Image
+            src="/max-van-den-broek.jpg"
+            alt="Max van den Broek"
+            width={280}
+            height={280}
+            className="shrink-0 rounded-2xl object-cover"
+            priority
+          />
+        </div>
+      </section>
+
+      {/* Wat ik doe */}
+      <section className="border-t border-gray-100 bg-gray-50 py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="text-2xl font-bold text-gray-900">Wat ik doe</h2>
+          <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="rounded-xl bg-white p-6 shadow-sm">
+              <h3 className="font-semibold text-gray-900">AI-trainingen</h3>
+              <p className="mt-2 text-sm text-gray-600">
+                Doelgroepgerichte trainingen, van Copilot voor controllers tot
+                AI voor developers. Deelnemers oefenen direct zelf.
+              </p>
+            </div>
+            <div className="rounded-xl bg-white p-6 shadow-sm">
+              <h3 className="font-semibold text-gray-900">
+                Prototypes &amp; POCs
+              </h3>
+              <p className="mt-2 text-sm text-gray-600">
+                Ik bouw werkende prototypes en simpele AI-tools zodat je snel
+                kunt zien wat AI voor jouw team kan betekenen.
+              </p>
+            </div>
+            <div className="rounded-xl bg-white p-6 shadow-sm">
+              <h3 className="font-semibold text-gray-900">
+                Keynotes &amp; lezingen
+              </h3>
+              <p className="mt-2 text-sm text-gray-600">
+                Inspirerende presentaties over AI, praktisch en toegankelijk.
+                Voor conferenties, bedrijfsdagen en teambijeenkomsten.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gratis tools teaser */}
+      <section className="py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="text-2xl font-bold text-gray-900">
+            Gratis AI-tools
+          </h2>
+          <p className="mt-2 text-gray-600">
+            Probeer deze AI-tools gratis uit, direct in je browser.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded-xl border border-gray-200 p-5">
+              <h3 className="font-semibold text-gray-900">Converters</h3>
+              <p className="mt-1 text-sm text-gray-500">
+                PDF, Word, HTML, CSV, JSON en XML naar Markdown. Privé in je browser.
+              </p>
+            </div>
+            <div className="rounded-xl border border-gray-200 p-5">
+              <h3 className="font-semibold text-gray-900">Checkers</h3>
+              <p className="mt-1 text-sm text-gray-500">
+                EU AI Act, leesbaarheid, prompts, vacatureteksten en meer.
+              </p>
+            </div>
+            <div className="rounded-xl border border-gray-200 p-5">
+              <h3 className="font-semibold text-gray-900">Calculators</h3>
+              <p className="mt-1 text-sm text-gray-500">
+                ROI berekenen voor AI en Copilot. Vergaderkosten teller.
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/tools"
+            className="mt-6 inline-block text-sm font-medium text-blue-600 hover:text-blue-800"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            Bekijk alle tools &rarr;
+          </Link>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Boek */}
+      <section className="border-t border-gray-100 bg-gray-50 py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl font-bold text-gray-900">
+              Boek: AI-Pionier
+            </h2>
+            <p className="mt-4 text-gray-600">
+              Hoe jij ook begint met generatieve AI. Met 25+ praktijkvoorbeelden
+              en antwoorden op de meestgestelde bezwaren.
+            </p>
+            <Link
+              href="/boek"
+              className="mt-4 inline-block text-sm font-medium text-blue-600 hover:text-blue-800"
+            >
+              Meer over het boek &rarr;
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

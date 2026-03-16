@@ -1,0 +1,94 @@
+---
+title: "AI-ready data: waarom je AI-project faalt voor het begint"
+description: "De meeste AI-projecten mislukken niet door de technologie, maar door de data. Zo maak je je data klaar voor AI."
+date: "2026-03-14"
+author: "Max van den Broek"
+tags: ["Data", "AI-implementatie", "Strategie"]
+---
+
+Ik hoor het regelmatig: "We willen iets met AI, maar onze data is er nog niet klaar voor." Meestal wordt dat gezegd als excuus om niets te doen. Maar er zit een kern van waarheid in. De meeste AI-projecten mislukken niet door de technologie. Ze mislukken door de data.
+
+Niet omdat je te weinig data hebt. Maar omdat je data verspreid, inconsistent of simpelweg niet vindbaar is.
+
+## Wat "AI-ready data" eigenlijk betekent
+
+AI-ready data is geen technische standaard. Er is geen certificering voor. Het betekent simpelweg: je data is zo georganiseerd dat je er iets nuttigs mee kunt doen met AI-tools.
+
+In de praktijk draait het om drie dingen:
+
+1. **Vindbaarheid** - Weet je waar welke data staat?
+2. **Structuur** - Is je data consistent genoeg om te verwerken?
+3. **Kwaliteit** - Klopt de data? Is die up-to-date?
+
+Klinkt basaal. Maar in de gemiddelde organisatie is het antwoord op alle drie de vragen: "niet helemaal."
+
+## De vijf meest voorkomende dataproblemen
+
+### 1. Data zit in silo's
+
+Klantgegevens in het CRM, projectdata in Excel, kennis in de hoofden van collega's, documenten verspreid over SharePoint, Teams en persoonlijke mappen. Elk systeem heeft een deel van het plaatje.
+
+AI werkt het best wanneer het meerdere databronnen kan combineren. Een AI-assistent die je contracten kan doorzoeken is handig. Eentje die je contracten, e-mails en facturen kan combineren is echt waardevol.
+
+**Wat je kunt doen:** Begin met een inventarisatie. Maak een simpele lijst: welke data staat waar, wie is eigenaar, en in welk formaat? Dat hoeft geen IT-project te zijn. Een gedeelde spreadsheet is genoeg.
+
+### 2. Dezelfde informatie, verschillende formaten
+
+Het ene team schrijft datums als "16-03-2026", het andere als "2026/03/16", en weer een ander als "16 maart 2026". Klantnamen staan soms als "Van den Broek, M." en soms als "Max van den Broek". Adressen hebben soms wel en soms geen postcode.
+
+Voor mensen is dit geen probleem. We begrijpen dat het dezelfde informatie is. Voor AI is dit een serieus obstakel, vooral bij analyses en automatiseringen.
+
+**Wat je kunt doen:** Kies standaarden voor je meest gebruikte datavelden en leg die vast. ISO-datums (2026-03-16), volledige namen, gestandaardiseerde statuswaarden. Het hoeft niet in één keer. Begin bij de data die je het meest gebruikt.
+
+### 3. Verouderde of dubbele data
+
+In vrijwel elk CRM dat ik zie staan klanten die al jaren geen klant meer zijn, contactpersonen die van functie zijn veranderd, en dubbele records. Niemand ruimt het op, want het lijkt geen prioriteit.
+
+Tot je AI erop loslaat. Dan krijg je analyses op basis van verkeerde cijfers, of een chatbot die verouderde informatie geeft aan klanten.
+
+**Wat je kunt doen:** Plan een kwartaalschoonmaak voor je belangrijkste databases. Dat kost een paar uur per keer en bespaart je later veel problemen.
+
+### 4. Ongestructureerde documenten
+
+De meeste waardevolle kennis in organisaties zit in Word-documenten, PDF's, e-mails en presentaties. AI kan hier prima mee werken (dat is precies waar RAG voor is), maar dan moeten die documenten wel vindbaar en enigszins consistent zijn.
+
+Een SharePoint-omgeving waar documenten geen duidelijke naam hebben, niet getagd zijn, en in een onlogische mappenstructuur staan, is ook voor AI een ramp.
+
+**Wat je kunt doen:** Focus op naamgeving en structuur. Een consistent formaat als "[Projectnaam] - [Type] - [Datum]" maakt al een wereld van verschil. En tag documenten met metadata: type, afdeling, status.
+
+### 5. Geen datakwaliteitsproces
+
+Het fundamentele probleem achter al het bovenstaande: er is geen proces dat ervoor zorgt dat data schoon binnenkomt en schoon blijft. Data-invoer is een bijzaak, niemand controleert, en er zijn geen consequenties voor slechte data.
+
+**Wat je kunt doen:** Maak iemand verantwoordelijk. Niet een "data governance board" die vier keer per jaar vergadert, maar iemand per team die let op datakwaliteit. En bouw checks in bij data-invoer: verplichte velden, dropdown-menu's in plaats van vrije tekst, automatische validatie.
+
+## De 80/20 aanpak
+
+Je hoeft niet je hele datalandschap te herstructureren voor je met AI aan de slag kunt. Dat is het excuus waarmee organisaties AI-projecten eindeloos uitstellen.
+
+In plaats daarvan:
+
+**Kies één use case.** Niet "we gaan al onze data op orde brengen", maar "we willen dat Copilot onze contracten kan doorzoeken."
+
+**Kijk wat die use case nodig heeft.** Welke data? Waar staat die? Wat is de kwaliteit? Dit maakt het concreet.
+
+**Maak die dataset klaar.** Schoon de data op, structureer het, en zet het op een plek waar je AI-tool erbij kan.
+
+**Leer van het proces.** Na je eerste project weet je precies waar de pijnpunten zitten en kun je gericht investeren.
+
+## Veelgestelde vragen
+
+**Hoe veel data heb ik nodig voor AI?**
+Voor de meeste zakelijke toepassingen (zoeken, samenvatten, analyseren) heb je geen enorme datasets nodig. Als je genoeg data hebt om een mens de taak te laten doen, heb je genoeg voor AI. De uitzondering: als je een custom model wilt trainen. Maar dat is voor 95% van de organisaties niet aan de orde.
+
+**Moet al mijn data digitaal zijn?**
+Voor AI-toepassingen: ja. Papieren archieven die je wilt doorzoeken moeten eerst gedigitaliseerd worden. Gebruik onze [PDF naar Markdown converter](/tools/pdf-naar-markdown) om gescande documenten om te zetten naar doorzoekbare tekst.
+
+**Is mijn data privacygevoelig?**
+Waarschijnlijk deels wel. Maak onderscheid tussen data die je in publieke AI-tools kunt gebruiken (niet-persoonsgebonden, niet-vertrouwelijk) en data waarvoor je een privé-oplossing nodig hebt (bijv. Microsoft Copilot binnen je eigen tenant, of een eigen RAG-oplossing).
+
+## Eerste stap
+
+De beste manier om te beginnen is klein. Kies deze week één concreet AI-project, inventariseer welke data je nodig hebt, en begin daar. Niet met een groot data governance programma, maar met een concrete behoefte.
+
+Wil je weten waar de AI-kansen liggen in jouw organisatie? Probeer de [AI ROI Calculator](/tools/ai-roi-calculator) om te zien waar de meeste tijdwinst te behalen valt.
