@@ -531,7 +531,7 @@
   <p>Tijdens de training heeft het model miljoenen teksten gezien. Daar bewaart het geen kopieën van. Wat het wel bewaart: <mark>patronen</mark>. Welk woord komt waarschijnlijk na welke woorden?</p>
   <p>Vraag je iets, dan bouwt het model zijn antwoord woord voor woord op. "De bal is..." wordt waarschijnlijk gevolgd door "rond". Daarna kijkt het opnieuw, en opnieuw, tot er een compleet antwoord staat. Een antwoord dat in deze vorm nog nooit ergens geschreven is.</p>
   <p>Daarom kan een taalmodel ook geen bronvermelding geven bij zijn eigen kennis. Er is geen plek waar het antwoord "staat". Het is net gemaakt, speciaal voor jou.</p>
-  <div class="note"><strong>Maar ChatGPT kan toch op internet zoeken?</strong> Klopt. Moderne AI-tools hebben een zoekfunctie bovenop het taalmodel gekregen. Dat is een los gereedschap, geen eigenschap van het model zelf. Handig om uit elkaar te houden: het model voorspelt, de zoekfunctie zoekt.</div>
+  <div class="note"><strong>Maar ChatGPT kan toch op internet zoeken?</strong> Klopt. Zoeken is gereedschap dat het model tijdens het denken kan inzetten (dat zag je in deel 2). Maar gevonden tekst wordt niet geplakt: ook mét bronnen erbij bouwt het model zijn antwoord gewoon weer woord voor woord op. Het gereedschap zoekt, het model voorspelt.</div>
   <div class="callout"><div class="label">Wat je voortaan zegt</div><p>"AI kopieert niet, het voorspelt. Daarom is elk antwoord nieuw."</p></div>`
       },
       {

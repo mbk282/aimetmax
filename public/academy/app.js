@@ -154,7 +154,15 @@
     blok.querySelector(".cert-maak").addEventListener("click", () => {
       const naam = invoer.value.trim();
       if (!naam) { invoer.focus(); return; }
-      const datum = new Date().toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" });
+      const nu = new Date();
+      const datum = nu.toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" });
+      const certUrl = encodeURIComponent("https://www.aimetmax.nl" + location.pathname);
+      const liAdd = "https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME" +
+        "&name=" + encodeURIComponent(M.titel + " (e-learning)") +
+        "&organizationName=" + encodeURIComponent("AI met Max academy") +
+        "&issueYear=" + nu.getFullYear() + "&issueMonth=" + (nu.getMonth() + 1) +
+        "&certUrl=" + certUrl;
+      const liShare = "https://www.linkedin.com/sharing/share-offsite/?url=" + certUrl;
       uitkomst.innerHTML = `
         <div class="certificaat">
           <div class="cert-accentlijn"></div>
@@ -166,7 +174,12 @@
           <div class="cert-accentlijn"></div>
           <div class="cert-colofon">AI met Max academy &middot; aimetmax.nl/academy &middot; door Max van den Broek, auteur van AI-Pionier</div>
         </div>
-        <div class="cert-acties"><button type="button" class="btn cert-print">Print of bewaar als PDF</button></div>`;
+        <div class="cert-acties">
+          <button type="button" class="btn cert-print">Print of bewaar als PDF</button>
+          <a class="btn" target="_blank" rel="noopener" href="${liAdd}">Zet op je LinkedIn-profiel</a>
+          <a class="btn" target="_blank" rel="noopener" href="${liShare}">Deel op LinkedIn</a>
+        </div>
+        <p class="cert-hint">Tip: met de LinkedIn-knoppen laat je zien wat je geleerd hebt. Daar word ik ook blij van.</p>`;
       uitkomst.querySelector(".cert-print").addEventListener("click", () => {
         document.body.classList.add("print-certificaat");
         const opruimen = () => document.body.classList.remove("print-certificaat");
@@ -245,6 +258,40 @@
     }
     invoer.addEventListener("input", renderTokens);
     renderTokens();
+  }
+
+  // ---- interactieve keuzes-demo (mag dit de chat in?) ----
+  const keuzesEl = document.getElementById("demo-keuzes");
+  if (keuzesEl && M.keuzes) {
+    const labels = [["ok", "Oké"], ["niet", "Niet oké"], ["beleid", "Hangt van het beleid af"]];
+    let gedaan = 0;
+
+    const slot = document.createElement("div");
+    slot.className = "keuzes-slot";
+    slot.textContent = "De grens bepaalt jouw organisatie. Ken je beleid.";
+
+    M.keuzes.forEach((item, i) => {
+      const q = document.createElement("div");
+      q.className = "q";
+      q.innerHTML = `<div class="stelling">${i + 1}. ${item.tekst}</div>
+        <div class="opties">${labels.map(([w, l]) => `<button data-keuze="${w}">${l}</button>`).join("")}</div>
+        <div class="uitleg">${item.uitleg}</div>`;
+      q.querySelectorAll(".opties button").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const correct = btn.dataset.keuze === item.antwoord;
+          q.classList.add("beantwoord", correct ? "goed" : "fout");
+          btn.classList.add("gekozen");
+          if (!correct) {
+            const juist = q.querySelector(`.opties button[data-keuze="${item.antwoord}"]`);
+            if (juist) juist.classList.add("juist");
+          }
+          gedaan++;
+          if (gedaan === M.keuzes.length) slot.classList.add("zichtbaar");
+        });
+      });
+      keuzesEl.appendChild(q);
+    });
+    keuzesEl.appendChild(slot);
   }
 
   // ---- voortgang herstellen uit eerdere sessie ----
