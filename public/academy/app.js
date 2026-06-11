@@ -10,6 +10,27 @@
   const M = window.MODULE;
   document.title = M.titel + " | AI met Max";
 
+  // ---- opslag (localStorage, mag stilletjes falen in privacy-modus) ----
+  const opslagKey = "academy-" + M.titel.toLowerCase().replace(/\s+/g, "-");
+  function leesOpslag() {
+    try { return JSON.parse(localStorage.getItem(opslagKey)) || {}; } catch (e) { return {}; }
+  }
+  function schrijfOpslag(data) {
+    try { localStorage.setItem(opslagKey, JSON.stringify(data)); } catch (e) {}
+  }
+  const opslag = leesOpslag();
+
+  function escapeHtml(s) {
+    const d = document.createElement("div");
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  function datumNL(iso) {
+    try { return new Date(iso).toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" }); }
+    catch (e) { return ""; }
+  }
+
   // ---- sidebar opbouwen ----
   document.getElementById("m-kicker").textContent = M.kicker;
   document.getElementById("m-titel").textContent = M.titel;
@@ -59,6 +80,8 @@
 
   function toon(i) {
     bezocht.add(i);
+    opslag.bezocht = Array.from(bezocht);
+    schrijfOpslag(opslag);
     lesSecties.forEach((l, j) => l.classList.toggle("visible", j === i));
     navknoppen.forEach((b, j) => {
       b.classList.toggle("active", j === i);
@@ -75,6 +98,15 @@
   if (quizEl && M.quiz) {
     let beantwoord = 0, goed = 0;
     const scoreEl = document.getElementById("score");
+
+    // Eerder resultaat tonen (quiz blijft opnieuw speelbaar)
+    if (opslag.quiz && typeof opslag.quiz.score === "number") {
+      const eerder = document.createElement("div");
+      eerder.className = "note";
+      eerder.textContent = `Eerder gehaald: ${opslag.quiz.score} van ${opslag.quiz.totaal} goed op ${datumNL(opslag.quiz.datum)}.`;
+      quizEl.parentNode.insertBefore(eerder, quizEl);
+    }
+
     M.quiz.forEach((v, i) => {
       const q = document.createElement("div");
       q.className = "q";
@@ -92,10 +124,56 @@
             scoreEl.textContent = goed === M.quiz.length
               ? `${goed} van ${M.quiz.length} goed. Foutloos!`
               : `${goed} van ${M.quiz.length} goed. ${goed >= M.quiz.length - 2 ? "Prima score!" : "Loop de lessen nog eens door, dan zit het zo."}`;
+            opslag.quiz = { score: goed, totaal: M.quiz.length, datum: new Date().toISOString() };
+            schrijfOpslag(opslag);
+            toonCertificaatBlok(goed, M.quiz.length);
           }
         });
       });
       quizEl.appendChild(q);
+    });
+  }
+
+  // ---- certificaat na de quiz ----
+  function toonCertificaatBlok(score, totaal) {
+    if (document.querySelector(".certificaat-blok")) return;
+    const blok = document.createElement("div");
+    blok.className = "certificaat-blok";
+    blok.innerHTML = `
+      <p>Mooi werk. Zet je naam op je certificaat van afronding.</p>
+      <div class="cert-formulier">
+        <input type="text" class="cert-naam-invoer" placeholder="Je naam" aria-label="Je naam">
+        <button type="button" class="btn primary cert-maak">Maak je certificaat</button>
+      </div>
+      <div class="cert-uitkomst"></div>`;
+    const scoreNode = document.getElementById("score");
+    scoreNode.parentNode.insertBefore(blok, scoreNode.nextSibling);
+
+    const invoer = blok.querySelector(".cert-naam-invoer");
+    const uitkomst = blok.querySelector(".cert-uitkomst");
+    blok.querySelector(".cert-maak").addEventListener("click", () => {
+      const naam = invoer.value.trim();
+      if (!naam) { invoer.focus(); return; }
+      const datum = new Date().toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" });
+      uitkomst.innerHTML = `
+        <div class="certificaat">
+          <div class="cert-accentlijn"></div>
+          <div class="cert-kop hand">Certificaat van afronding</div>
+          <div class="cert-naam">${escapeHtml(naam)}</div>
+          <p class="cert-tekst">heeft de e-learning '${M.titel}' afgerond</p>
+          <p class="cert-resultaat">Resultaat afsluittoets: ${score} van ${totaal} vragen goed<br>${datum}</p>
+          <p class="cert-wet">Deze e-learning ondersteunt de invulling van de AI-geletterdheidsplicht (artikel 4 AI-verordening).</p>
+          <div class="cert-accentlijn"></div>
+          <div class="cert-colofon">AI met Max academy &middot; aimetmax.nl/academy &middot; door Max van den Broek, auteur van AI-Pionier</div>
+        </div>
+        <div class="cert-acties"><button type="button" class="btn cert-print">Print of bewaar als PDF</button></div>`;
+      uitkomst.querySelector(".cert-print").addEventListener("click", () => {
+        document.body.classList.add("print-certificaat");
+        const opruimen = () => document.body.classList.remove("print-certificaat");
+        window.addEventListener("afterprint", opruimen, { once: true });
+        setTimeout(opruimen, 3000);
+        window.print();
+      });
     });
   }
 
@@ -167,6 +245,13 @@
     }
     invoer.addEventListener("input", renderTokens);
     renderTokens();
+  }
+
+  // ---- voortgang herstellen uit eerdere sessie ----
+  if (Array.isArray(opslag.bezocht)) {
+    opslag.bezocht.forEach(i => {
+      if (Number.isInteger(i) && i >= 0 && i < M.lessen.length) bezocht.add(i);
+    });
   }
 
   toon(0);

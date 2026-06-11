@@ -128,6 +128,30 @@ th { background: var(--card); font-size: 13px; text-transform: uppercase; letter
 .landing footer { margin-top: 44px; font-size: 13.5px; color: var(--ink-soft); }
 .landing footer a { color: var(--accent); }
 
+/* ---------- certificaat ---------- */
+.certificaat-blok { margin: 12px 0 32px; text-align: center; }
+.certificaat-blok > p { font-size: 15px; color: var(--ink-soft); margin-bottom: 12px; }
+.cert-formulier { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+.cert-naam-invoer { border: 2px solid var(--ink); border-radius: 12px; padding: 11px 14px; font-family: "Inter", sans-serif; font-size: 15px; color: var(--ink); background: var(--paper); min-width: 220px; }
+.cert-naam-invoer:focus { outline: 3px solid var(--accent-soft); }
+.certificaat { background: var(--card); border: 3px solid var(--ink); outline: 2px solid var(--ink); outline-offset: 6px; border-radius: 4px; padding: 48px 36px 36px; margin: 34px 10px 0; text-align: center; }
+.cert-accentlijn { width: 90px; height: 4px; background: var(--accent); border-radius: 99px; margin: 0 auto 22px; }
+.certificaat .cert-accentlijn:last-of-type { margin: 26px auto 16px; }
+.cert-kop { font-size: 44px; font-weight: 700; color: var(--accent); line-height: 1.1; margin-bottom: 18px; }
+.cert-naam { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.cert-tekst { font-size: 17px; margin-bottom: 22px; }
+.cert-resultaat { font-size: 16px; font-weight: 600; margin-bottom: 22px; }
+.cert-wet { font-size: 13.5px; color: var(--ink-soft); max-width: 420px; margin: 0 auto; }
+.cert-colofon { font-size: 12.5px; color: var(--ink-soft); }
+.cert-acties { margin-top: 22px; }
+
+@media print {
+  body.print-certificaat * { visibility: hidden; }
+  body.print-certificaat .certificaat, body.print-certificaat .certificaat * { visibility: visible; }
+  body.print-certificaat .certificaat { position: absolute; top: 0; left: 0; right: 0; margin: 8mm; box-shadow: none; }
+  body.print-certificaat .cert-acties { display: none; }
+}
+
 @media (max-width: 860px) {
   .layout { flex-direction: column; }
   aside { width: 100%; height: auto; position: static; border-right: none; border-bottom: 2px solid var(--line); }

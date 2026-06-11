@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>AI-geletterdheidsscan | AI met Max</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/academy/style.css">
+<style>
+  .scan-resultaat { display: none; border: 2px solid var(--ink); border-radius: 18px; background: var(--card); padding: 26px 28px; margin: 32px 0 8px; box-shadow: 4px 4px 0 var(--line); }
+  .scan-resultaat.zichtbaar { display: block; }
+  .scan-score { font-family: "Caveat", cursive; font-size: 38px; font-weight: 700; line-height: 1.1; }
+  .scan-tier { display: inline-block; font-weight: 700; font-size: 15px; border-radius: 10px; padding: 6px 14px; margin: 10px 0 18px; border: 2px solid var(--ink); }
+  .scan-tier.laag { background: var(--accent-soft); color: var(--accent); }
+  .scan-tier.midden { background: var(--hl); color: var(--ink); }
+  .scan-tier.hoog { background: var(--sage-soft); color: var(--sage); }
+  .scan-advies h3 { font-size: 16px; font-weight: 800; margin: 14px 0 8px; }
+  .scan-advies li { margin: 0 0 8px 20px; font-size: 15px; }
+  .scan-cta { margin-top: 18px; }
+</style>
+</head>
+<body>
+<div class="landing">
+
+  <a class="back-link" href="/academy/pro.html">&larr; Terug naar de organisatiepagina</a>
+  <div class="badge">Gratis scan</div>
+  <h1 class="hand">Hoe staat het met de AI-geletterdheid in jouw organisatie?</h1>
+  <p class="intro">Tien stellingen, twee tot drie minuten. Je krijgt direct een indicatieve score en concrete adviezen per knelpunt. De scan slaat niets op en is geen juridisch advies.</p>
+
+  <div id="scan"></div>
+
+  <div class="scan-resultaat" id="resultaat">
+    <div class="scan-score" id="res-score"></div>
+    <div class="scan-tier" id="res-tier"></div>
+    <div class="scan-advies" id="res-advies"></div>
+    <div class="note">Deze scan is indicatief en geen juridisch advies. De uitkomst zegt iets over waar je staat, niet of je aan de wet voldoet. Een goede aanpak ondersteunt de invulling van de AI-geletterdheidsplicht (artikel 4 AI-verordening).</div>
+    <div class="scan-cta"><a class="btn primary" href="mailto:vdbroekmax@gmail.com?subject=AI-geletterdheidsscan">Bespreek de uitkomst met Max</a></div>
+  </div>
+
+  <footer>Een project van <a href="https://aimetmax.nl">aimetmax.nl</a> &middot; LinkedIn: <a href="https://linkedin.com/in/maxbroek">linkedin.com/in/maxbroek</a> &middot; <a href="/academy/pro.html">Terug naar de organisatiepagina</a></footer>
+
+</div>
+
+<script>
+(function () {
+  const stellingen = [
+    { s: "We weten welke AI-tools er in de organisatie gebruikt worden, ook de niet-officiële.",
+      advies: "Begin met een inventarisatie: vraag teams welke AI-tools ze echt gebruiken, ook de informele. Zonder dat beeld weet je niet waar je risico's zitten." },
+    { s: "Er is beleid over wat wel en niet in AI-tools mag (vertrouwelijke informatie, persoonsgegevens).",
+      advies: "Stel een korte gebruiksrichtlijn op: wat mag wel en niet in AI-tools, te beginnen met vertrouwelijke informatie en persoonsgegevens. Eén A4 is al een grote stap." },
+    { s: "Iedereen die met AI werkt heeft een basistraining gehad over hoe AI werkt en wat de risico's zijn.",
+      advies: "Regel een basistraining voor iedereen die met AI werkt. Dat is de kern van de geletterdheidsplicht; een gratis e-learning is een prima startpunt." },
+    { s: "Medewerkers weten dat AI-output fouten bevat en controleren die voordat ze hem gebruiken.",
+      advies: "Maak het controleren van AI-output een vaste werkafspraak: geen AI-tekst of -analyse doorsturen zonder menselijke check." },
+    { s: "Trainingen zijn afgestemd op rollen en hun gebruikscontext (HR, finance, management, IT).",
+      advies: "Differentieer trainingen per rol: een HR-adviseur heeft andere voorbeelden en risico's nodig dan een controller of developer. De wet vraagt expliciet om die afstemming." },
+    { s: "We leggen vast wie welke training wanneer heeft gevolgd.",
+      advies: "Leg deelname vast in een simpel overzicht: wie, welke training, wanneer. Zonder registratie kun je achteraf niets aantonen." },
+    { s: "Bij gebruik met hoog risico (bijvoorbeeld AI bij werving of beoordeling) is er extra aandacht voor bias en menselijke controle.",
+      advies: "Breng hoog-risicotoepassingen zoals AI bij werving of beoordeling in kaart en regel daar expliciet menselijke controle en aandacht voor bias." },
+    { s: "Er zijn afspraken over transparantie: wanneer meld je dat iets met AI gemaakt is.",
+      advies: "Spreek af wanneer je vermeldt dat iets met AI gemaakt is, zowel intern als richting klanten en kandidaten." },
+    { s: "Het trainingsaanbod wordt periodiek geactualiseerd.",
+      advies: "Plan een vast moment, bijvoorbeeld elk kwartaal, om trainingen en richtlijnen bij te werken. AI-kennis veroudert snel." },
+    { s: "Er is een eigenaar voor AI-geletterdheid in de organisatie.",
+      advies: "Wijs één eigenaar aan voor AI-geletterdheid. Zonder eigenaar verzandt het na de eerste training." }
+  ];
+
+  const scanEl = document.getElementById("scan");
+  const antwoorden = new Array(stellingen.length).fill(null);
+
+  stellingen.forEach((item, i) => {
+    const q = document.createElement("div");
+    q.className = "q";
+    q.innerHTML = `<div class="stelling">${i + 1}. ${item.s}</div>
+      <div class="opties">
+        <button type="button" data-p="2">Ja</button>
+        <button type="button" data-p="1">Deels</button>
+        <button type="button" data-p="0">Nee</button>
+      </div>`;
+    q.querySelectorAll(".opties button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        antwoorden[i] = Number(btn.dataset.p);
+        q.classList.add("beantwoord", antwoorden[i] === 0 ? "fout" : "goed");
+        btn.classList.add("gekozen");
+        toonResultaat();
+      });
+    });
+    scanEl.appendChild(q);
+  });
+
+  function toonResultaat() {
+    if (antwoorden.some(a => a === null)) return;
+    const score = antwoorden.reduce((a, b) => a + b, 0);
+    document.getElementById("res-score").textContent = `Je score: ${score} van 20`;
+
+    const tierEl = document.getElementById("res-tier");
+    if (score <= 7) {
+      tierEl.className = "scan-tier laag";
+      tierEl.textContent = "Er is werk te doen";
+    } else if (score <= 14) {
+      tierEl.className = "scan-tier midden";
+      tierEl.textContent = "Het fundament staat, maar er zitten gaten in de aantoonbaarheid";
+    } else {
+      tierEl.className = "scan-tier hoog";
+      tierEl.textContent = "Goed bezig; let vooral op actueel houden";
+    }
+
+    const adviesEl = document.getElementById("res-advies");
+    const knelpunten = stellingen.filter((s, i) => antwoorden[i] === 0);
+    if (knelpunten.length) {
+      adviesEl.innerHTML = "<h3>Waar je morgen mee kunt beginnen</h3><ul>" +
+        knelpunten.map(s => `<li>${s.advies}</li>`).join("") + "</ul>";
+    } else {
+      adviesEl.innerHTML = "<p>Geen stelling kreeg een harde nee. Houd vooral de actualisatie en de registratie op orde.</p>";
+    }
+
+    const resultaat = document.getElementById("resultaat");
+    resultaat.classList.add("zichtbaar");
+    resultaat.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+})();
+</script>
+</body>
+</html>
