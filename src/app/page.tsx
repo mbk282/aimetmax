@@ -42,16 +42,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Wat ik doe */}
+      {/* Gratis e-learning teaser */}
       <section className="border-t border-gray-100 bg-gray-50 py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
+                Nieuw: gratis e-learning
+              </p>
+              <h2 className="mt-2 text-2xl font-bold text-gray-900">
+                Hoe AI echt werkt
+              </h2>
+              <p className="mt-4 text-gray-600">
+                Waarom AI-modellen zo snel zoveel beter worden, plus vijf
+                hardnekkige misverstanden. Met handgetekende illustraties en
+                interactieve voorbeelden. Geen account nodig, ongeveer 25
+                minuten.
+              </p>
+            </div>
+            <a
+              href="/academy"
+              className="shrink-0 rounded-lg bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-700"
+            >
+              Start de e-learning
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Wat ik doe */}
+      <section className="border-t border-gray-100 py-20">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="text-2xl font-bold text-gray-900">Wat ik doe</h2>
           <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
             <div className="rounded-xl bg-white p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900">AI-trainingen</h3>
+              <h3 className="font-semibold text-gray-900">
+                AI-trainingen &amp; e-learnings
+              </h3>
               <p className="mt-2 text-sm text-gray-600">
-                Doelgroepgerichte trainingen, van Copilot voor controllers tot
-                AI voor developers. Deelnemers oefenen direct zelf.
+                Doelgroepgerichte trainingen en e-learnings op maat, van
+                Copilot voor controllers tot AI voor developers. Met jullie
+                eigen voorbeelden en tooling.
               </p>
             </div>
             <div className="rounded-xl bg-white p-6 shadow-sm">
@@ -77,7 +108,7 @@ export default function Home() {
       </section>
 
       {/* Gratis tools teaser */}
-      <section className="py-20">
+      <section className="border-t border-gray-100 bg-gray-50 py-20">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="text-2xl font-bold text-gray-900">
             Gratis AI-tools
@@ -115,7 +146,7 @@ export default function Home() {
       </section>
 
       {/* Boek */}
-      <section className="border-t border-gray-100 bg-gray-50 py-20">
+      <section className="border-t border-gray-100 py-20">
         <div className="mx-auto max-w-5xl px-6">
           <div className="max-w-2xl">
             <h2 className="text-2xl font-bold text-gray-900">

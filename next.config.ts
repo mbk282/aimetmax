@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return [
+      // Statische academy (public/academy, gebruikt absolute paden) op een nette URL
+      { source: "/academy", destination: "/academy/index.html" },
+    ];
+  },
   async redirects() {
     return [
       // WordPress oude URLs naar nieuwe equivalenten

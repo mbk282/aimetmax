@@ -8,6 +8,9 @@ export function Header() {
           AI met Max
         </Link>
         <div className="flex items-center gap-6 text-sm">
+          <a href="/academy" className="text-gray-600 hover:text-gray-900">
+            E-learnings
+          </a>
           <Link href="/tools" className="text-gray-600 hover:text-gray-900">
             Gratis AI-tools
           </Link>

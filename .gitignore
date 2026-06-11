@@ -41,3 +41,11 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+.firecrawl/
+
+# lokaal werk- en onderzoeksmateriaal, niet voor de publieke repo
+/research/
+/elearning-poc/
+/.claude/
+/.playwright-mcp/
+qa-*.png

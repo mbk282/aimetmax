@@ -10,4 +10,6 @@
 body {
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  background-color: #fff;
+  color: #111827;
 }
