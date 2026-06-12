@@ -308,7 +308,7 @@
   <p>Iemand heeft je deze link gestuurd, of je kwam hier via aimetmax.nl. Welkom. Dit is een <mark>gratis e-learning</mark> over hoe AI echt werkt. Hij duurt ongeveer 35 minuten, je hoeft geen account aan te maken en er komt geen wiskunde in voor.</p>
   <p>Even voorstellen: ik ben Max van den Broek, auteur van <mark>AI-Pionier</mark> (Koninklijke Boom Uitgevers) en voormalig docent AI aan de Universiteit van Amsterdam. Tegenwoordig train ik teams in het slim gebruiken van AI.</p>
   <p>Wat je hier leert, in drie delen:</p>
-  <p><strong>Deel 1:</strong> hoe een taalmodel werkt. Geen regels maar patronen, tokens, en het ene spel waar alles op draait.<br>
+  <p><strong>Deel 1:</strong> hoe een taalmodel werkt. Geen regels maar patronen, tokens, hoe AI naar je foto's kijkt, en het ene spel waar alles op draait.<br>
   <strong>Deel 2:</strong> waarom AI-modellen zo snel zoveel beter worden. Spoiler: het is niet wat de meeste mensen denken.<br>
   <strong>Deel 3:</strong> vijf hardnekkige misverstanden over AI, plus per misverstand de zin die je voortaan kunt zeggen.</p>
   <p>Aan het eind is er een quiz. Wie die haalt, praat scherper over AI dan de meeste mensen die er dagelijks mee werken. Echt waar.</p>`
@@ -380,6 +380,52 @@
   <p><strong>1. De context is begrensd.</strong> Een model kan maar een beperkt aantal tokens tegelijk overzien. Plak je een veel te lang document in de chat, dan valt er iets buiten de boot.</p>
   <p><strong>2. Je betaalt per token.</strong> Wie AI zakelijk inzet, rekent af per token, niet per vraag. Een lange lap tekst kost dus letterlijk meer dan een korte.</p>
   <div class="note"><strong>Leuke bijvangst:</strong> dit verklaart waarom AI soms de letters in een woord verkeerd telt. Het model ziet geen letters. Het ziet tokens.</div>`
+      },
+      {
+        kicker: "Deel 1 · Beeld",
+        titel: "En plaatjes? Ook stukjes",
+        navTitel: "Hoe AI je foto ziet",
+        html: `
+  <p>Moderne AI-tools kunnen ook naar plaatjes kijken: upload een foto en stel er vragen over. Dat werkt vaak verrassend goed: een bonnetje uitlezen, een grafiek uitleggen, een foutmelding op een schermfoto ontcijferen, een whiteboard vol gekrabbel omzetten in nette notulen.</p>
+  <p>Hoe kan een tekstvoorspeller dat? Met hetzelfde trucje als bij tekst: de foto wordt <mark>opgeknipt in stukjes</mark>, een soort beeld-tokens. Die stukjes gaan samen met jouw vraag het model in, en het model voorspelt gewoon weer woord voor woord een antwoord.</p>
+
+  <div class="illu"><svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schets van een foto van een sleuf die in stukjes wordt geknipt, waarna het model vaag gokt hoe diep de sleuf is">
+    <rect x="40" y="34" width="220" height="176" rx="8" fill="#FFFDF8" stroke="#2A2A2A" stroke-width="3.5"/>
+    <path d="M52 122 L 116 120 M 184 118 L 248 118" stroke="#2A2A2A" stroke-width="3" stroke-linecap="round"/>
+    <path d="M116 120 C 118 152, 120 174, 124 192 L 176 191 C 180 170, 182 148, 184 118" fill="#FBE3D4" stroke="#2A2A2A" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M124 192 L 176 191" stroke="#2A2A2A" stroke-width="3" stroke-linecap="round"/>
+    <g stroke="#4C8577" stroke-width="2.5" stroke-linecap="round">
+      <path d="M100 126 l 0 60"/>
+      <path d="M96 130 l 4 -6 l 4 6 M96 180 l 4 6 l 4 -6"/>
+    </g>
+    <text x="62" y="166" font-family="Caveat, cursive" font-size="22" fill="#4C8577">? m</text>
+    <g stroke="#E8590C" stroke-width="2.5" stroke-dasharray="3 7" opacity="0.85">
+      <path d="M113 36 l 0 172 M 187 36 l 0 172"/>
+      <path d="M42 92 l 216 0 M 42 150 l 216 0"/>
+    </g>
+    <path d="M276 110 C 296 106, 312 104, 330 104" stroke="#2A2A2A" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M322 98 L 334 104 L 322 111" fill="none" stroke="#2A2A2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <g stroke="#2A2A2A" stroke-width="2.5">
+      <rect x="348" y="50" width="34" height="34" rx="4" fill="#DCEAE5" transform="rotate(-7 365 67)"/>
+      <rect x="394" y="42" width="34" height="34" rx="4" fill="#FBE3D4" transform="rotate(5 411 59)"/>
+      <rect x="442" y="54" width="34" height="34" rx="4" fill="#FFE8A3" transform="rotate(-4 459 71)"/>
+      <rect x="368" y="96" width="34" height="34" rx="4" fill="#FFE8A3" transform="rotate(6 385 113)"/>
+      <rect x="416" y="92" width="34" height="34" rx="4" fill="#FFFDF8" transform="rotate(-6 433 109)"/>
+      <rect x="464" y="100" width="34" height="34" rx="4" fill="#DCEAE5" transform="rotate(4 481 117)"/>
+    </g>
+    <path d="M352 170 C 350 156, 362 150, 378 150 L 496 146 C 514 146, 524 156, 522 170 C 522 184, 510 190, 494 190 L 380 193 C 364 194, 354 186, 352 170 Z" fill="#FFFDF8" stroke="#2A2A2A" stroke-width="3"/>
+    <path d="M388 192 C 382 204, 372 211, 360 214 C 368 206, 372 200, 374 193" fill="none" stroke="#2A2A2A" stroke-width="3" stroke-linecap="round"/>
+    <text x="368" y="177" font-family="Caveat, cursive" font-size="24" fill="#2A2A2A">"Ongeveer een meter?"</text>
+    <text x="478" y="232" font-family="Caveat, cursive" font-size="30" fill="#E8590C">?</text>
+    <path d="M40 238 C 170 232, 400 240, 522 234" stroke="#2A2A2A" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </svg>
+  <div class="illu-caption">Opgeknipt in stukjes. De meetlat overleeft het knippen niet.</div></div>
+
+  <p>Maar bij dat opknippen gaat iets verloren: <mark>precieze ruimtelijke informatie</mark>. Het model wordt heel goed in <em>wat</em> er op de foto staat, en blijft opvallend zwak in <em>waar</em> iets precies staat, hoe groot het is en hoe ver het weg is. Er is geen meetlat, alleen stukjes en patronen.</p>
+  <p>Ik probeer bijvoorbeeld regelmatig of AI op een foto kan opmeten hoe diep een gegraven sleuf is. Het antwoord klinkt telkens redelijk ("ongeveer een meter"), maar het is een <mark>schatting op uiterlijk</mark>, geen meting. Vraag je door, dan blijkt het model niet te kunnen zeggen waar de bodem precies zit. Met deze techniek kan dat ook nog niet.</p>
+  <p>Voor jou betekent dat een simpele tweedeling. Beschrijven, uitlezen, structureren en herkennen: ga je gang. Posities, maten, afstanden en het precies tellen van objecten: <mark>niet op vertrouwen</mark>, ook al klinkt het antwoord stellig.</p>
+  <div class="note"><strong>Plaatjes máken</strong> (in plaats van bekijken) is weer een andere techniek, met eigen eigenaardigheden. Een paar daarvan komen voorbij in de module Verantwoord omgaan met AI, bij bias: het wijnglas dat nooit vol wil, het horloge op tien over tien.</div>
+  <div class="callout"><div class="label">De kern van deze les</div><p>"AI ziet wát er op je foto staat. Niet wáár, en niet hoe groot."</p></div>`
       },
       {
         kicker: "Deel 1 · Het spel",
@@ -684,7 +730,7 @@
         titel: "De quiz: waar of niet waar?",
         navTitel: "De quiz",
         html: `
-  <p class="muted">Tien stellingen. Klik je antwoord en lees de uitleg. Niet spieken bij de vorige lessen (mag eigenlijk wel, zo werkt leren).</p>
+  <p class="muted">Elf stellingen. Klik je antwoord en lees de uitleg. Niet spieken bij de vorige lessen (mag eigenlijk wel, zo werkt leren).</p>
   <div id="quiz"></div>
   <div class="score" id="score"></div>`
       },
@@ -748,6 +794,9 @@
       { s: "Een taalmodel knipt jouw tekst eerst in tokens: hele woorden of stukjes van woorden.",
         antwoord: true,
         uitleg: "Waar. Het model ziet geen letters of woorden, maar tokens. Daarom is de context begrensd, betaal je per token en telt AI soms de letters in een woord verkeerd." },
+      { s: "Stuur je AI een foto van een sleuf, dan kan het er nauwkeurig op meten hoe diep die is.",
+        antwoord: false,
+        uitleg: "Niet waar. De foto wordt opgeknipt in stukjes en daarbij gaat precieze ruimtelijke informatie verloren. Het model ziet wát er op de foto staat, niet wáár en hoe groot. Het antwoord is een schatting op uiterlijk, geen meting." },
       { s: "Een taalmodel kan betere antwoorden geven dan de gemiddelde tekst waarop het is getraind.",
         antwoord: true,
         uitleg: "Waar. Na de training wordt het model bijgestuurd met menselijke feedback, waardoor het leert de beste antwoorden te geven in plaats van de gemiddelde." },
