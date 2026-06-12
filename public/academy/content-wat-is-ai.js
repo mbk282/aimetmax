@@ -82,7 +82,7 @@
     <circle cx="216" cy="167" r="6" fill="#4C8577" stroke="#2A2A2A" stroke-width="2.5"/>
     <circle cx="334" cy="169" r="6" fill="#4C8577" stroke="#2A2A2A" stroke-width="2.5"/>
     <circle cx="452" cy="167" r="6" fill="#E8590C" stroke="#2A2A2A" stroke-width="2.5"/>
-    <text x="64" y="200" font-family="Caveat, cursive" font-size="20" fill="#5A5550">1956</text>
+    <text x="64" y="200" font-family="Caveat, cursive" font-size="20" fill="#5A5550">1955</text>
     <text x="196" y="198" font-family="Caveat, cursive" font-size="20" fill="#5A5550">1997</text>
     <text x="306" y="200" font-family="Caveat, cursive" font-size="20" fill="#5A5550">~2010</text>
     <text x="432" y="198" font-family="Caveat, cursive" font-size="20" fill="#5A5550">2022</text>
@@ -235,14 +235,13 @@
         titel: "Soms is het zelfs wettelijk verplicht",
         navTitel: "Soms wettelijk verplicht",
         html: `
-  <p>Sinds <mark>2 februari 2025</mark> staat er een opmerkelijke verplichting in de Europese AI-verordening. Artikel 4: organisaties die AI-systemen aanbieden óf gebruiken, moeten naar beste vermogen zorgen voor een <mark>toereikend niveau van AI-geletterdheid</mark> bij hun personeel. Dat geldt niet alleen voor techbedrijven die AI bouwen. Het geldt ook voor de verzekeraar, de gemeente en het installatiebedrijf waar mensen gewoon ChatGPT of Copilot gebruiken.</p>
-  <p>Wat er verwacht wordt: passende maatregelen, afgestemd op de kennis en de rol van medewerkers en op de context waarin AI wordt gebruikt. Er is geen verplichte cursus en geen officieel certificaat. Maar kunnen laten zien dat je er serieus werk van maakt, helpt wel.</p>
+  <p>Sinds <mark>2 februari 2025</mark> staat er een opmerkelijke verplichting in de Europese AI-verordening. Artikel 4: organisaties die AI-systemen aanbieden óf gebruiken, nemen maatregelen om zoveel als mogelijk te zorgen voor een <mark>toereikend niveau van AI-geletterdheid</mark> bij hun personeel. Dat geldt niet alleen voor techbedrijven die AI bouwen. Het geldt ook voor de verzekeraar, de gemeente en het installatiebedrijf waar mensen gewoon ChatGPT of Copilot gebruiken.</p>
+  <p>Wat er verwacht wordt: passende maatregelen, afgestemd op de kennis, ervaring en opleiding van medewerkers, op de context waarin AI wordt gebruikt, en op de mensen die ermee te maken krijgen. Er is geen verplichte cursus en geen officieel certificaat. Maar kunnen laten zien dat je er serieus werk van maakt, helpt wel.</p>
 
-  <!-- TODO: feiten hieronder finaliseren tegen research/ind-casematch-uitspraak.md zodra geverifieerd -->
   ${illu(SVG_RECHTER, "Ziet eruit als een zoekmachine. De rechter wilde er toch meer over weten.")}
 
-  <p>Hoe dichtbij dit komt, liet de rechtspraak onlangs zien. De IND gebruikt een systeem dat <mark>CaseMatch</mark> heet: een tool waarmee medewerkers vergelijkbare eerdere zaken kunnen opzoeken. Op het oog gewoon een zoekmachine. Toch wilde de rechter er het fijne van weten: wat doet dit systeem precies, speelt het een rol in besluiten over mensen, en snappen de medewerkers die ermee werken wat het doet?</p>
-  <p>Daar zitten twee lessen in. Eén: <mark>je hoeft geen chatbot te gebruiken om met AI-regels te maken te krijgen</mark>. Ook een tool die eruitziet als een zoekmachine kan eronder vallen. Twee: "ik wist niet dat het AI was" is geen sterk verhaal, niet tegenover een rechter en niet tegenover de mensen over wie het gaat. Er iets van snappen is dus niet alleen handig. Soms is het gewoon je werk.</p>
+  <p>Hoe serieus dit speelt, zie je in de rechtszaal. De IND gebruikt een systeem dat <mark>Case Matcher</mark> heet: medewerkers zoeken er vergelijkbare eerdere asielzaken mee op. Volgens de IND zelf "een simpele zoekmachine". Toch oordeelden rechters in 2025 dat de IND <mark>in elk besluit moet vermelden</mark> of het systeem is gebruikt, en werden besluiten vernietigd toen dat naliet. In mei 2026 ging de rechtbank verder: de IND had de werking van het systeem "onvoldoende inzichtelijk gemaakt" en moest huiswerk doen. Documenteer hoe het systeem zaken rangschikt en welke risico's op vooringenomenheid erin zitten.</p>
+  <p>Daar zitten twee lessen in. Eén: <mark>je hoeft geen chatbot te gebruiken om met AI-vragen te maken te krijgen</mark>. Ook een tool die eruitziet als een doodgewone zoekmachine kan voor de rechter belanden; of Case Matcher juridisch een AI-systeem is, is precies de vraag die daar nu ligt. Twee: "we weten niet precies wat het doet" is geen sterk verhaal, niet tegenover een rechter en niet tegenover de mensen over wie het gaat. Veelzeggend detail: IND-medewerkers moeten verplicht een cursus volgen voordat ze Case Matcher mogen gebruiken. Snappen wat je gebruikt is dus niet alleen handig. Soms is het gewoon je werk.</p>
   <div class="note"><strong>Voor de volledigheid:</strong> de EU werkt aan een aanpassingspakket (de "digital omnibus") dat artikel 4 waarschijnlijk iets zachter formuleert. De kern blijft hetzelfde: wie AI inzet, hoort te snappen wat het doet. Deze e-learning is geen juridisch advies; voor de details van jouw situatie is er de jurist of de AI-verantwoordelijke van je organisatie.</div>
   <div class="callout"><div class="label">De kern van deze les</div><p>"Je hoeft geen expert te worden. Je moet wel weten wat je gebruikt."</p></div>`
       },
@@ -259,7 +258,7 @@
 
   ${illu(SVG_TIJDLIJN, "AI was er eerder dan jouw eerste e-mailadres.")}
 
-  <p>En het gaat nog veel verder terug. In <mark>1997</mark> versloeg een schaakcomputer wereldkampioen Garry Kasparov. En de term "artificial intelligence" zelf? Die werd gemunt in <mark>1956</mark>, toen een groep onderzoekers rond John McCarthy er een zomerworkshop aan wijdde. AI is als vakgebied ouder dan de meeste mensen die er nu mee werken.</p>
+  <p>En het gaat nog veel verder terug. In <mark>1997</mark> versloeg een schaakcomputer wereldkampioen Garry Kasparov. En de term "artificial intelligence" zelf? Die werd al in <mark>1955</mark> gemunt door John McCarthy, in het voorstel voor een zomerworkshop op Dartmouth College, het jaar erop. AI is als vakgebied dus ouder dan de meeste mensen die er nu mee werken.</p>
   <p>Eén voorbeeld om over na te kauwen: de rekenmachine. Die voert een taak uit waar mensen ooit onmiskenbaar hun intelligentie voor nodig hadden, en hij doet het beter dan elke mens. Is dat dan ook AI? Vrijwel niemand noemt hem nog zo. Onthoud die observatie, want in de volgende les blijkt daar een patroon achter te zitten.</p>
   <div class="callout"><div class="label">De kern van deze les</div><p>"Je gebruikt al jaren AI. Je noemde het alleen nooit zo."</p></div>`
       },
@@ -269,8 +268,9 @@
         navTitel: "Geen één definitie",
         html: `
   <p>Als AI al zo lang bestaat, dan is er vast een nette definitie. Nou, nee. Zelfs de grondleggers kwamen er niet uit, en dat is leerzamer dan het klinkt.</p>
-  <p>AI-pionier <mark>Marvin Minsky</mark> omschreef het vakgebied als: machines dingen laten doen <mark>waar intelligentie voor nodig zou zijn als een mens ze deed</mark>. Mooi geprobeerd, maar daar valt je rekenmachine dus onder. En je afwasmachine misschien ook, afhankelijk van hoe je over afwassen denkt.</p>
-  <p>Daarom hanteren veel mensen in de praktijk stiekem een andere definitie, die bekend werd via informaticus Larry Tesler: <mark>AI is alles wat computers nog níet kunnen</mark>. Zodra het lukt, houden we op het intelligentie te noemen. Schaken gold decennia als ultieme test van machine-intelligentie; toen de computer won, heette het ineens "gewoon rekenkracht". Navigatie was AI; nu is het "gewoon een routeplanner". Onderzoekers noemen dit het <mark>AI-effect</mark>, en het verklaart waarom je rekenmachine geen AI meer heet.</p>
+  <p>AI-pionier <mark>Marvin Minsky</mark> omschreef het vakgebied in 1968 als: de wetenschap die machines dingen laat doen <mark>waar intelligentie voor nodig zou zijn als een mens ze deed</mark>. Mooi geprobeerd, maar daar valt je rekenmachine dus onder. En je afwasmachine misschien ook, afhankelijk van hoe je over afwassen denkt.</p>
+  <p>John McCarthy, de naamgever van het vak, hield het op "de wetenschap en techniek van het maken van intelligente machines". Dat verplaatst de vraag alleen maar: wat is intelligent?</p>
+  <p>En dan is er de definitie die veel mensen in de praktijk stiekem hanteren, bekend geworden als Tesler's Theorem: <mark>AI is alles wat nog niet kan</mark>. (Zo citeerde Douglas Hofstadter informaticus Larry Tesler in 1979; Tesler zelf zei het net iets anders, maar zo bleef het hangen.) Zodra iets lukt, houden we op het intelligentie te noemen. Schaken gold decennia als ultieme test van machine-intelligentie; toen de computer won, heette het ineens "gewoon rekenkracht". Navigatie was AI; nu is het "gewoon een routeplanner". Onderzoekers noemen dit het <mark>AI-effect</mark>, en het verklaart waarom je rekenmachine geen AI meer heet.</p>
 
   ${illu(SVG_DOELPALEN, "Zodra de bal erin ligt, schuift het doel een stukje op.")}
 
@@ -313,7 +313,7 @@
   <p>Terug naar die wettelijke plicht uit deel 1. Als de wet zegt "wie AI gebruikt, moet er iets van snappen", dan is de logische vervolgvraag: <mark>wat telt voor de wet als AI?</mark></p>
   <p>De AI-verordening definieert een "AI-systeem" (artikel 3, punt 1). Vrij vertaald: een <mark>machinaal systeem</mark> dat met een zekere mate van <mark>zelfstandigheid</mark> uit de invoer die het krijgt <mark>afleidt</mark> hoe het output maakt: voorspellingen, content, aanbevelingen of beslissingen die invloed kunnen hebben op de echte of digitale wereld. Het sleutelwoord is "afleidt": het systeem volgt niet alleen een vast recept, het leidt zelf gedrag af.</p>
   <p>Die definitie is bewust breed. Er valt veel meer onder dan chatbots:</p>
-  <p><strong>Aanbevelingssystemen</strong> die bepalen wat jij te zien krijgt. <strong>Risicoscores</strong> die aanvragen voorsorteren. <strong>Beeldherkenning</strong> die foto's beoordeelt. En soms dus ook een tool die eruitziet als een doodgewone zoekmachine, zoals CaseMatch bij de IND uit deel 1. Niet het uiterlijk telt, maar <mark>wat er onder de motorkap gebeurt</mark> en wat de output betekent voor mensen.</p>
+  <p><strong>Aanbevelingssystemen</strong> die bepalen wat jij te zien krijgt. <strong>Risicoscores</strong> die aanvragen voorsorteren. <strong>Beeldherkenning</strong> die foto's beoordeelt. En de grens kan verrassend dichtbij liggen: bij Case Matcher van de IND uit deel 1 is "is dit een AI-systeem?" precies de vraag waar de rechter zich nu over buigt. Niet het uiterlijk telt, maar <mark>wat er onder de motorkap gebeurt</mark> en wat de output betekent voor mensen.</p>
   <p>Voor jou betekent dit iets praktisch: de vraag "gebruik ik AI?" beantwoord je niet op gevoel of op het logo van de tool. Kijk wat je organisatie aan systemen gebruikt, en stel de vraag per systeem. Het antwoord is vaker "ja" dan je denkt. Goede organisaties hebben hier een overzicht van; vraag ernaar.</p>
   <div class="note">Dit is een e-learning, geen juridisch advies. Of een specifiek systeem onder de AI-verordening valt, is uiteindelijk werk voor de jurist of de AI-verantwoordelijke van je organisatie. Jouw werk: weten dat de vraag bestaat, en hem stellen.</div>
   <div class="callout"><div class="label">De kern van deze les</div><p>"De wet kijkt niet naar het uiterlijk van de tool, maar naar wat eronder gebeurt."</p></div>`
@@ -359,7 +359,7 @@
       <li><strong>"Er is geen één definitie van AI.</strong> Ik vraag wat het systeem doet en hoe het dat geleerd heeft."</li>
       <li><strong>"Zodra iets goed werkt, noemen we het geen AI meer.</strong> Daar trap ik niet meer in."</li>
       <li><strong>"Automatisering volgt regels, machine learning leert patronen, generatieve AI genereert.</strong> Drie smaken, één woord."</li>
-      <li><strong>"De wet kijkt breder dan chatbots.</strong> Ook een tool die op een zoekmachine lijkt kan een AI-systeem zijn."</li>
+      <li><strong>"De wet kijkt breder dan chatbots.</strong> Niet het uiterlijk van een tool telt, maar wat er onder de motorkap gebeurt."</li>
       <li><strong>"AI-geletterdheid is geen diploma.</strong> Het is genoeg snappen om verstandig te kiezen, en organisaties moeten daar sinds 2025 voor zorgen."</li>
       <li><strong>"De nieuwe AI is van iedereen.</strong> Daarom verdiep ik me juist in generatieve AI."</li>
     </ol>
@@ -399,9 +399,9 @@
       { s: "De AI-geletterdheidsplicht uit de AI-verordening geldt alleen voor bedrijven die zelf AI bouwen.",
         antwoord: false,
         uitleg: "Niet waar. Artikel 4 geldt ook voor organisaties die AI gebruiken, dus ook voor gewoon ChatGPT- of Copilot-gebruik op kantoor. Aanbieders én gebruikers moeten zorgen voor een toereikend niveau van AI-geletterdheid." },
-      { s: "Een systeem dat eruitziet als een zoekmachine kan toch onder de AI-regels vallen.",
+      { s: "Ook bij een systeem dat op een zoekmachine lijkt, kan een rechter eisen dat het gebruik wordt gemeld en uitgelegd.",
         antwoord: true,
-        uitleg: "Waar. De wet kijkt niet naar het uiterlijk van de tool maar naar wat eronder gebeurt, zoals bij CaseMatch van de IND. Niet voor niets wilde de rechter precies weten wat dat systeem doet." },
+        uitleg: "Waar. Bij Case Matcher van de IND oordeelden rechters dat het gebruik in besluiten vermeld moet worden, en in 2026 moest de IND uitleggen hoe het systeem zaken rangschikt en welke bias-risico's erin zitten. Of het juridisch een AI-systeem is, ligt nog bij de rechter." },
       { s: "Voor AI-geletterdheid moet iedereen in de organisatie hetzelfde officiële certificaat halen.",
         antwoord: false,
         uitleg: "Niet waar. Er bestaat geen officieel certificaat. De wet vraagt om passende maatregelen, afgestemd op rol en gebruik: een recruiter heeft andere kennis nodig dan iemand die af en toe een mail laat opschonen." },
