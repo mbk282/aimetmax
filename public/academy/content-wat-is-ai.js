@@ -264,6 +264,12 @@
 
   <p>En het gaat nog veel verder terug. In <mark>1997</mark> versloeg een schaakcomputer wereldkampioen Garry Kasparov. En de term "artificial intelligence" zelf? Die werd al in <mark>1955</mark> gemunt door John McCarthy, in het voorstel voor een zomerworkshop op Dartmouth College, het jaar erop. AI is als vakgebied dus ouder dan de meeste mensen die er nu mee werken.</p>
   <p>Eén voorbeeld om over na te kauwen: de rekenmachine. Die voert een taak uit waar mensen ooit onmiskenbaar hun intelligentie voor nodig hadden, en hij doet het beter dan elke mens. Is dat dan ook AI? Vrijwel niemand noemt hem nog zo. Onthoud die observatie, want in de volgende les blijkt daar een patroon achter te zitten.</p>
+  <div class="oefen" id="oefen-eerste">
+    <div class="oefen-kop">Probeer het zelf</div>
+    <p>De beste manier om AI te leren snappen is hem gebruiken. Heb je nog nooit met een chatbot gepraat? Open er een (ChatGPT, Copilot, Claude of Gemini) en plak deze vraag:</p>
+    <div class="oefen-prompt"><code>Ik ben [jouw functie] en wil AI leren gebruiken voor mijn werk. Noem drie concrete taken waarbij jij me vandaag al kunt helpen, en vraag me daarna welke ik wil proberen.</code><button class="kopieer" type="button">Kopieer</button></div>
+    <details class="oefen-verwacht"><summary>Waarom we hiermee beginnen</summary><p>Geen wiskunde, geen jargon: je typt gewoon in je eigen woorden. Dat is meteen de hele kunst. Door deze academy heen vind je nog veel meer van deze "probeer het zelf"-blokken, want je leert AI niet uit een tekst, maar door het te doen.</p></details>
+  </div>
   <div class="callout"><div class="label">De kern van deze les</div><p>"Je gebruikt al jaren AI. Je noemde het alleen nooit zo."</p></div>`
       },
       {

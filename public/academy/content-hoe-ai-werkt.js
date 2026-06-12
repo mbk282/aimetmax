@@ -361,6 +361,12 @@
 
   <p>Dat verschil verklaart meteen iets wat je misschien al opviel: stel dezelfde vraag twee keer en je krijgt vaak <mark>twee verschillende antwoorden</mark>. Geen bug, maar een direct gevolg van hoe het ding gemaakt is. Het volgt geen vast recept, het werkt met patronen en kansen.</p>
   <div class="callout"><div class="label">De kern van deze les</div><p>"Een rekenmachine is geprogrammeerd. ChatGPT heeft gelezen."</p></div>
+  <div class="oefen" id="oefen-herhaal">
+    <div class="oefen-kop">Probeer het zelf</div>
+    <p>Open je eigen AI-tool en stuur deze vraag twee keer achter elkaar, in twee losse gesprekken:</p>
+    <div class="oefen-prompt"><code>Schrijf in twee zinnen een wervende slogan voor een nieuw type koffiebeker.</code><button class="kopieer" type="button">Kopieer</button></div>
+    <details class="oefen-verwacht"><summary>Wat je waarschijnlijk ziet</summary><p>Twee verschillende slogans, terwijl je exact hetzelfde vroeg. Geen bug: het model werkt met kansen, niet met een vast recept. Bij een rekenmachine zou 7 x 6 altijd 42 geven; hier krijg je variatie. Goed om te weten als je reproduceerbaarheid nodig hebt.</p></details>
+  </div>
   <p>Wat dat lezen precies inhoudt, en waarom het model jouw tekst heel anders ziet dan jij, dat is de volgende les.</p>`
       },
       {
@@ -380,7 +386,15 @@
   <p>Waarom moet je dit weten? Twee praktische redenen:</p>
   <p><strong>1. De context is begrensd.</strong> Een model kan maar een beperkt aantal tokens tegelijk overzien. Plak je een veel te lang document in de chat, dan valt er iets buiten de boot.</p>
   <p><strong>2. Je betaalt per token.</strong> Wie AI zakelijk inzet, rekent af per token, niet per vraag. Een lange lap tekst kost dus letterlijk meer dan een korte.</p>
-  <div class="note"><strong>Leuke bijvangst:</strong> dit verklaart waarom AI soms de letters in een woord verkeerd telt. Het model ziet geen letters. Het ziet tokens.</div>`
+  <div class="note"><strong>Leuke bijvangst:</strong> dit verklaart waarom AI soms de letters in een woord verkeerd telt. Het model ziet geen letters. Het ziet tokens.</div>
+
+  <p>Het beroemdste voorbeeld: vraag aan een taalmodel hoeveel keer de letter <strong>r</strong> in "strawberry" zit. Lang gaven de meeste modellen vol overtuiging "twee" als antwoord. Tel zelf maar: st<strong>r</strong>aw<strong>b</strong>e<strong>rr</strong>y, dat zijn er <mark>drie</mark>. Het model zag geen losse letters, maar een paar tokens ("st", "raw", "berry"), en daarin zijn de r-en niet te tellen.</p>
+  <div class="oefen" id="oefen-strawberry">
+    <div class="oefen-kop">Probeer het zelf</div>
+    <p>Open je eigen AI-tool (ChatGPT, Copilot, Claude, Gemini) en plak deze vraag:</p>
+    <div class="oefen-prompt"><code>Hoeveel keer komt de letter r voor in het woord strawberry? Tel ze stuk voor stuk.</code><button class="kopieer" type="button">Kopieer</button></div>
+    <details class="oefen-verwacht"><summary>Wat je waarschijnlijk ziet</summary><p>Moderne modellen hebben dit vaak afgeleerd of pakken er een telhulpje bij, dus grote kans dat het nu klopt. Vraag dan eens naar een lastiger woord, of vraag "hoeveel letters telt deze zin?". Zodra het mis gaat, weet je waarom: het model ziet tokens, geen letters. Door "tel ze stuk voor stuk" te vragen dwing je het bovendien tot kleine stapjes, en dat helpt (daarover meer in deel 2).</p></details>
+  </div>`
       },
       {
         kicker: "Deel 1 · Beeld",
@@ -656,6 +670,12 @@
 
   <p>Onderzoekers noemen dit de <mark>jagged frontier</mark>, de grillige grens. AI schrijft in seconden een sterk beleidsstuk, maar telt soms de letters in een woord verkeerd. Het redeneert over jouw vakgebied op seniorniveau, en struikelt dan over iets wat een kind kan.</p>
   <p>De enige juiste conclusie: je moet zelf ontdekken waar de grens ligt voor jouw taken. Dat kan niemand voor je uitrekenen, ook ik niet.</p>
+  <div class="oefen" id="oefen-grens">
+    <div class="oefen-kop">Probeer het zelf</div>
+    <p>Bedenk één ding waarvan je zeker weet dat AI het niet kan, en vraag het toch. Iets uit jouw vak, of gewoon dit:</p>
+    <div class="oefen-prompt"><code>Verzin een nieuw Nederlands spreekwoord over thuiswerken, en leg uit waarom het klopt.</code><button class="kopieer" type="button">Kopieer</button></div>
+    <details class="oefen-verwacht"><summary>Waarom dit leerzaam is</summary><p>Misschien verbaast het je hoe goed het gaat, misschien valt het tegen. Allebei is de bedoeling: zo voel je waar de grillige grens loopt voor jouw werk. De enige manier om hem te vinden is proberen, en dat is precies waarom deze academy vol "probeer het zelf"-blokken staat.</p></details>
+  </div>
   <div class="callout"><div class="label">Wat je voortaan zegt</div><p>"AI is beter dan zijn data, maar grillig. Test het op jouw eigen taken."</p></div>`
       },
       {

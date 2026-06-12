@@ -415,6 +415,13 @@
   ${illu(SVG_HUIS, "Het internet is Amerikaans. Je ziet het aan de veranda.")}
 
   <p>Om deze drie kun je lachen. Maar hetzelfde mechanisme bepaalt wie er verschijnt als je om "een directeur" of "een verpleegkundige" vraagt. En het stopt niet bij plaatjes, zoals je in de volgende les zelf gaat testen.</p>
+  <div class="oefen" id="oefen-beeld">
+    <div class="oefen-kop">Probeer het zelf</div>
+    <p>Heeft jouw AI-tool een beeldfunctie? Vraag dan om een van deze klassiekers en kijk of de bias nog leeft:</p>
+    <div class="oefen-prompt"><code>Maak een foto van een wijnglas dat tot aan de rand toe gevuld is met rode wijn.</code><button class="kopieer" type="button">Kopieer</button></div>
+    <div class="oefen-prompt"><code>Maak een foto van een Nederlands rijtjeshuis in een gewone woonwijk.</code><button class="kopieer" type="button">Kopieer</button></div>
+    <details class="oefen-verwacht"><summary>Waar je op moet letten</summary><p>Krijg je een half vol glas in plaats van een vol glas? Een vrijstaand huis met veranda in plaats van een rijtjeshuis? Dan zie je het gemiddelde van het internet winnen van jouw opdracht. De beste modellen lukt het wijnglas inmiddels soms wel, het rijtjeshuis vaak nog niet. Variant om mee te spelen: vraag een horloge (staat vrijwel altijd op tien over tien) of "iemand die een auto wast" en let op wie dat is.</p></details>
+  </div>
   <div class="callout"><div class="label">De kern van deze les</div><p>"AI geeft je niet wat je vraagt, maar wat het vaakst voorkwam."</p></div>`
       },
       {
@@ -422,7 +429,15 @@
         titel: "Tien willekeurige namen (probeer dit zelf)",
         navTitel: "De namen-oefening",
         html: `
-  <p>Dit is de sterkste bias-oefening die ik ken, en hij kost dertig seconden. Open je AI-tool en typ: <mark>"Geef me een lijst met tien willekeurige Nederlandse voornamen."</mark></p>
+  <p>Dit is de sterkste bias-oefening die ik ken, en hij kost dertig seconden.</p>
+  <div class="oefen" id="oefen-namen">
+    <div class="oefen-kop">Probeer het zelf</div>
+    <p>Open je AI-tool en plak deze vraag:</p>
+    <div class="oefen-prompt"><code>Geef me een lijst met tien willekeurige Nederlandse voornamen.</code><button class="kopieer" type="button">Kopieer</button></div>
+    <p>Stel daarna meteen deze vervolgvraag:</p>
+    <div class="oefen-prompt"><code>Zet achter elke naam een realistisch maandsalaris.</code><button class="kopieer" type="button">Kopieer</button></div>
+    <details class="oefen-verwacht"><summary>Waar je op moet letten</summary><p>Bij de eerste vraag: krijg je Daan, Emma, Lucas, en geen Mohammed of Fatima? Bij de tweede: verdienen de mannen meer dan de vrouwen? Beide patronen komen recht uit de trainingsdata. Niet erg als je het ziet, wel erg als dit ongezien in een testbestand of HR-tool belandt.</p></details>
+  </div>
 
   ${illu(SVG_NAMEN, "Tien keer willekeurig, en toch verrassend voorspelbaar.")}
 
@@ -433,6 +448,14 @@
   <p>Vraag als vervolg: "zet achter elke naam een realistisch maandsalaris". Grote kans dat de mannen meer verdienen dan de vrouwen, en dat de westerse namen bovenaan staan. Het model reproduceert <mark>de loonkloof uit zijn trainingsdata</mark>, netjes en ongevraagd. Stel je voor dat dit ongezien in een HR-tool of een arbeidsmarktanalyse belandt. Niet voor niets vallen AI-toepassingen rond werving en beoordeling onder het hoog-risicoregime van de AI-verordening.</p>
   <h2>Het zit ook in je tekst</h2>
   <p>Genereer jij nooit plaatjes of lijstjes? Dit werkt door in álles, ook in taal. AI schrijft van nature Amerikaans Nederlands: indirecter en met meer plichtplegingen dan wij gewend zijn. <mark>"Hopelijk gaat alles goed met je."</mark> als mailopening: geen Nederlander die dat uit zichzelf schrijft. En vraag je "maak dit professioneler", dan krijg je vaak vooral Amerikáánser: formeler, omslachtiger, met een extra laagje glazuur. Professioneel in Rotterdam is iets anders dan professioneel in Silicon Valley. Zeg dus wat je echt wilt ("korter, directer, geen plichtplegingen") en houd je eigen toon vast.</p>
+  <div class="oefen" id="oefen-toon">
+    <div class="oefen-kop">Probeer het zelf</div>
+    <p>Schrijf eerst een doodgewone, nuchtere mail (bijvoorbeeld dat een vergadering verschuift). Plak die dan met deze opdracht:</p>
+    <div class="oefen-prompt"><code>Maak deze mail professioneler:
+
+[plak hier je eigen mail]</code><button class="kopieer" type="button">Kopieer</button></div>
+    <details class="oefen-verwacht"><summary>Waar je op moet letten</summary><p>Grote kans dat je tekst formeler, langer en omslachtiger terugkomt, met net iets te veel plichtplegingen. Dat is de Amerikaanse stijl die in "professioneel" verstopt zit. Vraag ter vergelijking eens "maak dit korter en directer, in gewoon Nederlands" en zie het verschil.</p></details>
+  </div>
   <div class="callout"><div class="label">De kern van deze les</div><p>"Vraag je AI om iets neutraals, dan krijg je iemands gemiddelde. Kijk wiens."</p></div>`
       },
 

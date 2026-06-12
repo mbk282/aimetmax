@@ -315,6 +315,15 @@
         navTitel: "Hands-on en champions",
         html: `
   <p>Hoe krijg je een team echt aan het werk met AI? In elk geval niet met een presentatie. Na een demo knikt iedereen, en verandert niemand iets. Wat in mijn trainingen wel werkt: <mark>mensen het direct zelf laten doen, met hun eigen werk</mark>. Controllers oefenen op een begroting, juristen op een contract, communicatiemensen op hun eigen teksten. Het moment waarop iemand de eigen klus van twee uur in twintig minuten gedaan ziet, overtuigt meer dan welke slide ook.</p>
+  <p>Een oefening die ik graag als eerste laat doen, omdat ze het belangrijkste principe meteen laat voelen: <mark>hoe meer context je geeft, hoe beter het antwoord</mark>.</p>
+  <div class="oefen" id="oefen-context">
+    <div class="oefen-kop">Probeer het zelf (en laat je team het doen)</div>
+    <p>Stuur eerst de kale vraag:</p>
+    <div class="oefen-prompt"><code>Schrijf een uitnodiging voor een teamoverleg.</code><button class="kopieer" type="button">Kopieer</button></div>
+    <p>Stel dan dezelfde vraag, maar met context, zoals je die aan een nieuwe collega zou geven:</p>
+    <div class="oefen-prompt"><code>Schrijf een uitnodiging voor een teamoverleg. Het is een informeel team van acht mensen, het overleg duurt 30 minuten, onderwerp is de planning voor volgende maand, toon is nuchter en kort, en ik wil dat mensen vooraf hun punten aanleveren.</code><button class="kopieer" type="button">Kopieer</button></div>
+    <details class="oefen-verwacht"><summary>Waar je op moet letten</summary><p>De tweede uitnodiging is bruikbaar, de eerste vaag en algemeen. Dat verschil, en niet een geheime prompt-truc, is waar "goed met AI werken" grotendeels op neerkomt: behandel het als een capabele nieuwe collega die jouw context nog niet kent. Een perfecte openingsoefening voor elke training.</p></details>
+  </div>
   <h2>Champions: hulp op gehoorsafstand</h2>
   <p>Zorg daarna dat de hulp dichtbij blijft. Een kernteam van zo'n vijf gemotiveerde collega's werkt goed: zij experimenteren zelf veel, helpen anderen op weg en zijn de vraagbaak. De drempel om iets aan de collega naast je te vragen is vele malen lager dan een ticket bij IT. Geef die champions er wel expliciet tijd voor, want op goodwill alleen brandt dit op.</p>
   <h2>Maak het materiaal samen met het team</h2>
