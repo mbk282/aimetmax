@@ -273,7 +273,7 @@
   <strong>Deel 3:</strong> bias. Van wijnglazen tot salarislijstjes: waar de scheefheid vandaan komt en hoe je hem opmerkt.<br>
   <strong>Deel 4:</strong> verantwoord werken. Wat blijf je zelf doen, hoe open ben je erover, en hoe zit het met stroom en auteursrecht.</p>
   <p>Deze module duurt ongeveer 30 minuten, je hoeft geen account aan te maken en aan het eind wachten een quiz en een certificaat.</p>
-  <div class="note">Wil je eerst snappen hoe een taalmodel onder de motorkap werkt (tokens, voorspellen, training)? Doe dan eerst de gratis module <a href="/academy/module-hoe-ai-werkt.html">Hoe AI echt werkt</a>. Deze module leunt er af en toe op, maar is ook los te volgen.</div>`
+  <div class="note">Wil je eerst snappen hoe een taalmodel onder de motorkap werkt (tokens, voorspellen, training)? Doe dan eerst de gratis module <a href="/academy/module-hoe-ai-werkt.html">Hoe AI echt werkt</a>. Helemaal nieuw met AI? Begin bij <a href="/academy/module-wat-is-ai.html">Wat is AI?</a>. Deze module leunt er af en toe op, maar is ook los te volgen.</div>`
       },
 
       /* ========== DEEL 1: CHECK DE OUTPUT ========== */
