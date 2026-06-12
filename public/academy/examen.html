@@ -42,8 +42,8 @@
      Web3Forms:  LEAD_MODE = "json", LEAD_ENDPOINT = "https://api.web3forms.com/submit", LEAD_KEY = "jouw-access-key".
      Formspree:  LEAD_MODE = "json", LEAD_ENDPOINT = "https://formspree.io/f/xxxxxxx".
      ===================================================================== */
-  var LEAD_MODE = "";        /* "mailerlite" | "json" | "" (uit) */
-  var LEAD_ENDPOINT = "";
+  var LEAD_MODE = "mailerlite";   /* "mailerlite" | "json" | "" (uit) */
+  var LEAD_ENDPOINT = "https://assets.mailerlite.com/jsonp/955238/forms/190092106450077432/subscribe";
   var LEAD_KEY = "";
   var LEAD_MAILTO = "max@aimetmax.nl";
   var DREMPEL = 9;
@@ -290,7 +290,7 @@
       fd.append("ml-submit", "1");
       fd.append("anticsrf", "true");
       fetch(LEAD_ENDPOINT, { method: "POST", body: fd, mode: "no-cors" })
-        .then(function () { status.textContent = "Bedankt, je bent aangemeld voor updates."; })
+        .then(function () { status.textContent = "Bijna klaar: check je inbox en bevestig je aanmelding (eenmalige opt-in)."; })
         .catch(function () { status.textContent = "Je certificaat staat klaar (aanmelden lukte even niet)."; });
     } else if (LEAD_ENDPOINT) {
       var payload = { naam: naam, email: mail, score: score + "/" + totaal,
