@@ -335,6 +335,43 @@
     });
   }
 
+  // ---- interactieve prompt-bouwer (vijf bouwstenen) ----
+  const pbEl = document.getElementById("demo-promptbouwer");
+  if (pbEl) {
+    const uit = pbEl.querySelector(".pb-uit");
+    const velden = Array.from(pbEl.querySelectorAll(".pb-invoer"));
+    function bouw() {
+      const v = {};
+      velden.forEach(i => { v[i.dataset.pb] = i.value.trim(); });
+      const delen = [];
+      if (v.rol) delen.push(v.rol.replace(/\.$/, "") + ".");
+      if (v.taak) delen.push(v.taak.replace(/\.$/, "") + (v.doelgroep ? " " + v.doelgroep.replace(/\.$/, "") : "") + ".");
+      else if (v.doelgroep) delen.push(v.doelgroep.replace(/\.$/, "") + ".");
+      if (v.vorm) delen.push("Vorm: " + v.vorm.replace(/\.$/, "") + ".");
+      if (v.grenzen) delen.push("Let op: " + v.grenzen.replace(/\.$/, "") + ".");
+      const tekst = delen.join(" ");
+      uit.textContent = tekst || "Vul hierboven een paar bouwstenen in.";
+      return tekst;
+    }
+    velden.forEach(i => i.addEventListener("input", bouw));
+    const kopieer = pbEl.querySelector(".pb-kopieer");
+    if (kopieer) {
+      kopieer.addEventListener("click", () => {
+        const tekst = bouw();
+        if (!tekst) return;
+        const klaar = () => {
+          kopieer.classList.add("gelukt");
+          const oud = kopieer.textContent;
+          kopieer.textContent = "Gekopieerd!";
+          setTimeout(() => { kopieer.classList.remove("gelukt"); kopieer.textContent = oud; }, 1600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(tekst).then(klaar, klaar);
+        else klaar();
+      });
+    }
+    bouw();
+  }
+
   // ---- voortgang herstellen uit eerdere sessie ----
   if (Array.isArray(opslag.bezocht)) {
     opslag.bezocht.forEach(i => {

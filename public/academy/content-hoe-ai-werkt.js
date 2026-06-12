@@ -792,6 +792,7 @@
   </div>
 
   <p>En zin vijf is meteen je huiswerk. Kies vandaag één taak uit je werk en probeer of AI je erbij kan helpen. Niet morgen. Vandaag.</p>
+  <div class="note">Wil je daar meteen beter in worden? De volgende module, <a href="/academy/module-praktisch-werken-met-ai.html">Praktisch werken met AI</a>, laat je zien hoe je betere antwoorden krijgt zonder prompt engineer te worden.</div>
 
   <div class="callout">
     <div class="label">Hoe nu verder?</div>

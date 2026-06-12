@@ -16,7 +16,7 @@
   <a class="back-link" href="/academy">&larr; Terug naar de academy</a>
   <div class="badge">Eindtoets + certificaat</div>
   <h1 class="hand">Eindtoets AI-geletterdheid</h1>
-  <p class="examen-intro">Twaalf situaties uit de praktijk, over alle vijf de modules. Geen instinkers om je te laten struikelen, wel vragen die je alleen goed beantwoordt als je de stof snapt. Haal je <strong>negen van de twaalf</strong>, dan zet je je naam op een certificaat van afronding.</p>
+  <p class="examen-intro">Veertien situaties uit de praktijk, over alle zes de modules. Geen instinkers om je te laten struikelen, wel vragen die je alleen goed beantwoordt als je de stof snapt. Haal je <strong>tien van de veertien</strong>, dan zet je je naam op een certificaat van afronding.</p>
   <p class="examen-sub">Nog niet alle modules gedaan? <a href="/academy">Begin daar</a>. De toets is los te maken, maar makkelijker met de lessen vers in je hoofd.</p>
 
   <div id="examen"></div>
@@ -46,7 +46,7 @@
   var LEAD_ENDPOINT = "https://assets.mailerlite.com/jsonp/955238/forms/190092106450077432/subscribe";
   var LEAD_KEY = "";
   var LEAD_MAILTO = "max@aimetmax.nl";
-  var DREMPEL = 9;
+  var DREMPEL = 10;
 
   /* ---- de vragen ---- */
   var VRAGEN = [
@@ -169,6 +169,26 @@
       ],
       goed: 1,
       uitleg: "Welk werk overblijft is een ontwerpkeuze. Dezelfde maatregel (bijvoorbeeld gesprekken automatisch laten loggen) valt bij de een als verlichting en bij de ander als verlies van adempauze."
+    },
+    {
+      v: "Je vraagt AI iets en het resultaat is net niet goed. Wat is de handigste reflex?",
+      o: [
+        "Helemaal opnieuw beginnen met een totaal andere, langere prompt.",
+        "Gewoon bijsturen in een vervolgbericht: 'goed begin, maak het korter en haal die inleiding weg'.",
+        "Concluderen dat AI deze taak niet aankan."
+      ],
+      goed: 1,
+      uitleg: "Je hoeft het niet in één keer perfect te krijgen. Bijsturen in een gesprek is de methode: het model onthoudt de context en je duwt het stap voor stap de goede kant op."
+    },
+    {
+      v: "Je doet elke week dezelfde taak met steeds dezelfde uitleg erbij (bijvoorbeeld notulen opschonen). Wat is slim?",
+      o: [
+        "Elke keer opnieuw de hele uitleg typen, dat is het veiligst.",
+        "De uitleg vastleggen in een eigen bot of in je vaste instellingen, zodat je hem niet telkens hoeft te herhalen.",
+        "Een programmeur inhuren om het te automatiseren."
+      ],
+      goed: 1,
+      uitleg: "Een bot is niets anders dan een opgeslagen prompt: je schrijft in gewone woorden op wat hij moet doen. Geen code nodig, en je herhaalt jezelf nooit meer."
     }
   ];
 

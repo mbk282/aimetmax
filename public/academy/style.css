@@ -107,6 +107,12 @@ th { background: var(--card); font-size: 13px; text-transform: uppercase; letter
 .oefen-verwacht summary { cursor: pointer; font-weight: 700; font-size: 14px; }
 .oefen-verwacht p { margin: 8px 0 0; font-size: 14.5px; }
 
+/* ---------- prompt-bouwer-demo ---------- */
+#demo-promptbouwer .pb-invoer { width: 100%; box-sizing: border-box; border: 2px solid var(--ink); border-radius: 10px; padding: 9px 12px; font-family: "Inter", sans-serif; font-size: 14.5px; color: var(--ink); background: var(--paper); margin-bottom: 8px; }
+#demo-promptbouwer .pb-invoer:focus { outline: 3px solid var(--accent-soft); }
+#demo-promptbouwer .pb-uit { background: var(--sage-soft); border: 2px solid var(--sage); border-radius: 12px; padding: 12px 14px; font-size: 15px; line-height: 1.5; margin: 12px 0 10px; min-height: 48px; }
+#demo-promptbouwer .pb-kopieer { box-shadow: 2px 2px 0 var(--ink); }
+
 /* ---------- prompt-injection-demo ---------- */
 .injectie-doc { background: var(--paper); border: 2px solid var(--line); border-radius: 12px; padding: 14px 16px; font-size: 14.5px; margin-bottom: 12px; }
 .injectie-doc .verborgen { color: #C9C2B4; font-size: 13px; }
