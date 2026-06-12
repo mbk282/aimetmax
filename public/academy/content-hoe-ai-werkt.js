@@ -311,7 +311,8 @@
   <p><strong>Deel 1:</strong> hoe een taalmodel werkt. Geen regels maar patronen, tokens, hoe AI naar je foto's kijkt, en het ene spel waar alles op draait.<br>
   <strong>Deel 2:</strong> waarom AI-modellen zo snel zoveel beter worden. Spoiler: het is niet wat de meeste mensen denken.<br>
   <strong>Deel 3:</strong> vijf hardnekkige misverstanden over AI, plus per misverstand de zin die je voortaan kunt zeggen.</p>
-  <p>Aan het eind is er een quiz. Wie die haalt, praat scherper over AI dan de meeste mensen die er dagelijks mee werken. Echt waar.</p>`
+  <p>Aan het eind is er een quiz. Wie die haalt, praat scherper over AI dan de meeste mensen die er dagelijks mee werken. Echt waar.</p>
+  <div class="note">Nieuw met AI, of wil je eerst weten wat er allemaal onder "AI" valt en wat AI-geletterdheid van je vraagt? Begin dan bij de startmodule <a href="/academy/module-wat-is-ai.html">Wat is AI?</a>. Deze module is ook prima los te volgen.</div>`
       },
 
       /* ========== DEEL 1: HOE WERKT EEN TAALMODEL ========== */

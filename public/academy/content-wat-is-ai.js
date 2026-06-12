@@ -89,7 +89,11 @@
     <text x="36" y="226" font-family="Caveat, cursive" font-size="19" fill="#2A2A2A">de term 'AI'</text>
     <text x="168" y="224" font-family="Caveat, cursive" font-size="19" fill="#2A2A2A">schaakkampioen verslagen</text>
     <text x="382" y="226" font-family="Caveat, cursive" font-size="19" fill="#2A2A2A">ChatGPT</text>
-    <path d="M84 142 C 84 126, 70 128, 70 116 C 70 104, 84 102, 88 110 C 92 102, 104 104, 104 114 C 104 126, 84 126, 84 142" fill="#DCEAE5" stroke="#2A2A2A" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="86" cy="118" r="14" fill="#FFE8A3" stroke="#2A2A2A" stroke-width="2.5"/>
+    <path d="M80 132 l 12 0 M81 138 l 10 0" stroke="#2A2A2A" stroke-width="2.5" stroke-linecap="round"/>
+    <g stroke="#E8590C" stroke-width="2" stroke-linecap="round">
+      <path d="M86 98 l 0 -7 M70 104 l -5 -5 M102 104 l 5 -5"/>
+    </g>
     <path d="M204 142 L 228 142 L 224 130 C 230 124, 228 112, 216 112 C 204 112, 202 124, 208 130 Z" fill="#FFFDF8" stroke="#2A2A2A" stroke-width="2.5" stroke-linejoin="round"/>
     <g stroke="#2A2A2A" stroke-width="2.5">
       <rect x="312" y="108" width="44" height="34" rx="5" fill="#FFFDF8"/>
@@ -117,7 +121,7 @@
     <g stroke="#E8590C" stroke-width="2.5" stroke-linecap="round">
       <path d="M176 184 l 22 -4"/><path d="M178 194 l 18 0"/>
     </g>
-    <g stroke="#2A2A2A" stroke-width="4" stroke-linecap="round">
+    <g stroke="#2A2A2A" stroke-width="4" stroke-linecap="round" fill="none">
       <path d="M330 200 L 334 78 L 442 72 L 450 196"/>
     </g>
     <g stroke="#2A2A2A" stroke-width="1.6" opacity="0.45">
