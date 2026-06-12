@@ -1,69 +1,112 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const clients = [
+  "Universiteit van Amsterdam",
+  "Koninklijke Boom Uitgevers",
+  "Alliander",
+  "RVO",
+  "Winc Academy",
+  "GGD GHOR",
+  "NIVE",
+  "HvA",
+];
+
+const testimonials = [
+  {
+    quote:
+      "Max gaf een interessante en inspirerende workshop over AI op de kwartaalbijeenkomst van onze dienst. Heel beeldend, met duidelijke (en grappige) voorbeelden. Zowel beginners als gevorderde gebruikers gingen met nieuwe kennis naar huis (en minder angst voor AI).",
+    name: "Olesia Sacharova",
+    role: "Programmamanager Smart Buildings, UvA/HvA",
+  },
+  {
+    quote:
+      "Max focust zich op de kern, heeft een praktische benadering en beschrijft met humor en een persoonlijke noot herkenbare voorbeelden. Hij weet anderen te overtuigen en te enthousiasmeren. Een échte pionier.",
+    name: "Mischa Daanen",
+    role: "Redacteur AI-Pionier, Koninklijke Boom Uitgevers",
+  },
+];
+
 export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="mx-auto max-w-5xl px-6 py-20">
+      <section className="mx-auto max-w-5xl px-6 pt-16 pb-12">
         <div className="flex flex-col-reverse items-start gap-10 md:flex-row md:items-center">
           <div className="max-w-2xl">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-              AI werkend krijgen in jouw organisatie
+            <span className="inline-block rounded-full border-2 border-accent px-4 py-1 text-xs font-bold uppercase tracking-wider text-accent">
+              AI-trainer &amp; auteur van AI-Pionier
+            </span>
+            <h1 className="mt-5 text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+              AI werkend krijgen in{" "}
+              <span className="hand text-accent">jouw organisatie</span>
             </h1>
-            <p className="mt-6 text-lg text-gray-600">
-              Ik ben Max van den Broek, AI-expert. Ik geef trainingen, bouw
-              prototypes en help teams om AI echt te gaan gebruiken. Van
-              Copilot-training tot AI-strategie.
+            <p className="mt-6 text-lg text-ink-soft">
+              Ik ben Max van den Broek. Ik train teams in het slim en
+              verantwoord gebruiken van AI, bouw e-learnings op maat en maak
+              werkende prototypes. Nuchter, hands-on, en met voorbeelden uit
+              jullie eigen werk.
             </p>
-            <div className="mt-8 flex gap-4">
-              <Link
-                href="/contact"
-                className="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-700"
-              >
-                Neem contact op
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/contact" className="btn btn-primary">
+                Training of offerte aanvragen
               </Link>
-              <Link
-                href="/tools"
-                className="rounded-lg border border-gray-300 px-6 py-3 font-medium text-gray-700 hover:bg-gray-50"
-              >
-                Bekijk gratis AI-tools
-              </Link>
+              <a href="/academy" className="btn btn-ghost">
+                Bekijk de gratis academy
+              </a>
             </div>
           </div>
-          <Image
-            src="/max-van-den-broek.jpg"
-            alt="Max van den Broek"
-            width={280}
-            height={280}
-            className="shrink-0 rounded-2xl object-cover"
-            priority
-          />
+          <div className="shrink-0">
+            <div className="warm-card -rotate-2 p-3">
+              <Image
+                src="/max-van-den-broek.jpg"
+                alt="Max van den Broek"
+                width={260}
+                height={260}
+                className="rounded-xl object-cover"
+                priority
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Gratis e-learning teaser */}
-      <section className="border-t border-gray-100 bg-gray-50 py-20">
+      {/* Credibility strip */}
+      <section className="border-y-2 border-line bg-card py-7">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
+          <p className="text-center text-xs font-semibold uppercase tracking-wider text-ink-soft">
+            Trainingen, lezingen en e-learnings voor onder meer
+          </p>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-7 gap-y-2">
+            {clients.map((c) => (
+              <span key={c} className="hand text-xl text-ink-soft">
+                {c}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gratis academy (prominent) */}
+      <section className="py-16">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="warm-card flex flex-col items-start gap-8 p-8 md:flex-row md:items-center md:justify-between md:p-10">
             <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">
                 Gratis e-learnings
               </p>
-              <h2 className="mt-2 text-2xl font-bold text-gray-900">
-                Vijf gratis e-learnings over AI
+              <h2 className="mt-2 hand text-3xl font-bold text-ink">
+                De AI met Max academy
               </h2>
-              <p className="mt-4 text-gray-600">
-                Van &quot;Wat is AI?&quot; en hoe een taalmodel echt werkt tot
-                verantwoord gebruik, AI in jouw organisatie en hoofdstukken per
-                rol. Met handgetekende illustraties, interactieve voorbeelden,
-                quizzen en certificaten. Geen account nodig.
+              <p className="mt-3 text-ink-soft">
+                Zes gratis e-learnings die je leren wat AI is, hoe het werkt en
+                hoe je het praktisch en verantwoord gebruikt. Met handgetekende
+                illustraties, oefeningen die je meteen zelf doet, quizzen en
+                certificaten. Ideaal om naar je team te sturen: het ondersteunt
+                de AI-geletterdheidsplicht (artikel 4 AI-verordening).
               </p>
             </div>
-            <a
-              href="/academy"
-              className="shrink-0 rounded-lg bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-700"
-            >
+            <a href="/academy" className="btn btn-primary shrink-0">
               Naar de academy
             </a>
           </div>
@@ -71,98 +114,99 @@ export default function Home() {
       </section>
 
       {/* Wat ik doe */}
-      <section className="border-t border-gray-100 py-20">
+      <section className="border-t-2 border-line py-16">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-2xl font-bold text-gray-900">Wat ik doe</h2>
-          <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="rounded-xl bg-white p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900">
-                AI-trainingen &amp; e-learnings
-              </h3>
-              <p className="mt-2 text-sm text-gray-600">
-                Doelgroepgerichte trainingen en e-learnings op maat, van
-                Copilot voor controllers tot AI voor developers. Met jullie
-                eigen voorbeelden en tooling.
+          <h2 className="hand text-3xl font-bold text-ink">Wat ik voor je doe</h2>
+          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div className="warm-card p-6">
+              <h3 className="font-bold text-ink">E-learnings op maat</h3>
+              <p className="mt-2 text-sm text-ink-soft">
+                Doelgroepgerichte AI-e-learnings met jullie eigen voorbeelden,
+                tools en beleid. Schaalbaar, met toetsing en certificaten, en
+                onderbouwing voor de AI-geletterdheidsplicht.
               </p>
             </div>
-            <div className="rounded-xl bg-white p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900">
-                Prototypes &amp; POCs
-              </h3>
-              <p className="mt-2 text-sm text-gray-600">
-                Ik bouw werkende prototypes en simpele AI-tools zodat je snel
-                kunt zien wat AI voor jouw team kan betekenen.
+            <div className="warm-card p-6">
+              <h3 className="font-bold text-ink">Trainingen &amp; keynotes</h3>
+              <p className="mt-2 text-sm text-ink-soft">
+                Hands-on trainingen waarin mensen meteen zelf oefenen, van
+                Copilot voor controllers tot AI voor developers. Plus
+                inspirerende, toegankelijke lezingen.
               </p>
             </div>
-            <div className="rounded-xl bg-white p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900">
-                Keynotes &amp; lezingen
-              </h3>
-              <p className="mt-2 text-sm text-gray-600">
-                Inspirerende presentaties over AI, praktisch en toegankelijk.
-                Voor conferenties, bedrijfsdagen en teambijeenkomsten.
+            <div className="warm-card p-6">
+              <h3 className="font-bold text-ink">Prototypes &amp; POCs</h3>
+              <p className="mt-2 text-sm text-ink-soft">
+                Ik bouw werkende prototypes en simpele AI-tools, zodat je snel
+                ziet wat AI voor jouw team kan betekenen in plaats van erover te
+                praten.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Gratis tools teaser */}
-      <section className="border-t border-gray-100 bg-gray-50 py-20">
+      {/* Testimonials */}
+      <section className="border-t-2 border-line bg-card py-16">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-2xl font-bold text-gray-900">
-            Gratis AI-tools
-          </h2>
-          <p className="mt-2 text-gray-600">
-            Probeer deze AI-tools gratis uit, direct in je browser.
-          </p>
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-xl border border-gray-200 p-5">
-              <h3 className="font-semibold text-gray-900">Converters</h3>
-              <p className="mt-1 text-sm text-gray-500">
-                PDF, Word, HTML, CSV, JSON en XML naar Markdown. Privé in je browser.
-              </p>
-            </div>
-            <div className="rounded-xl border border-gray-200 p-5">
-              <h3 className="font-semibold text-gray-900">Checkers</h3>
-              <p className="mt-1 text-sm text-gray-500">
-                EU AI Act, leesbaarheid, prompts, vacatureteksten en meer.
-              </p>
-            </div>
-            <div className="rounded-xl border border-gray-200 p-5">
-              <h3 className="font-semibold text-gray-900">Calculators</h3>
-              <p className="mt-1 text-sm text-gray-500">
-                ROI berekenen voor AI en Copilot. Vergaderkosten teller.
-              </p>
-            </div>
+          <h2 className="hand text-3xl font-bold text-ink">Wat deelnemers zeggen</h2>
+          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {testimonials.map((t) => (
+              <figure key={t.name} className="warm-card p-6">
+                <blockquote className="text-ink">&ldquo;{t.quote}&rdquo;</blockquote>
+                <figcaption className="mt-4 text-sm">
+                  <span className="font-bold text-ink">{t.name}</span>
+                  <span className="block text-ink-soft">{t.role}</span>
+                </figcaption>
+              </figure>
+            ))}
           </div>
-          <Link
-            href="/tools"
-            className="mt-6 inline-block text-sm font-medium text-blue-600 hover:text-blue-800"
-          >
-            Bekijk alle tools &rarr;
-          </Link>
+          <p className="mt-6 text-sm text-ink-soft">
+            De NIVE-workshop &ldquo;Begin met AI. Maar hoe?&rdquo; (Managersplatform
+            Nederland) werd door deelnemers beoordeeld met een{" "}
+            <mark className="font-semibold">gemiddelde 8,2</mark>.
+          </p>
         </div>
       </section>
 
       {/* Boek */}
-      <section className="border-t border-gray-100 py-20">
+      <section className="border-t-2 border-line py-16">
         <div className="mx-auto max-w-5xl px-6">
           <div className="max-w-2xl">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Boek: AI-Pionier
-            </h2>
-            <p className="mt-4 text-gray-600">
+            <p className="text-sm font-semibold uppercase tracking-wider text-accent">
+              Boek
+            </p>
+            <h2 className="mt-2 hand text-3xl font-bold text-ink">AI-Pionier</h2>
+            <p className="mt-3 text-ink-soft">
               Hoe jij ook begint met generatieve AI. Met 25+ praktijkvoorbeelden
-              en antwoorden op de meestgestelde bezwaren.
+              en antwoorden op de meestgehoorde bezwaren. Uitgegeven door
+              Koninklijke Boom Uitgevers.
             </p>
             <Link
               href="/boek"
-              className="mt-4 inline-block text-sm font-medium text-blue-600 hover:text-blue-800"
+              className="mt-4 inline-block font-semibold text-accent hover:text-accent-dark"
             >
               Meer over het boek &rarr;
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Gratis tools (lichter, onderaan) */}
+      <section className="border-t-2 border-line bg-card py-16">
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="hand text-3xl font-bold text-ink">Gratis AI-tools</h2>
+          <p className="mt-2 text-ink-soft">
+            Kleine, handige tools die direct in je browser draaien, zonder
+            account: van een AI Act-checker en leesbaarheidscheck tot
+            converters. Je data blijft privé.
+          </p>
+          <Link
+            href="/tools"
+            className="mt-5 inline-block font-semibold text-accent hover:text-accent-dark"
+          >
+            Bekijk alle tools &rarr;
+          </Link>
         </div>
       </section>
     </>

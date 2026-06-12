@@ -2,32 +2,29 @@ import Link from "next/link";
 
 export function Header() {
   return (
-    <header className="border-b border-gray-100">
+    <header className="border-b-2 border-line bg-card">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-xl font-bold text-gray-900">
+        <Link href="/" className="hand text-2xl font-bold text-ink">
           AI met Max
         </Link>
         <div className="flex items-center gap-6 text-sm">
-          <a href="/academy" className="text-gray-600 hover:text-gray-900">
+          <a href="/academy" className="font-medium text-ink-soft hover:text-accent">
             E-learnings
           </a>
-          <Link href="/tools" className="text-gray-600 hover:text-gray-900">
+          <Link href="/tools" className="font-medium text-ink-soft hover:text-accent">
             Gratis AI-tools
           </Link>
-          <Link href="/blog" className="text-gray-600 hover:text-gray-900">
+          <Link href="/blog" className="font-medium text-ink-soft hover:text-accent">
             Artikelen
           </Link>
-          <Link href="/boek" className="text-gray-600 hover:text-gray-900">
+          <Link href="/boek" className="font-medium text-ink-soft hover:text-accent">
             Boek
           </Link>
-          <Link href="/over" className="text-gray-600 hover:text-gray-900">
+          <Link href="/over" className="font-medium text-ink-soft hover:text-accent">
             Over
           </Link>
-          <Link
-            href="/contact"
-            className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
-          >
-            Contact
+          <Link href="/contact" className="btn btn-primary !px-4 !py-2 text-sm">
+            Training aanvragen
           </Link>
         </div>
       </nav>

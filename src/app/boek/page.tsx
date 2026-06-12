@@ -3,53 +3,66 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "AI-Pionier - Het boek",
   description:
-    "AI-Pionier: Hoe jij ook begint met generatieve AI. Met 25+ praktijkvoorbeelden. Door Max van den Broek.",
+    "AI-Pionier: Hoe jij ook begint met generatieve AI. Met 25+ praktijkvoorbeelden. Door Max van den Broek, uitgegeven door Koninklijke Boom Uitgevers.",
 };
+
+const winkels = [
+  {
+    naam: "Managementboek.nl",
+    href: "https://www.managementboek.nl/boek/9789024467129",
+  },
+  { naam: "Bol.com", href: "https://www.bol.com/nl/nl/p/ai-pionier/9300000178307051/" },
+  { naam: "Amazon.nl", href: "https://www.amazon.nl/dp/9789024467129" },
+];
 
 export default function BoekPage() {
   return (
-    <section className="mx-auto max-w-3xl px-6 py-20">
-      <h1 className="text-3xl font-bold text-gray-900">
+    <section className="mx-auto max-w-3xl px-6 py-16">
+      <p className="text-sm font-semibold uppercase tracking-wider text-accent">
+        Boek &middot; Koninklijke Boom Uitgevers
+      </p>
+      <h1 className="mt-2 text-3xl font-bold text-ink sm:text-4xl">
         AI-Pionier: Hoe jij ook begint met generatieve AI
       </h1>
-      <p className="mt-6 text-lg text-gray-600">
+      <p className="mt-6 text-lg text-ink-soft">
         Het praktische boek voor iedereen die wil beginnen met generatieve AI.
+        Toegankelijk geschreven, met humor en herkenbare voorbeelden.
       </p>
-      <div className="mt-8 space-y-4 text-gray-600">
-        <h2 className="text-xl font-semibold text-gray-900">Wat je leert</h2>
+
+      <div className="mt-10 space-y-4 text-ink-soft">
+        <h2 className="hand text-2xl font-bold text-ink">Wat je leert</h2>
         <ul className="list-disc space-y-2 pl-5">
-          <li>De belangrijkste voordelen van AI voor jou en je organisatie</li>
-          <li>25+ praktijkvoorbeelden van hoe mensen generatieve AI gebruiken</li>
+          <li>De belangrijkste voordelen van AI voor jou en je organisatie.</li>
+          <li>25+ praktijkvoorbeelden van hoe mensen generatieve AI gebruiken.</li>
           <li>
-            10+ veelgehoorde bezwaren (inclusief privacy) en hoe je ermee omgaat
+            10+ veelgehoorde bezwaren (inclusief privacy) en hoe je ermee omgaat.
           </li>
         </ul>
-        <h2 className="pt-4 text-xl font-semibold text-gray-900">Bestellen</h2>
+
+        <figure className="warm-card mt-6 p-6">
+          <blockquote className="text-ink">
+            &ldquo;Max schrijft toegankelijk over AI, focust op de kern en
+            beschrijft met humor herkenbare voorbeelden. Een échte
+            pionier.&rdquo;
+          </blockquote>
+          <figcaption className="mt-3 text-sm text-ink-soft">
+            Mischa Daanen, redacteur AI-Pionier
+          </figcaption>
+        </figure>
+
+        <h2 className="hand pt-4 text-2xl font-bold text-ink">Bestellen</h2>
         <div className="flex flex-wrap gap-3">
-          <a
-            href="https://www.managementboek.nl/boek/9789024467129"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-          >
-            Managementboek.nl
-          </a>
-          <a
-            href="https://www.bol.com/nl/nl/p/ai-pionier/9300000178307051/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-          >
-            Bol.com
-          </a>
-          <a
-            href="https://www.amazon.nl/dp/9789024467129"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-          >
-            Amazon.nl
-          </a>
+          {winkels.map((w) => (
+            <a
+              key={w.naam}
+              href={w.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost !px-4 !py-2 text-sm"
+            >
+              {w.naam}
+            </a>
+          ))}
         </div>
       </div>
     </section>

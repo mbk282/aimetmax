@@ -3,13 +3,78 @@
 
 @theme inline {
   --font-sans: var(--font-inter);
-  --color-primary: #2563eb;
-  --color-primary-dark: #1d4ed8;
+  --font-hand: var(--font-caveat);
+
+  --color-paper: #faf6ee;
+  --color-card: #fffdf8;
+  --color-ink: #2a2a2a;
+  --color-ink-soft: #5a5550;
+  --color-accent: #e8590c;
+  --color-accent-dark: #c8480a;
+  --color-accent-soft: #fbe3d4;
+  --color-sage: #4c8577;
+  --color-sage-soft: #dceae5;
+  --color-line: #e5dccb;
+  --color-hl: #ffe8a3;
+
+  /* keep the old primary aliases pointing at the new accent so stray utilities still read warm */
+  --color-primary: #e8590c;
+  --color-primary-dark: #c8480a;
 }
 
 body {
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  background-color: #fff;
-  color: #111827;
+  background-color: #faf6ee;
+  color: #2a2a2a;
+}
+
+/* handgeschreven accent, zoals in de academy */
+.hand {
+  font-family: var(--font-caveat), "Caveat", cursive;
+  font-weight: 700;
+}
+
+/* knoppen in academy-stijl: zachte schaduwblokjes */
+.btn {
+  display: inline-block;
+  font-weight: 700;
+  border: 2px solid #2a2a2a;
+  border-radius: 14px;
+  padding: 12px 22px;
+  background: #fffdf8;
+  color: #2a2a2a;
+  box-shadow: 3px 3px 0 #2a2a2a;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  text-decoration: none;
+  line-height: 1.2;
+}
+.btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #2a2a2a;
+}
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #2a2a2a;
+}
+.btn-primary {
+  background: #e8590c;
+  color: #fff;
+}
+.btn-ghost {
+  box-shadow: 3px 3px 0 #e5dccb;
+}
+
+/* kaartje met de typische scheve schaduw */
+.warm-card {
+  background: #fffdf8;
+  border: 2px solid #2a2a2a;
+  border-radius: 18px;
+  box-shadow: 4px 4px 0 #e5dccb;
+}
+
+mark {
+  background: #ffe8a3;
+  padding: 0 4px;
+  border-radius: 4px;
 }

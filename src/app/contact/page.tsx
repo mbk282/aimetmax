@@ -1,38 +1,151 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Neem contact op met Max van den Broek voor AI-trainingen, keynotes of consulting.",
+  title: "Training of e-learning aanvragen",
+  description:
+    "Vraag een AI-training, keynote of e-learning op maat aan bij Max van den Broek. Doelgroepgerichte AI-geletterdheid voor jouw organisatie, met onderbouwing voor artikel 4.",
 };
+
+const aanbod = [
+  {
+    titel: "E-learning op maat",
+    vanaf: "vanaf € 7.500 per traject",
+    beschrijving:
+      "Doelgroepspecifieke AI-e-learnings met jullie eigen voorbeelden, tools en beleid. Inclusief intake, doelgroepscan, 3 tot 5 modules met toetsing en certificaten, en een pilotronde. Schaalbaar naar het hele personeelsbestand en onderbouwd voor de AI-geletterdheidsplicht (artikel 4).",
+    accent: true,
+  },
+  {
+    titel: "Losse module of training",
+    vanaf: "module vanaf € 2.500 · incompany training op aanvraag",
+    beschrijving:
+      "Een enkele e-learningmodule op maat, of een hands-on incompany training waarin je team meteen zelf oefent met de eigen werkpraktijk. Van Copilot voor controllers tot AI voor developers.",
+  },
+  {
+    titel: "Update-abonnement",
+    vanaf: "vanaf € 1.000 per kwartaal",
+    beschrijving:
+      "AI-kennis veroudert snel. Met een kwartaalupdate houd ik jullie e-learnings actueel: nieuwe voorbeelden, nieuwe tools, en aanpassingen aan veranderende wetgeving.",
+  },
+  {
+    titel: "Keynote of lezing",
+    vanaf: "op aanvraag",
+    beschrijving:
+      "Een inspirerende, toegankelijke en nuchtere lezing over AI voor conferenties, bedrijfsdagen en teambijeenkomsten. Beeldend, met herkenbare voorbeelden.",
+  },
+];
+
+const offerteMail =
+  "mailto:max@aimetmax.nl?subject=" +
+  encodeURIComponent("Offerteaanvraag AI-training / e-learning") +
+  "&body=" +
+  encodeURIComponent(
+    [
+      "Hoi Max,",
+      "",
+      "Ik wil graag een offerte aanvragen. Hieronder wat context:",
+      "",
+      "- Organisatie: ",
+      "- Mijn rol: ",
+      "- Waar we naar zoeken (training / e-learning op maat / keynote / anders): ",
+      "- Doelgroep en aantal mensen: ",
+      "- Gewenste timing: ",
+      "- Eventueel budgetindicatie: ",
+      "",
+      "Groet,",
+    ].join("\n"),
+  );
 
 export default function ContactPage() {
   return (
-    <section className="mx-auto max-w-2xl px-6 py-20">
-      <h1 className="text-3xl font-bold text-gray-900">Contact</h1>
-      <p className="mt-4 text-gray-600">
-        Interesse in een AI-training, keynote of samenwerking? Laat je gegevens
-        achter en ik neem contact met je op.
+    <section className="mx-auto max-w-4xl px-6 py-16">
+      <p className="text-sm font-semibold uppercase tracking-wider text-accent">
+        Voor organisaties
       </p>
-      <div className="mt-10 space-y-6">
-        <a
-          href="mailto:max@aimetmax.nl?subject=Samenwerking%20AI"
-          className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-700"
-        >
-          Mail me: max@aimetmax.nl
+      <h1 className="mt-2 text-3xl font-bold text-ink sm:text-4xl">
+        AI-geletterdheid die echt landt bij je mensen
+      </h1>
+      <p className="mt-5 max-w-2xl text-lg text-ink-soft">
+        De{" "}
+        <a href="/academy" className="font-semibold text-accent hover:text-accent-dark">
+          gratis academy
+        </a>{" "}
+        laat zien hoe ik het doe. Wil je hetzelfde, maar dan met jullie eigen
+        voorbeelden, tools en beleid, en aantoonbaar voor de
+        AI-geletterdheidsplicht? Dat lever ik op maat. Tien losse incompany
+        sessies kosten al snel meer dan € 25.000 en schalen niet mee; een
+        e-learning op maat doet dat wel.
+      </p>
+
+      <div className="mt-10 flex flex-wrap gap-4">
+        <a href={offerteMail} className="btn btn-primary">
+          Vraag een offerte aan
         </a>
-        <p className="text-sm text-gray-500">
-          Of stuur een bericht via{" "}
-          <a
-            href="https://www.linkedin.com/in/maxbroek"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
-          >
-            LinkedIn
-          </a>
-          .
-        </p>
+        <a
+          href="https://www.linkedin.com/in/maxbroek"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-ghost"
+        >
+          Stuur een bericht op LinkedIn
+        </a>
       </div>
+
+      {/* Aanbod */}
+      <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
+        {aanbod.map((a) => (
+          <div
+            key={a.titel}
+            className={`warm-card p-6 ${a.accent ? "bg-accent-soft" : ""}`}
+          >
+            <h2 className="hand text-2xl font-bold text-ink">{a.titel}</h2>
+            <p className="mt-1 text-sm font-semibold text-accent">{a.vanaf}</p>
+            <p className="mt-3 text-sm text-ink-soft">{a.beschrijving}</p>
+          </div>
+        ))}
+      </div>
+      <p className="mt-4 text-sm text-ink-soft">
+        Prijzen zijn richtbedragen en hangen af van omvang, aantal modules en
+        doelgroepen. Je krijgt altijd een offerte op maat.
+      </p>
+
+      {/* Waarom Max */}
+      <div className="warm-card mt-12 p-8">
+        <h2 className="hand text-2xl font-bold text-ink">Waarom met mij werken</h2>
+        <ul className="mt-4 grid grid-cols-1 gap-3 text-sm text-ink-soft sm:grid-cols-2">
+          <li>
+            <strong className="text-ink">Auteur van AI-Pionier</strong> (Boom) en
+            voormalig AI-docent aan de UvA.
+          </li>
+          <li>
+            <strong className="text-ink">Hands-on en nuchter:</strong> mensen
+            oefenen meteen zelf, met hun eigen werk.
+          </li>
+          <li>
+            <strong className="text-ink">Adoptie staat centraal:</strong> niet
+            alleen kennis overdragen, maar zorgen dat AI echt gebruikt wordt.
+          </li>
+          <li>
+            <strong className="text-ink">Aantoonbaar:</strong> toetsing,
+            certificaten en onderbouwing voor artikel 4 van de AI-verordening.
+          </li>
+        </ul>
+      </div>
+
+      <p className="mt-10 text-ink-soft">
+        Liever eerst vrijblijvend sparren? Mail me op{" "}
+        <a
+          href="mailto:max@aimetmax.nl"
+          className="font-semibold text-accent hover:text-accent-dark"
+        >
+          max@aimetmax.nl
+        </a>{" "}
+        of bekijk eerst de{" "}
+        <Link href="/academy" className="font-semibold text-accent hover:text-accent-dark">
+          gratis e-learnings
+        </Link>
+        .
+      </p>
     </section>
   );
 }
