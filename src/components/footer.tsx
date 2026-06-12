@@ -47,7 +47,7 @@ export function Footer() {
             <ul className="mt-2 space-y-1 text-sm">
               <li>
                 <Link href="/contact" className="text-ink-soft hover:text-accent">
-                  Training of offerte aanvragen
+                  AI-geletterdheid voor je organisatie
                 </Link>
               </li>
               <li>

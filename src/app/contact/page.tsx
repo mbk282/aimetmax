@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Training of e-learning aanvragen",
+  title: "AI-geletterdheid voor jouw organisatie",
   description:
-    "Vraag een AI-training, keynote of e-learning op maat aan bij Max van den Broek. Doelgroepgerichte AI-geletterdheid voor jouw organisatie, met onderbouwing voor artikel 4.",
+    "Regel de AI-geletterdheid van je organisatie met maatwerk e-learnings, trainingen en keynotes van Max van den Broek. Met onderbouwing voor artikel 4 van de AI-verordening.",
 };
 
 const aanbod = [
@@ -37,7 +37,7 @@ const aanbod = [
 
 const offerteMail =
   "mailto:max@aimetmax.nl?subject=" +
-  encodeURIComponent("Offerteaanvraag AI-training / e-learning") +
+  encodeURIComponent("Voorstel AI-geletterdheid / maatwerk e-learning") +
   "&body=" +
   encodeURIComponent(
     [
@@ -63,7 +63,7 @@ export default function ContactPage() {
         Voor organisaties
       </p>
       <h1 className="mt-2 text-3xl font-bold text-ink sm:text-4xl">
-        AI-geletterdheid die echt landt bij je mensen
+        AI-geletterdheid, geregeld voor jouw organisatie
       </h1>
       <p className="mt-5 max-w-2xl text-lg text-ink-soft">
         De{" "}
@@ -79,7 +79,7 @@ export default function ContactPage() {
 
       <div className="mt-10 flex flex-wrap gap-4">
         <a href={offerteMail} className="btn btn-primary">
-          Vraag een offerte aan
+          Vraag een voorstel aan
         </a>
         <a
           href="https://www.linkedin.com/in/maxbroek"

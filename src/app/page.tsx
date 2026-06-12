@@ -1,15 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const clients = [
-  "Universiteit van Amsterdam",
-  "Koninklijke Boom Uitgevers",
-  "Alliander",
-  "RVO",
-  "Winc Academy",
-  "GGD GHOR",
-  "NIVE",
-  "HvA",
+const ervaring = [
+  {
+    label: "Achtergrond",
+    items: [
+      "AI-docent, Universiteit van Amsterdam",
+      "AI-expert, Alliander",
+      "Auteur, Koninklijke Boom Uitgevers",
+    ],
+  },
+  {
+    label: "Trainingen en workshops voor o.a.",
+    items: ["GGD GHOR", "NIVE", "UvA/HvA"],
+  },
+  {
+    label: "Cursus- en advieswerk voor o.a.",
+    items: ["Winc Academy", "RVO"],
+  },
 ];
 
 const testimonials = [
@@ -42,14 +50,14 @@ export default function Home() {
               <span className="hand text-accent">jouw organisatie</span>
             </h1>
             <p className="mt-6 text-lg text-ink-soft">
-              Ik ben Max van den Broek. Ik train teams in het slim en
-              verantwoord gebruiken van AI, bouw e-learnings op maat en maak
-              werkende prototypes. Nuchter, hands-on, en met voorbeelden uit
-              jullie eigen werk.
+              Ik ben Max van den Broek. Ik help organisaties hun
+              AI-geletterdheid te regelen: met e-learnings op maat voor elke
+              doelgroep, hands-on trainingen en werkende prototypes. Nuchter,
+              praktisch, en met voorbeelden uit jullie eigen werk.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link href="/contact" className="btn btn-primary">
-                Training of offerte aanvragen
+                Regel AI-geletterdheid voor je organisatie
               </Link>
               <a href="/academy" className="btn btn-ghost">
                 Bekijk de gratis academy
@@ -73,17 +81,21 @@ export default function Home() {
 
       {/* Credibility strip */}
       <section className="border-y-2 border-line bg-card py-7">
-        <div className="mx-auto max-w-5xl px-6">
-          <p className="text-center text-xs font-semibold uppercase tracking-wider text-ink-soft">
-            Trainingen, lezingen en e-learnings voor onder meer
-          </p>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-7 gap-y-2">
-            {clients.map((c) => (
-              <span key={c} className="hand text-xl text-ink-soft">
-                {c}
-              </span>
-            ))}
-          </div>
+        <div className="mx-auto flex max-w-5xl flex-col gap-3 px-6 sm:flex-row sm:justify-center sm:gap-12">
+          {ervaring.map((groep) => (
+            <div key={groep.label} className="text-center sm:text-left">
+              <p className="text-xs font-semibold uppercase tracking-wider text-ink-soft">
+                {groep.label}
+              </p>
+              <div className="mt-1 flex flex-wrap justify-center gap-x-5 sm:justify-start">
+                {groep.items.map((i) => (
+                  <span key={i} className="hand text-lg text-ink-soft">
+                    {i}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

@@ -24,7 +24,7 @@ export function Header() {
             Over
           </Link>
           <Link href="/contact" className="btn btn-primary !px-4 !py-2 text-sm">
-            Training aanvragen
+            Voor organisaties
           </Link>
         </div>
       </nav>
