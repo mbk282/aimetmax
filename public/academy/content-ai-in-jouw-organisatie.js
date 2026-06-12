@@ -288,7 +288,7 @@
   <h2>2. Maak delen lonend</h2>
   <p>Beloon de vinding én de vinder. Maak er een vast agendapunt van: wie heeft deze week iets handigs ontdekt met AI? Of organiseer een AI-challenge: spreek af dat het team veertien dagen zo veel mogelijk met AI werkt en presenteer daarna de beste voorbeelden aan elkaar. Wie iets deelt krijgt het podium en de credits. Zo wordt delen status in plaats van risico.</p>
   <h2>3. Geef zelf het voorbeeld</h2>
-  <p>Een van de belangrijkste versnellers is geen tool en geen campagne, maar <mark>een leidinggevende die AI promoot en er zichtbaar zelf mee werkt</mark>. Bij een netbeheerder deelde de hoogste baas zijn drie favoriete prompts, met de oproep: probeer ze zelf. Zo'n signaal van de top doet meer voor de adoptie dan menig programma. En deel ook wat mislukte: een manager die laat zien dat experimenteren normaal is, geeft het team toestemming om te leren.</p>
+  <p>Een van de belangrijkste versnellers is geen tool en geen campagne, maar <mark>een leidinggevende die AI promoot en er zichtbaar zelf mee werkt</mark>. Bij een grote organisatie deelde de hoogste baas zijn drie favoriete prompts, met de oproep: probeer ze zelf. Zo'n signaal van de top doet meer voor de adoptie dan menig programma. En deel ook wat mislukte: een manager die laat zien dat experimenteren normaal is, geeft het team toestemming om te leren.</p>
   <div class="note"><strong>Bonus:</strong> de secret cyborgs die je zo naar boven haalt, zijn meteen je beste kandidaten voor de pilot uit deel 3. Ze hebben ervaring, motivatie en bewezen vindingrijkheid.</div>
   <div class="callout"><div class="label">De kern van deze les</div><p>"Mensen verbergen hun AI-gebruik zolang dat de verstandige keuze is. Maak eerlijkheid de slimme zet."</p></div>`
       },
