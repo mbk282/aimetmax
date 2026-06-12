@@ -144,7 +144,17 @@ th { background: var(--card); font-size: 13px; text-transform: uppercase; letter
 .landing h1 { font-size: 58px; margin: 0 0 14px; }
 .landing .intro { font-size: 18px; max-width: 620px; }
 .landing .door { display: flex; align-items: center; gap: 10px; margin: 18px 0 38px; font-size: 14.5px; color: var(--ink-soft); }
+.voorwie { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 32px 0 8px; }
+.voorwie-item { border: 2px solid var(--ink); border-radius: 16px; background: var(--card); padding: 20px 22px; box-shadow: 4px 4px 0 var(--line); }
+.voorwie-item h3 { font-family: "Caveat", cursive; font-size: 26px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+.voorwie-item p { font-size: 14.5px; color: var(--ink-soft); margin: 0; }
+.voorwie-item a { color: var(--accent); font-weight: 600; }
+.sectiekop { font-size: 34px; margin: 44px 0 4px; }
+.sectie-intro { font-size: 15.5px; color: var(--ink-soft); max-width: 620px; margin-bottom: 24px; }
+.sectie-intro a { color: var(--accent); }
 .modules { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px; }
+.module-card.examen-card { background: var(--sage-soft); }
+.module-card.examen-card .tag { color: var(--sage); }
 .module-card { border: 2px solid var(--ink); border-radius: 18px; background: var(--card); padding: 22px; box-shadow: 4px 4px 0 var(--line); display: flex; flex-direction: column; }
 .module-card.binnenkort { opacity: .62; }
 .module-card .tag { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--sage); margin-bottom: 8px; }
@@ -158,6 +168,31 @@ th { background: var(--card); font-size: 13px; text-transform: uppercase; letter
 .b2b p { font-size: 14.5px; margin: 0; }
 .landing footer { margin-top: 44px; font-size: 13.5px; color: var(--ink-soft); }
 .landing footer a { color: var(--accent); }
+
+/* ---------- examenpagina ---------- */
+.examen-wrap { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+.examen-intro { font-size: 17px; max-width: 620px; margin-top: 6px; }
+.examen-sub { font-size: 14.5px; color: var(--ink-soft); margin: 12px 0 28px; }
+.examen-sub a, .examen-intro a { color: var(--accent); }
+.ex-vraag { border: 2px solid var(--ink); border-radius: 16px; background: var(--card); padding: 20px 22px; margin-bottom: 20px; box-shadow: 4px 4px 0 var(--line); }
+.ex-nr { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.ex-stelling { font-weight: 600; font-size: 16.5px; margin-bottom: 14px; }
+.ex-opties { display: flex; flex-direction: column; gap: 10px; }
+.ex-optie { font-family: inherit; font-size: 15px; text-align: left; cursor: pointer; border: 2px solid var(--line); border-radius: 12px; padding: 11px 14px; background: var(--paper); color: var(--ink); line-height: 1.4; transition: background .12s ease; }
+.ex-optie:hover:not(:disabled) { background: var(--accent-soft); border-color: var(--ink); }
+.ex-optie:disabled { cursor: default; opacity: .75; }
+.ex-optie.juist { background: var(--sage-soft); border-color: var(--sage); opacity: 1; font-weight: 600; }
+.ex-optie.gekozen-fout { background: var(--accent-soft); border-color: var(--accent); opacity: 1; }
+.ex-uitleg { display: none; margin-top: 12px; font-size: 14.5px; background: var(--paper); border-radius: 10px; padding: 12px 14px; }
+.ex-score { font-family: "Caveat", cursive; font-size: 32px; text-align: center; margin: 8px 0 14px; }
+.examen-uitslag { display: none; border: 2px solid var(--ink); border-radius: 18px; background: var(--card); padding: 26px 24px; margin-top: 12px; box-shadow: 4px 4px 0 var(--line); text-align: center; }
+.ex-herkans { font-size: 15px; color: var(--ink-soft); margin-bottom: 16px; }
+.ex-herkans a { color: var(--accent); }
+.cert-mail-invoer { border: 2px solid var(--ink); border-radius: 12px; padding: 11px 14px; font-family: "Inter", sans-serif; font-size: 15px; color: var(--ink); background: var(--paper); min-width: 220px; }
+.cert-mail-invoer:focus { outline: 3px solid var(--accent-soft); }
+.cert-bot { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.cert-mailstatus { font-size: 14px; color: var(--sage); margin-top: 12px; min-height: 18px; }
+.cert-mailstatus a { color: var(--accent); }
 
 /* ---------- certificaat ---------- */
 .certificaat-blok { margin: 12px 0 32px; text-align: center; }
