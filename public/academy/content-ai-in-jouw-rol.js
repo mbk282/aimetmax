@@ -192,6 +192,16 @@
   <p><strong>Les 1: de kansen.</strong> Wat AI in jouw rol concreet oplevert, met voorbeeldprompts.<br>
   <strong>Les 2: de aandachtspunten.</strong> Waar jouw rol nét andere risico's heeft dan de rest.</p>
   <p>Jouw eigen hoofdstuk plus de quiz kost je een minuut of tien. Doe je alles, dan ben je ongeveer 30 minuten bezig. Je hoeft geen account aan te maken en aan het eind wachten een quiz en een certificaat. Die quiz stelt over elke rol twee vragen, maar de uitleg staat er steeds bij: ook met alleen je eigen hoofdstuk kom je een heel eind.</p>
+  <div class="leerdoelen">
+    <div class="ld-kop">Na deze module kun je</div>
+    <ul>
+      <li>uitleggen waarom AI-geletterdheid rolspecifiek is en wat artikel 4 van de AI-verordening daarover vraagt</li>
+      <li>benoemen welke taken AI in jouw rol sneller maakt, met een voorbeeldprompt die je direct kunt gebruiken</li>
+      <li>herkennen welke AI-toepassingen in de hoog-risicocategorie van de AI-verordening vallen, zoals AI die cv's selecteert of medewerkers beoordeelt</li>
+      <li>herkennen waar AI in jouw rol extra risico geeft, zoals prompt injection bij bouwers, gokkend rekenwerk bij finance en verschuivende werkdruk bij managers</li>
+      <li>een leverancier van een AI-product de zeven controlevragen stellen, van datalocatie en trainen op jouw data tot exit-strategie</li>
+    </ul>
+  </div>
   <div class="note">Nieuw hier? De basis (wat AI is, hoe een taalmodel werkt, hallucinaties, privacy, bias) staat in de eerdere modules <a href="/academy/module-wat-is-ai.html">Wat is AI?</a>, <a href="/academy/module-hoe-ai-werkt.html">Hoe AI echt werkt</a> en <a href="/academy/module-verantwoord-ai.html">Verantwoord omgaan met AI</a>. Deze module verwijst er af en toe naar, maar is los te volgen.</div>`
       },
 

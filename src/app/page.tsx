@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { LeadCapture } from "@/components/lead-capture";
 
 const ervaring = [
   {
@@ -178,6 +179,13 @@ export default function Home() {
             Nederland) werd door deelnemers beoordeeld met een{" "}
             <mark className="font-semibold">gemiddelde 8,2</mark>.
           </p>
+        </div>
+      </section>
+
+      {/* Lead capture */}
+      <section className="border-t-2 border-line py-16">
+        <div className="mx-auto max-w-5xl px-6">
+          <LeadCapture />
         </div>
       </section>
 

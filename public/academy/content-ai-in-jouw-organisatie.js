@@ -216,6 +216,16 @@
   <strong>Deel 4:</strong> veranderend werk. Welk werk blijft over, en waar leert de junior nog?<br>
   <strong>Deel 5:</strong> beleid en afspraken. Van PDF op intranet naar afspraken die mensen echt kennen.</p>
   <p>De module duurt ongeveer 30 minuten, je hoeft geen account aan te maken en aan het eind wachten een quiz en een certificaat.</p>
+  <div class="leerdoelen">
+    <div class="ld-kop">Na deze module kun je</div>
+    <ul>
+      <li>uitleggen waarom organisaties nog weinig productiviteitswinst uit AI halen, aan de hand van de vier remmen op adoptie</li>
+      <li>herkennen waarom collega's hun AI-gebruik verbergen en drie manieren toepassen om dat gebruik zichtbaar te maken: delen veilig maken, delen belonen en zelf het voorbeeld geven</li>
+      <li>een eerste AI-pilot opzetten die begint bij het werk dat pijn doet, met een leerdoel, een eigenaar, een einddatum en een vervolgafspraak</li>
+      <li>per rol beoordelen hoe het takenpakket verandert door AI en aangeven waar juniors het vak nog leren</li>
+      <li>de vier vragen benoemen die een werkbaar AI-beleid beantwoordt, en uitleggen waarom een document op intranet niet volstaat voor de AI-geletterdheidsplicht uit artikel 4 van de AI-verordening</li>
+    </ul>
+  </div>
   <div class="note">De basis staat in de eerdere modules: <a href="/academy/module-wat-is-ai.html">Wat is AI?</a>, <a href="/academy/module-hoe-ai-werkt.html">Hoe AI echt werkt</a> en <a href="/academy/module-verantwoord-ai.html">Verantwoord omgaan met AI</a>. Deze module is los te volgen, maar verwijst er af en toe naar.</div>`
       },
 

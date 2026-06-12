@@ -312,6 +312,16 @@
   <strong>Deel 2:</strong> waarom AI-modellen zo snel zoveel beter worden. Spoiler: het is niet wat de meeste mensen denken.<br>
   <strong>Deel 3:</strong> vijf hardnekkige misverstanden over AI, plus per misverstand de zin die je voortaan kunt zeggen.</p>
   <p>Aan het eind is er een quiz. Wie die haalt, praat scherper over AI dan de meeste mensen die er dagelijks mee werken. Echt waar.</p>
+  <div class="leerdoelen">
+    <div class="ld-kop">Na deze module kun je</div>
+    <ul>
+      <li>uitleggen waarom een taalmodel geen geprogrammeerde regels volgt maar patronen, en waarom dezelfde vraag daardoor vaak twee verschillende antwoorden oplevert</li>
+      <li>uitleggen wat tokens zijn en wat dat betekent voor de contextlimiet, de kosten per vraag en het soms verkeerd tellen van letters</li>
+      <li>herkennen welke beeldtaken je AI kunt toevertrouwen (beschrijven, uitlezen, structureren) en welke niet (maten, posities, precies tellen)</li>
+      <li>de vijf trainingsdoorbraken benoemen die AI sinds 2020 zoveel beter maakten, en uitleggen waarom "meer trainingsdata" niet de verklaring is</li>
+      <li>vijf veelgehoorde misverstanden over AI weerleggen, elk met één concrete zin</li>
+    </ul>
+  </div>
   <div class="note">Nieuw met AI, of wil je eerst weten wat er allemaal onder "AI" valt en wat AI-geletterdheid van je vraagt? Begin dan bij de startmodule <a href="/academy/module-wat-is-ai.html">Wat is AI?</a>. Deze module is ook prima los te volgen.</div>`
       },
 

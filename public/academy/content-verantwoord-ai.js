@@ -273,6 +273,16 @@
   <strong>Deel 3:</strong> bias. Van wijnglazen tot salarislijstjes: waar de scheefheid vandaan komt en hoe je hem opmerkt.<br>
   <strong>Deel 4:</strong> verantwoord werken. Wat blijf je zelf doen, hoe open ben je erover, en hoe zit het met stroom en auteursrecht.</p>
   <p>Deze module duurt ongeveer 30 minuten, je hoeft geen account aan te maken en aan het eind wachten een quiz en een certificaat.</p>
+  <div class="leerdoelen">
+    <div class="ld-kop">Na deze module kun je</div>
+    <ul>
+      <li>uitleggen waarom een bronvermelding van AI pas telt als je de bron zelf hebt geopend, en de drie soorten nepbron herkennen (verzonnen, niet gelezen, verkeerd begrepen)</li>
+      <li>de vier voorspelbare streken van een taalmodel herkennen (meepraten, instructies kwijtraken, stellig blijven na correctie, overmoedig rekenen) en benoemen wanneer automation bias bij jezelf toeslaat</li>
+      <li>per situatie beoordelen of informatie in een chatbot mag, op basis van de wet, het beleid van je organisatie en het soort tool (publiek of afgeschermd)</li>
+      <li>uitleggen waar bias in AI vandaan komt (de data én de correcties erbovenop) en die scheefheid zelf aantonen met een test als de namen-oefening</li>
+      <li>drie vragen stellen om te bepalen welk werk je zelf blijft doen, en uitleggen wanneer je AI-gebruik vermeldt</li>
+    </ul>
+  </div>
   <div class="note">Wil je eerst snappen hoe een taalmodel onder de motorkap werkt (tokens, voorspellen, training)? Doe dan eerst de gratis module <a href="/academy/module-hoe-ai-werkt.html">Hoe AI echt werkt</a>. Helemaal nieuw met AI? Begin bij <a href="/academy/module-wat-is-ai.html">Wat is AI?</a>. Deze module leunt er af en toe op, maar is ook los te volgen.</div>`
       },
 

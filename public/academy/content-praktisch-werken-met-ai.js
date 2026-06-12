@@ -153,6 +153,16 @@
   <strong>Deel 3:</strong> slimmer inrichten. Vaste instructies, praten in plaats van typen, en je eigen bot.<br>
   <strong>Deel 4:</strong> voorbij de chat. Wat er ligt achter het typen: dingen laten bouwen en agents.</p>
   <p>Deze module duurt ongeveer 30 minuten, je hoeft geen account aan te maken en aan het eind wachten een quiz en een certificaat. En je doet hem het best <mark>met je AI-tool ernaast</mark>: overal staan blokken waarbij je het meteen zelf probeert.</p>
+  <div class="leerdoelen">
+    <div class="ld-kop">Na deze module kun je</div>
+    <ul>
+      <li>uitleggen waarom je een AI-tool context geeft zoals aan een nieuwe collega, en wat er misgaat als je dat niet doet</li>
+      <li>een tegenvallend antwoord in een paar rondes bijsturen, in plaats van te zoeken naar één perfecte prompt</li>
+      <li>een vastgelopen prompt verbeteren met de vijf bouwstenen: rol, taak, doelgroep, vorm en grenzen</li>
+      <li>sturen op vorm en toon, en een voorbeeld meegeven van hoe een goed resultaat eruitziet</li>
+      <li>vaste voorkeuren één keer instellen en een eigen bot maken voor terugkerende taken, zonder te programmeren</li>
+    </ul>
+  </div>
   <div class="note">Snap je nog niet hoe een taalmodel werkt (waarom meer context helpt, waarom het soms verzint)? Doe dan eerst <a href="/academy/module-hoe-ai-werkt.html">Hoe AI echt werkt</a>. Deze module bouwt daar losjes op voort, maar is ook zelfstandig te volgen.</div>`
       },
 

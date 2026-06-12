@@ -154,6 +154,45 @@
     </div>
   </div>
 
+  <div class="leadcap">
+    <h2>Nieuwe e-learning? Jij hoort het eerst.</h2>
+    <p>De academy groeit. Laat je e-mail achter en krijg een seintje bij nieuwe modules en lessen. En vertel er gerust bij waar jij meer over wilt leren, want daar bouw ik het liefst op verder.</p>
+    <form class="leadcap-velden" id="leadcap-form">
+      <input type="email" name="email" placeholder="Je e-mailadres" aria-label="Je e-mailadres" autocomplete="email" required>
+      <input type="text" name="leerwens" placeholder="Waar wil jij meer over leren? (optioneel)" aria-label="Waar wil jij meer over leren?">
+      <input type="text" class="lc-bot" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="btn primary">Houd me op de hoogte</button>
+    </form>
+    <p class="leadcap-status" id="leadcap-status"></p>
+    <p class="privacy">Geen spam: hooguit een paar mails per jaar, alleen over nieuwe lessen. Uitschrijven kan altijd met één klik.</p>
+  </div>
+  <script>
+  (function () {
+    var form = document.getElementById("leadcap-form");
+    var status = document.getElementById("leadcap-status");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (form.website.value) return; /* honeypot */
+      var mail = form.email.value.trim();
+      if (!mail) return;
+      var fd = new FormData();
+      fd.append("fields[email]", mail);
+      if (form.leerwens.value.trim()) fd.append("fields[leerwens]", form.leerwens.value.trim());
+      fd.append("ml-submit", "1");
+      fd.append("anticsrf", "true");
+      status.textContent = "Versturen...";
+      fetch("https://assets.mailerlite.com/jsonp/955238/forms/190102348162401531/subscribe", { method: "POST", body: fd })
+        .then(function (r) {
+          status.textContent = r.ok
+            ? "Bijna klaar: check je inbox en bevestig je aanmelding."
+            : "Dat ging mis. Probeer het later nog eens, of mail max@aimetmax.nl.";
+          if (r.ok) form.reset();
+        })
+        .catch(function () { status.textContent = "Dat ging mis. Probeer het later nog eens, of mail max@aimetmax.nl."; });
+    });
+  })();
+  </script>
+
   <div class="testimonial-strip">
     "Max gaf een interessante en inspirerende workshop over AI. Heel beeldend, met duidelijke (en grappige) voorbeelden. Zowel beginners als gevorderde gebruikers gingen met nieuwe kennis naar huis."
     <div class="wie">Olesia Sacharova, programmamanager UvA/HvA &middot; Max' NIVE-workshop "Begin met AI. Maar hoe?" kreeg van deelnemers gemiddeld een 8,2</div>

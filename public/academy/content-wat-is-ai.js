@@ -215,7 +215,18 @@
   <p><strong>Deel 1:</strong> wat AI-geletterdheid is, en waarom er sinds kort iets van jou verwacht wordt. Soms zelfs door de wet.<br>
   <strong>Deel 2:</strong> wat AI eigenlijk is. Spoiler: het is veel ouder dan je denkt, en zelfs de uitvinders zijn het niet eens over de definitie.<br>
   <strong>Deel 3:</strong> hoe we het begrip afbakenen, en waarom de rest van deze academy focust op de nieuwe generatie: generatieve AI.</p>
-  <p>De module duurt ongeveer 20 minuten, je hoeft geen account aan te maken en er komt geen jargon in voor dat niet eerst wordt uitgelegd. Aan het eind wachten een korte quiz en een certificaat.</p>`
+  <p>De module duurt ongeveer 20 minuten, je hoeft geen account aan te maken en er komt geen jargon in voor dat niet eerst wordt uitgelegd. Aan het eind wachten een korte quiz en een certificaat.</p>
+
+  <div class="leerdoelen">
+    <div class="ld-kop">Na deze module kun je</div>
+    <ul>
+      <li>uitleggen wat AI-geletterdheid is en wat artikel 4 van de AI-verordening sinds 2 februari 2025 van organisaties verwacht</li>
+      <li>herkennen waar je in je dagelijkse werk al AI gebruikt, zoals spamfilters, navigatie en aanbevelingssystemen</li>
+      <li>uitleggen waarom er geen eenduidige definitie van AI bestaat en hoe het AI-effect werkt: zodra iets goed werkt, noemen we het geen AI meer</li>
+      <li>het verschil benoemen tussen automatisering, machine learning en generatieve AI, en aangeven waarom generatieve AI breed inzetbaar is</li>
+      <li>drie vragen stellen over elke AI-tool waarmee je werkt: wat gebruik ik, wat kan het goed en waar gaat het mis, en wat betekent dat voor hoe ik het inzet</li>
+    </ul>
+  </div>`
       },
 
       /* ========== DEEL 1: AI-GELETTERDHEID ========== */
