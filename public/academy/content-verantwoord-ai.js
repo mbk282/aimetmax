@@ -328,7 +328,7 @@
 
   <p>Dit heet <mark>automation bias</mark>: hoe vaker een systeem gelijk heeft, hoe minder kritisch je het controleert. Het is hetzelfde mechanisme als bij navigatie. Iedereen kent de verhalen van auto's die een veerpont missen omdat "de TomTom het zei". Niet omdat die bestuurders dom zijn, maar omdat het systeem duizend keer eerder gelijk had.</p>
   <p>Het gemene: deze fout groeit met het succes van AI. Hoe beter de modellen worden, hoe meer er doorheen glipt op de momenten dat het misgaat. Je kunt er wel iets tegen doen:</p>
-  <p><strong>Koppel je controle aan het gevolg, niet aan je gevoel.</strong> Een interne mail hoef je niet te factchecken. Een contract, een advies aan een klant of cijfers in een rapportage wel, ook als de afgelopen vijftig outputs prima waren.</p>
+  <p><strong>Koppel je controle aan het gevolg, niet aan je gevoel.</strong> Bij een brainstorm bestaan geen foute suggesties, dus daar mag de teugel los. Maar een contract, een advies aan een klant of cijfers in een rapportage check je grondig, ook als de afgelopen vijftig outputs prima waren. En ook een interne mail wil je gewoon kloppend hebben, alleen hoeft daar geen uur factcheck overheen.</p>
   <p><strong>Plan steekproeven.</strong> Check bewust af en toe een output die je normaal zou doorlaten. Niet omdat je iets verwacht, maar om je eigen alertheid te onderhouden.</p>
   <p><strong>Lees als de ontvanger.</strong> Niet "klopt dit ongeveer?", maar "wat gebeurt er als de ontvanger op dit ene cijfer vertrouwt?"</p>
   <div class="callout"><div class="label">De kern van deze les</div><p>"Niet AI wordt onbetrouwbaarder met de tijd. Jij wordt minder oplettend."</p></div>`
