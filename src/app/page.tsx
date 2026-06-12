@@ -48,23 +48,23 @@ export default function Home() {
           <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
             <div className="max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
-                Nieuw: gratis e-learning
+                Gratis e-learnings
               </p>
               <h2 className="mt-2 text-2xl font-bold text-gray-900">
-                Hoe AI echt werkt
+                Vijf gratis e-learnings over AI
               </h2>
               <p className="mt-4 text-gray-600">
-                Waarom AI-modellen zo snel zoveel beter worden, plus vijf
-                hardnekkige misverstanden. Met handgetekende illustraties en
-                interactieve voorbeelden. Geen account nodig, ongeveer 25
-                minuten.
+                Van &quot;Wat is AI?&quot; en hoe een taalmodel echt werkt tot
+                verantwoord gebruik, AI in jouw organisatie en hoofdstukken per
+                rol. Met handgetekende illustraties, interactieve voorbeelden,
+                quizzen en certificaten. Geen account nodig.
               </p>
             </div>
             <a
               href="/academy"
               className="shrink-0 rounded-lg bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-700"
             >
-              Start de e-learning
+              Naar de academy
             </a>
           </div>
         </div>
