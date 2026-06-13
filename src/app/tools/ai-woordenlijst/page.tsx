@@ -79,12 +79,12 @@ export default function AIWoordenlijst() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Zoek een term..."
-            className="flex-1 rounded-lg border border-gray-300 px-4 py-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+            className="flex-1 rounded-lg border border-line px-4 py-2 text-ink focus:border-blue-500 focus:ring-blue-500"
           />
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setSelectedCategory(null)}
-              className={`rounded-full px-3 py-1 text-xs font-medium transition ${!selectedCategory ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
+              className={`rounded-full px-3 py-1 text-xs font-medium transition ${!selectedCategory ? "bg-accent text-white" : "bg-paper text-ink-soft hover:bg-paper"}`}
             >
               Alles ({terms.length})
             </button>
@@ -92,7 +92,7 @@ export default function AIWoordenlijst() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
-                className={`rounded-full px-3 py-1 text-xs font-medium transition ${selectedCategory === cat ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
+                className={`rounded-full px-3 py-1 text-xs font-medium transition ${selectedCategory === cat ? "bg-accent text-white" : "bg-paper text-ink-soft hover:bg-paper"}`}
               >
                 {cat}
               </button>
@@ -100,28 +100,28 @@ export default function AIWoordenlijst() {
           </div>
         </div>
 
-        <p className="text-sm text-gray-400">{filtered.length} termen gevonden</p>
+        <p className="text-sm text-ink-soft">{filtered.length} termen gevonden</p>
 
         {/* Terms */}
         <div className="space-y-3">
           {filtered.map((t) => (
-            <div key={t.term} className="rounded-xl border border-gray-200 bg-white p-5">
+            <div key={t.term} className="rounded-xl border border-line bg-card p-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h3 className="font-semibold text-gray-900">{t.term}</h3>
-                  {t.aka && <p className="text-xs text-gray-400">Ook: {t.aka}</p>}
+                  <h3 className="font-semibold text-ink">{t.term}</h3>
+                  {t.aka && <p className="text-xs text-ink-soft">Ook: {t.aka}</p>}
                 </div>
-                <span className="shrink-0 rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-gray-500">
+                <span className="shrink-0 rounded-full bg-paper px-2.5 py-0.5 text-xs text-ink-soft">
                   {t.category}
                 </span>
               </div>
-              <p className="mt-2 text-sm text-gray-600">{t.explanation}</p>
+              <p className="mt-2 text-sm text-ink-soft">{t.explanation}</p>
             </div>
           ))}
         </div>
 
         {filtered.length === 0 && (
-          <p className="text-center text-sm text-gray-400">Geen termen gevonden voor &ldquo;{search}&rdquo;</p>
+          <p className="text-center text-sm text-ink-soft">Geen termen gevonden voor &ldquo;{search}&rdquo;</p>
         )}
       </div>
     </ToolLayout>

@@ -34,15 +34,15 @@ export default function CopilotROICalculator() {
       description="Bereken of Microsoft Copilot de investering waard is voor jouw organisatie. Op basis van Forrester-onderzoek besparen medewerkers gemiddeld 5-8 uur per week."
     >
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        <div className="space-y-5 rounded-xl border border-gray-200 bg-white p-6">
-          <h2 className="font-semibold text-gray-900">Jouw situatie</h2>
+        <div className="space-y-5 rounded-xl border border-line bg-card p-6">
+          <h2 className="font-semibold text-ink">Jouw situatie</h2>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Copilot licentie</label>
+            <label className="block text-sm font-medium text-ink-soft">Copilot licentie</label>
             <select
               value={tier}
               onChange={(e) => setTier(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+              className="mt-1 w-full rounded-lg border border-line px-3 py-2 text-sm"
             >
               {Object.entries(COPILOT_PRICES).map(([key, { label }]) => (
                 <option key={key} value={key}>{label}</option>
@@ -52,37 +52,37 @@ export default function CopilotROICalculator() {
 
           {tier === "custom" && (
             <div>
-              <label className="block text-sm font-medium text-gray-700">Prijs per gebruiker/maand</label>
+              <label className="block text-sm font-medium text-ink-soft">Prijs per gebruiker/maand</label>
               <div className="mt-1 flex items-center gap-2">
-                <span className="text-sm text-gray-500">$</span>
+                <span className="text-sm text-ink-soft">$</span>
                 <input type="number" min={0} value={customPrice} onChange={(e) => setCustomPrice(Number(e.target.value))}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900" />
+                  className="w-full rounded-lg border border-line px-3 py-2 text-ink" />
               </div>
             </div>
           )}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Aantal gebruikers</label>
+            <label className="block text-sm font-medium text-ink-soft">Aantal gebruikers</label>
             <input type="number" min={1} value={users} onChange={(e) => setUsers(Number(e.target.value))}
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900" />
+              className="mt-1 w-full rounded-lg border border-line px-3 py-2 text-ink" />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Gemiddeld bruto jaarsalaris</label>
+            <label className="block text-sm font-medium text-ink-soft">Gemiddeld bruto jaarsalaris</label>
             <div className="mt-1 flex items-center gap-2">
-              <span className="text-sm text-gray-500">&euro;</span>
+              <span className="text-sm text-ink-soft">&euro;</span>
               <input type="number" min={0} step={1000} value={avgSalary} onChange={(e) => setAvgSalary(Number(e.target.value))}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900" />
+                className="w-full rounded-lg border border-line px-3 py-2 text-ink" />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Geschatte tijdsbesparing per persoon</label>
-            <p className="text-xs text-gray-400">Forrester: gemiddeld 5-8 uur/week. Conservatief: 3-4 uur.</p>
+            <label className="block text-sm font-medium text-ink-soft">Geschatte tijdsbesparing per persoon</label>
+            <p className="text-xs text-ink-soft">Forrester: gemiddeld 5-8 uur/week. Conservatief: 3-4 uur.</p>
             <div className="mt-1 flex items-center gap-3">
               <input type="range" min={1} max={15} value={hoursSavedPerWeek}
                 onChange={(e) => setHoursSavedPerWeek(Number(e.target.value))} className="w-full" />
-              <span className="w-16 text-right font-medium text-gray-900">{hoursSavedPerWeek} uur/wk</span>
+              <span className="w-16 text-right font-medium text-ink">{hoursSavedPerWeek} uur/wk</span>
             </div>
           </div>
         </div>
@@ -98,12 +98,12 @@ export default function CopilotROICalculator() {
             </p>
           </div>
 
-          <div className="rounded-xl bg-blue-50 p-6">
-            <h2 className="font-semibold text-blue-900">Jaarlijkse besparing (productiviteit)</h2>
-            <p className="mt-2 text-3xl font-bold text-blue-600">
+          <div className="rounded-xl bg-accent-soft p-6">
+            <h2 className="font-semibold text-ink">Jaarlijkse besparing (productiviteit)</h2>
+            <p className="mt-2 text-3xl font-bold text-accent">
               &euro;{yearlySavings.toLocaleString("nl-NL", { maximumFractionDigits: 0 })}
             </p>
-            <p className="mt-1 text-sm text-blue-700">
+            <p className="mt-1 text-sm text-accent">
               {yearlyHoursSaved.toLocaleString("nl-NL")} uur bespaard per jaar
             </p>
           </div>
@@ -120,12 +120,12 @@ export default function CopilotROICalculator() {
             </p>
           </div>
 
-          <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">
+          <div className="rounded-xl border border-line bg-card p-4 text-sm text-ink-soft">
             <p><strong>Kosten per bespaard uur:</strong> &euro;{costPerSavedHour.toFixed(2)}</p>
             <p className="mt-1"><strong>Effectief uurtarief medewerker:</strong> &euro;{hourlyRate.toFixed(2)}</p>
-            <p className="mt-2 text-xs text-gray-400">
+            <p className="mt-2 text-xs text-ink-soft">
               Gebaseerd op Forrester TEI-onderzoek (2023-2024). Werkelijke besparing hangt af van
-              adoptie en training. <a href="/contact" className="text-blue-600 hover:underline">Neem contact op</a> voor
+              adoptie en training. <a href="/contact" className="text-accent hover:underline">Neem contact op</a> voor
               een Copilot-training op maat.
             </p>
           </div>

@@ -116,14 +116,14 @@ export default function LinkedInPostOptimizer() {
             onChange={(e) => setPost(e.target.value)}
             placeholder={"Plak hier je LinkedIn post...\n\nTip: een goede post begint met een sterke eerste regel die nieuwsgierig maakt."}
             rows={14}
-            className="w-full rounded-xl border border-gray-300 p-4 text-gray-800 focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-xl border border-line p-4 text-ink focus:border-blue-500 focus:ring-blue-500"
           />
           <div className="mt-2 flex items-center justify-between">
-            <span className="text-xs text-gray-400">{post.length} tekens</span>
+            <span className="text-xs text-ink-soft">{post.length} tekens</span>
             <button
               onClick={() => setResult(analyzePost(post))}
               disabled={!post.trim()}
-              className="rounded-lg bg-blue-600 px-6 py-2.5 font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+              className="rounded-lg bg-accent px-6 py-2.5 font-medium text-white hover:bg-accent-dark disabled:opacity-50"
             >
               Analyseer
             </button>
@@ -138,7 +138,7 @@ export default function LinkedInPostOptimizer() {
                   <span className={`text-3xl font-bold ${result.score >= 70 ? "text-green-600" : result.score >= 40 ? "text-amber-600" : "text-red-600"}`}>
                     {result.score}/100
                   </span>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-ink-soft">
                     {result.score >= 70 ? "Sterke post!" : result.score >= 40 ? "Kan beter - zie tips." : "Veel ruimte voor verbetering."}
                   </p>
                 </div>
@@ -146,10 +146,10 @@ export default function LinkedInPostOptimizer() {
 
               <div className="grid grid-cols-3 gap-2">
                 {result.stats.map((s) => (
-                  <div key={s.label} className="rounded-lg bg-gray-50 p-2 text-center">
-                    <p className="text-lg font-bold text-gray-900">{s.value}</p>
-                    <p className="text-xs text-gray-500">{s.label}</p>
-                    <p className="text-xs text-gray-400">Ideaal: {s.ideal}</p>
+                  <div key={s.label} className="rounded-lg bg-card p-2 text-center">
+                    <p className="text-lg font-bold text-ink">{s.value}</p>
+                    <p className="text-xs text-ink-soft">{s.label}</p>
+                    <p className="text-xs text-ink-soft">Ideaal: {s.ideal}</p>
                   </div>
                 ))}
               </div>
@@ -167,7 +167,7 @@ export default function LinkedInPostOptimizer() {
               </div>
             </>
           ) : (
-            <div className="flex h-full items-center justify-center rounded-xl border-2 border-dashed border-gray-200 p-8 text-center text-sm text-gray-400">
+            <div className="flex h-full items-center justify-center rounded-xl border-2 border-dashed border-line p-8 text-center text-sm text-ink-soft">
               Plak je LinkedIn post links en klik op &ldquo;Analyseer&rdquo;
             </div>
           )}

@@ -77,11 +77,11 @@ export default function PdfToMarkdown() {
       <div
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
-        className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center transition hover:border-blue-400 hover:bg-blue-50"
+        className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-line bg-card p-12 text-center transition hover:border-accent hover:bg-accent-soft"
       >
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-ink-soft">
           Sleep een PDF hierheen of{" "}
-          <label className="cursor-pointer font-medium text-blue-600 hover:underline">
+          <label className="cursor-pointer font-medium text-accent hover:underline">
             kies een bestand
             <input
               type="file"
@@ -94,11 +94,11 @@ export default function PdfToMarkdown() {
             />
           </label>
         </p>
-        <p className="mt-1 text-xs text-gray-400">Maximaal 50 MB. Je bestand verlaat je browser niet.</p>
+        <p className="mt-1 text-xs text-ink-soft">Maximaal 50 MB. Je bestand verlaat je browser niet.</p>
       </div>
 
       {loading && (
-        <div className="mt-6 text-center text-sm text-gray-500">
+        <div className="mt-6 text-center text-sm text-ink-soft">
           Bezig met converteren van {fileName}...
         </div>
       )}
@@ -106,11 +106,11 @@ export default function PdfToMarkdown() {
       {markdown && !loading && (
         <div className="mt-6">
           <div className="flex items-center justify-between">
-            <h2 className="font-semibold text-gray-900">Resultaat</h2>
+            <h2 className="font-semibold text-ink">Resultaat</h2>
             <div className="flex gap-2">
               <button
                 onClick={copyToClipboard}
-                className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-dark"
               >
                 {copied ? "Gekopieerd!" : "Kopieer Markdown"}
               </button>
@@ -124,13 +124,13 @@ export default function PdfToMarkdown() {
                   a.click();
                   URL.revokeObjectURL(url);
                 }}
-                className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                className="rounded-lg border border-line px-4 py-2 text-sm font-medium text-ink-soft hover:bg-card"
               >
                 Download .md
               </button>
             </div>
           </div>
-          <pre className="mt-3 max-h-[500px] overflow-auto rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm text-gray-800 whitespace-pre-wrap">
+          <pre className="mt-3 max-h-[500px] overflow-auto rounded-xl border border-line bg-card p-4 text-sm text-ink whitespace-pre-wrap">
             {markdown}
           </pre>
         </div>

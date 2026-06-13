@@ -1,0 +1,96 @@
+---
+title: "Is jouw kennisbank klaar voor Copilot?"
+description: "Microsoft 365 Copilot en SharePoint-agents geven slechte antwoorden als je documenten rommelig zijn. Wat 'AI-ready' echt betekent en hoe je je kennisbank op orde krijgt."
+date: "2026-06-13"
+author: "Max van den Broek"
+tags: ["Copilot", "RAG", "Praktisch"]
+---
+
+Je organisatie heeft Microsoft 365 Copilot uitgerold. Iemand stelt een logische vraag: "Wat is ons verlofbeleid voor parttimers?" Copilot komt met een antwoord dat half klopt, een verouderde regeling aanhaalt, of botweg zegt dat het niets kan vinden. Terwijl het beleid gewoon op SharePoint staat.
+
+De reflex is om Copilot de schuld te geven. Maar meestal ligt het probleem niet bij het model. Het ligt bij de documenten waar Copilot uit put.
+
+Copilot, SharePoint-agents en vergelijkbare tools lezen je bestanden niet zoals jij dat doet. Ze halen er stukken tekst uit, plakken die bij je vraag, en laten het model daarop antwoorden. Hoe rommeliger je documenten, hoe slechter die stukken zijn, en hoe slechter het antwoord. Een AI-tool is niet beter dan de bron waaruit hij put.
+
+## Hoe Copilot eigenlijk aan zijn antwoord komt
+
+Copilot beantwoordt vragen niet uit zijn hoofd. Achter de schermen gebeurt grofweg dit:
+
+1. Je stelt een vraag.
+2. Copilot zoekt in je SharePoint, OneDrive en Teams naar relevante documenten.
+3. Uit die documenten worden stukken tekst (chunks) gehaald.
+4. Die stukken gaan samen met je vraag naar het taalmodel.
+5. Het model formuleert een antwoord op basis van die stukken.
+
+Dit heet retrieval-augmented generation, oftewel RAG. De kern: het model ziet niet je hele kennisbank, maar alleen de stukjes die de zoekstap heeft opgehaald. Worden de verkeerde stukjes opgehaald, of zijn de stukjes zelf onleesbaar, dan krijg je een slecht antwoord. Ook als het juiste document gewoon bestond.
+
+Dit verklaart de twee meest voorkomende klachten:
+
+- **"Copilot vindt het niet."** De zoekstap heeft het document niet gevonden, of niet als relevant herkend. Vaak een kwestie van naamgeving, structuur of een ontbrekende kop.
+- **"Copilot geeft een verkeerd antwoord."** Het juiste document is wel gevonden, maar het opgehaalde stuk was vager of onvollediger dan de hele tekst. Bijvoorbeeld een tabel die als brij tekst binnenkwam, of een zin als "zie de bijlage hierboven".
+
+## "Maar de context-vensters zijn toch enorm geworden?"
+
+Een terechte tegenwerping. Moderne modellen kunnen veel meer tekst tegelijk verwerken dan een paar jaar geleden. Sommige verwerken hele boeken in één keer. Waarom dan nog gehannes met chunks?
+
+Twee redenen, en het is eerlijk om ze allebei te noemen.
+
+Ten eerste: een groot context-venster is niet hetzelfde als je hele organisatie. Je kennisbank past niet in één prompt, hoe groot het venster ook is. Er moet altijd een zoekstap zijn die bepaalt welke documenten relevant zijn. Die zoekstap blijft afhankelijk van hoe goed je documenten gestructureerd en vindbaar zijn.
+
+Ten tweede: zelfs als alles erin past, presteren modellen beter met scherpe, relevante context dan met een grote berg ruwe tekst. Stop je er veel ruis bij, dan raakt het belangrijke punt makkelijker ondergesneeuwd. Minder maar beter is doorgaans sterker dan meer maar rommelig.
+
+Grotere context-vensters maken het werk dus makkelijker, maar ze maken de kwaliteit van je documenten niet onbelangrijk. Voor de meeste Copilot- en SharePoint-scenario's blijft RAG de praktijk, en daar telt structuur.
+
+## Wat "AI-ready" concreet betekent
+
+AI-ready is geen officiële standaard en er is geen keurmerk voor. Het betekent simpelweg: je documenten zijn zo opgebouwd dat de zoekstap ze vindt en het model er bruikbare stukken uit kan halen. In de praktijk komt het neer op een paar concrete dingen.
+
+### Echte koppen, geen vetgedrukte regels
+
+Gebruik echte kopstijlen (Kop 1, Kop 2, Kop 3) in plaats van een regel die je handmatig vet en groter maakt. Koppen vertellen de zoekstap waar een onderwerp begint en eindigt, zodat een chunk netjes om één onderwerp heen wordt geknipt. Een document zonder kopstructuur wordt vaak in willekeurige brokken geknipt, dwars door een gedachte heen.
+
+### Geen vage verwijzingen
+
+Zinnen als "zoals hierboven beschreven", "zie het vorige hoofdstuk" of "in de bijlage" zijn een probleem. Als alleen dat ene stuk wordt opgehaald, heeft het model geen idee waar "hierboven" naar verwijst. Schrijf de relevante informatie liever kort uit, of verwijs naar een sectie bij naam: "in de sectie Verlofregeling parttimers".
+
+### Echte tabellen, geen uitgelijnde tekst
+
+Een tabel die met spaties of tabs is "nagebouwd" wordt bij conversie een onleesbare rij tekst. Een echte tabel (ingevoegd via je tekstverwerker) overleeft beter. Houd tabellen daarnaast simpel: vermijd samengevoegde cellen, geneste headers en lege rijen. Splits een ingewikkelde tabel liever op in een paar eenvoudige.
+
+### Alt-teksten bij afbeeldingen
+
+Staat essentiële informatie alleen in een plaatje, screenshot of diagram, dan mist het model het. De tekst in een afbeelding wordt niet automatisch gelezen. Voeg een alt-tekst toe die beschrijft wat er staat, of zet de kerninformatie ook gewoon in de lopende tekst.
+
+### Eén onderwerp per document of sectie
+
+Hoe gerichter een document, hoe scherper de chunks. Een verzameldocument met tien losse onderwerpen levert vagere zoekresultaten op dan tien gerichte documenten of duidelijk afgebakende secties.
+
+### Vindbare naamgeving en metadata
+
+De zoekstap leunt mede op bestandsnamen en metadata. "Beleid verlof parttimers 2026.docx" is vindbaarder dan "Definitief_v3_eindversie.docx". Een consistent naampatroon en een paar tags (type, afdeling, status, datum) helpen de juiste documenten boven te krijgen.
+
+## Test het voordat je het op Copilot loslaat
+
+Je hoeft niet te gokken of een document AI-ready is. Met de [AI-readiness scorer](/tools/ai-readiness-scorer) check je in je browser of een document klaar is voor AI en RAG: hij kijkt naar koppen, structuur, tabellen en vage verwijzingen, en geeft aan waar het misgaat. Je bestand wordt niet verstuurd, het draait lokaal.
+
+Een nuchtere werkwijze voor je belangrijkste documenten:
+
+1. **Draai het document door de scorer** en kijk wat eruit komt.
+2. **Repareer de structuur**: echte koppen, echte tabellen, vage verwijzingen weg.
+3. **Voeg een korte samenvatting bovenaan toe** zodat de context direct duidelijk is.
+4. **Controleer de naamgeving** en zet er een paar tags op.
+5. **Stel daarna je vraag in Copilot** en kijk of het antwoord beter is.
+
+Dit kost een paar minuten per document. Begin niet met je hele SharePoint, maar met de tien tot twintig documenten waar de meeste vragen over gaan. Daar haal je het snelst rendement.
+
+## Begin bij de bron, niet bij de tool
+
+De grootste denkfout bij Copilot-uitrol is dat het een knop is die je aanzet. In de praktijk is de kwaliteit van de antwoorden een directe afspiegeling van de kwaliteit van je documenten. Zet je Copilot op een rommelige kennisbank, dan krijg je rommelige antwoorden. Ruim je eerst je belangrijkste documenten op, dan merk je het verschil meteen.
+
+Dat is goed nieuws, want het betekent dat je zelf invloed hebt. Je hoeft niet te wachten op een betere AI-versie. Je kunt vandaag aan je documenten werken.
+
+## Verder lezen en aan de slag
+
+Wil je beter begrijpen hoe AI achter de schermen aan een antwoord komt, zodat je dit soort problemen sneller herkent? In de gratis [AI-academy](/academy) leg ik dat stap voor stap uit. Zit je zelf aan de bouwkant en wil je dieper in RAG, chunking en context, kijk dan naar de module [AI voor developers](/academy/module-ai-voor-developers.html).
+
+Werk je met vertrouwelijke documenten, of wil je een interne tool of agent op je eigen kennisbank zetten en weet je niet waar te beginnen? Dat is precies waar maatwerk loont. [Neem contact op](/contact), dan kijken we samen hoe je je kennisbank AI-ready maakt zonder dat gevoelige data je organisatie verlaat.

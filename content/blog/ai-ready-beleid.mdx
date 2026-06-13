@@ -6,7 +6,7 @@ author: "Max van den Broek"
 tags: ["AI-beleid", "AI Act", "Strategie"]
 ---
 
-De meeste AI-beleidsplannen die ik tegenkom zijn te abstract om iets mee te doen. Ze beschrijven dat AI "verantwoord" moet worden ingezet, dat er "aandacht moet zijn voor ethiek", en dat medewerkers "bewust" moeten worden gemaakt. Klinkt goed. Maar niemand weet wat ze er maandag mee moeten.
+De meeste AI-beleidsplannen die ik tegenkom zijn te abstract om iets mee te doen. Ze beschrijven dat AI "verantwoord" moet worden ingezet, dat er "aandacht moet zijn voor ethiek", en dat medewerkers "bewust" moeten worden gemaakt. Klinkt goed. Maar niemand weet wat hij er maandagochtend mee moet.
 
 Een AI-ready beleid is iets anders. Het geeft mensen duidelijke kaders waarbinnen ze zelf kunnen handelen. Het voorkomt dat iedere afdeling het wiel opnieuw uitvindt. En het helpt je organisatie om te voldoen aan de EU AI Act zonder dat je een duur consultancybureau nodig hebt.
 
@@ -14,15 +14,16 @@ In dit artikel leg ik uit hoe je zo'n beleid opstelt. Geen theoretisch raamwerk,
 
 ## Waarom je nu een AI-beleid nodig hebt
 
-Sinds februari 2025 is AI-geletterdheid verplicht onder de EU AI Act. Dat betekent niet dat iedereen een cursus prompt engineering moet volgen. Het betekent dat medewerkers die AI-systemen gebruiken of ermee werken, moeten begrijpen wat ze doen.
+Sinds 2 februari 2025 is AI-geletterdheid verplicht onder de EU AI Act (artikel 4). Dat betekent niet dat iedereen een cursus prompt engineering moet volgen. Het betekent dat medewerkers die AI-systemen gebruiken of ermee werken, op een passend niveau begrijpen wat ze doen. Die plicht geldt expliciet ook voor ingehuurde mensen en contractors die namens jouw organisatie AI gebruiken.
 
-Zonder beleid gebeurt het volgende:
-- Medewerkers gebruiken ChatGPT om klantdata samen te vatten (privacyrisico)
+Zonder beleid zie je telkens dezelfde dingen gebeuren:
+
+- Medewerkers gebruiken een publieke AI-tool om klantdata samen te vatten (privacyrisico)
 - Afdelingen kopen los AI-tooling in zonder afstemming (wildgroei)
 - Niemand weet welke AI-systemen er draaien in de organisatie (schaduw-AI)
 - Bij een incident kan niemand uitleggen hoe een beslissing tot stand kwam
 
-Dit zijn geen hypothetische scenario's. Ik zie ze bij vrijwel elke organisatie waar ik binnenkom.
+Dit zijn geen hypothetische scenario's. Ik kom ze bij vrijwel elke organisatie tegen.
 
 ## De vier bouwblokken van een AI-beleid
 
@@ -30,13 +31,13 @@ Een werkbaar AI-beleid heeft vier onderdelen. Niet meer, niet minder.
 
 ### 1. Wat mag wel en wat mag niet
 
-Dit is het belangrijkste onderdeel en tegelijkertijd het deel dat de meeste organisaties overslaan. Ze schrijven pagina's over principes, maar vergeten concrete regels.
+Dit is het belangrijkste onderdeel en tegelijk het deel dat de meeste organisaties overslaan. Ze schrijven pagina's over principes, maar vergeten de concrete regels.
 
-Maak een lijst met:
+Maak een lijst met drie categorieën.
 
 **Toegestaan zonder goedkeuring:**
-- AI gebruiken voor het samenvatten van interne (niet-vertrouwelijke) documenten
-- AI gebruiken voor het schrijven van conceptteksten (mits je ze zelf reviewt)
+- AI gebruiken voor het samenvatten van interne, niet-vertrouwelijke documenten
+- AI gebruiken voor het schrijven van conceptteksten (mits je ze zelf nakijkt)
 - AI gebruiken voor het vertalen van niet-gevoelige teksten
 - AI gebruiken om code te schrijven of te reviewen
 
@@ -47,75 +48,78 @@ Maak een lijst met:
 
 **Niet toegestaan:**
 - Vertrouwelijke of persoonsgebonden data invoeren in publieke AI-tools
-- AI-output presenteren als menselijk werk zonder controle
+- AI-output presenteren als gecontroleerd werk zonder dat je het hebt gecontroleerd
 - Geautomatiseerde beslissingen nemen zonder menselijke review
 
-Het maakt niet uit of je lijst er precies zo uitziet. Het punt is dat je een lijst hebt. Medewerkers hebben geen behoefte aan filosofische kaders - ze willen weten: mag ik dit of niet?
+Het maakt niet uit of jouw lijst er precies zo uitziet. Het punt is dat je een lijst hebt. Medewerkers hebben geen behoefte aan filosofische kaders, ze willen weten: mag ik dit of niet?
 
 ### 2. Welke tools zijn goedgekeurd
 
-Maak een korte lijst van goedgekeurde AI-tools. Bij veel organisaties is dat:
+Maak een korte lijst van goedgekeurde AI-tools. Bij veel organisaties is dat een combinatie van:
 
-- **Microsoft Copilot** (via je M365-licentie, data blijft in je tenant)
-- **ChatGPT Team/Enterprise** (als je een betaald account hebt met data-opt-out)
-- **Eventueel domeinspecifieke tools** (bijv. een juridische AI, een HR-screening tool)
+- Een AI-assistent binnen je bestaande kantooromgeving (bijvoorbeeld een tool waarbij data binnen je eigen tenant blijft)
+- Een betaalde, zakelijke versie van een chatbot met data-opt-out
+- Eventueel domeinspecifieke tools (bijvoorbeeld een juridische AI of een HR-screeningtool)
 
-Belangrijk: vermeld expliciet dat de gratis versies van ChatGPT, Gemini en Claude je data mogen gebruiken voor training. Dat is voor veel medewerkers niet duidelijk.
+Belangrijk: vermeld expliciet dat veel gratis versies van AI-tools je ingevoerde data mogen gebruiken om hun modellen te trainen. Dat is voor veel medewerkers niet vanzelfsprekend, en het is precies de reden om vertrouwelijke gegevens daar buiten te houden.
 
 ### 3. Hoe je omgaat met AI-output
 
 Dit is waar veel organisaties de mist in gaan. Ze zeggen "gebruik AI verantwoord" maar definiëren niet wat dat betekent.
 
 Concrete regels:
-- **Controleer feiten.** AI hallucineert. Elk feitelijk gegeven dat je overneemt uit een AI-antwoord moet je verifiëren.
+
+- **Controleer feiten.** AI kan dingen verzinnen die overtuigend klinken. Elk feitelijk gegeven dat je overneemt uit een AI-antwoord moet je verifiëren.
 - **Vermeld AI-gebruik waar relevant.** Bij klantcommunicatie, publicaties of beslisdocumenten: vermeld dat AI is gebruikt bij de totstandkoming.
-- **Bewaar prompts bij belangrijke beslissingen.** Als je AI gebruikt om een advies, analyse of beoordeling op te stellen, bewaar dan de prompt en het antwoord.
+- **Bewaar prompts bij belangrijke beslissingen.** Gebruik je AI om een advies, analyse of beoordeling op te stellen, bewaar dan de prompt en het antwoord, zodat je later kunt reconstrueren hoe iets tot stand kwam.
 
 ### 4. Wie is verantwoordelijk
 
-Dit hoeft geen heel organigram te zijn. Benoem:
+Dit hoeft geen heel organigram te zijn. Benoem in elk geval:
+
 - **Wie beslist over nieuwe AI-tools** (IT, privacy officer, of een AI-werkgroep)
-- **Waar medewerkers terecht kunnen met vragen** (een Slack-kanaal, een aanspreekpunt)
-- **Wie het beleid bijhoudt** (minstens halfjaarlijks reviewen - AI verandert snel)
+- **Waar medewerkers terecht kunnen met vragen** (een kanaal of een aanspreekpunt)
+- **Wie het beleid bijhoudt** (minstens halfjaarlijks reviewen, want AI verandert snel)
 
 ## Veelgemaakte fouten
 
 **Te abstract.** "We zetten AI verantwoord in" is geen beleid. "Medewerkers mogen geen persoonsgegevens invoeren in publieke AI-tools" is beleid.
 
-**Te lang.** Als je AI-beleid meer dan 5 pagina's is, leest niemand het. Maak een kort, helder document met een uitgebreidere bijlage voor wie meer wil weten.
+**Te lang.** Als je AI-beleid meer dan vijf pagina's is, leest niemand het. Maak een kort, helder document met een uitgebreidere bijlage voor wie meer wil weten.
 
 **Geen handhaving.** Een beleid zonder consequenties is een suggestie. Koppel het aan bestaande processen: maak het onderdeel van onboarding, neem het op in functioneringsgesprekken, laat teamleads het bespreken.
 
-**Geen ruimte voor experimenteren.** Een beleid dat alleen maar "nee" zegt, doodt innovatie. Geef mensen duidelijke kaders waarbinnen ze vrij kunnen experimenteren. Dat is het hele punt.
+**Geen ruimte voor experimenteren.** Een beleid dat alleen maar "nee" zegt, doodt het gebruik. Geef mensen duidelijke kaders waarbinnen ze vrij kunnen experimenteren. Dat is het hele punt.
 
 ## EU AI Act: wat je moet weten
 
 De EU AI Act werkt met vier risicocategorieën:
 
-1. **Onaanvaardbaar risico** - verboden (bijv. social scoring, manipulatie)
-2. **Hoog risico** - strenge eisen (bijv. AI in HR-selectie, kredietbeoordeling)
-3. **Beperkt risico** - transparantieplicht (bijv. chatbots, deepfakes)
-4. **Minimaal risico** - geen verplichtingen (bijv. spamfilters, auto-correct)
+1. **Onaanvaardbaar risico** - verboden (bijvoorbeeld social scoring, manipulatie)
+2. **Hoog risico** - strenge eisen (bijvoorbeeld AI in HR-selectie, kredietbeoordeling)
+3. **Beperkt risico** - transparantieplicht (bijvoorbeeld chatbots, deepfakes)
+4. **Minimaal risico** - geen verplichtingen (bijvoorbeeld spamfilters, auto-correct)
 
 De meeste AI-toepassingen in een gemiddelde organisatie vallen onder minimaal of beperkt risico. Maar als je AI gebruikt voor personeelsselectie, kredietbeoordeling of medische triage, val je onder hoog risico en gelden er strenge eisen.
 
-Weet je niet in welke categorie jouw AI-toepassing valt? Gebruik onze [EU AI Act Checker](/tools/ai-act-checker) om het te controleren.
+Weet je niet in welke categorie jouw AI-toepassing valt? Gebruik de [EU AI Act Checker](/tools/ai-act-checker) om het te controleren.
 
-**Belangrijke deadlines:**
-- Februari 2025: AI-geletterdheid verplicht
-- Augustus 2025: transparantieverplichtingen
-- Augustus 2026: volledige naleving hoog-risico systemen
+**Over de boetes en artikel 4.** Op artikel 4 (de AI-geletterdheidsplicht) staat geen aparte, directe sanctie. Maar onderschat het niet: de bredere AI Act kent boetes tot 35 miljoen euro of 7% van de wereldwijde jaaromzet voor de zwaarste overtredingen. En als er een incident gebeurt, telt mee of je je geletterdheidsplicht serieus hebt genomen. Aantoonbaar werk maken van AI-geletterdheid is dus niet alleen netjes, het beschermt je ook.
 
 ## Checklist: AI-ready beleid in 5 stappen
 
 1. Inventariseer welke AI-tools er al gebruikt worden (vraag het gewoon rond)
 2. Schrijf een beknopt beleidsdocument met de vier bouwblokken hierboven
 3. Laat het reviewen door IT/security en een jurist
-4. Communiceer het actief (niet alleen via intranet - bespreek het in teams)
+4. Communiceer het actief (niet alleen via intranet, maar bespreek het in teams)
 5. Plan een halfjaarlijkse review in je agenda
 
-Het hoeft niet perfect te zijn. Een beleid van 80% dat volgende week live gaat is beter dan een beleid van 100% dat over zes maanden misschien af is.
+Het hoeft niet perfect te zijn. Een beleid van 80% dat volgende week live gaat, is beter dan een beleid van 100% dat over zes maanden misschien af is.
 
-## Wil je hulp?
+## Eerst de basis: AI-geletterdheid
 
-Ik help organisaties met het opstellen van AI-beleid en het trainen van medewerkers. Geen dikke rapporten, maar werkbare kaders die mensen begrijpen. [Neem contact op](/contact) als je wilt sparren.
+Een beleid werkt pas als mensen begrijpen waaróm de regels er zijn. Daarom begin ik bij organisaties bijna altijd met de basis: wat is AI, wat kan het wel en niet, en hoe ga je er verantwoord mee om. In de gratis [AI-academy](/academy) staat daarvoor de module [Verantwoord AI gebruiken](/academy/module-verantwoord-ai.html), die je medewerkers in eigen tempo kunnen doorlopen. Een goede, laagdrempelige eerste stap om iedereen op hetzelfde niveau te krijgen.
+
+## Hulp nodig met de volgende stap?
+
+Wil je beleid en training die op jouw organisatie zijn toegesneden, in plaats van een generieke standaardtekst? Ik maak maatwerk e-learnings en trainingen die aansluiten op de tools en taken van jouw mensen. Geen dikke rapporten, maar werkbare kaders die blijven hangen. [Neem contact op](/contact) als je wilt sparren.

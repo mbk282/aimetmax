@@ -8,19 +8,31 @@ tags: ["Productiviteit", "AI Tools", "Praktisch"]
 
 Je hebt een PDF van 40 pagina's. Je wilt dat ChatGPT of Claude het samenvat, er vragen over beantwoordt, of de kernpunten eruit haalt. Je uploadt het bestand, stelt je vraag, en het resultaat is matig. Belangrijke informatie wordt gemist, tabellen worden verkeerd gelezen, en de samenvatting slaat de plank mis.
 
-Het probleem is niet de AI. Het probleem is het document.
+Het probleem is vaak niet de AI. Het is het document.
 
 AI-tools verwerken tekst. Ze lezen geen documenten zoals mensen dat doen. Ze zien geen opmaak, interpreteren geen visuele indeling, en hebben moeite met complexe tabelstructuren. Hoe beter je document is voorbereid, hoe beter het resultaat.
 
+> Wil je niet eerst de theorie doorlezen? Gooi je document in de [AI Readiness Scorer](/tools/ai-readiness-scorer) en je ziet direct waar het mis kan gaan en wat je kunt opschonen. De rest van dit artikel legt uit wat de scorer onder de motorkap controleert.
+
+## Wanneer documentkwaliteit echt telt (en wanneer minder)
+
+Eerst een nuance, want anders ga je je blindstaren op iets dat niet altijd uitmaakt.
+
+De kwaliteit van je document weegt het zwaarst bij **retrieval en RAG**: situaties waarin een AI niet één document leest, maar uit een grote berg bestanden de relevante stukken moet ophalen. Denk aan Copilot dat door je SharePoint zoekt, een agent die op een documentenbibliotheek is losgelaten, of een interne chatbot die op je kennisbank is aangesloten. Daar wordt elk document in stukken geknipt en op relevantie doorzocht. Een rommelig document komt dan slecht uit de zoekopdracht, of helemaal niet.
+
+Plak je daarentegen **één document in een chat** met een groot context window, dan kan het model vaak meer hebben. Moderne modellen lezen een wat slordige tekst nog redelijk. De voorbereiding telt dan minder zwaar.
+
+Maar "minder zwaar" is niet "niet". Garbage in, garbage out blijft gelden: als een tabel onleesbaar is omgezet of de helft van een scan ontbreekt, kan het model niet toveren met wat er niet staat. En zodra je opschaalt van één losse vraag naar een herhaalbare workflow of een tool die meerdere bestanden doorzoekt, wordt documentkwaliteit weer doorslaggevend.
+
 ## Waarom documentformaat ertoe doet
 
-Wanneer je een bestand uploadt naar een AI-tool, gebeurt er op de achtergrond het volgende:
+Wanneer je een bestand uploadt of laat doorzoeken, gebeurt er op de achtergrond het volgende:
 
 1. Het document wordt omgezet naar platte tekst
 2. Die tekst wordt opgesplitst in stukken (chunks)
-3. De AI verwerkt die stukken om je vraag te beantwoorden
+3. De AI verwerkt de relevante stukken om je vraag te beantwoorden
 
-Bij elke stap gaat er informatie verloren. Een goed gestructureerd document verliest weinig. Een slecht gestructureerd document verliest veel.
+Bij elke stap kan er informatie verloren gaan. Een goed gestructureerd document verliest weinig. Een slecht gestructureerd document verliest veel.
 
 **Wat er misgaat bij PDF's:**
 - Tekst in meerdere kolommen wordt door elkaar gehaald
@@ -38,9 +50,15 @@ Bij elke stap gaat er informatie verloren. Een goed gestructureerd document verl
 - Speaker notes worden soms genegeerd
 - Diagrammen en grafieken worden niet begrepen
 
+## Check eerst hoe AI-ready je document is
+
+Voordat je gaat opschonen, is het handig om te weten waar je staat. Daar heb ik de [AI Readiness Scorer](/tools/ai-readiness-scorer) voor gebouwd: je uploadt een document en de tool checkt of het klaar is om door AI of een RAG-systeem verwerkt te worden. Hij kijkt onder andere naar structuur, of er leesbare tekst in zit (en niet alleen plaatjes), hoe de tabellen eruitzien en of er rommel als headers en footers tussen zit.
+
+Het draait in je browser, dus je document hoeft je apparaat niet te verlaten. Krijg je een lage score, dan weet je meteen welke van de stappen hieronder de moeite waard zijn.
+
 ## Het ideale formaat: Markdown
 
-Als je een document aan AI wilt voeren, is Markdown het beste formaat. Niet omdat het fancy is, maar omdat het puur gestructureerde tekst is. Geen opmaak die verloren gaat, geen verborgen elementen.
+Als je een document aan AI wilt voeren, is Markdown vaak het handigste formaat. Niet omdat het fancy is, maar omdat het puur gestructureerde tekst is. Geen opmaak die verloren gaat, geen verborgen elementen.
 
 Markdown ziet er zo uit:
 
@@ -51,7 +69,7 @@ Dit is een paragraaf met **vetgedrukte** tekst.
 
 ## 1.1 Achtergrond
 
-- Punt één
+- Punt een
 - Punt twee
 - Punt drie
 
@@ -61,10 +79,10 @@ Dit is een paragraaf met **vetgedrukte** tekst.
 ```
 
 De voordelen:
-- AI begrijpt de structuur perfect (kopjes, lijsten, tabellen)
-- Geen informatie gaat verloren bij conversie
-- Het is makkelijk te bewerken en te kopiëren
-- Het werkt in elk AI-tool (ChatGPT, Claude, Copilot, Gemini)
+- AI begrijpt de structuur goed (kopjes, lijsten, tabellen)
+- Er gaat weinig informatie verloren bij conversie
+- Het is makkelijk te bewerken en te kopieren
+- Het werkt in elke AI-tool (ChatGPT, Claude, Copilot, Gemini)
 
 ## Hoe je bestaande documenten omzet
 
@@ -74,45 +92,45 @@ PDF's zijn het lastigst. Er zijn twee soorten:
 - **Digitale PDF's** (gemaakt vanuit Word/Google Docs) - deze bevatten selecteerbare tekst
 - **Gescande PDF's** (foto's van papier) - deze bevatten alleen afbeeldingen
 
-Digitale PDF's kun je direct omzetten. Gebruik onze [PDF naar Markdown converter](/tools/pdf-naar-markdown) om dit in je browser te doen. Je data wordt niet verstuurd.
+Digitale PDF's kun je direct omzetten. Gebruik de [PDF naar Markdown converter](/tools/pdf-naar-markdown) om dit in je browser te doen. Je data wordt niet verstuurd.
 
 Gescande PDF's moet je eerst door OCR (Optical Character Recognition) halen. Adobe Acrobat kan dit, en er zijn gratis tools beschikbaar.
 
 ### Word naar Markdown
 
-Word-documenten zijn relatief makkelijk om te zetten omdat de structuur (kopjes, lijsten) behouden blijft. Gebruik onze [Word naar Markdown converter](/tools/word-naar-markdown).
+Word-documenten zijn relatief makkelijk om te zetten omdat de structuur (kopjes, lijsten) behouden blijft. Gebruik de [Word naar Markdown converter](/tools/word-naar-markdown).
 
 **Tip:** Als je een Word-document hebt met veel handmatige opmaak (spaties in plaats van tabs, handmatige nummering in plaats van lijsten), wordt de conversie slechter. Hoe meer je document "echte" Word-stijlen gebruikt, hoe beter het resultaat.
 
 ### HTML naar Markdown
 
-Webpagina's kopiëren naar AI werkt slecht als je ze gewoon copy-pastet. Je krijgt alle navigatie, advertenties en footer-tekst mee. Gebruik onze [HTML naar Markdown converter](/tools/html-naar-markdown) om alleen de relevante content over te houden.
+Webpagina's kopieren naar AI werkt slecht als je ze gewoon copy-pastet. Je krijgt alle navigatie, advertenties en footer-tekst mee. Gebruik de [HTML naar Markdown converter](/tools/html-naar-markdown) om alleen de relevante content over te houden.
 
 ### Tabellen en data
 
-CSV-bestanden en spreadsheets kun je omzetten naar Markdown-tabellen met onze [CSV naar Markdown converter](/tools/csv-naar-markdown). AI begrijpt Markdown-tabellen veel beter dan losse komma-gescheiden waarden.
+CSV-bestanden en spreadsheets kun je omzetten naar Markdown-tabellen met de [CSV naar Markdown converter](/tools/csv-naar-markdown). AI begrijpt Markdown-tabellen beter dan losse komma-gescheiden waarden.
 
 ## 7 tips voor AI-ready documenten
 
 ### 1. Gebruik kopjes consequent
 
-Niet alleen voor de visuele indeling, maar gebruik echte heading-stijlen (H1, H2, H3). AI gebruikt deze om de structuur van je document te begrijpen. Een document met goede kopjes levert betere samenvattingen op.
+Niet alleen voor de visuele indeling, maar gebruik echte heading-stijlen (H1, H2, H3). AI gebruikt deze om de structuur van je document te begrijpen. Een document met goede kopjes levert betere samenvattingen op, en is makkelijker netjes in stukken te knippen voor retrieval.
 
-### 2. Eén onderwerp per sectie
+### 2. Een onderwerp per sectie
 
-AI verwerkt documenten in stukken. Als een sectie over drie verschillende onderwerpen gaat, kan de AI informatie mixen. Houd secties gefocust op één onderwerp.
+AI verwerkt documenten in stukken. Als een sectie over drie verschillende onderwerpen gaat, kan de AI informatie mixen. Houd secties gefocust op een onderwerp.
 
-### 3. Vermijd afbeeldingen met essentiële tekst
+### 3. Vermijd afbeeldingen met essentiele tekst
 
 Als belangrijke informatie alleen in een afbeelding, diagram of screenshot staat, mist de AI het. Voeg altijd een tekstuele beschrijving toe, of zet de informatie ook in de lopende tekst.
 
 ### 4. Maak tabellen simpel
 
-Complexe tabellen met samengevoegde cellen, geneste headers en lege rijen zijn een nachtmerrie voor AI. Hoe simpeler de tabel, hoe beter. Splits complexe tabellen liever op in meerdere eenvoudige tabellen.
+Complexe tabellen met samengevoegde cellen, geneste headers en lege rijen zijn lastig voor AI. Hoe simpeler de tabel, hoe beter. Splits complexe tabellen liever op in meerdere eenvoudige tabellen.
 
 ### 5. Schrijf expliciete verwijzingen
 
-"Zoals hierboven beschreven" of "zie tabel 3" werkt niet als de AI je document in stukken verwerkt. Herhaal liever kort de relevante informatie of verwijs naar een specifieke sectienaam.
+"Zoals hierboven beschreven" of "zie tabel 3" werkt niet als de AI je document in stukken verwerkt. Het stuk waar je naar verwijst zit dan misschien niet eens in de context. Herhaal liever kort de relevante informatie of verwijs naar een specifieke sectienaam.
 
 ### 6. Voeg een samenvatting toe
 
@@ -120,19 +138,20 @@ Begin elk belangrijk document met een korte samenvatting van de kernpunten. Dit 
 
 ### 7. Controleer het taalniveau
 
-AI geeft betere resultaten bij helder geschreven documenten. Gebruik onze [Leesbaarheid Checker](/tools/leesbaarheid-checker) om te controleren of je tekst niet onnodig complex is.
+AI geeft betere resultaten bij helder geschreven documenten. Gebruik de [Leesbaarheid Checker](/tools/leesbaarheid-checker) om te controleren of je tekst niet onnodig complex is.
 
 ## Workflow: document voorbereiden voor AI
 
-Hier is mijn standaard workflow als ik een document door AI wil laten verwerken:
+Dit is mijn standaard workflow als ik een document door AI wil laten verwerken:
 
-1. **Converteer naar Markdown** (met een van de converters hierboven)
-2. **Schoon op** - verwijder headers/footers, paginanummers en irrelevante secties
-3. **Controleer tabellen** - zorg dat ze correct zijn overgekomen
-4. **Voeg context toe** - plak bovenaan het document een korte beschrijving van wat het is
-5. **Stel je vraag** - wees specifiek over wat je wilt (samenvatting, analyse, vergelijking)
+1. **Check de score** - haal het document door de [AI Readiness Scorer](/tools/ai-readiness-scorer) om te zien waar de pijnpunten zitten
+2. **Converteer naar Markdown** (met een van de converters hierboven)
+3. **Schoon op** - verwijder headers/footers, paginanummers en irrelevante secties
+4. **Controleer tabellen** - zorg dat ze correct zijn overgekomen
+5. **Voeg context toe** - plak bovenaan het document een korte beschrijving van wat het is
+6. **Stel je vraag** - wees specifiek over wat je wilt (samenvatting, analyse, vergelijking)
 
-Dit kost 2-3 minuten extra en maakt het verschil tussen een matig en een goed AI-resultaat.
+Dit kost een paar minuten extra en maakt het verschil tussen een matig en een goed AI-resultaat. Zeker als hetzelfde document straks in een Copilot- of SharePoint-omgeving terechtkomt, betaalt die voorbereiding zich terug.
 
 ## De toekomst: documenten die AI-native zijn
 
@@ -142,4 +161,10 @@ Op termijn gaan we documenten anders maken. Niet als eindproduct (PDF), maar als
 - Gestructureerde data (JSON, YAML) in plaats van spreadsheets
 - Kennisbanken in plaats van losse bestanden
 
-Maar dat is de toekomst. Voor nu: converteer je belangrijkste documenten naar Markdown en merk het verschil.
+Maar dat is de toekomst. Voor nu: check je belangrijkste documenten met de scorer, converteer ze naar Markdown en merk het verschil.
+
+## Liever niet zelf prutsen?
+
+Werk je met vertrouwelijke of gevoelige documenten, dan wil je die niet zomaar door een online tool halen. In dat soort gevallen kijk ik graag mee: van het opschonen van je documentstructuur tot het bouwen van een interne tool of RAG-opzet die binnen je eigen omgeving blijft.
+
+Wil je eerst zelf de basis onder de knie krijgen? Begin bij de [gratis AI-academy](/academy), bijvoorbeeld met de module [Praktisch werken met AI](/academy/module-praktisch-werken-met-ai.html). Zoek je een aanpak op maat voor je team of organisatie, [neem dan contact op](/contact) en dan kijken we samen wat past.

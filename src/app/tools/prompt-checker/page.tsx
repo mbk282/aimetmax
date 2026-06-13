@@ -113,14 +113,14 @@ export default function PromptChecker() {
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Plak hier je prompt..."
             rows={6}
-            className="w-full rounded-xl border border-gray-300 p-4 text-gray-800 focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-xl border border-line p-4 text-ink focus:border-accent focus:ring-accent"
           />
           <div className="mt-2 flex items-center justify-between">
-            <span className="text-xs text-gray-400">{prompt.trim().split(/\s+/).filter(Boolean).length} woorden</span>
+            <span className="text-xs text-ink-soft">{prompt.trim().split(/\s+/).filter(Boolean).length} woorden</span>
             <button
               onClick={handleCheck}
               disabled={!prompt.trim()}
-              className="rounded-lg bg-blue-600 px-6 py-2.5 font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+              className="rounded-lg bg-accent px-6 py-2.5 font-medium text-white hover:bg-accent-dark disabled:opacity-50"
             >
               Check mijn prompt
             </button>
@@ -131,7 +131,7 @@ export default function PromptChecker() {
           <div className="space-y-4">
             <div className="flex items-center gap-4">
               <ScoreBadge score={result.score} />
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-ink-soft">
                 {result.score >= 75
                   ? "Je prompt is goed opgebouwd. Kleine verbeteringen zijn altijd mogelijk."
                   : result.score >= 50
@@ -150,7 +150,7 @@ export default function PromptChecker() {
                     <span className={check.passed ? "text-green-600" : "text-red-600"}>
                       {check.passed ? "✓" : "✗"}
                     </span>
-                    <span className="font-medium text-gray-900">{check.label}</span>
+                    <span className="font-medium text-ink">{check.label}</span>
                   </div>
                   <p className={`mt-1 text-sm ${check.passed ? "text-green-700" : "text-red-700"}`}>
                     {check.tip}
@@ -159,11 +159,11 @@ export default function PromptChecker() {
               ))}
             </div>
 
-            <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-xs text-gray-500">
+            <div className="rounded-xl border border-line bg-card p-4 text-xs text-ink-soft">
               <p>
                 Deze checker gebruikt heuristieken, geen AI. Wil je leren hoe je structureel betere
                 prompts schrijft?{" "}
-                <a href="/contact" className="text-blue-600 hover:underline">
+                <a href="/contact" className="text-accent hover:underline">
                   Vraag een prompt-training aan
                 </a>.
               </p>

@@ -46,44 +46,44 @@ export default function VergaderkostenCalculator() {
       description="Bereken wat een vergadering echt kost. Start de live teller tijdens je volgende meeting."
     >
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        <div className="space-y-5 rounded-xl border border-gray-200 bg-white p-6">
-          <h2 className="font-semibold text-gray-900">Instellingen</h2>
+        <div className="space-y-5 rounded-xl border border-line bg-card p-6">
+          <h2 className="font-semibold text-ink">Instellingen</h2>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Aantal deelnemers</label>
+            <label className="block text-sm font-medium text-ink-soft">Aantal deelnemers</label>
             <input type="number" min={2} value={participants} onChange={(e) => setParticipants(Number(e.target.value))}
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900" />
+              className="mt-1 w-full rounded-lg border border-line px-3 py-2 text-ink" />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Gemiddeld bruto jaarsalaris</label>
+            <label className="block text-sm font-medium text-ink-soft">Gemiddeld bruto jaarsalaris</label>
             <div className="mt-1 flex items-center gap-2">
-              <span className="text-sm text-gray-500">&euro;</span>
+              <span className="text-sm text-ink-soft">&euro;</span>
               <input type="number" min={0} step={1000} value={avgSalary} onChange={(e) => setAvgSalary(Number(e.target.value))}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900" />
+                className="w-full rounded-lg border border-line px-3 py-2 text-ink" />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Duur vergadering</label>
+            <label className="block text-sm font-medium text-ink-soft">Duur vergadering</label>
             <div className="mt-1 flex items-center gap-3">
               <input type="range" min={15} max={180} step={15} value={durationMinutes}
                 onChange={(e) => setDurationMinutes(Number(e.target.value))} className="w-full" />
-              <span className="w-20 text-right font-medium text-gray-900">{durationMinutes} min</span>
+              <span className="w-20 text-right font-medium text-ink">{durationMinutes} min</span>
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Vergaderingen per week</label>
+            <label className="block text-sm font-medium text-ink-soft">Vergaderingen per week</label>
             <input type="number" min={1} max={40} value={meetingsPerWeek} onChange={(e) => setMeetingsPerWeek(Number(e.target.value))}
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900" />
+              className="mt-1 w-full rounded-lg border border-line px-3 py-2 text-ink" />
           </div>
         </div>
 
         <div className="space-y-4">
           {/* Live timer */}
-          <div className="rounded-xl bg-gray-900 p-6 text-center">
-            <p className="text-sm text-gray-400">Live vergaderteller</p>
+          <div className="rounded-xl bg-ink p-6 text-center">
+            <p className="text-sm text-ink-soft">Live vergaderteller</p>
             <p className="mt-2 font-mono text-5xl font-bold text-white">{formatTime(elapsed)}</p>
             <p className="mt-2 font-mono text-3xl font-bold text-red-400">
               &euro;{liveCost.toFixed(2)}
@@ -125,12 +125,12 @@ export default function VergaderkostenCalculator() {
             </p>
           </div>
 
-          <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-xs text-gray-500">
+          <div className="rounded-xl border border-line bg-card p-4 text-xs text-ink-soft">
             <p>
               Berekend op basis van bruto jaarsalaris / 2080 werkuren. Werkelijke kosten liggen
               hoger door werkgeverslasten, voorbereidingstijd en opportunity costs. Wil je weten
               hoe AI je vergadertijd kan halveren?{" "}
-              <a href="/contact" className="text-blue-600 hover:underline">Neem contact op</a>.
+              <a href="/contact" className="text-accent hover:underline">Neem contact op</a>.
             </p>
           </div>
         </div>

@@ -107,16 +107,16 @@ export default function LeesbaarheidChecker() {
             onChange={(e) => setText(e.target.value)}
             placeholder="Plak hier je Nederlandse tekst..."
             rows={8}
-            className="w-full rounded-xl border border-gray-300 p-4 text-gray-800 focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-xl border border-line p-4 text-ink focus:border-accent focus:ring-accent"
           />
           <div className="mt-2 flex items-center justify-between">
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-ink-soft">
               {text.trim().split(/\s+/).filter(Boolean).length} woorden
             </span>
             <button
               onClick={handleCheck}
               disabled={!text.trim()}
-              className="rounded-lg bg-blue-600 px-6 py-2.5 font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+              className="rounded-lg bg-accent px-6 py-2.5 font-medium text-white hover:bg-accent-dark disabled:opacity-50"
             >
               Check leesbaarheid
             </button>
@@ -138,27 +138,27 @@ export default function LeesbaarheidChecker() {
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                <div className="rounded-lg bg-gray-50 p-3 text-center">
-                  <p className="text-2xl font-bold text-gray-900">{result.wordCount}</p>
-                  <p className="text-xs text-gray-500">Woorden</p>
+                <div className="rounded-lg bg-card p-3 text-center">
+                  <p className="text-2xl font-bold text-ink">{result.wordCount}</p>
+                  <p className="text-xs text-ink-soft">Woorden</p>
                 </div>
-                <div className="rounded-lg bg-gray-50 p-3 text-center">
-                  <p className="text-2xl font-bold text-gray-900">{result.sentenceCount}</p>
-                  <p className="text-xs text-gray-500">Zinnen</p>
+                <div className="rounded-lg bg-card p-3 text-center">
+                  <p className="text-2xl font-bold text-ink">{result.sentenceCount}</p>
+                  <p className="text-xs text-ink-soft">Zinnen</p>
                 </div>
-                <div className="rounded-lg bg-gray-50 p-3 text-center">
-                  <p className="text-2xl font-bold text-gray-900">{result.avgWordsPerSentence}</p>
-                  <p className="text-xs text-gray-500">Woorden/zin</p>
+                <div className="rounded-lg bg-card p-3 text-center">
+                  <p className="text-2xl font-bold text-ink">{result.avgWordsPerSentence}</p>
+                  <p className="text-xs text-ink-soft">Woorden/zin</p>
                 </div>
-                <div className="rounded-lg bg-gray-50 p-3 text-center">
-                  <p className="text-2xl font-bold text-gray-900">{result.longWordsPct}%</p>
-                  <p className="text-xs text-gray-500">Moeilijke woorden</p>
+                <div className="rounded-lg bg-card p-3 text-center">
+                  <p className="text-2xl font-bold text-ink">{result.longWordsPct}%</p>
+                  <p className="text-xs text-ink-soft">Moeilijke woorden</p>
                 </div>
               </div>
 
               {result.longWords.length > 0 && (
-                <div className="rounded-lg border border-gray-200 p-4">
-                  <h3 className="text-sm font-medium text-gray-700">Moeilijke woorden (3+ lettergrepen)</h3>
+                <div className="rounded-lg border border-line p-4">
+                  <h3 className="text-sm font-medium text-ink-soft">Moeilijke woorden (3+ lettergrepen)</h3>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {result.longWords.map((w, i) => (
                       <span key={i} className="rounded-full bg-amber-100 px-3 py-1 text-xs text-amber-700">
@@ -172,19 +172,19 @@ export default function LeesbaarheidChecker() {
 
             {/* Tips */}
             <div className="space-y-4">
-              <div className="rounded-xl border border-gray-200 bg-white p-6">
-                <h3 className="font-semibold text-gray-900">Verbeter-tips</h3>
+              <div className="rounded-xl border border-line bg-card p-6">
+                <h3 className="font-semibold text-ink">Verbeter-tips</h3>
                 <ul className="mt-3 space-y-3">
                   {result.tips.map((tip, i) => (
-                    <li key={i} className="flex gap-2 text-sm text-gray-700">
-                      <span className="mt-0.5 text-blue-500">&#x2022;</span>
+                    <li key={i} className="flex gap-2 text-sm text-ink-soft">
+                      <span className="mt-0.5 text-accent">&#x2022;</span>
                       {tip}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="rounded-xl bg-blue-50 p-4 text-sm text-blue-800">
+              <div className="rounded-xl bg-accent-soft p-4 text-sm text-accent">
                 <p className="font-medium">Referenties voor taalniveaus:</p>
                 <ul className="mt-2 space-y-1 text-xs">
                   <li><strong>80-100:</strong> A2-B1 - Geschikt voor breed publiek</li>
@@ -195,11 +195,11 @@ export default function LeesbaarheidChecker() {
                 </ul>
               </div>
 
-              <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-xs text-gray-500">
+              <div className="rounded-xl border border-line bg-paper p-4 text-xs text-ink-soft">
                 <p>
                   Score berekend met de Flesch-Douma formule, de Nederlandse variant van de
                   Flesch Reading Ease. Wil je hulp bij het versimpelen van je beleidsdocumenten?{" "}
-                  <a href="/contact" className="text-blue-600 hover:underline">Neem contact op</a>.
+                  <a href="/contact" className="text-accent hover:underline">Neem contact op</a>.
                 </p>
               </div>
             </div>

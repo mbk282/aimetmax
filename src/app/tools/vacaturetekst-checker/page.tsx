@@ -153,13 +153,13 @@ export default function VacaturetekstChecker() {
             onChange={(e) => setText(e.target.value)}
             placeholder="Plak hier je vacaturetekst..."
             rows={10}
-            className="w-full rounded-xl border border-gray-300 p-4 text-gray-800 focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-xl border border-line p-4 text-ink-soft focus:border-blue-500 focus:ring-blue-500"
           />
           <div className="mt-2 flex justify-end">
             <button
               onClick={() => setResult(analyzeVacancy(text))}
               disabled={!text.trim()}
-              className="rounded-lg bg-blue-600 px-6 py-2.5 font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+              className="rounded-lg bg-accent px-6 py-2.5 font-medium text-white hover:bg-accent-dark disabled:opacity-50"
             >
               Check inclusiviteit
             </button>
@@ -172,7 +172,7 @@ export default function VacaturetekstChecker() {
               <p className={`text-4xl font-bold ${result.score >= 80 ? "text-green-600" : result.score >= 50 ? "text-amber-600" : "text-red-600"}`}>
                 {result.score}/100
               </p>
-              <p className="mt-1 text-sm text-gray-600">
+              <p className="mt-1 text-sm text-ink-soft">
                 Inclusiviteitsscore &middot; {result.findings.length} {result.findings.length === 1 ? "aandachtspunt" : "aandachtspunten"} gevonden
               </p>
             </div>
@@ -186,10 +186,10 @@ export default function VacaturetekstChecker() {
                 {result.findings.map((f, i) => (
                   <div key={i} className={`rounded-lg border p-4 ${severityColor(f.severity)}`}>
                     <div className="flex items-center gap-2 text-sm">
-                      <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${severityText(f.severity)} bg-white`}>
+                      <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${severityText(f.severity)} bg-card`}>
                         {f.category}
                       </span>
-                      <span className="font-medium text-gray-900">{f.text}</span>
+                      <span className="font-medium text-ink">{f.text}</span>
                     </div>
                     <p className={`mt-1 text-sm ${severityText(f.severity)}`}>{f.suggestion}</p>
                   </div>
@@ -197,11 +197,11 @@ export default function VacaturetekstChecker() {
               </div>
             )}
 
-            <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-xs text-gray-500">
+            <div className="rounded-xl border border-line bg-card p-4 text-xs text-ink-soft">
               <p>
                 Deze checker gebruikt woordlijsten en patronen. Het is geen juridisch advies.
                 Wil je meer weten over inclusief werven met AI?{" "}
-                <a href="/contact" className="text-blue-600 hover:underline">Neem contact op</a>.
+                <a href="/contact" className="text-accent hover:underline">Neem contact op</a>.
               </p>
             </div>
           </div>

@@ -10,48 +10,46 @@ type Params = Promise<{ slug: string }>;
 const mdxComponents: MDXComponents = {
   h2: (props) => (
     <h2
-      className="mt-10 mb-4 text-2xl font-bold text-gray-900 border-b border-gray-100 pb-2"
+      className="mt-10 mb-4 border-b border-line pb-2 text-2xl font-bold text-ink"
       {...props}
     />
   ),
   h3: (props) => (
-    <h3 className="mt-8 mb-3 text-xl font-semibold text-gray-900" {...props} />
+    <h3 className="mt-8 mb-3 text-xl font-semibold text-ink" {...props} />
   ),
-  p: (props) => (
-    <p className="mb-4 leading-7 text-gray-700" {...props} />
-  ),
+  p: (props) => <p className="mb-4 leading-7 text-ink-soft" {...props} />,
   ul: (props) => (
-    <ul className="mb-4 ml-6 list-disc space-y-2 text-gray-700" {...props} />
+    <ul className="mb-4 ml-6 list-disc space-y-2 text-ink-soft" {...props} />
   ),
   ol: (props) => (
-    <ol className="mb-4 ml-6 list-decimal space-y-2 text-gray-700" {...props} />
+    <ol className="mb-4 ml-6 list-decimal space-y-2 text-ink-soft" {...props} />
   ),
   li: (props) => <li className="leading-7" {...props} />,
   strong: (props) => (
-    <strong className="font-semibold text-gray-900" {...props} />
+    <strong className="font-semibold text-ink" {...props} />
   ),
   a: (props) => (
     <a
-      className="text-blue-600 underline decoration-blue-200 underline-offset-2 hover:decoration-blue-600 transition-colors"
+      className="font-medium text-accent underline decoration-accent-soft underline-offset-2 transition-colors hover:decoration-accent"
       {...props}
     />
   ),
   blockquote: (props) => (
     <blockquote
-      className="mb-4 border-l-4 border-blue-500 bg-blue-50 py-3 px-5 text-gray-700 italic rounded-r-lg"
+      className="mb-4 rounded-r-lg border-l-4 border-accent bg-accent-soft px-5 py-3 italic text-ink"
       {...props}
     />
   ),
-  hr: () => <hr className="my-10 border-gray-200" />,
+  hr: () => <hr className="my-10 border-line" />,
   code: (props) => (
     <code
-      className="rounded bg-gray-100 px-1.5 py-0.5 text-sm font-mono text-gray-800"
+      className="rounded bg-paper px-1.5 py-0.5 font-mono text-sm text-ink"
       {...props}
     />
   ),
   pre: (props) => (
     <pre
-      className="mb-4 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"
+      className="mb-4 overflow-x-auto rounded-lg bg-ink p-4 text-sm text-paper"
       {...props}
     />
   ),
@@ -119,7 +117,7 @@ export default async function BlogPostPage({
       <article className="mx-auto max-w-3xl px-6 py-20">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-blue-600 transition-colors"
+          className="inline-flex items-center gap-1 text-sm text-ink-soft transition-colors hover:text-accent"
         >
           &larr; Alle artikelen
         </Link>
@@ -129,19 +127,19 @@ export default async function BlogPostPage({
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 border border-blue-100"
+                className="rounded-full border border-sage bg-sage-soft px-3 py-1 text-xs font-medium text-sage"
               >
                 {tag}
               </span>
             ))}
           </div>
-          <h1 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 leading-tight">
+          <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl">
             {post.title}
           </h1>
-          <p className="mt-3 text-lg text-gray-500 leading-relaxed">
+          <p className="mt-3 text-lg leading-relaxed text-ink-soft">
             {post.description}
           </p>
-          <div className="mt-4 flex items-center gap-3 text-sm text-gray-400">
+          <div className="mt-4 flex items-center gap-3 text-sm text-ink-soft">
             <span>{post.author}</span>
             <span>&middot;</span>
             <time dateTime={post.date}>
@@ -154,27 +152,31 @@ export default async function BlogPostPage({
             <span>&middot;</span>
             <span>{post.readingTime}</span>
           </div>
-          <hr className="mt-8 border-gray-200" />
+          <hr className="mt-8 border-line" />
         </header>
 
         <div className="mt-10">
           <MDXRemote source={post.content} components={mdxComponents} />
         </div>
 
-        <div className="mt-16 rounded-2xl bg-gradient-to-br from-blue-50 to-gray-50 p-8 border border-blue-100">
-          <h3 className="text-lg font-semibold text-gray-900">
-            Hulp nodig bij AI-implementatie?
+        <div className="warm-card mt-16 bg-sage-soft p-8">
+          <h3 className="hand text-2xl font-bold text-ink">
+            Aan de slag met AI-geletterdheid?
           </h3>
-          <p className="mt-2 text-gray-600 leading-relaxed">
-            Ik geef AI-trainingen, help bij het opstellen van AI-beleid en bouw
-            prototypes. Van Copilot-trainingen tot strategisch advies.
+          <p className="mt-2 leading-relaxed text-ink-soft">
+            Begin gratis met de academy: zes e-learnings over AI-geletterdheid,
+            plus een verdieping voor developers. Wil je het op maat voor je
+            organisatie, met jullie eigen voorbeelden en beleid? Dan maak ik een
+            e-learning of training op maat.
           </p>
-          <Link
-            href="/contact"
-            className="mt-5 inline-block rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors shadow-sm"
-          >
-            Neem contact op
-          </Link>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link href="/academy" className="btn btn-primary">
+              Naar de gratis academy
+            </Link>
+            <Link href="/contact" className="btn btn-ghost">
+              Maatwerk aanvragen
+            </Link>
+          </div>
         </div>
       </article>
     </>

@@ -109,14 +109,14 @@ export default function EmailOnderwerpScorer() {
             onChange={(e) => setSubject(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleScore()}
             placeholder="Typ je e-mail onderwerpregel..."
-            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-lg text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-xl border border-line px-4 py-3 text-lg text-ink focus:border-blue-500 focus:ring-blue-500"
           />
           <div className="mt-2 flex items-center justify-between">
-            <span className="text-xs text-gray-400">{subject.length} tekens</span>
+            <span className="text-xs text-ink-soft">{subject.length} tekens</span>
             <button
               onClick={handleScore}
               disabled={!subject.trim()}
-              className="rounded-lg bg-blue-600 px-6 py-2.5 font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+              className="rounded-lg bg-accent px-6 py-2.5 font-medium text-white hover:bg-accent-dark disabled:opacity-50"
             >
               Score mijn onderwerp
             </button>
@@ -129,7 +129,7 @@ export default function EmailOnderwerpScorer() {
               <p className={`text-5xl font-bold ${result.score >= 70 ? "text-green-600" : result.score >= 40 ? "text-amber-600" : "text-red-600"}`}>
                 {result.score}/100
               </p>
-              <p className="mt-1 text-sm text-gray-600">
+              <p className="mt-1 text-sm text-ink-soft">
                 {result.score >= 70 ? "Sterke onderwerpregel!" : result.score >= 40 ? "Kan beter - pas de tips toe." : "Veel ruimte voor verbetering."}
               </p>
             </div>

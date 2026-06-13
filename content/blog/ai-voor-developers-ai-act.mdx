@@ -1,0 +1,67 @@
+---
+title: "AI voor developers: wat de AI Act van je tech-team verwacht"
+description: "Artikel 4 van de EU AI Act vraagt aantoonbare AI-geletterdheid, afgestemd op de rol. Voor developers ligt de lat hoger. Wat dat concreet betekent, ook voor ingehuurde mensen."
+date: "2026-06-13"
+author: "Max van den Broek"
+tags: ["AI Act", "Developers", "AI-geletterdheid"]
+---
+
+De meeste teams die ik spreek denken bij "AI-geletterdheid en de AI Act" aan een workshop voor kantoormedewerkers: niet je hele klantbestand in ChatGPT plakken, output controleren, dat soort dingen. Terecht. Maar voor een tech-team ligt de lat hoger, en dat wordt makkelijk over het hoofd gezien.
+
+Developers gebruiken AI anders. Ze laten code genereren, leunen op een copiloot in de editor, vragen om dependencies en architectuurkeuzes. De fouten die daar ontstaan komen niet in een e-mail terecht, maar in productie. Daarom verwacht de AI Act van iemand die AI inzet om software te bouwen meer dan van iemand die er een tekstje mee opmaakt.
+
+## Wat artikel 4 precies vraagt
+
+Sinds 2 februari 2025 geldt artikel 4 van de EU AI Act. De kern: organisaties die AI gebruiken moeten zorgen dat de mensen die ermee werken "over een toereikend niveau van AI-geletterdheid beschikken." Drie dingen zijn voor tech-teams belangrijk.
+
+**1. "Toereikend" hangt af van de rol.** De wet zegt expliciet dat je rekening houdt met de kennis, ervaring en context van de betrokkene. Een developer die AI-gegenereerde code in een productiesysteem zet, heeft een hoger niveau nodig dan een collega die Copilot in Word gebruikt. Een generieke bewustwordingssessie dekt dat niet.
+
+**2. Het geldt ook voor ingehuurde mensen.** Dit wordt vaak gemist. Artikel 4 strekt zich uit tot personen die namens de organisatie AI gebruiken, dus ook freelance developers, gedetacheerden en consultants. Als een ingehuurde kracht met AI bouwt aan jouw systeem, valt die onder dezelfde verplichting. Je kunt dat niet wegcontracteren.
+
+**3. Je moet het kunnen aantonen.** De wet schrijft geen specifieke cursus voor, maar je moet kunnen laten zien dat je het serieus hebt genomen. Voor een tech-team betekent dat: niet alleen "we hebben iets gedaan", maar iets dat past bij wat developers daadwerkelijk doen.
+
+## Waarom de lat voor developers hoger ligt
+
+Het risico zit hem in het soort fouten. Een verkeerde samenvatting van een vergaderverslag is vervelend. Een verkeerde aanname in code die je klakkeloos overneemt, kan een lek, een crash of een afhankelijkheid van iets schadelijks opleveren. Drie punten waar het in de praktijk misgaat.
+
+### Kritisch reviewen van AI-code
+
+AI-modellen genereren code die er overtuigend uitziet en vaak gewoon werkt. Dat is precies het gevaar. Code die compileert en de happy path doorstaat, kan nog steeds verkeerde aannames bevatten, randgevallen missen of een onveilig patroon gebruiken dat het model ergens heeft opgepikt.
+
+Geletterdheid betekent hier: AI-output behandelen als een voorstel van een junior, niet als waarheid. Je reviewt het, je begrijpt elke regel die je overneemt, en je laat geen code in je codebase belanden die je zelf niet kunt uitleggen. Wie dat niet doet, levert sneller op, maar bouwt onzichtbare schuld op.
+
+### Verzonnen packages en slopsquatting
+
+Taalmodellen verzinnen soms namen van packages of libraries die niet bestaan. Vraag om een oplossing en het model stelt zelfverzekerd een import voor naar iets dat nooit gepubliceerd is. Op zich onschuldig: je krijgt een foutmelding en gaat verder.
+
+Het wordt een probleem wanneer aanvallers die patronen misbruiken. Ze registreren een package onder zo'n veelvoorkomende verzonnen naam en vullen die met schadelijke code. Een developer die de suggestie van het model klakkeloos installeert, haalt dan iets kwaadaardigs binnen. Dit fenomeen wordt slopsquatting genoemd: misbruik maken van de "slop" die modellen produceren.
+
+De les is simpel maar je moet hem kennen: controleer elke dependency die een model voorstelt. Bestaat de package echt, klopt de naam exact, wie onderhoudt hem, hoeveel wordt hij gebruikt? Dat is geen overdreven voorzichtigheid, dat is basishygiëne zodra je AI in je workflow hebt.
+
+### Geheimen in prompts
+
+Om hulp te vragen plakken developers van alles in een chatvenster: een stuk code, een stacktrace, een configuratiebestand. Daar zitten geregeld dingen tussen die er niet horen: API-sleutels, wachtwoorden, connection strings, interne endpoints, klantgegevens in testdata.
+
+Wat je in een prompt zet, gaat naar buiten. Afhankelijk van de tool en de instellingen kan het opgeslagen worden of meegenomen worden in verdere verwerking. Een sleutel die je in een chat plakt, behandel je vanaf dat moment als gelekt. Geletterdheid betekent hier weten welke tools je organisatie heeft goedgekeurd, wat de instellingen zijn, en de gewoonte om geheimen eruit te halen voordat je iets deelt.
+
+## Hoe je dit aanpakt zonder het te overdrijven
+
+Je hoeft geen tweedaagse cursus op te tuigen. Wat werkt:
+
+- **Maak het concreet voor je stack.** Een tech-team leert het meest van voorbeelden uit de eigen codebase en de tools die ze echt gebruiken, niet van algemene slides.
+- **Behandel ingehuurde developers gelijk.** Neem in je afspraken op dat ook freelancers en gedetacheerden de basis kennen voordat ze met AI aan jouw systeem werken.
+- **Leg vast wat je doet.** Een kort overzicht van wie wat heeft doorlopen en wanneer is genoeg om te laten zien dat je de plicht serieus neemt.
+
+## Wat er op het spel staat
+
+Op artikel 4 zelf staat geen aparte boete. Er is dus geen "boete voor het niet regelen van AI-geletterdheid." Wat wel klopt: de bredere AI Act kent voor de zwaarste overtredingen boetes tot 35 miljoen euro of 7% van de wereldwijde jaaromzet. En als er iets misgaat, bijvoorbeeld een lek via AI-gegenereerde code of een onveilige dependency, telt mee of je je geletterdheidsplicht serieus had genomen. Een tech-team dat aantoonbaar weet wat het doet, staat er dan beter voor dan een team dat nergens iets van kan laten zien.
+
+Belangrijker dan de boete is trouwens het dagelijkse risico. De punten hierboven, ongereviewde code, verzonnen packages, geheimen in prompts, kunnen vandaag al misgaan, los van welke toezichthouder dan ook.
+
+## Aan de slag
+
+Voor de developer-kant heb ik een aparte module in de gratis academy gemaakt: [AI voor developers](/academy/module-ai-voor-developers.html). Die gaat in op kritisch reviewen, dependencies, geheimen en de rest van wat hierboven staat, met voorbeelden die voor een tech-team herkenbaar zijn. Een goede, laagdrempelige eerste stap.
+
+Wil je weten in welke risicocategorie jouw AI-toepassing valt? Gebruik de [AI Act Checker](/tools/ai-act-checker).
+
+Heb je een tech-team dat hier gericht doorheen moet, afgestemd op jullie stack en manier van werken? Dan maak ik daar maatwerk voor. [Neem contact op](/contact) en we kijken wat past.

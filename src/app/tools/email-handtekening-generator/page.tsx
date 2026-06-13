@@ -150,7 +150,7 @@ export default function EmailHandtekeningGenerator() {
         <div className="grid gap-4 sm:grid-cols-2">
           {fields.map((f) => (
             <div key={f.key}>
-              <label className="mb-1 block text-sm font-medium text-gray-700">
+              <label className="mb-1 block text-sm font-medium text-ink-soft">
                 {f.label}
                 {f.required && <span className="text-red-500"> *</span>}
               </label>
@@ -160,7 +160,7 @@ export default function EmailHandtekeningGenerator() {
                 onChange={(e) => update(f.key, e.target.value)}
                 placeholder={f.placeholder}
                 required={f.required}
-                className="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
+                className="w-full rounded-xl border border-line px-4 py-2.5 text-ink placeholder:text-ink-soft focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
           ))}
@@ -168,7 +168,7 @@ export default function EmailHandtekeningGenerator() {
 
         {/* Style picker */}
         <div>
-          <h2 className="mb-3 text-sm font-medium text-gray-700">Kies een stijl</h2>
+          <h2 className="mb-3 text-sm font-medium text-ink-soft">Kies een stijl</h2>
           <div className="grid gap-3 sm:grid-cols-3">
             {STYLES.map((s) => (
               <button
@@ -176,14 +176,14 @@ export default function EmailHandtekeningGenerator() {
                 onClick={() => setStyle(s.id)}
                 className={`rounded-xl border-2 p-4 text-left transition ${
                   style === s.id
-                    ? "border-blue-600 bg-blue-50"
-                    : "border-gray-200 bg-white hover:border-gray-300"
+                    ? "border-accent bg-accent-soft"
+                    : "border-line bg-card hover:border-line"
                 }`}
               >
-                <span className={`block font-semibold ${style === s.id ? "text-blue-700" : "text-gray-900"}`}>
+                <span className={`block font-semibold ${style === s.id ? "text-accent" : "text-ink"}`}>
                   {s.label}
                 </span>
-                <span className="mt-1 block text-xs text-gray-500">{s.desc}</span>
+                <span className="mt-1 block text-xs text-ink-soft">{s.desc}</span>
               </button>
             ))}
           </div>
@@ -191,24 +191,24 @@ export default function EmailHandtekeningGenerator() {
 
         {/* Color picker */}
         <div className="flex items-center gap-3">
-          <label className="text-sm font-medium text-gray-700">Accentkleur</label>
+          <label className="text-sm font-medium text-ink-soft">Accentkleur</label>
           <input
             type="color"
             value={color}
             onChange={(e) => setColor(e.target.value)}
-            className="h-9 w-12 cursor-pointer rounded border border-gray-300"
+            className="h-9 w-12 cursor-pointer rounded border border-line"
           />
-          <span className="text-xs text-gray-400">{color}</span>
+          <span className="text-xs text-ink-soft">{color}</span>
         </div>
 
         {/* Preview */}
         <div>
-          <h2 className="mb-3 text-sm font-medium text-gray-700">Voorbeeld</h2>
-          <div className="rounded-xl border border-gray-200 bg-white p-6">
+          <h2 className="mb-3 text-sm font-medium text-ink-soft">Voorbeeld</h2>
+          <div className="rounded-xl border border-line bg-card p-6">
             {html ? (
               <div dangerouslySetInnerHTML={{ __html: html }} />
             ) : (
-              <p className="text-sm text-gray-400">Vul minimaal je naam in om een voorbeeld te zien.</p>
+              <p className="text-sm text-ink-soft">Vul minimaal je naam in om een voorbeeld te zien.</p>
             )}
           </div>
         </div>
@@ -218,13 +218,13 @@ export default function EmailHandtekeningGenerator() {
           <div className="flex flex-wrap gap-3">
             <button
               onClick={copyRendered}
-              className="rounded-lg bg-blue-600 px-6 py-2.5 font-medium text-white hover:bg-blue-700"
+              className="rounded-lg bg-accent px-6 py-2.5 font-medium text-white hover:bg-accent-dark"
             >
               {copied === "rendered" ? "Gekopieerd!" : "Kopieer naar klembord"}
             </button>
             <button
               onClick={copyHTML}
-              className="rounded-lg border border-gray-300 bg-white px-6 py-2.5 font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-line bg-card px-6 py-2.5 font-medium text-ink-soft hover:bg-paper"
             >
               {copied === "html" ? "Gekopieerd!" : "Kopieer HTML"}
             </button>
