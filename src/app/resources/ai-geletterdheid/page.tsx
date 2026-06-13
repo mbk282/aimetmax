@@ -237,12 +237,20 @@ export default function AIGeletterdheidResources() {
 
       <div className="mt-16 rounded-xl bg-gray-50 p-8">
         <h3 className="font-semibold text-gray-900">
-          Op zoek naar een training op maat?
+          Zelf beginnen of samen aanpakken?
         </h3>
         <p className="mt-2 text-sm text-gray-600">
-          Ik geef doelgroepgerichte AI-trainingen voor organisaties. Van
-          Copilot-workshops voor controllers tot beleidssessies voor
-          directieteams. Altijd hands-on, altijd op maat.
+          De laagdrempeligste eerste stap is de gratis{" "}
+          <a
+            href="/academy"
+            className="font-medium text-blue-600 hover:text-blue-700"
+          >
+            AI-academy
+          </a>
+          : korte e-learnings over AI-geletterdheid die je medewerkers in eigen
+          tempo doorlopen. Wil je een programma dat past bij jouw rollen en
+          sector, dan maak ik maatwerk e-learnings en trainingen op maat,
+          doelgroepgericht en met ruimte om zelf te oefenen.
         </p>
         <Link
           href="/contact"

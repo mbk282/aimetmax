@@ -26,6 +26,14 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link
+                  href="/kaarten"
+                  className="text-ink-soft hover:text-accent"
+                >
+                  AI-gesprekskaarten
+                </Link>
+              </li>
+              <li>
                 <Link href="/blog" className="text-ink-soft hover:text-accent">
                   Artikelen
                 </Link>

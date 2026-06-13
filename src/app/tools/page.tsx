@@ -9,6 +9,19 @@ export const metadata: Metadata = {
 
 const categories = [
   {
+    name: "Werkvormen voor teams",
+    description:
+      "Materiaal om met je team het gesprek over AI te voeren, niet alleen erover te lezen.",
+    tools: [
+      {
+        title: "AI-gesprekskaarten",
+        description:
+          "54 stellingen, dilemma's en open vragen voor het goede gesprek over AI op de werkvloer. Met facilitator-notes en presenteermodus.",
+        href: "/kaarten",
+      },
+    ],
+  },
+  {
     name: "Checkers & Analyzers",
     description:
       "Analyseer teksten, prompts en documenten op kwaliteit en compliance.",
