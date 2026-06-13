@@ -40,6 +40,12 @@ const categories = [
         href: "/tools/ai-act-checker",
       },
       {
+        title: "AI-gebruiksbeleid Generator",
+        description:
+          "Stel in een paar minuten een startversie van een AI-gebruiksbeleid op voor je organisatie.",
+        href: "/tools/ai-beleid-generator",
+      },
+      {
         title: "Prompt Kwaliteit Checker",
         description:
           "Score je ChatGPT- of Copilot-prompt op 8 criteria en krijg concrete verbetertips.",
