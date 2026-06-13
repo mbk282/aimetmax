@@ -424,12 +424,11 @@ export default function KaartenPage() {
             Van gesprek naar aantoonbare AI-geletterdheid
           </h2>
           <p className="mt-2 max-w-2xl text-ink-soft">
-            Deze kaarten zijn de laagdrempelige eerste stap. Sinds de EU
-            AI-verordening (artikel 4) moet je iedereen die met AI werkt er
-            wegwijs in maken, en vanaf 2 augustus 2026 wordt daarop gehandhaafd.
-            Wil je het echt op maat voor jouw organisatie, met jullie eigen
-            voorbeelden en beleid? Ik bouw e-learnings en trainingen die blijven
-            hangen.
+            Deze kaarten zijn de laagdrempelige eerste stap. Artikel 4 van de EU
+            AI-verordening verplicht organisaties die AI inzetten al sinds
+            februari 2025 om hun mensen er wegwijs in te maken. Wil je het echt
+            op maat voor jouw organisatie, met jullie eigen voorbeelden en
+            beleid? Ik bouw e-learnings en trainingen die blijven hangen.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <a href="/academy" className="btn btn-primary">

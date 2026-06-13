@@ -121,7 +121,7 @@ const riskInfo: Record<string, { color: string; bg: string; border: string; labe
       "Stel technische documentatie op",
       "Implementeer logging en monitoring",
     ],
-    deadline: "Verplichtingen gelden vanaf 2 augustus 2026",
+    deadline: "Verplichtingen gelden vanaf 2 augustus 2026 (deze datum schuift via de Digital Omnibus naar verwachting door naar eind 2027)",
   },
   beperkt: {
     color: "text-amber-700", bg: "bg-amber-50", border: "border-amber-200",
