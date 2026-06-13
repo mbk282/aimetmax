@@ -210,13 +210,24 @@ export default function AIActChecker() {
             </div>
           </div>
 
-          {currentStep > 0 && (
+          {currentStep > 0 ? (
             <button
               onClick={() => setCurrentStep(currentStep - 1)}
               className="mt-4 text-sm font-medium text-ink-soft transition hover:text-accent"
             >
               &larr; Vorige vraag
             </button>
+          ) : (
+            <p className="mt-4 text-sm text-ink-soft">
+              Wil je niet de hele vragenlijst doorlopen? Zoek je toepassing op in de{" "}
+              <a
+                href="/tools/ai-act-risicowijzer"
+                className="font-semibold text-accent hover:text-accent-dark"
+              >
+                AI Act risicowijzer
+              </a>{" "}
+              en zie meteen het risiconiveau.
+            </p>
           )}
         </div>
       ) : (
