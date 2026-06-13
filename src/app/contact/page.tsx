@@ -10,26 +10,26 @@ export const metadata: Metadata = {
 const aanbod = [
   {
     titel: "E-learning op maat",
-    vanaf: "vanaf € 7.500 per traject",
+    vanaf: "vanaf € 8.500 per traject",
     beschrijving:
       "Doelgroepspecifieke AI-e-learnings met jullie eigen voorbeelden, tools en beleid. Inclusief intake, doelgroepscan, 3 tot 5 modules met toetsing en certificaten, en een pilotronde. Schaalbaar naar het hele personeelsbestand en onderbouwd voor de AI-geletterdheidsplicht (artikel 4).",
     accent: true,
   },
   {
     titel: "Losse module of training",
-    vanaf: "module vanaf € 2.500 · incompany training op aanvraag",
+    vanaf: "module vanaf € 3.000 · incompany trainingsdag vanaf € 2.500",
     beschrijving:
-      "Een enkele e-learningmodule op maat, of een hands-on incompany training waarin je team meteen zelf oefent met de eigen werkpraktijk. Van Copilot voor controllers tot AI voor developers.",
+      "Een enkele e-learningmodule op maat, of een hands-on incompany trainingsdag waarin je team meteen zelf oefent met de eigen werkpraktijk. Van Copilot voor controllers tot AI voor developers.",
   },
   {
     titel: "Update-abonnement",
-    vanaf: "vanaf € 1.000 per kwartaal",
+    vanaf: "vanaf € 1.250 per kwartaal",
     beschrijving:
-      "AI-kennis veroudert snel. Met een kwartaalupdate houd ik jullie e-learnings actueel: nieuwe voorbeelden, nieuwe tools, en aanpassingen aan veranderende wetgeving.",
+      "AI-kennis veroudert snel. Met een kwartaalupdate houd ik jullie e-learnings actueel: nieuwe voorbeelden, nieuwe tools, en aanpassingen aan veranderende wetgeving. Vrijwel niemand in de markt biedt dit.",
   },
   {
     titel: "Keynote of lezing",
-    vanaf: "op aanvraag",
+    vanaf: "vanaf € 2.500",
     beschrijving:
       "Een inspirerende, toegankelijke en nuchtere lezing over AI voor conferenties, bedrijfsdagen en teambijeenkomsten. Beeldend, met herkenbare voorbeelden.",
   },
@@ -104,9 +104,16 @@ export default function ContactPage() {
           </div>
         ))}
       </div>
-      <p className="mt-4 text-sm text-ink-soft">
-        Prijzen zijn richtbedragen en hangen af van omvang, aantal modules en
-        doelgroepen. Je krijgt altijd een offerte op maat.
+      <p className="mt-4 max-w-2xl text-sm text-ink-soft">
+        Dit zijn richtbedragen vanaf; de exacte prijs hangt af van omvang, aantal
+        modules en doelgroepen. Zo weet je vooraf of het bij je budget past en
+        krijg je altijd een offerte op maat. Past dit (nog) niet bij je budget?
+        Begin dan met de{" "}
+        <a href="/academy" className="font-semibold text-accent hover:text-accent-dark">
+          gratis academy
+        </a>
+        . Voor MKB is er vaak subsidie mogelijk (zoals de SLIM-regeling) die de
+        netto-investering flink verlaagt; ik denk graag mee.
       </p>
 
       {/* Waarom Max */}

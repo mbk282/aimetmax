@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "AI-Pionier - Het boek",
@@ -18,16 +19,35 @@ const winkels = [
 export default function BoekPage() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-16">
-      <p className="text-sm font-semibold uppercase tracking-wider text-accent">
-        Boek &middot; Koninklijke Boom Uitgevers
-      </p>
-      <h1 className="mt-2 text-3xl font-bold text-ink sm:text-4xl">
-        AI-Pionier: Hoe jij ook begint met generatieve AI
-      </h1>
-      <p className="mt-6 text-lg text-ink-soft">
-        Het praktische boek voor iedereen die wil beginnen met generatieve AI.
-        Toegankelijk geschreven, met humor en herkenbare voorbeelden.
-      </p>
+      <div className="flex flex-col items-start gap-8 sm:flex-row">
+        <div className="flex-1">
+          <p className="text-sm font-semibold uppercase tracking-wider text-accent">
+            Boek &middot; Koninklijke Boom Uitgevers
+          </p>
+          <h1 className="mt-2 text-3xl font-bold text-ink sm:text-4xl">
+            AI-Pionier: Hoe jij ook begint met generatieve AI
+          </h1>
+          <p className="mt-6 text-lg text-ink-soft">
+            Het praktische boek voor iedereen die wil beginnen met generatieve AI.
+            Toegankelijk geschreven, met humor en herkenbare voorbeelden.
+          </p>
+        </div>
+        <a
+          href="https://www.managementboek.nl/boek/9789024467129"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="warm-card rotate-2 shrink-0 self-center p-2.5 transition hover:rotate-0 sm:self-start"
+        >
+          <Image
+            src="/ai-pionier-cover.jpg"
+            alt="Omslag van AI-Pionier door Max van den Broek"
+            width={190}
+            height={198}
+            className="rounded-lg object-cover"
+            priority
+          />
+        </a>
+      </div>
 
       <div className="mt-10 space-y-4 text-ink-soft">
         <h2 className="hand text-2xl font-bold text-ink">Wat je leert</h2>

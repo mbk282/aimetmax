@@ -14,6 +14,12 @@ const categories = [
       "Analyseer teksten, prompts en documenten op kwaliteit en compliance.",
     tools: [
       {
+        title: "Document AI-readiness Checker",
+        description:
+          "Hoe goed kan AI (Copilot, RAG, chatbots) jouw document gebruiken? Krijg een score en concrete verbeterpunten.",
+        href: "/tools/ai-readiness-scorer",
+      },
+      {
         title: "EU AI Act Checker",
         description:
           "Beantwoord 9 vragen en ontdek in welke risicocategorie jouw AI-toepassing valt.",

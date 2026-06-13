@@ -136,7 +136,7 @@ const riskInfo: Record<string, { color: string; bg: string; border: string; labe
     deadline: "Transparantieverplichtingen gelden vanaf 2 augustus 2025",
   },
   minimaal: {
-    color: "text-green-700", bg: "bg-green-50", border: "border-green-200",
+    color: "text-sage", bg: "bg-sage-soft", border: "border-sage",
     label: "Minimaal risico AI-systeem",
     description: "Jouw AI-toepassing valt onder 'minimaal risico'. Er zijn geen specifieke verplichtingen, maar vrijwillige gedragscodes worden aangemoedigd.",
     actions: [
@@ -173,28 +173,28 @@ export default function AIActChecker() {
   return (
     <ToolLayout
       title="EU AI Act Risicoclassificatie"
-      description="Beantwoord een paar vragen en ontdek in welke risicocategorie jouw AI-toepassing valt volgens de EU AI Act. Met concrete actiepunten en deadlines."
+      description="Gebruikt jouw organisatie AI, bijvoorbeeld Microsoft Copilot, een chatbot of een selectietool? Beantwoord een paar vragen en ontdek in welke risicocategorie je toepassing valt volgens de EU AI-verordening, met concrete actiepunten en deadlines. Let op: de AI-geletterdheidsplicht (artikel 4) geldt sowieso, ongeacht de uitkomst."
     >
       {!result ? (
         <div className="mx-auto max-w-2xl">
           {/* Progress */}
           <div className="mb-6 flex items-center gap-2">
-            <div className="h-2 flex-1 rounded-full bg-gray-200">
+            <div className="h-2 flex-1 rounded-full bg-line">
               <div
-                className="h-2 rounded-full bg-blue-600 transition-all"
+                className="h-2 rounded-full bg-accent transition-all"
                 style={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
               />
             </div>
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-ink-soft">
               Vraag {currentStep + 1} van {questions.length}
             </span>
           </div>
 
-          <div className="rounded-xl border border-gray-200 bg-white p-8">
-            <h2 className="text-lg font-semibold text-gray-900">
+          <div className="warm-card p-8">
+            <h2 className="text-lg font-semibold text-ink">
               {questions[currentStep].text}
             </h2>
-            <p className="mt-2 text-sm text-gray-500">
+            <p className="mt-2 text-sm text-ink-soft">
               {questions[currentStep].explanation}
             </p>
             <div className="mt-6 space-y-3">
@@ -202,7 +202,7 @@ export default function AIActChecker() {
                 <button
                   key={option.value}
                   onClick={() => handleAnswer(option.value)}
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 text-left text-sm text-gray-700 transition hover:border-blue-400 hover:bg-blue-50"
+                  className="w-full rounded-xl border-2 border-line bg-card px-4 py-3 text-left text-sm text-ink transition hover:border-accent hover:bg-accent-soft"
                 >
                   {option.label}
                 </button>
@@ -213,7 +213,7 @@ export default function AIActChecker() {
           {currentStep > 0 && (
             <button
               onClick={() => setCurrentStep(currentStep - 1)}
-              className="mt-4 text-sm text-gray-500 hover:text-gray-700"
+              className="mt-4 text-sm font-medium text-ink-soft transition hover:text-accent"
             >
               &larr; Vorige vraag
             </button>
@@ -221,44 +221,77 @@ export default function AIActChecker() {
         </div>
       ) : (
         <div className="mx-auto max-w-2xl space-y-6">
-          <div className={`rounded-xl border p-8 ${riskInfo[result].bg} ${riskInfo[result].border}`}>
+          <div className={`rounded-2xl border-2 p-8 ${riskInfo[result].bg} ${riskInfo[result].border}`}>
             <h2 className={`text-2xl font-bold ${riskInfo[result].color}`}>
               {riskInfo[result].label}
             </h2>
-            <p className="mt-3 text-gray-700">{riskInfo[result].description}</p>
-            <p className="mt-2 text-sm font-medium text-gray-600">
+            <p className="mt-3 text-ink">{riskInfo[result].description}</p>
+            <p className="mt-2 text-sm font-medium text-ink-soft">
               Deadline: {riskInfo[result].deadline}
             </p>
           </div>
 
-          <div className="rounded-xl border border-gray-200 bg-white p-6">
-            <h3 className="font-semibold text-gray-900">Wat moet je doen?</h3>
+          <div className="warm-card p-6">
+            <h3 className="font-bold text-ink">Wat moet je doen?</h3>
             <ul className="mt-3 space-y-2">
               {riskInfo[result].actions.map((action, i) => (
-                <li key={i} className="flex gap-2 text-sm text-gray-700">
-                  <span className="font-medium text-blue-600">{i + 1}.</span>
+                <li key={i} className="flex gap-2 text-sm text-ink-soft">
+                  <span className="font-semibold text-accent">{i + 1}.</span>
                   {action}
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-xs text-gray-500">
+          {/* Lead bridge: geldt voor elke uitkomst */}
+          <div className="warm-card bg-sage-soft p-6">
+            <h3 className="hand text-xl font-bold text-ink">
+              Hoe dan ook: regel de AI-geletterdheid
+            </h3>
+            <p className="mt-2 text-sm text-ink-soft">
+              Welke categorie hier ook uitkomt, artikel 4 van de AI-verordening
+              verplicht je sinds 2025 om iedereen die met AI werkt er wegwijs in te
+              maken. De gratis academy is daar precies voor gemaakt; stuur 'm door
+              naar je team. Wil je het aantoonbaar en op maat voor jouw organisatie,
+              met jullie eigen voorbeelden en beleid? Dan denk ik graag mee.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <a href="/academy" className="btn btn-primary">
+                Naar de gratis academy
+              </a>
+              <a
+                href={
+                  "mailto:max@aimetmax.nl?subject=" +
+                  encodeURIComponent(`AI Act-check: ${riskInfo[result].label}`) +
+                  "&body=" +
+                  encodeURIComponent(
+                    [
+                      "Hoi Max,",
+                      "",
+                      `Uit jouw AI Act-checker kwam: ${riskInfo[result].label}.`,
+                      "",
+                      "Ik wil hier graag over sparren. Kun je meekijken?",
+                      "",
+                      "Groet,",
+                    ].join("\n"),
+                  )
+                }
+                className="btn btn-ghost"
+              >
+                Mail mijn uitslag naar Max
+              </a>
+            </div>
+          </div>
+
+          <div className="rounded-xl border-2 border-line bg-card p-4 text-xs text-ink-soft">
             <p>
-              <strong>Let op:</strong> Dit is een indicatieve tool, geen juridisch advies. De
-              exacte classificatie hangt af van specifieke omstandigheden. Wil je zeker weten
-              of jouw organisatie compliant is?{" "}
-              <a href="/contact" className="text-blue-600 hover:underline">
-                Neem contact op
-              </a>{" "}
-              voor een AI Act assessment.
+              <strong className="text-ink">Let op:</strong> dit is een indicatieve
+              tool, geen juridisch advies. De exacte classificatie hangt af van de
+              specifieke omstandigheden van jouw toepassing.
             </p>
           </div>
 
-          <button
-            onClick={reset}
-            className="rounded-lg border border-gray-300 px-6 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
-          >
+          <button onClick={reset} className="btn btn-ghost">
             Opnieuw beginnen
           </button>
         </div>
