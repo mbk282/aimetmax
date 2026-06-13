@@ -1,0 +1,97 @@
+---
+title: "Hoe werkt AI? Zo werkt een taalmodel echt, in gewone taal"
+description: "Hoe werkt een taalmodel zoals ChatGPT? Uitleg over tokens, woordvoorspelling, waarom AI soms verzint en hoe het naar beeld kijkt. Zonder wiskunde."
+date: "2026-06-13"
+author: "Max van den Broek"
+tags: ["Hoe werkt AI", "Taalmodel", "AI-geletterdheid"]
+---
+
+Bijna iedereen gebruikt inmiddels weleens een AI-tool, maar weinig mensen kunnen uitleggen wat er onder de motorkap gebeurt. Dat hoeft ook niet, tot je merkt dat de antwoorden soms wankel zijn en je niet weet waarom. Dan helpt het om de basis te snappen.
+
+Goed nieuws: hoe een taalmodel werkt, valt prima uit te leggen zonder een formule of een regel code. In dit artikel leg ik het uit in gewone taal. Aan het eind weet je wat tokens zijn, waarom AI soms dingen verzint en hoe het naar je foto's kijkt. Wil je het daarna echt onder de knie krijgen met oefeningen en interactieve demo's, dan staat de gratis e-learning [Hoe AI echt werkt](/academy/module-hoe-ai-werkt.html) klaar.
+
+## Geen regels, maar patronen
+
+Begin bij het verschil met de software die je al kende. Een rekenmachine, je boekhoudpakket, je routeplanner: dat zijn programma's waarin iemand regels heeft opgeschreven. Voer dezelfde invoer in en je krijgt altijd hetzelfde eruit. Tik twee keer 8 maal 7 in en je krijgt twee keer 56. Voorspelbaar en betrouwbaar.
+
+Generatieve AI, de familie waar ChatGPT, Microsoft Copilot, Claude en Gemini bij horen, zit fundamenteel anders in elkaar. **Niemand heeft de regels geschreven.** Het model heeft een enorme hoeveelheid tekst bekeken en daar zelf statistische patronen uit gehaald: welke woorden bij elkaar horen, hoe een zin loopt, hoe een klacht klinkt en hoe een vriendelijk antwoord eruitziet.
+
+Dat verklaart meteen iets wat je misschien al opviel. Stel dezelfde vraag twee keer en je krijgt vaak **twee verschillende antwoorden**. Geen storing, maar een direct gevolg van hoe het ding gemaakt is. Het volgt geen vast recept, het werkt met patronen en kansen.
+
+> Een rekenmachine is geprogrammeerd. Een taalmodel heeft gelezen.
+
+## Hoe werkt een taalmodel: het volgende woord voorspellen
+
+Hier zit de kern. Alles wat een taalmodel doet, komt neer op één spel: **gegeven de tekst tot nu toe, wat komt er waarschijnlijk hierna?** Dat is het. Geen database vol kant-en-klare antwoorden, geen verborgen redeneermachine. Eén voorspelling, dan opnieuw, woord voor woord.
+
+Een voorbeeld. Stel je voert in: "De vergadering van vrijdag wordt". Het model heeft talloze zinnen gezien die zo beginnen en kent de waarschijnlijke vervolgen:
+
+- "verplaatst" (hoge kans, klinkt als duizend kantoormails)
+- "verzet" (ook hoog)
+- "afgeblazen" (kan, iets lager)
+- "geannuleerd vanwege taart" (heel lage kans, maar grammaticaal klopt het)
+
+Het model kiest meestal een waarschijnlijk vervolg, plakt het achter de zin, en speelt het spel opnieuw met die langere zin als nieuwe invoer. Zo bouwt het woord voor woord een heel antwoord op.
+
+Twee dingen vallen hier op hun plek. Ten eerste: de meest waarschijnlijke zin is vaak ook de saaiste. Daarom voelt onbewerkte AI-tekst soms zo voorspelbaar en braaf. Ten tweede: omdat het model niet altijd de absolute topkandidaat pakt maar bewust wat variatie inbouwt, krijg je die verschillende antwoorden op dezelfde vraag.
+
+Misschien denk je: zo simpel kan ChatGPT toch niet zijn? Toch wel. Het verschil met dit kleine voorbeeld zit niet in het mechanisme, maar in de **schaal**. Een modern model is getraind op een gigantische hoeveelheid tekst, heeft een enorm netwerk en kan duizenden woorden tegelijk terugkijken in plaats van een paar. Hetzelfde spel, een totaal andere maat.
+
+## Wat zijn tokens, en waarom je dat moet weten
+
+Eén nuance die veel uitlegt: een taalmodel leest geen woorden zoals jij. Voordat het iets met je tekst doet, knipt het hem in stukjes. Die stukjes heten **tokens**. Een kort, veelvoorkomend woord is vaak één token. Een lang of zeldzaam woord wordt in stukken geknipt, zodat een woord als "verzekeringspolis" voor het model uiteenvalt in een paar losse brokken.
+
+Waarom is dat relevant voor jou? Twee praktische redenen.
+
+1. **De context is begrensd.** Een model kan maar een beperkt aantal tokens tegelijk overzien. Plak je een veel te lang document in de chat, dan valt er aan de randen iets buiten beeld en kan het model details missen.
+2. **Je betaalt per token.** Zet je AI zakelijk in via een API, dan reken je af per token, niet per vraag. Een lange lap tekst kost dus letterlijk meer dan een korte, scherpe prompt.
+
+Tokens verklaren ook een klassieke blunder. Vraag een taalmodel hoe vaak de letter r in "strawberry" voorkomt en lange tijd antwoordden de meeste modellen vol overtuiging "twee". Het zijn er drie. Het model zag geen losse letters, maar een paar tokens, en daarin zijn de afzonderlijke letters niet te tellen. Moderne modellen pakken er vaak een hulpje bij en hebben dit afgeleerd, maar het laat goed zien dat een taalmodel de wereld anders ziet dan jij.
+
+## Waarom AI soms dingen verzint (hallucinaties)
+
+Nu de vraag die in elke training terugkomt: waarom verzint AI soms met droge stem iets wat helemaal niet klopt? Een verzonnen bronvermelding, een wetsartikel dat niet bestaat, een citaat dat nooit is uitgesproken. Dat heet **hallucineren**.
+
+Met wat je nu weet, is het eigenlijk logisch. Het model voorspelt steeds het meest waarschijnlijke volgende woord. Het heeft geen ingebouwd besef van "dit weet ik wel" tegenover "dit weet ik niet". Vraag je naar een onderwerp waar het weinig of geen patronen voor heeft, dan stopt het niet. Het vult de leegte op met tekst die **plausibel klinkt**, want plausibel klinken is precies waar het in getraind is.
+
+Vergelijk het met iemand die heel vlot praat en nooit "geen idee" zegt. Soms heeft die persoon gelijk, soms vult hij gewoon vloeiend iets in. Het verschil is dat een mens vaak twijfel laat doorklinken, en een taalmodel klinkt standaard even stellig of het nu klopt of niet.
+
+Wat betekent dat voor de praktijk?
+
+- **Feiten, namen, cijfers, bronnen en citaten: altijd zelf controleren.** Hoe overtuigend het ook klinkt.
+- **Voor open taken** (een eerste opzet schrijven, herschrijven, brainstormen, samenvatten van tekst die je zelf aanlevert) is het risico klein, want daar kun je het resultaat direct zelf beoordelen.
+- **Geef het model houvast.** Laat het werken met een document of bron die jij meelevert in plaats van puur uit het geheugen te putten. Dan zijn er patronen om op te leunen en daalt de kans op verzinsels.
+
+Hallucinaties zijn dus geen bug die er ooit volledig uit gaat. Ze horen bij hoe de techniek werkt. De kunst is weten wanneer je scherp moet controleren en wanneer niet, en dat is precies een stuk waar mensen in een training het meest aan hebben.
+
+## Hoe AI naar je foto's kijkt
+
+Moderne AI-tools kunnen ook beeld aan: upload een foto en stel er vragen over. Een bonnetje uitlezen, een grafiek uitleggen, een foutmelding op een schermafbeelding ontcijferen, een volgekrabbeld whiteboard omzetten naar nette notulen. Dat werkt vaak verbazend goed.
+
+Hoe kan een woordvoorspeller dat? Met hetzelfde trucje als bij tekst. De foto wordt **opgeknipt in stukjes**, een soort beeld-tokens. Die stukjes gaan samen met jouw vraag het model in, en het model voorspelt vervolgens gewoon weer woord voor woord een antwoord.
+
+Maar bij dat opknippen gaat iets verloren: **precieze ruimtelijke informatie**. Het model wordt sterk in *wat* er op de foto staat, en blijft zwak in *waar* iets precies zit, hoe groot het is en hoe ver het weg is. Er is geen meetlat, alleen stukjes en patronen.
+
+Daaruit volgt een simpele tweedeling die je kunt onthouden:
+
+- **Wel op vertrouwen:** beschrijven, uitlezen, structureren, herkennen. "Wat staat hier?" "Zet deze tabel om in een lijst." "Welke foutmelding zie ik?"
+- **Niet op vertrouwen:** maten, afstanden, exacte posities en het precies tellen van objecten op een foto. Het antwoord klinkt stellig, maar het is een schatting op uiterlijk, geen meting.
+
+## Wat dit je oplevert
+
+Als je deze vier dingen vasthoudt, praat je al scherper over AI dan veel mensen die er dagelijks mee werken:
+
+- Een taalmodel volgt geen regels, het werkt met patronen en kansen. Daarom varieert het.
+- Het speelt steeds één spel: voorspel het volgende stukje tekst.
+- Het ziet tokens, geen letters, en heeft geen ingebouwd besef van wat het wel of niet weet. Daarom verzint het soms.
+- Bij beeld weet het goed *wat* er staat, niet *waar* of *hoe groot*.
+
+Dat is precies de geletterdheid die het verschil maakt tussen AI gebruiken op de gok en weten wanneer je het kunt vertrouwen.
+
+## Verder leren
+
+Dit artikel is de korte route. De volledige uitleg, met interactieve demo's waarin je zelf het woordvoorspel-spel speelt en ziet hoe een zin in tokens uiteenvalt, staat in de gratis e-learning [Hoe AI echt werkt](/academy/module-hoe-ai-werkt.html). Je hoeft geen account aan te maken en er komt geen wiskunde aan te pas. Een overzicht van alle gratis modules vind je in de [Academy](/academy).
+
+Wil je je eigen prompts meteen scherper maken, kijk dan bij de [tools](/tools): daar staat onder andere een checker die je prompt langsloopt en concrete verbeterpunten geeft.
+
+En zoekt je organisatie een training die hierop voortbouwt, toegesneden op jullie eigen werk en voorbeelden? Ik maak op maat e-learnings en geef hands-on trainingen waarin teams direct zelf aan de slag gaan. [Neem contact op](/contact) en dan kijken we wat past.

@@ -1,0 +1,85 @@
+---
+title: "Verantwoord AI gebruiken op het werk: de 4 risico's en hoe je ze afdekt"
+description: "Verantwoord AI gebruiken op het werk: zo check je output, bewaak je privacy, herken je bias en weet je wat je zelf blijft doen. Met de chat-vuistregel."
+date: "2026-06-13"
+author: "Max van den Broek"
+tags: ["Verantwoord AI", "AI-risico's", "Privacy", "AI-geletterdheid"]
+---
+
+De meeste mensen die AI op hun werk gebruiken, doen het op gevoel. Soms gaat dat prima, soms plakken ze net iets te makkelijk een klantbestand in de eerste de beste chatbot. Verantwoord AI gebruiken op het werk is geen rem op je productiviteit, het is juist de voorwaarde om AI serieus in te zetten. Wie weet waar het misgaat, durft meer.
+
+De risico's komen neer op vier dingen: de output kan fout zijn, je data kan weglekken, het model heeft vooroordelen, en je verleert vaardigheden die je wilt houden. Hieronder loop ik ze langs, met een paar vuistregels die je vandaag kunt toepassen.
+
+## 1. De output checken: zelfverzekerd is niet hetzelfde als juist
+
+Een taalmodel maakt af wat plausibel klinkt. Meestal klopt dat ook. Maar als het model iets niet weet, krijg je geen "dat weet ik niet", je krijgt een antwoord dat **net zo overtuigend klinkt als een goed antwoord**. Dat is een hallucinatie, en de gevaarlijkste plek waar het opduikt zijn bronvermeldingen.
+
+Een bronverwijzing heeft een vaste vorm (auteur, jaartal, titel) en die vorm speelt het model perfect na. Er zijn drie smaken:
+
+- **De bron bestaat niet.** Naam klinkt echt, jaartal past, titel is precies wat je zocht. Alleen is het rapport nooit geschreven.
+- **De bron bestaat, maar is niet gelezen.** Het model noemt een echt document en beweert dat jouw conclusie erin staat, zonder dat te controleren.
+- **De bron is verkeerd begrepen.** Het cijfer komt uit de verkeerde tabel, de conclusie is net iets stelliger dan de onderzoekers hem opschreven. Dit is de gemeenste, want alles lijkt te kloppen.
+
+Daarnaast heeft een taalmodel een paar vaste streken: het praat met je mee (vraag "weet je het zeker?" en het verandert ook een goed antwoord), het raakt instructies uit het begin van een lang gesprek kwijt, en het rekent overmoedig. Geen van die dingen kondigt zichzelf aan.
+
+De echt riskante fout zit alleen niet in het model, maar in jou. De eerste week check je alles. Drie maanden later heeft het zo vaak gelijk gehad dat je vrijwel niets meer nakijkt, en precies dan glipt de fout erdoor. Dat heet automation bias, hetzelfde mechanisme als de bestuurder die blind achter de navigatie aan een doodlopende weg in rijdt.
+
+Wat je eraan doet:
+
+- **Open de bron zelf.** Een bron is pas een bron als jij hem geopend en de passage teruggevonden hebt.
+- **Koppel je controle aan het gevolg, niet aan je gevoel.** Een brainstorm mag los, een contract of een cijfer in een rapportage check je grondig, ook na vijftig keer goed.
+- **Vraag om tegenargumenten** in plaats van bevestiging: "wat pleit hiertegen?" werkt beter dan "klopt dit?".
+
+Jij bent verantwoordelijk voor wat er onder jouw naam de deur uitgaat, niet het model.
+
+## 2. Privacy: waar gaat je tekst eigenlijk heen?
+
+Je plakt tekst in een chatbot en drukt op Enter. Bij een **publieke tool** zoals een gratis consumentenversie gaat die tekst naar de servers van het AI-bedrijf, vaak buiten Europa. Daar kan hij worden opgeslagen, bekeken voor kwaliteitscontrole en standaard gebruikt om nieuwe modellen te trainen. Versturen is één klik; terughalen is geen functie.
+
+Een **afgeschermde zakelijke omgeving** (de Copilot- of ChatGPT-omgeving die je werkgever inricht) is iets heel anders: daar liggen contractuele afspraken onder, er wordt niet op jouw data getraind en de opslag is geregeld, vaak binnen Europa. Daarom is "welke tool gebruik ik?" net zo belangrijk als "welke data deel ik?".
+
+Wat telt als vertrouwelijk, kent twee lagen:
+
+- **De wet** legt de ondergrens: persoonsgegevens. Namen, e-mailadressen, BSN, gezondheidsinformatie. Daarvoor geldt de AVG, met AI of zonder. Klantgegevens doorsturen naar een dienst buiten de EU zonder dat dat geregeld is, is geen slordigheid maar een datalek.
+- **Je organisatie** bepaalt de rest: plannen die nog niet zijn aangekondigd, financiële cijfers, broncode, contracten, personeelsdossiers. En die grens verschilt per organisatie. Voor een gemeente is een conceptnota bijna openbaar-in-wording, voor een beursgenoteerd bedrijf is hetzelfde document koersgevoelig.
+
+Er bestaat dus geen universeel lijstje. De enige vraag die altijd werkt: wat zegt het beleid van jouw organisatie? Is er geen beleid, vraag ernaar. Je bent gegarandeerd niet de enige die het wil weten.
+
+### De "mag dit de chat in?"-vuistregel
+
+Tot je het beleid kent, werkt deze simpele regel verrassend goed:
+
+> **Wat al publiek beschikbaar is, mag de chat in. De rest niet.**
+
+Een openbaar persbericht laten samenvatten? Prima, dat staat al op internet. Een wetstekst in gewone taal laten uitleggen? Ga je gang. Maar klantnamen in een publieke chatbot plakken, wachtwoorden of API-sleutels meesturen om code te laten debuggen, of notulen van een vertrouwelijke vergadering laten structureren op een publieke site: niet doen.
+
+En deel sowieso niet meer dan nodig. "Ik werk bij een gemeente" werkt net zo goed als de naam van de gemeente, en een geanonimiseerde casus net zo goed als een echte. Let er wel op dat anonimiseren niet altijd genoeg is: een combinatie van details ("onze grootste klant in Groningen") kan alsnog herleidbaar zijn. Twijfel je in het echt? De volgorde is: beleid opzoeken, navragen, of niet doen. In die volgorde.
+
+## 3. Bias: je krijgt niet wat je vraagt, maar wat het vaakst voorkwam
+
+AI heeft vooroordelen, en dat is meetbaar. De scheefheid komt van twee kanten: de **trainingsdata** (meer Engels dan Nederlands, meer Amerika dan Europa, meer verleden dan heden) en de **correcties** van de makers, die bijsturen maar daarbij eigen keuzes en soms overcorrecties inbrengen. Bias is daarom geen bug die een keer wordt opgelost, maar een eigenschap waar je mee leert werken.
+
+Bij beeld zie je het direct: vraag om een wijnglas "tot de rand gevuld" en je kreeg jarenlang een half vol glas, omdat vrijwel elke wijnfoto op internet er zo uitziet. Hetzelfde mechanisme bepaalt wie er verschijnt bij "een directeur" of "een verpleegkundige". En het stopt niet bij plaatjes. Wil je het zelf zien, doe deze test van dertig seconden in je eigen AI-tool:
+
+1. Vraag om tien willekeurige Nederlandse voornamen. Grote kans dat je Daan, Emma en Lucas krijgt, en geen Mohammed of Fatima, terwijl Mohammed in de grote steden al jaren bovenaan de jongensnamenlijstjes staat.
+2. Vraag daarna: zet achter elke naam een realistisch maandsalaris. Grote kans dat de mannen meer verdienen dan de vrouwen.
+
+Beide patronen komen recht uit de trainingsdata. Niet erg als je het ziet, wel erg als dit ongezien in testdata, een HR-tool of een arbeidsmarktanalyse belandt. Niet voor niets vallen AI-toepassingen rond werving en beoordeling onder het hoog-risicoregime van de AI-verordening. Wil je weten in welke categorie jouw toepassing valt, dan helpt de [EU AI Act Checker](/tools/ai-act-checker).
+
+Bias zit trouwens ook in taal. AI schrijft van nature een soort Amerikaans Nederlands: indirecter, formeler, met meer plichtplegingen dan wij gewend zijn. Vraag je "maak dit professioneler", dan krijg je vaak vooral Amerikáánser. Zeg dus specifiek wat je wilt ("korter, directer, geen plichtplegingen") en houd je eigen toon vast.
+
+## 4. Wat je zelf blijft doen
+
+Kun jij nog kaartlezen? Sinds navigatie het overnam, kan bijna niemand het nog. Met AI staat diezelfde vraag nu open voor schrijven, analyseren, samenvatten en code lezen: wat je uitbesteedt, oefen je niet meer. Dat heet deskilling. Voor AI bestaan nog geen normen zoals "eerst hoofdrekenen, daarna de rekenmachine", dus die moet je per vak en team uitvinden. Drie vragen helpen:
+
+- **Wat is de kern van mijn vak?** De vaardigheid waarmee jij het verschil maakt, blijf je zelf doen, of je doet het eerst zelf en laat AI als tweede paar ogen meekijken.
+- **Wat is corvee dat ik allang beheers?** Notulen uitwerken, standaardmails, formats invullen: offload het gerust, daar verleer je niets.
+- **Wat wil ik juist leren?** Gebruik AI daar als oefenmaatje dat je werk bekritiseert, niet als vervanger die het overneemt.
+
+Voor teams komt er een vraag bij: als AI alle eerste versies schrijft, waar leert de junior dan schrijven? En één gewoonte die altijd helpt: zeg het er gewoon bij als AI meeschreef. Jouw naam eronder betekent jouw verantwoordelijkheid, met of zonder AI.
+
+## Verder leren: de gratis e-learning
+
+Dit artikel geeft je de hoofdlijnen. De verdieping zit in de gratis module [Verantwoord omgaan met AI](/academy/module-verantwoord-ai.html): zo'n 30 minuten, zonder account, met een interactieve oefening "mag dit de chat in?", de namen-test en een quiz met certificaat aan het eind. Wil je breder beginnen, kijk dan op de [gratis AI-academy](/academy) met korte e-learnings over hoe AI werkt en praktisch werken met AI.
+
+Wil je dat jouw team of organisatie AI veilig én productief gaat gebruiken? Ik maak [maatwerk e-learnings en trainingen op maat](/contact), doelgroepgericht en met ruimte om zelf te oefenen, zodat verantwoord AI-gebruik niet bij een folder blijft maar echt landt op de werkvloer. [Neem gerust contact op](/contact).

@@ -273,6 +273,33 @@ function analyze(opts: {
     });
   }
 
+  // 7. Metadata-kop (titel/datum/eigenaar/samenvatting/tags)
+  if (woorden >= 50) {
+    const top = clean.slice(0, 600).toLowerCase();
+    const velden = ["titel", "datum", "eigenaar", "owner", "auteur", "samenvatting", "tags"];
+    const hits = velden.filter((v) => new RegExp("(^|\\n)\\s*" + v + "\\s*:", "m").test(top)).length;
+    if (hits >= 3) {
+      checks.push({
+        id: "metadata",
+        titel: "Metadata-kop aanwezig",
+        status: "good",
+        weight: 1,
+        detail:
+          "Het document begint met metadata (zoals titel, datum, eigenaar, samenvatting of tags). Dat helpt zowel de zoekstap als de lezer.",
+      });
+    } else {
+      checks.push({
+        id: "metadata",
+        titel: "Geen metadata-kop",
+        status: "warn",
+        weight: 1,
+        detail:
+          "Bovenaan ontbreekt een kort metadata-blok. Een goed vindbaar document begint met een paar regels context.",
+        tip: "Zet vijf regels bovenaan: Titel, Datum, Eigenaar, Samenvatting en Tags. Spreek vaste tags af; consistentie geeft betere zoekresultaten.",
+      });
+    }
+  }
+
   // Score
   const scored = checks.filter((c) => c.weight > 0);
   const totalW = scored.reduce((s, c) => s + c.weight, 0);
