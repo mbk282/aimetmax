@@ -153,7 +153,7 @@ export default function VacaturetekstChecker() {
             onChange={(e) => setText(e.target.value)}
             placeholder="Plak hier je vacaturetekst..."
             rows={10}
-            className="w-full rounded-xl border border-line p-4 text-ink-soft focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-xl border border-line p-4 text-ink-soft focus:border-accent focus:ring-accent"
           />
           <div className="mt-2 flex justify-end">
             <button

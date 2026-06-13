@@ -34,7 +34,7 @@ export default function HtmlToMarkdown() {
             onChange={(e) => setHtml(e.target.value)}
             placeholder="Plak hier je HTML..."
             rows={10}
-            className="mt-1 w-full rounded-xl border border-line p-4 font-mono text-sm text-ink focus:border-blue-500 focus:ring-blue-500"
+            className="mt-1 w-full rounded-xl border border-line p-4 font-mono text-sm text-ink focus:border-accent focus:ring-accent"
           />
         </div>
         <button

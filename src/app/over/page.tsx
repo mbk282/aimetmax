@@ -23,9 +23,30 @@ const testimonials = [
   },
 ];
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Max van den Broek",
+  url: "https://aimetmax.nl/over",
+  image: "https://aimetmax.nl/max-van-den-broek.jpg",
+  jobTitle: "AI-trainer en spreker",
+  sameAs: ["https://www.linkedin.com/in/maxbroek"],
+  knowsAbout: [
+    "Kunstmatige intelligentie",
+    "AI-geletterdheid",
+    "Generatieve AI",
+    "EU AI Act",
+  ],
+  worksFor: { "@type": "Organization", name: "AI met Max", url: "https://aimetmax.nl" },
+};
+
 export default function OverPage() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
         <div className="warm-card -rotate-2 p-2.5 shrink-0">
           <Image

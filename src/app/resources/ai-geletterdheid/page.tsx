@@ -169,30 +169,30 @@ const sections = [
 ];
 
 const tagColors: Record<string, string> = {
-  Gratis: "bg-green-100 text-green-700",
-  Video: "bg-purple-100 text-purple-700",
-  Officieel: "bg-blue-100 text-blue-700",
-  Tool: "bg-amber-100 text-amber-700",
-  Boek: "bg-rose-100 text-rose-700",
-  Nieuwsbrief: "bg-cyan-100 text-cyan-700",
+  Gratis: "bg-sage-soft text-sage",
+  Video: "bg-accent-soft text-accent-dark",
+  Officieel: "bg-paper text-ink-soft",
+  Tool: "bg-hl text-ink",
+  Boek: "bg-accent-soft text-accent-dark",
+  Nieuwsbrief: "bg-sage-soft text-sage",
 };
 
 export default function AIGeletterdheidResources() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-20">
-      <h1 className="text-3xl font-bold text-gray-900">
+      <h1 className="text-3xl font-bold tracking-tight text-ink">
         AI-geletterdheid Resources
       </h1>
-      <p className="mt-4 text-gray-600">
+      <p className="mt-4 text-ink-soft">
         De beste cursussen, video&rsquo;s, handleidingen en tools om
         AI-geletterdheid te ontwikkelen. Samengesteld voor Nederlandse
         organisaties en professionals.
       </p>
-      <p className="mt-2 text-sm text-gray-400">
+      <p className="mt-2 text-sm text-ink-soft">
         Lees ook:{" "}
         <Link
           href="/blog/ai-geletterdheid-verplicht"
-          className="text-blue-600 hover:underline"
+          className="font-medium text-accent hover:text-accent-dark"
         >
           AI-geletterdheid is verplicht: praktisch stappenplan
         </Link>
@@ -201,7 +201,7 @@ export default function AIGeletterdheidResources() {
       <div className="mt-12 space-y-12">
         {sections.map((section) => (
           <div key={section.title}>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="hand text-2xl font-bold text-ink">
               {section.title}
             </h2>
             <div className="mt-4 space-y-4">
@@ -215,17 +215,17 @@ export default function AIGeletterdheidResources() {
                       ? undefined
                       : "noopener noreferrer"
                   }
-                  className="block rounded-xl border border-gray-200 p-5 transition hover:border-blue-300 hover:shadow-sm"
+                  className="block rounded-xl border-2 border-line bg-card p-5 transition hover:border-accent hover:-translate-y-0.5"
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="font-medium text-gray-900">{item.name}</h3>
+                    <h3 className="font-bold text-ink">{item.name}</h3>
                     <span
-                      className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${tagColors[item.tag] || "bg-gray-100 text-gray-600"}`}
+                      className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${tagColors[item.tag] || "bg-paper text-ink-soft"}`}
                     >
                       {item.tag}
                     </span>
                   </div>
-                  <p className="mt-1 text-sm text-gray-500">
+                  <p className="mt-1 text-sm text-ink-soft">
                     {item.description}
                   </p>
                 </a>
@@ -235,15 +235,15 @@ export default function AIGeletterdheidResources() {
         ))}
       </div>
 
-      <div className="mt-16 rounded-xl bg-gray-50 p-8">
-        <h3 className="font-semibold text-gray-900">
+      <div className="warm-card mt-16 bg-sage-soft p-8">
+        <h3 className="hand text-2xl font-bold text-ink">
           Zelf beginnen of samen aanpakken?
         </h3>
-        <p className="mt-2 text-sm text-gray-600">
+        <p className="mt-2 text-sm text-ink-soft">
           De laagdrempeligste eerste stap is de gratis{" "}
           <a
             href="/academy"
-            className="font-medium text-blue-600 hover:text-blue-700"
+            className="font-medium text-accent hover:text-accent-dark"
           >
             AI-academy
           </a>
@@ -252,10 +252,7 @@ export default function AIGeletterdheidResources() {
           sector, dan maak ik maatwerk e-learnings en trainingen op maat,
           doelgroepgericht en met ruimte om zelf te oefenen.
         </p>
-        <Link
-          href="/contact"
-          className="mt-4 inline-block rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-medium text-white hover:bg-blue-700"
-        >
+        <Link href="/contact" className="btn btn-primary mt-5">
           Neem contact op
         </Link>
       </div>

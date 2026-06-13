@@ -133,7 +133,7 @@ const riskInfo: Record<string, { color: string; bg: string; border: string; labe
       "Informeer gebruikers over de mogelijkheden en beperkingen van het systeem",
       "Bij deepfakes: verplichte labeling",
     ],
-    deadline: "Transparantieverplichtingen gelden vanaf 2 augustus 2025",
+    deadline: "Transparantieverplichtingen gelden vanaf 2 augustus 2026",
   },
   minimaal: {
     color: "text-sage", bg: "bg-sage-soft", border: "border-sage",

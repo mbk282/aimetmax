@@ -109,7 +109,7 @@ export default function EmailOnderwerpScorer() {
             onChange={(e) => setSubject(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleScore()}
             placeholder="Typ je e-mail onderwerpregel..."
-            className="w-full rounded-xl border border-line px-4 py-3 text-lg text-ink focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-xl border border-line px-4 py-3 text-lg text-ink focus:border-accent focus:ring-accent"
           />
           <div className="mt-2 flex items-center justify-between">
             <span className="text-xs text-ink-soft">{subject.length} tekens</span>

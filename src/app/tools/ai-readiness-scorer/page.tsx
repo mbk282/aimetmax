@@ -397,6 +397,7 @@ export default function AIReadinessScorer() {
     <ToolLayout
       title="Document AI-readiness Checker"
       description="Hoe goed kan AI jouw document gebruiken? Plak tekst of upload een .docx, .pdf, .md of .txt en krijg een score met concrete verbeterpunten. Alles gebeurt in je browser; je bestand wordt niet geupload."
+      hideCta
     >
       {!result ? (
         <div className="mx-auto max-w-2xl">

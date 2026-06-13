@@ -62,7 +62,7 @@ function InputField({
           step={step}
           value={value}
           onChange={(e) => onChange(Number(e.target.value))}
-          className="w-full rounded-lg border border-line px-3 py-2 text-ink focus:border-blue-500 focus:ring-blue-500"
+          className="w-full rounded-lg border border-line px-3 py-2 text-ink focus:border-accent focus:ring-accent"
         />
         {suffix && <span className="text-sm text-ink-soft">{suffix}</span>}
       </div>
@@ -154,7 +154,7 @@ export default function AIROICalculator() {
           <div className="rounded-xl bg-green-50 p-6">
             <h2 className="font-semibold text-green-900">Return on Investment</h2>
             <p className="mt-2 text-4xl font-bold text-green-600">
-              {results.roi > 0 ? `${results.roi.toFixed(0)}%` : "—"}
+              {results.roi > 0 ? `${results.roi.toFixed(0)}%` : "-"}
             </p>
             <p className="mt-1 text-sm text-green-700">
               ROI in het eerste jaar
@@ -163,7 +163,7 @@ export default function AIROICalculator() {
           <div className="rounded-xl bg-amber-50 p-6">
             <h2 className="font-semibold text-amber-900">Terugverdientijd</h2>
             <p className="mt-2 text-4xl font-bold text-amber-600">
-              {results.paybackMonths > 0 ? `${results.paybackMonths} maanden` : "—"}
+              {results.paybackMonths > 0 ? `${results.paybackMonths} maanden` : "-"}
             </p>
             <p className="mt-1 text-sm text-amber-700">
               Voordat de investering is terugverdiend

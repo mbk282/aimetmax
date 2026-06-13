@@ -116,7 +116,7 @@ export default function LinkedInPostOptimizer() {
             onChange={(e) => setPost(e.target.value)}
             placeholder={"Plak hier je LinkedIn post...\n\nTip: een goede post begint met een sterke eerste regel die nieuwsgierig maakt."}
             rows={14}
-            className="w-full rounded-xl border border-line p-4 text-ink focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-xl border border-line p-4 text-ink focus:border-accent focus:ring-accent"
           />
           <div className="mt-2 flex items-center justify-between">
             <span className="text-xs text-ink-soft">{post.length} tekens</span>

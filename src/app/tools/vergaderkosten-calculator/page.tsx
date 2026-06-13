@@ -97,7 +97,7 @@ export default function VergaderkostenCalculator() {
               </button>
               <button
                 onClick={() => { setRunning(false); setElapsed(0); }}
-                className="rounded-lg border border-gray-600 px-6 py-2 text-sm font-medium text-gray-300 hover:bg-gray-800"
+                className="rounded-lg border border-paper px-6 py-2 text-sm font-medium text-paper hover:bg-ink-soft"
               >
                 Reset
               </button>

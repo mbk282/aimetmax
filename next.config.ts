@@ -16,24 +16,25 @@ const nextConfig: NextConfig = {
       { source: "/gratis-e-mailcursus/", destination: "/contact", permanent: true },
       { source: "/bedankt", destination: "/", permanent: true },
       { source: "/bedankt/", destination: "/", permanent: true },
+      // Oude WordPress-URLs zonder huidig equivalent: naar dichtstbijzijnde relevante pagina (geen 404)
       {
         source: "/gratis-custom-gpts-van-ai-pionier",
-        destination: "/blog/custom-gpts-ai-pionier",
+        destination: "/academy",
         permanent: true,
       },
       {
         source: "/gratis-custom-gpts-van-ai-pionier/",
-        destination: "/blog/custom-gpts-ai-pionier",
+        destination: "/academy",
         permanent: true,
       },
       {
         source: "/merkbekendheid-nps-schatten-ai",
-        destination: "/blog/merkbekendheid-nps-schatten-ai",
+        destination: "/blog",
         permanent: true,
       },
       {
         source: "/merkbekendheid-nps-schatten-ai/",
-        destination: "/blog/merkbekendheid-nps-schatten-ai",
+        destination: "/blog",
         permanent: true,
       },
     ];

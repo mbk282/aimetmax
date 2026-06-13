@@ -79,7 +79,7 @@ export default function AIWoordenlijst() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Zoek een term..."
-            className="flex-1 rounded-lg border border-line px-4 py-2 text-ink focus:border-blue-500 focus:ring-blue-500"
+            className="flex-1 rounded-lg border border-line px-4 py-2 text-ink focus:border-accent focus:ring-accent"
           />
           <div className="flex flex-wrap gap-2">
             <button

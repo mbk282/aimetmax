@@ -160,7 +160,7 @@ export default function EmailHandtekeningGenerator() {
                 onChange={(e) => update(f.key, e.target.value)}
                 placeholder={f.placeholder}
                 required={f.required}
-                className="w-full rounded-xl border border-line px-4 py-2.5 text-ink placeholder:text-ink-soft focus:border-blue-500 focus:ring-blue-500"
+                className="w-full rounded-xl border border-line px-4 py-2.5 text-ink placeholder:text-ink-soft focus:border-accent focus:ring-accent"
               />
             </div>
           ))}

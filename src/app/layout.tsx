@@ -17,16 +17,21 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   title: {
-    default: "AI met Max - AI Expert & Trainer",
+    default: "AI met Max - AI-trainer & auteur van AI-Pionier",
     template: "%s | AI met Max",
   },
   description:
-    "AI-expert Max van den Broek helpt organisaties met AI-trainingen, consulting en gratis AI-tools. Auteur van AI-Pionier.",
+    "Max van den Broek helpt organisaties met AI-geletterdheid: gratis e-learnings, maatwerk trainingen en handige AI-tools. Auteur van AI-Pionier, voormalig docent AI aan de UvA.",
   metadataBase: new URL("https://aimetmax.nl"),
   openGraph: {
     type: "website",
     locale: "nl_NL",
     siteName: "AI met Max",
+    images: ["/max-van-den-broek.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/max-van-den-broek.jpg"],
   },
 };
 
