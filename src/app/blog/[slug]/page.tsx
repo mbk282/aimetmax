@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -91,6 +91,8 @@ export default async function BlogPostPage({
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const related = getRelatedPosts(slug, 3);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -159,6 +161,31 @@ export default async function BlogPostPage({
         <div className="mt-10">
           <MDXRemote source={post.content} components={mdxComponents} />
         </div>
+
+        {related.length > 0 && (
+          <section className="mt-16 border-t border-line pt-10">
+            <h2 className="hand text-2xl font-bold text-ink">Lees ook</h2>
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {related.map((r) => (
+                <Link
+                  key={r.slug}
+                  href={`/blog/${r.slug}`}
+                  className="group warm-card flex flex-col p-5 transition hover:-translate-y-0.5"
+                >
+                  <h3 className="font-bold leading-snug text-ink group-hover:text-accent">
+                    {r.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">
+                    {r.description}
+                  </p>
+                  <span className="mt-3 text-xs font-medium text-ink-soft">
+                    {r.readingTime}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <div className="warm-card mt-16 bg-sage-soft p-8">
           <h3 className="hand text-2xl font-bold text-ink">
