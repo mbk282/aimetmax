@@ -27,11 +27,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "nl_NL",
     siteName: "AI met Max",
-    images: ["/max-van-den-broek.jpg"],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/max-van-den-broek.jpg"],
   },
 };
 

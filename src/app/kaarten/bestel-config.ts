@@ -1,23 +1,28 @@
 // Configuratie voor de bestel-/pre-orderpagina van de fysieke kaartenset.
 //
-// Zo zet je echte betaling aan (2 minuten, geen code nodig):
-// 1. Maak een betaallink aan bij Stripe (Payment Link) of Mollie.
-//    - Stripe: dashboard -> Payment links -> nieuw, product "AI-gesprekskaarten",
-//      prijs 34,95 EUR, zet "laat klant aantal kiezen" aan, en activeer iDEAL.
-//    - Mollie kan ook (iDEAL is in NL favoriet); gebruik een betaallink/Payment.
-// 2. Plak de link hieronder in `betaalLink`. Zodra die is ingevuld, wordt de
-//    bestelknop een echte betaling. Is hij leeg, dan is de pagina een nette
-//    pre-order via e-mail (veilig om nu al live te zetten, zonder voorraad).
-// 3. Zet `preorder` op false zodra je voorraad in huis hebt.
+// ECHTE BETALING AANZETTEN met zo min mogelijk werk:
+// 1. Maak een Stripe-account aan (stripe.com) en zet daar iDEAL aan
+//    (Settings -> Payment methods). Geen producten aanmaken nodig.
+// 2. Kopieer je geheime sleutel (begint met sk_live_...) en zet die in Vercel
+//    als environment variable met de naam STRIPE_SECRET_KEY
+//    (Vercel project -> Settings -> Environment Variables) en redeploy.
+// 3. Klaar. De bestelpagina detecteert de sleutel automatisch en de knop wordt
+//    een echte, beveiligde afrekenpagina (iDEAL/kaart), met adres en aantal.
+//    Zolang er geen sleutel is, blijft het een nette reservering via e-mail.
+//
+// Liever een kant-en-klare betaallink (Stripe/Mollie) i.p.v. de sleutel? Plak
+// die dan in `betaalLink`; die heeft voorrang.
 
 export const BESTEL = {
   naam: "AI-gesprekskaarten",
   ondertitel: "Voer het goede gesprek over AI met je team",
-  prijs: 34.95,
+  prijs: 29.95,
   valuta: "EUR",
-  // Vul in om echte betaling aan te zetten (Stripe/Mollie payment link):
+  // Optioneel: een Stripe/Mollie payment link. Leeg laten als je STRIPE_SECRET_KEY
+  // gebruikt (aanbevolen).
   betaalLink: "",
-  // true = pre-order (product nog niet op voorraad), tonen we eerlijk
+  // true = pre-order (product nog niet op voorraad). Zet op false zodra je
+  // voorraad in huis hebt.
   preorder: true,
   levertijd: "Verwacht na de zomer van 2026",
   inhoud: [
