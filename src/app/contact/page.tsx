@@ -138,6 +138,13 @@ export default function ContactPage() {
             certificaten en onderbouwing voor artikel 4 van de AI-verordening.
           </li>
         </ul>
+        <p className="mt-4 text-sm text-ink-soft">
+          Benieuwd waar deze aanpak op rust? Lees over{" "}
+          <Link href="/methode" className="font-semibold text-accent hover:text-accent-dark">
+            onze methode
+          </Link>{" "}
+          en de wetenschappelijke onderbouwing.
+        </p>
       </div>
 
       <p className="mt-10 text-ink-soft">

@@ -48,6 +48,11 @@ export function Footer() {
                   Over Max
                 </Link>
               </li>
+              <li>
+                <Link href="/methode" className="text-ink-soft hover:text-accent">
+                  Onze methode
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
