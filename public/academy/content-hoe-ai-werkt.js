@@ -398,7 +398,7 @@
   <p><strong>2. Je betaalt per token.</strong> Wie AI zakelijk inzet, rekent af per token, niet per vraag. Een lange lap tekst kost dus letterlijk meer dan een korte.</p>
   <div class="note"><strong>Leuke bijvangst:</strong> dit verklaart waarom AI soms de letters in een woord verkeerd telt. Het model ziet geen letters. Het ziet tokens.</div>
 
-  <p>Het beroemdste voorbeeld: vraag aan een taalmodel hoeveel keer de letter <strong>r</strong> in "strawberry" zit. Lang gaven de meeste modellen vol overtuiging "twee" als antwoord. Tel zelf maar: st<strong>r</strong>aw<strong>b</strong>e<strong>rr</strong>y, dat zijn er <mark>drie</mark>. Het model zag geen losse letters, maar een paar tokens ("st", "raw", "berry"), en daarin zijn de r-en niet te tellen.</p>
+  <p>Het beroemdste voorbeeld: vraag aan een taalmodel hoeveel keer de letter <strong>r</strong> in "strawberry" zit. Lang gaven de meeste modellen vol overtuiging "twee" als antwoord. Tel zelf maar: st<strong>r</strong>awbe<strong>rr</strong>y, dat zijn er <mark>drie</mark>. Het model zag geen losse letters, maar een paar tokens ("st", "raw", "berry"), en daarin zijn de r-en niet te tellen.</p>
   <div class="oefen" id="oefen-strawberry">
     <div class="oefen-kop">Probeer het zelf</div>
     <p>Open je eigen AI-tool (ChatGPT, Copilot, Claude, Gemini) en plak deze vraag:</p>

@@ -3,16 +3,16 @@
 import { useState } from "react";
 import { ToolLayout } from "@/components/tool-layout";
 
+// Prijzen in euro per gebruiker per maand (indicatieve EU-lijstprijs).
 const COPILOT_PRICES: Record<string, { label: string; price: number }> = {
-  m365: { label: "Microsoft 365 Copilot", price: 30 },
-  security: { label: "Security Copilot", price: 4 },
+  m365: { label: "Microsoft 365 Copilot", price: 28 },
   custom: { label: "Aangepast bedrag", price: 0 },
 };
 
 export default function CopilotROICalculator() {
   const [users, setUsers] = useState(50);
   const [tier, setTier] = useState("m365");
-  const [customPrice, setCustomPrice] = useState(30);
+  const [customPrice, setCustomPrice] = useState(28);
   const [avgSalary, setAvgSalary] = useState(55000);
   const [hoursSavedPerWeek, setHoursSavedPerWeek] = useState(5);
 
@@ -31,7 +31,7 @@ export default function CopilotROICalculator() {
   return (
     <ToolLayout
       title="Microsoft Copilot ROI Calculator"
-      description="Bereken of Microsoft Copilot de investering waard is voor jouw organisatie. Op basis van Forrester-onderzoek besparen medewerkers gemiddeld 5-8 uur per week."
+      description="Maak een eerste schatting of Microsoft Copilot de investering waard is voor jouw organisatie. Reken conservatief en valideer met een eigen pilot; de uitkomst is een indicatie, geen belofte."
     >
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         <div className="space-y-5 rounded-xl border border-line bg-card p-6">
@@ -54,7 +54,7 @@ export default function CopilotROICalculator() {
             <div>
               <label className="block text-sm font-medium text-ink-soft">Prijs per gebruiker/maand</label>
               <div className="mt-1 flex items-center gap-2">
-                <span className="text-sm text-ink-soft">$</span>
+                <span className="text-sm text-ink-soft">&euro;</span>
                 <input type="number" min={0} value={customPrice} onChange={(e) => setCustomPrice(Number(e.target.value))}
                   className="w-full rounded-lg border border-line px-3 py-2 text-ink" />
               </div>
@@ -78,7 +78,7 @@ export default function CopilotROICalculator() {
 
           <div>
             <label className="block text-sm font-medium text-ink-soft">Geschatte tijdsbesparing per persoon</label>
-            <p className="text-xs text-ink-soft">Forrester: gemiddeld 5-8 uur/week. Conservatief: 3-4 uur.</p>
+            <p className="text-xs text-ink-soft">In opdrachtonderzoek van Forrester (TEI, in opdracht van Microsoft) rapporteren gebruikers tijdwinst. Reken conservatief, bijvoorbeeld 3-4 uur, en meet het na in een eigen pilot.</p>
             <div className="mt-1 flex items-center gap-3">
               <input type="range" min={1} max={15} value={hoursSavedPerWeek}
                 onChange={(e) => setHoursSavedPerWeek(Number(e.target.value))} className="w-full" />
@@ -94,7 +94,7 @@ export default function CopilotROICalculator() {
               &euro;{yearlyCost.toLocaleString("nl-NL", { maximumFractionDigits: 0 })}
             </p>
             <p className="mt-1 text-sm text-red-700">
-              &euro;{monthlyCost.toLocaleString("nl-NL")} per maand &middot; ${pricePerUser}/gebruiker/maand
+              &euro;{monthlyCost.toLocaleString("nl-NL")} per maand &middot; &euro;{pricePerUser}/gebruiker/maand
             </p>
           </div>
 
@@ -124,9 +124,10 @@ export default function CopilotROICalculator() {
             <p><strong>Kosten per bespaard uur:</strong> &euro;{costPerSavedHour.toFixed(2)}</p>
             <p className="mt-1"><strong>Effectief uurtarief medewerker:</strong> &euro;{hourlyRate.toFixed(2)}</p>
             <p className="mt-2 text-xs text-ink-soft">
-              Gebaseerd op Forrester TEI-onderzoek (2023-2024). Werkelijke besparing hangt af van
-              adoptie en training. <a href="/contact" className="text-accent hover:underline">Neem contact op</a> voor
-              een Copilot-training op maat.
+              Indicatieve schatting. Het effectieve uurtarief rekent met 52 weken van 40 uur en laat
+              werkgeverslasten en niet-werkbare uren (vakantie, feestdagen) buiten beschouwing, dus de
+              werkelijke kosten per uur liggen hoger. De besparing hangt sterk af van adoptie en training.{" "}
+              <a href="/contact" className="text-accent hover:underline">Neem contact op</a> voor een Copilot-training op maat.
             </p>
           </div>
         </div>

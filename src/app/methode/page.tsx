@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Onze methode: waarom deze aanpak werkt",
   description:
-    "De academy en trainingen van AI met Max rusten op AI-literacy-onderzoek en de AI-verordening. Vijf onderbouwde principes: leer door te doen, rolspecifiek, nuchter, adoptie boven techniek.",
+    "De academy en trainingen van AI met Max rusten op AI-literacy-onderzoek en de AI-verordening. Vijf onderbouwde principes: leer door te doen, rolspecifiek, nuchter, adoptie boven techniek en samen leren.",
   alternates: { canonical: "/methode" },
 };
 
@@ -23,7 +23,7 @@ const principes = [
   },
   {
     titel: "Adoptie boven techniek",
-    body: "De meeste AI-implementaties stranden niet op de techniek maar op mensen en processen. Een veelgenoemde vuistregel uit onderzoek van BCG: het overgrote deel van de uitdaging zit in verandering en werkwijze, een veel kleiner deel in de algoritmen zelf. Daarom ligt de nadruk op zorgen dat AI daadwerkelijk landt bij mensen, niet op het uitrollen van licenties.",
+    body: "De meeste AI-implementaties stranden niet op de techniek maar op mensen en processen. Een veelgenoemde vuistregel uit onderzoek van de Boston Consulting Group (2024, ruim duizend bestuurders): het overgrote deel van de uitdaging zit in verandering en werkwijze, een veel kleiner deel in de algoritmen zelf. Daarom ligt de nadruk op zorgen dat AI daadwerkelijk landt bij mensen, niet op het uitrollen van licenties.",
   },
   {
     titel: "Houding en samen leren",

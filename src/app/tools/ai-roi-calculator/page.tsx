@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { ToolLayout } from "@/components/tool-layout";
-import type { Metadata } from "next";
 
 interface Results {
   yearlyHoursSaved: number;
@@ -171,10 +170,11 @@ export default function AIROICalculator() {
           </div>
           <div className="rounded-xl border border-line bg-card p-4 text-xs text-ink-soft">
             <p>
-              <strong>Let op:</strong> Dit is een schatting. De werkelijke besparing
-              hangt af van het type werk, de AI-tools die je inzet, en hoe goed je
-              team ze leert gebruiken. Benieuwd wat AI voor jouw organisatie kan
-              betekenen?{" "}
+              <strong>Let op:</strong> Dit is een schatting. Er wordt gerekend met 52
+              werkweken per jaar (vakantie en feestdagen niet meegerekend), dus de
+              werkelijke besparing ligt waarschijnlijk wat lager. Ze hangt bovendien af
+              van het type werk, de AI-tools die je inzet, en hoe goed je team ze leert
+              gebruiken. Benieuwd wat AI voor jouw organisatie kan betekenen?{" "}
               <a href="/contact" className="text-accent hover:underline">
                 Neem contact op
               </a>{" "}

@@ -26,7 +26,7 @@ const aanbod = [
     titel: "Update-abonnement",
     vanaf: "vanaf € 1.250 per kwartaal",
     beschrijving:
-      "AI-kennis veroudert snel. Met een kwartaalupdate houd ik jullie e-learnings actueel: nieuwe voorbeelden, nieuwe tools, en aanpassingen aan veranderende wetgeving. Vrijwel niemand in de markt biedt dit.",
+      "AI-kennis veroudert snel. Met een kwartaalupdate houd ik jullie e-learnings actueel: nieuwe voorbeelden, nieuwe tools, en aanpassingen aan veranderende wetgeving. Zo blijft je materiaal up-to-date zonder dat je telkens een nieuw traject hoeft in te kopen.",
   },
   {
     titel: "Keynote of lezing",

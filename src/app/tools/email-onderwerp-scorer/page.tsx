@@ -16,10 +16,24 @@ const POWER_WORDS = [
   "herinnering", "vraag", "voorstel", "samenvatting", "feedback",
 ];
 
+// Losse alfabetische woorden matchen op woordgrenzen (zodat "reactie" niet op "actie"
+// triggert); frases en symbolen via substring.
+function findSpamWord(lower: string): string | null {
+  for (const w of SPAM_WORDS) {
+    if (/^[a-z]+$/.test(w)) {
+      if (new RegExp(`\\b${w}\\b`, "i").test(lower)) return w;
+    } else if (lower.includes(w)) {
+      return w;
+    }
+  }
+  return null;
+}
+
 function analyzeSubject(subject: string) {
   const lower = subject.toLowerCase();
   const words = subject.split(/\s+/).filter(Boolean);
   const chars = subject.length;
+  const spamHit = findSpamWord(lower);
 
   const checks = [
     {
@@ -34,10 +48,10 @@ function analyzeSubject(subject: string) {
     },
     {
       label: "Geen spam-woorden",
-      passed: !SPAM_WORDS.some((w) => lower.includes(w)),
+      passed: spamHit === null,
       weight: 20,
-      tip: SPAM_WORDS.some((w) => lower.includes(w))
-        ? `Bevat spam-trigger: "${SPAM_WORDS.find((w) => lower.includes(w))}". Dit verlaagt deliverability.`
+      tip: spamHit
+        ? `Bevat spam-trigger: "${spamHit}". Dit verlaagt deliverability.`
         : "Geen spam-triggers gevonden.",
     },
     {
@@ -58,7 +72,7 @@ function analyzeSubject(subject: string) {
     },
     {
       label: "Geen HOOFDLETTERS",
-      passed: subject === subject || !/[A-Z]{3,}/.test(subject),
+      passed: !/[A-Z]{3,}/.test(subject),
       weight: 15,
       tip: /[A-Z]{3,}/.test(subject)
         ? "Vermijd woorden in HOOFDLETTERS. Dit komt schreeuwerig over en triggert spamfilters."

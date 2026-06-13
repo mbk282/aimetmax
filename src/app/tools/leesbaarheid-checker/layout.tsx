@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "Nederlandse Leesbaarheid Checker - Gratis Flesch-Douma Score",
   description:
     "Check het taalniveau van je Nederlandse tekst. Flesch-Douma score, B1/B2/C1 niveau, en tips om leesbaarder te schrijven. Gratis.",
+  alternates: { canonical: "/tools/leesbaarheid-checker" },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

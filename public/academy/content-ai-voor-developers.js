@@ -549,9 +549,9 @@
       { s: "MCP is een product van alleen Anthropic, bedoeld voor alleen Claude.",
         antwoord: false,
         uitleg: "Niet waar. Het begon bij Anthropic, maar is sinds 2025 vendor-neutraal: ondersteund door OpenAI, Google, Microsoft, Cursor en VS Code, en ondergebracht bij de Linux Foundation." },
-      { s: "Met grote context windows is documentstructuur en kritisch reviewen niet meer nodig.",
+      { s: "Een package die een AI-codetool voorstelt, kun je veilig installeren zonder te checken of die echt bestaat.",
         antwoord: false,
-        uitleg: "Niet waar. Voor retrieval (RAG, Copilot, agents), kosten, snelheid en onderbouwing blijft het meespelen, en kritisch reviewen van output blijft sowieso jouw werk. Garbage in, garbage out." }
+        uitleg: "Niet waar. Modellen verzinnen soms niet-bestaande packages (slopsquatting), en aanvallers registreren die namen met kwaadaardige code. Controleer altijd of een voorgestelde dependency echt bestaat en van de juiste bron komt voor je hem toevoegt." }
     ]
   };
 

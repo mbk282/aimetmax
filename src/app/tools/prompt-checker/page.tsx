@@ -50,7 +50,7 @@ function analyzePrompt(prompt: string): { checks: Check[]; score: number } {
     },
     {
       label: "Doelgroep",
-      passed: /\b(doelgroep|publiek|lezer|voor (een |mijn )?|gericht op|geschikt voor|begrijpelijk voor|managers|developers|studenten|collega)\b/i.test(trimmed),
+      passed: /\b(doelgroep|publiek|lezer|gericht op|geschikt voor|begrijpelijk voor|managers|developers|studenten|collega|voor (een |mijn |de )?(niet-technisch\w*|publiek|manager\w*|klant\w*|lezer\w*|team|directie|bestuur|leek))\b/i.test(trimmed),
       tip: "Vermeld voor wie het resultaat is: 'voor een niet-technisch publiek', 'voor mijn manager', 'voor klanten'.",
       weight: 10,
     },

@@ -13,14 +13,13 @@ interface Finding {
 
 const GENDERED_WORDS: Record<string, string> = {
   "hij": "hij/zij/hen",
-  "zijn": "hun (als bezittelijk)",
   "zakenman": "zakelijk professional",
   "saleswoman": "salesmedewerker",
   "salesman": "salesmedewerker",
   "stewardess": "cabinemedewerker",
   "politieman": "politieagent",
   "brandweerman": "brandweerlid",
-  "voorzitter": "voorzitter (neutraal)",
+  "voorzitster": "voorzitter",
   "manageres": "manager",
   "directrice": "directeur",
   "medewerkster": "medewerker",
@@ -35,10 +34,10 @@ const GENDERED_WORDS: Record<string, string> = {
   "stressbestendig": "goed om kunt gaan met wisselende werkdruk",
 };
 
-const AGE_BIAS_PATTERNS = [
-  { pattern: /\bjong(e)?\b/i, found: "jong(e)", suggestion: "Vermijd leeftijdsaanduidingen. Focus op vaardigheden." },
-  { pattern: /\bstarter\b/i, found: "starter", suggestion: "Gebruik 'beginnend professional' of laat het weg." },
-  { pattern: /\bsenior\b/i, found: "senior", suggestion: "'Senior' is oké als functieniveau, maar niet als leeftijdsaanduiding." },
+const AGE_BIAS_PATTERNS: { pattern: RegExp; found: string; suggestion: string; severity?: "hoog" | "midden" }[] = [
+  { pattern: /\bjong(e)?\b/i, found: "jong(e)", suggestion: "Vermijd leeftijdsaanduidingen. Focus op vaardigheden.", severity: "midden" },
+  { pattern: /\bstarter\b/i, found: "starter", suggestion: "Gebruik 'beginnend professional' of laat het weg.", severity: "midden" },
+  { pattern: /\bsenior\b/i, found: "senior", suggestion: "'Senior' is oke als functieniveau, maar niet als leeftijdsaanduiding.", severity: "midden" },
   { pattern: /\bjonge?n?s?\s*(en|of)\s*meisjes?\b/i, found: "jongens/meisjes", suggestion: "Gebruik 'collega's' of 'teamleden'." },
   { pattern: /\bdigital native\b/i, found: "digital native", suggestion: "Dit impliceert een leeftijdsgroep. Gebruik 'digitaal vaardig'." },
   { pattern: /\bfris\b/i, found: "fris", suggestion: "'Fris' kan leeftijdsbias impliceren. Gebruik 'enthousiast' of 'nieuwsgierig'." },
@@ -75,11 +74,11 @@ function analyzeVacancy(text: string): { findings: Finding[]; score: number } {
   }
 
   // Age bias
-  for (const { pattern, found, suggestion } of AGE_BIAS_PATTERNS) {
+  for (const { pattern, found, suggestion, severity } of AGE_BIAS_PATTERNS) {
     if (pattern.test(text)) {
       findings.push({
         category: "Leeftijdsbias",
-        severity: "hoog",
+        severity: severity ?? "hoog",
         text: `"${found}" gevonden in je tekst`,
         suggestion,
         found,

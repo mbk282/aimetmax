@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/methode",
     "/academy",
     "/kaarten",
+    "/kaarten/bestel",
     "/tools",
     "/tools/ai-readiness-scorer",
     "/tools/ai-beleid-generator",
@@ -38,9 +39,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/tools/rtf-naar-markdown",
   ];
 
+  // Geen lastModified op statische pagina's: new Date() zou bij elke deploy
+  // suggereren dat de hele site "vandaag" is gewijzigd, wat het signaal waardeloos
+  // maakt. Blogposts hieronder gebruiken wel hun echte publicatiedatum.
   const staticEntries: MetadataRoute.Sitemap = staticPages.map((path) => ({
     url: `${BASE_URL}${path}`,
-    lastModified: new Date(),
     changeFrequency: path === "" ? "weekly" : "monthly",
     priority: path === "" ? 1 : path.startsWith("/tools") ? 0.7 : 0.8,
   }));

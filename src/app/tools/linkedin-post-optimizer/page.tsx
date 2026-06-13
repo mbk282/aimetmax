@@ -54,7 +54,7 @@ function analyzePost(text: string): Analysis {
       passed: hasQuestion,
       tip: hasQuestion
         ? "Je post bevat een vraag. Dit stimuleert reacties en vergroot bereik."
-        : "Stel een vraag aan je lezers. Posts met vragen krijgen tot 50% meer reacties.",
+        : "Stel een vraag aan je lezers. Posts die een vraag stellen, lokken vaak meer reacties uit.",
     },
     {
       label: "Call-to-action",

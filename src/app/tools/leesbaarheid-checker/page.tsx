@@ -11,15 +11,13 @@ function countSyllablesDutch(word: string): number {
   let count = 0;
   let prevVowel = false;
 
+  // Opeenvolgende klinkers (incl. tweeklanken als ei, ui, oe) tellen als een lettergreep,
+  // doordat we alleen bij de start van een klinkerreeks ophogen.
   for (let i = 0; i < w.length; i++) {
     const isVowel = vowels.includes(w[i]);
     if (isVowel && !prevVowel) count++;
     prevVowel = isVowel;
   }
-
-  // Dutch diphthongs correction: oe, ie, ei, ui, au, ou, eu, ij, aai, ooi, oei
-  const diphthongs = (w.match(/(oe|ie|ei|ui|au|ou|eu|ij|aa|oo|ee|uu)/g) || []).length;
-  count = Math.max(1, count - diphthongs + diphthongs); // diphthongs count as 1
 
   return Math.max(1, count);
 }

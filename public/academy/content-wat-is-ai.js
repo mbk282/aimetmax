@@ -401,7 +401,7 @@
     quiz: [
       { s: "AI bestaat pas sinds de lancering van ChatGPT in 2022.",
         antwoord: false,
-        uitleg: "Niet waar. De term stamt uit 1956, een schaakcomputer versloeg de wereldkampioen al in 1997, en AI zit al jaren in je spamfilter, navigatie en Netflix. Nieuw is vooral generatieve AI." },
+        uitleg: "Niet waar. De term stamt uit 1955 (het Dartmouth-voorstel), een schaakcomputer versloeg de wereldkampioen al in 1997, en AI zit al jaren in je spamfilter, navigatie en Netflix. Nieuw is vooral generatieve AI." },
       { s: "Netflix-aanbevelingen en de autocomplete in je zoekmachine zijn vormen van AI.",
         antwoord: true,
         uitleg: "Waar. Het zijn systemen die patronen leren uit data (machine learning). Je dacht er alleen nooit 'intelligentie' bij, omdat het gewoon werkt." },

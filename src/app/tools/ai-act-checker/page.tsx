@@ -121,7 +121,7 @@ const riskInfo: Record<string, { color: string; bg: string; border: string; labe
       "Stel technische documentatie op",
       "Implementeer logging en monitoring",
     ],
-    deadline: "Verplichtingen gelden vanaf 2 augustus 2026 (deze datum schuift via de Digital Omnibus naar verwachting door naar eind 2027)",
+    deadline: "Verplichtingen gelden vanaf 2 augustus 2026. Let op: als het Commissievoorstel Digital Omnibus (eind 2025) wordt aangenomen, schuift de deadline voor de zwaarste bijlage III-eisen naar verwachting door richting eind 2027. Dat voorstel is nog niet definitief.",
   },
   beperkt: {
     color: "text-amber-700", bg: "bg-amber-50", border: "border-amber-200",

@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "PDF naar Markdown Converter - Gratis Online",
   description:
     "Converteer PDF bestanden naar Markdown, gratis en direct in je browser. Geen upload naar een server, je data blijft privé.",
+  alternates: { canonical: "/tools/pdf-naar-markdown" },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
