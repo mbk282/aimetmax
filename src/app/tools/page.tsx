@@ -46,6 +46,12 @@ const categories = [
         href: "/tools/ai-beleid-generator",
       },
       {
+        title: "AI Act Risicowijzer",
+        description:
+          "Zoek je AI-toepassing op (werving, chatbot, Copilot) en zie meteen in welke risicocategorie die valt.",
+        href: "/tools/ai-act-risicowijzer",
+      },
+      {
         title: "Prompt Kwaliteit Checker",
         description:
           "Score je ChatGPT- of Copilot-prompt op 8 criteria en krijg concrete verbetertips.",
