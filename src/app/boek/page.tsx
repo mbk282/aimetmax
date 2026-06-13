@@ -40,10 +40,10 @@ export default function BoekPage() {
         >
           <Image
             src="/ai-pionier-cover.jpg"
-            alt="Omslag van AI-Pionier door Max van den Broek"
-            width={190}
-            height={198}
-            className="rounded-lg object-cover"
+            alt="Voorkant van het boek AI-Pionier door Max van den Broek"
+            width={200}
+            height={284}
+            className="rounded-lg"
             priority
           />
         </a>
