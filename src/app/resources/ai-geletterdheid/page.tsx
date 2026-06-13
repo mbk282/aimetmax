@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "AI-geletterdheid Resources - Cursussen, Video's en Handleidingen",
   description:
     "De beste gratis en betaalde resources om AI-geletterdheid te ontwikkelen. Cursussen, video's en handleidingen voor Nederlandse organisaties.",
+  alternates: { canonical: "/resources/ai-geletterdheid" },
 };
 
 const sections = [

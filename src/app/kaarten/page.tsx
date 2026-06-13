@@ -403,26 +403,9 @@ export default function KaartenPage() {
               voor je team reserveren?
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
-              <a
-                href={
-                  "mailto:max@aimetmax.nl?subject=" +
-                  encodeURIComponent("Fysieke AI-gesprekskaarten") +
-                  "&body=" +
-                  encodeURIComponent(
-                    [
-                      "Hoi Max,",
-                      "",
-                      "Houd me op de hoogte van de fysieke AI-gesprekskaarten.",
-                      "(Aantal sets dat ik ongeveer zou willen: ...)",
-                      "",
-                      "Groet,",
-                    ].join("\n"),
-                  )
-                }
-                className="btn btn-primary"
-              >
-                Houd me op de hoogte
-              </a>
+              <Link href="/kaarten/bestel" className="btn btn-primary">
+                Bekijk de set
+              </Link>
               <a href="#deck" className="btn btn-ghost">
                 Nu al online gebruiken
               </a>

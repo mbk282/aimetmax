@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Gratis AI-tools - Checkers, Converters & meer",
   description:
     "18+ gratis Nederlandse AI-tools die je direct in je browser kunt gebruiken. Checkers, converters, een AI-woordenlijst en meer. Geen account nodig.",
+  alternates: { canonical: "/tools" },
 };
 
 const categories = [

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "AI-Pionier - Het boek",
   description:
     "AI-Pionier: Hoe jij ook begint met generatieve AI. Met 25+ praktijkvoorbeelden. Door Max van den Broek, uitgegeven door Koninklijke Boom Uitgevers.",
+  alternates: { canonical: "/boek" },
 };
 
 const winkels = [

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Artikelen over AI-strategie en implementatie",
   description:
     "Praktische artikelen over AI-beleid, AI-ready data, en AI-implementatie voor Nederlandse organisaties. Door Max van den Broek.",
+  alternates: { canonical: "/blog" },
 };
 
 export default function BlogPage() {

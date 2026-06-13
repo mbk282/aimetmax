@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { LeadCapture } from "@/components/lead-capture";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const ervaring = [
   {
@@ -215,11 +220,22 @@ export default function Home() {
       {/* Gratis tools (lichter, onderaan) */}
       <section className="border-t-2 border-line bg-card py-16">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="hand text-3xl font-bold text-ink">Gratis AI-tools</h2>
-          <p className="mt-2 text-ink-soft">
+          <h2 className="hand text-3xl font-bold text-ink">Gratis tools en werkvormen</h2>
+          <p className="mt-2 max-w-3xl text-ink-soft">
             Kleine, handige tools die direct in je browser draaien, zonder
-            account: van een AI Act-checker en leesbaarheidscheck tot
-            converters. Je data blijft privé.
+            account. Onder meer de{" "}
+            <Link href="/tools/ai-readiness-scorer" className="font-semibold text-accent hover:text-accent-dark">
+              Document AI-readiness Checker
+            </Link>{" "}
+            (is je kennisbank klaar voor Copilot?), een{" "}
+            <Link href="/tools/ai-act-checker" className="font-semibold text-accent hover:text-accent-dark">
+              AI Act-checker
+            </Link>
+            , en de{" "}
+            <Link href="/kaarten" className="font-semibold text-accent hover:text-accent-dark">
+              AI-gesprekskaarten
+            </Link>{" "}
+            om met je team het goede gesprek over AI te voeren. Je data blijft privé.
           </p>
           <Link
             href="/tools"

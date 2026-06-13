@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Over Max van den Broek",
   description:
     "Max van den Broek: AI-trainer en auteur van AI-Pionier. MSc Logic (UvA), voormalig Senior AI-docent aan de UvA, was AI-expert bij Alliander, nu zelfstandig.",
+  alternates: { canonical: "/over" },
 };
 
 const testimonials = [

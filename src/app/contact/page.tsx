@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "AI-geletterdheid voor jouw organisatie",
   description:
     "Regel de AI-geletterdheid van je organisatie met maatwerk e-learnings, trainingen en keynotes van Max van den Broek. Met onderbouwing voor artikel 4 van de AI-verordening.",
+  alternates: { canonical: "/contact" },
 };
 
 const aanbod = [
