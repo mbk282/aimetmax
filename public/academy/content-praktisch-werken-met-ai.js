@@ -277,6 +277,22 @@
   <div class="callout"><div class="label">De kern van deze les</div><p>"Zeg in welke vorm je het wilt, of laat zien hoe goed eruitziet. Liefst allebei."</p></div>`
       },
       {
+        kicker: "Deel 2 · Beeld als input",
+        titel: "AI kan ook kijken: geef het een foto",
+        navTitel: "Geef AI een foto",
+        html: `
+  <p>We vergeten het vaak, maar je hoeft AI niet alleen tekst te geven. Je kunt ook <mark>een foto of schermafbeelding uploaden</mark> en daar een vraag bij stellen. Een foto van een meterstand, een handgeschreven notitie, een whiteboard na een sessie, een foutmelding op je scherm, een grafiek in een rapport: de meeste moderne AI-tools kunnen het lezen en uitleggen.</p>
+  <p>Dat opent handige toepassingen: een wirwar van aantekeningen laten uittypen, een tabel uit een foto halen, een grafiek laten samenvatten, of een storingscode opzoeken door er simpelweg een foto van te maken. Zie het als een <mark>tweede paar ogen</mark> dat meekijkt en meedenkt.</p>
+  <p>Met dezelfde nuance als altijd: het kan mislezen. Een 7 voor een 1, een komma die het mist, een detail dat het invult. Net als bij tekst geldt dus: <mark>jij blijft verantwoordelijk</mark>, en bij iets wat ertoe doet (een meterstand die de factuur bepaalt, een cijfer uit een rapport) controleer je het na.</p>
+  <div class="oefen" id="oefen-foto">
+    <div class="oefen-kop">Probeer het zelf</div>
+    <p>Maak een foto van iets met tekst of cijfers erop (een bonnetje, een meterstand, een pagina met aantekeningen) en upload die in je AI-tool met:</p>
+    <div class="oefen-prompt"><code>Lees voor wat er op deze foto staat en zet het netjes in tekst. Noem het als iets onleesbaar is in plaats van te gokken.</code><button class="kopieer" type="button">Kopieer</button></div>
+    <details class="oefen-verwacht"><summary>Waar je op moet letten</summary><p>De toevoeging "noem het als iets onleesbaar is in plaats van te gokken" helpt tegen invullen. Controleer de cijfers zelf bij iets wat telt. Werkt het best bij gedrukte tekst; bij slordig handschrift wordt het lastiger.</p></details>
+  </div>
+  <div class="callout"><div class="label">De kern van deze les</div><p>"Je mag AI ook een foto geven. Een tweede paar ogen, maar jij blijft kijken."</p></div>`
+      },
+      {
         kicker: "Deel 2 · Toon",
         titel: "Je stuurt de toon van het antwoord",
         navTitel: "Toon sturen",
@@ -368,7 +384,7 @@
         titel: "De quiz: waar of niet waar?",
         navTitel: "De quiz",
         html: `
-  <p class="muted">Tien stellingen over deze module. Klik je antwoord en lees de uitleg. Haal je hem, dan staat het certificaat klaar.</p>
+  <p class="muted">Elf stellingen over deze module. Klik je antwoord en lees de uitleg. Haal je hem, dan staat het certificaat klaar.</p>
   <div id="quiz"></div>
   <div class="score" id="score"></div>`
       },
@@ -432,7 +448,10 @@
         uitleg: "Waar. In een lang gesprek verwatert het begin en raakt het model instructies kwijt. Eén gesprek, één klus werkt beter." },
       { s: "Een eigen bot maken vereist programmeerkennis.",
         antwoord: false,
-        uitleg: "Niet waar. Een bot is een opgeslagen prompt: je schrijft in gewone woorden op wat hij moet doen. In een training maakt iedereen er binnen een uur een." }
+        uitleg: "Niet waar. Een bot is een opgeslagen prompt: je schrijft in gewone woorden op wat hij moet doen. In een training maakt iedereen er binnen een uur een." },
+      { s: "Je kunt AI ook een foto of schermafbeelding geven (zoals een meterstand of een grafiek) en daar een vraag bij stellen.",
+        antwoord: true,
+        uitleg: "Waar. De meeste moderne AI-tools kunnen beeld lezen en uitleggen, handig als tweede paar ogen. Het kan wel mislezen, dus controleer zelf wat ertoe doet." }
     ]
   };
 
