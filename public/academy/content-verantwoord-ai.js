@@ -488,6 +488,26 @@
   <div class="callout"><div class="label">De kern van deze les</div><p>"Uitbesteden is prima. Maar weet wat je weggeeft."</p></div>`
       },
       {
+        kicker: "Deel 4 · Autonomie",
+        titel: "Hoe agentic is het? Meer autonomie, meer toezicht",
+        navTitel: "Hoe agentic is het?",
+        html: `
+  <p>Je hoort steeds vaker het woord "agent": AI die niet alleen antwoordt, maar zelf dingen doet. Opzoekt, klikt, mailt, code draait. De handige vraag is niet "is dit een agent of niet?", maar <mark>"hoeveel laat ik het zelf doen, en wie kijkt er mee?"</mark>. Dat is een glijdende schaal, geen aan-of-uit-knop.</p>
+  <p>Grofweg vijf treden, van weinig naar veel autonomie:</p>
+  <table>
+    <tr><th>Trede</th><th>Wat AI doet</th><th>Jouw rol</th></tr>
+    <tr><td>1. Antwoorden</td><td>geeft antwoord of advies</td><td>jij doet alles met dat antwoord</td></tr>
+    <tr><td>2. Suggesties</td><td>stelt voor (bv. autocomplete)</td><td>jij keurt elke stap goed</td></tr>
+    <tr><td>3. Afgebakende taak</td><td>voert een duidelijke klus uit</td><td>jij controleert het resultaat</td></tr>
+    <tr><td>4. Meerdere stappen</td><td>plant en doet zelf een reeks stappen</td><td>jij kijkt achteraf de hele uitkomst na</td></tr>
+    <tr><td>5. Zelfstandig handelen</td><td>neemt echte acties (mailt, bestelt, wijzigt)</td><td>weinig of geen toezicht</td></tr>
+  </table>
+  <p>De regel die overal geldt: <mark>hoe hoger op de ladder, hoe meer het kan, én hoe groter de schade als het misgaat</mark>. Een fout antwoord lees je nog na. Een agent die zelfstandig de verkeerde mail verstuurt of de verkeerde gegevens wijzigt, is al klaar voor je het ziet. Meer autonomie vraagt dus om meer toezicht, niet minder.</p>
+  <p>Praktisch betekent dat: vraag je bij elke AI-toepassing af op welke trede hij zit, en <mark>houd een mens in de lus bij alles met echte gevolgen</mark> (geld, persoonsgegevens, besluiten over mensen). Geef een tool die zelf handelt zo min mogelijk rechten, en zet een goedkeuringsstap voor onomkeerbare acties. Dit is precies het "menselijk toezicht" dat de AI-verordening bij hoog-risico-AI ook verplicht.</p>
+  <div class="note">Dit is geen reden om agents te mijden: ze kunnen veel werk uit handen nemen. Het is een reden om bewust te kiezen hoeveel je weggeeft, en het toezicht mee te laten groeien met de autonomie.</div>
+  <div class="callout"><div class="label">De kern van deze les</div><p>"Niet 'is het een agent?' maar 'hoeveel laat ik het zelf doen, en wie kijkt mee?'"</p></div>`
+      },
+      {
         kicker: "Deel 4 · Transparantie",
         titel: "Zeg het er gewoon bij",
         navTitel: "Transparantie",
@@ -522,7 +542,7 @@
         titel: "De quiz: waar of niet waar?",
         navTitel: "De quiz",
         html: `
-  <p class="muted">Tien stellingen over deze module. Klik je antwoord en lees de uitleg. Haal je hem, dan staat het certificaat klaar.</p>
+  <p class="muted">Elf stellingen over deze module. Klik je antwoord en lees de uitleg. Haal je hem, dan staat het certificaat klaar.</p>
   <div id="quiz"></div>
   <div class="score" id="score"></div>`
       },
@@ -586,7 +606,10 @@
         uitleg: "Waar. Het model leerde 'professioneel' vooral uit Amerikaanse teksten: indirecter, formeler, meer plichtplegingen. Zeg specifiek wat jij wilt en houd je eigen toon." },
       { s: "Eén chatvraag aan AI kost ongeveer evenveel stroom als een uur autorijden.",
         antwoord: false,
-        uitleg: "Niet waar. Eén chatvraag zit in de orde van seconden gloeilamp. Het echte energievraagstuk is de optelsom: miljarden vragen, training en datacenters. Maak je druk in proportie." }
+        uitleg: "Niet waar. Eén chatvraag zit in de orde van seconden gloeilamp. Het echte energievraagstuk is de optelsom: miljarden vragen, training en datacenters. Maak je druk in proportie." },
+      { s: "Hoe meer een AI zelf doet (van alleen antwoorden tot zelf acties uitvoeren), hoe belangrijker het wordt dat een mens meekijkt.",
+        antwoord: true,
+        uitleg: "Waar. Meer autonomie betekent meer kansen, maar ook grotere gevolgen als het misgaat. Hoe hoger op de autonomie-ladder, hoe meer toezicht, grenzen en menselijke goedkeuring je nodig hebt, zeker bij acties met echte gevolgen (geld, gegevens, besluiten over mensen)." }
     ]
   };
 
