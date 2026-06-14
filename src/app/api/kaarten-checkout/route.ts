@@ -44,11 +44,17 @@ export async function POST(req: Request) {
         },
       ],
       shipping_address_collection: {
-        allowed_countries: [
-          "NL", "BE", "DE", "LU", "FR", "AT", "ES", "IT", "IE",
-          "PT", "FI", "SE", "DK", "PL",
-        ],
+        allowed_countries: [...BESTEL.verzendlanden],
       },
+      shipping_options: [
+        {
+          shipping_rate_data: {
+            type: "fixed_amount",
+            fixed_amount: { amount: 0, currency: BESTEL.valuta.toLowerCase() },
+            display_name: "Gratis verzending",
+          },
+        },
+      ],
       success_url: `${origin}/kaarten/bestel/bedankt?ok=1`,
       cancel_url: `${origin}/kaarten/bestel`,
     });

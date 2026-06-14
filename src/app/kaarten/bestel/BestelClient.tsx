@@ -132,6 +132,19 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
             <span className="text-sm text-ink-soft">per set, incl. btw</span>
           </div>
 
+          <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-ink-soft">
+            {BESTEL.gratisVerzending && (
+              <span className="inline-flex items-center gap-1.5">
+                <span className="font-bold text-sage">&#10003;</span> Gratis
+                verzending in {BESTEL.verzendregio}
+              </span>
+            )}
+            <span className="inline-flex items-center gap-1.5">
+              <span className="font-bold text-sage">&#10003;</span>{" "}
+              {BESTEL.retourdagen} dagen retour
+            </span>
+          </div>
+
           <ul className="mt-5 space-y-2">
             {BESTEL.inhoud.map((r) => (
               <li key={r} className="flex gap-2 text-sm text-ink">
@@ -217,6 +230,44 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
               ) : null}
             </div>
           )}
+
+          <div className="mt-6 rounded-xl border-2 border-line bg-card p-4">
+            <p className="text-sm font-semibold text-ink">
+              Liever op factuur bestellen?
+            </p>
+            <p className="mt-1 text-sm text-ink-soft">
+              Voor organisaties en de overheid: bestel op rekening. Stuur je
+              gegevens, dan ontvang je een factuur (met je eventuele
+              inkoopordernummer erop).
+            </p>
+            <a
+              href={
+                "mailto:max@aimetmax.nl?subject=" +
+                encodeURIComponent("Bestelling op factuur - AI-gesprekskaarten") +
+                "&body=" +
+                encodeURIComponent(
+                  [
+                    "Hoi Max,",
+                    "",
+                    "Ik bestel de AI-gesprekskaarten graag op factuur. Mijn gegevens:",
+                    "",
+                    "- Organisatie: ",
+                    "- Contactpersoon: ",
+                    "- Aantal sets: " + aantal,
+                    "- Factuuradres: ",
+                    "- E-mail voor de factuur: ",
+                    "- Inkoopordernummer (PO), indien van toepassing: ",
+                    "- Afleveradres (indien anders dan factuuradres): ",
+                    "",
+                    "Groet,",
+                  ].join("\n"),
+                )
+              }
+              className="btn btn-ghost mt-3"
+            >
+              Bestel op factuur
+            </a>
+          </div>
 
           <p className="mt-5 text-sm text-ink-soft">
             Liever eerst proberen? De{" "}

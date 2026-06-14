@@ -25,6 +25,12 @@ export const BESTEL = {
   // voorraad in huis hebt.
   preorder: true,
   levertijd: "Verwacht na de zomer van 2026",
+  // Verzending: gratis, in de prijs verwerkt. verzendregio bepaalt ook naar
+  // welke landen de Stripe-checkout mag verzenden.
+  gratisVerzending: true,
+  verzendregio: "Nederland en België",
+  verzendlanden: ["NL", "BE"] as const,
+  retourdagen: 14,
   inhoud: [
     "54 gesprekskaarten: stellingen, dilemma's en open vragen",
     "6 spelregelkaarten met werkvormen voor je sessie",
