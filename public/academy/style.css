@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@500;700&display=swap');
+
 :root {
   --paper: #FAF6EE;
   --card: #FFFDF8;
@@ -12,7 +14,7 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: "Inter", system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.65; }
-.hand { font-family: "Caveat", cursive; }
+.hand { font-family: "Shantell Sans", cursive; }
 
 .layout { display: flex; min-height: 100vh; }
 
@@ -21,13 +23,13 @@ aside { width: 300px; flex-shrink: 0; border-right: 2px solid var(--line); paddi
 .back-link { display: inline-block; font-size: 12.5px; font-weight: 600; color: var(--ink-soft); text-decoration: none; margin-bottom: 14px; }
 .back-link:hover { color: var(--accent); }
 .module-kicker { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
-.module-title { font-family: "Caveat", cursive; font-size: 30px; font-weight: 700; line-height: 1.15; margin: 6px 0 4px; }
+.module-title { font-family: "Shantell Sans", cursive; font-size: 30px; font-weight: 700; line-height: 1.15; margin: 6px 0 4px; }
 .module-sub { font-size: 13px; color: var(--ink-soft); margin-bottom: 18px; }
 .progress-wrap { margin-bottom: 20px; }
 .progress-track { height: 10px; background: var(--line); border-radius: 99px; overflow: hidden; }
 .progress-fill { height: 100%; width: 0%; background: var(--sage); border-radius: 99px; transition: width .4s ease; }
 .progress-label { font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
-.nav-sectie { font-family: "Caveat", cursive; font-size: 19px; font-weight: 700; color: var(--accent); margin: 16px 4px 4px; }
+.nav-sectie { font-family: "Shantell Sans", cursive; font-size: 19px; font-weight: 700; color: var(--accent); margin: 16px 4px 4px; }
 nav button { display: flex; align-items: flex-start; gap: 10px; width: 100%; background: none; border: none; text-align: left; padding: 9px 12px; border-radius: 12px; cursor: pointer; font-family: inherit; font-size: 13.5px; color: var(--ink); line-height: 1.35; }
 nav button:hover { background: var(--accent-soft); }
 nav button.active { background: var(--accent-soft); font-weight: 600; }
@@ -41,7 +43,7 @@ main { flex: 1; display: flex; justify-content: center; padding: 48px 32px 80px;
 @keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
 .kicker { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
-h1 { font-family: "Caveat", cursive; font-size: 46px; font-weight: 700; line-height: 1.1; margin: 8px 0 22px; }
+h1 { font-family: "Shantell Sans", cursive; font-size: 46px; font-weight: 700; line-height: 1.1; margin: 8px 0 22px; }
 h2 { font-size: 19px; font-weight: 800; margin: 34px 0 10px; }
 p { margin-bottom: 16px; font-size: 16px; }
 .muted { color: var(--ink-soft); }
@@ -49,10 +51,10 @@ mark { background: var(--hl); padding: 0 4px; border-radius: 4px; }
 
 .illu { background: var(--card); border: 2px solid var(--ink); border-radius: 18px; padding: 18px; margin: 26px 0; box-shadow: 4px 4px 0 var(--line); transform: rotate(-0.4deg); }
 .illu svg { display: block; width: 100%; height: auto; }
-.illu-caption { font-family: "Caveat", cursive; font-size: 19px; text-align: center; color: var(--ink-soft); margin-top: 6px; }
+.illu-caption { font-family: "Shantell Sans", cursive; font-size: 19px; text-align: center; color: var(--ink-soft); margin-top: 6px; }
 
 .callout { border: 2px solid var(--ink); border-radius: 16px; background: var(--accent-soft); padding: 18px 20px; margin: 28px 0; box-shadow: 4px 4px 0 var(--line); }
-.callout .label { font-family: "Caveat", cursive; font-size: 22px; font-weight: 700; color: var(--accent); }
+.callout .label { font-family: "Shantell Sans", cursive; font-size: 22px; font-weight: 700; color: var(--accent); }
 .callout p { margin: 4px 0 0; font-size: 17px; font-weight: 600; }
 .callout p.gewoon { font-weight: 400; }
 
@@ -81,13 +83,13 @@ th { background: var(--card); font-size: 13px; text-transform: uppercase; letter
 .q.fout .opties button.gekozen { background: var(--accent); color: #fff; }
 .q .uitleg { display: none; margin-top: 12px; font-size: 14.5px; background: var(--paper); border-radius: 10px; padding: 12px 14px; }
 .q.beantwoord .uitleg { display: block; }
-.score { font-family: "Caveat", cursive; font-size: 30px; text-align: center; margin: 24px 0 8px; display: none; }
+.score { font-family: "Shantell Sans", cursive; font-size: 30px; text-align: center; margin: 24px 0 8px; display: none; }
 
 /* ---------- keuzes-demo (mag dit de chat in?) ---------- */
 #demo-keuzes { margin: 26px 0; }
 #demo-keuzes .opties { flex-wrap: wrap; }
 #demo-keuzes .opties button.juist { opacity: 1; background: var(--sage-soft); border-color: var(--sage); }
-.keuzes-slot { display: none; font-family: "Caveat", cursive; font-size: 28px; text-align: center; color: var(--sage); margin: 24px 0 8px; }
+.keuzes-slot { display: none; font-family: "Shantell Sans", cursive; font-size: 28px; text-align: center; color: var(--sage); margin: 24px 0 8px; }
 .keuzes-slot.zichtbaar { display: block; }
 
 .spiek { border: 2px dashed var(--ink); border-radius: 16px; padding: 20px 24px; margin: 24px 0; background: var(--card); }
@@ -96,13 +98,13 @@ th { background: var(--card); font-size: 13px; text-transform: uppercase; letter
 
 /* ---------- leerdoelen (na deze module kun je...) ---------- */
 .leerdoelen { border: 2px dashed var(--sage); border-radius: 14px; padding: 14px 18px; margin: 22px 0; background: var(--card); font-size: 14.5px; }
-.leerdoelen .ld-kop { font-family: "Caveat", cursive; font-size: 21px; font-weight: 700; color: var(--sage); margin-bottom: 4px; }
+.leerdoelen .ld-kop { font-family: "Shantell Sans", cursive; font-size: 21px; font-weight: 700; color: var(--sage); margin-bottom: 4px; }
 .leerdoelen ul { padding-left: 20px; margin: 6px 0 0; }
 .leerdoelen li { margin-bottom: 4px; }
 
 /* ---------- oefenblok: probeer het zelf ---------- */
 .oefen { border: 2px solid var(--sage); border-radius: 16px; background: var(--card); padding: 18px 20px; margin: 26px 0; box-shadow: 4px 4px 0 var(--sage-soft); }
-.oefen .oefen-kop { font-family: "Caveat", cursive; font-size: 23px; font-weight: 700; color: var(--sage); margin-bottom: 6px; }
+.oefen .oefen-kop { font-family: "Shantell Sans", cursive; font-size: 23px; font-weight: 700; color: var(--sage); margin-bottom: 6px; }
 .oefen p { font-size: 15px; margin-bottom: 10px; }
 .oefen-prompt { display: flex; gap: 10px; align-items: flex-start; background: var(--paper); border: 2px solid var(--line); border-radius: 12px; padding: 10px 12px; margin: 10px 0; }
 .oefen-prompt code { flex: 1; font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 13.5px; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
@@ -127,50 +129,51 @@ th { background: var(--card); font-size: 13px; text-transform: uppercase; letter
 .injectie-uit.zichtbaar { display: block; animation: fadein .35s ease; }
 .injectie-uit.alarm { border-color: var(--accent); background: var(--accent-soft); }
 .injectie-uit.veilig { border-color: var(--sage); background: var(--sage-soft); }
-.injectie-uit .wie { font-family: "Caveat", cursive; font-size: 19px; color: var(--ink-soft); }
+.injectie-uit .wie { font-family: "Shantell Sans", cursive; font-size: 19px; color: var(--ink-soft); }
 .injectie-knoppen { display: flex; gap: 10px; flex-wrap: wrap; }
 
 /* ---------- interactieve demo ---------- */
 .demo { border: 2px solid var(--ink); border-radius: 16px; background: var(--card); padding: 20px; margin: 26px 0; box-shadow: 4px 4px 0 var(--line); }
-.demo .demo-label { font-family: "Caveat", cursive; font-size: 22px; font-weight: 700; color: var(--sage); margin-bottom: 10px; }
+.demo .demo-label { font-family: "Shantell Sans", cursive; font-size: 22px; font-weight: 700; color: var(--sage); margin-bottom: 10px; }
 .demo .zin { font-size: 20px; font-weight: 600; background: var(--paper); border-radius: 12px; padding: 14px 16px; margin-bottom: 14px; min-height: 56px; }
 .demo .zin .nieuw { color: var(--accent); }
 .demo .voorspellingen button { display: flex; align-items: center; gap: 12px; width: 100%; background: none; border: none; cursor: pointer; font-family: inherit; font-size: 15px; padding: 7px 10px; border-radius: 10px; color: var(--ink); }
 .demo .voorspellingen button:hover { background: var(--accent-soft); }
 .demo .voorspellingen .woord { min-width: 90px; font-weight: 700; text-align: left; }
 .demo .voorspellingen .balk { height: 14px; background: var(--accent); border-radius: 99px; }
-.demo .voorspellingen .pct { font-family: "Caveat", cursive; font-size: 18px; color: var(--ink-soft); }
+.demo .voorspellingen .pct { font-family: "Shantell Sans", cursive; font-size: 18px; color: var(--ink-soft); }
 .demo .demo-reset { margin-top: 12px; font-size: 13px; font-weight: 600; background: none; border: none; cursor: pointer; color: var(--ink-soft); text-decoration: underline; font-family: inherit; }
-.demo .demo-klaar { font-family: "Caveat", cursive; font-size: 21px; color: var(--sage); margin-top: 6px; }
+.demo .demo-klaar { font-family: "Shantell Sans", cursive; font-size: 21px; color: var(--sage); margin-top: 6px; }
 
 /* ---------- tokenizer-demo ---------- */
 .demo-tokens .tok-invoer { width: 100%; box-sizing: border-box; border: 2px solid var(--ink); border-radius: 12px; padding: 11px 14px; font-family: "Inter", sans-serif; font-size: 16px; color: var(--ink); background: var(--paper); }
 .demo-tokens .tok-invoer:focus { outline: 3px solid var(--accent-soft); }
 .demo-tokens .tok-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
 .demo-tokens .tok-chips span { padding: 4px 9px; border-radius: 8px; font-size: 15px; border: 1.5px solid var(--line); }
-.demo-tokens .tok-teller { font-family: "Caveat", cursive; font-size: 19px; color: var(--ink-soft); margin-top: 10px; }
+.demo-tokens .tok-teller { font-family: "Shantell Sans", cursive; font-size: 19px; color: var(--ink-soft); margin-top: 10px; }
 
 /* ---------- landing ---------- */
-.landing { max-width: 880px; margin: 0 auto; padding: 56px 24px 80px; }
-.landing .badge { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); border: 2px solid var(--accent); border-radius: 99px; padding: 4px 14px; margin-bottom: 18px; }
-.landing h1 { font-size: 58px; margin: 0 0 14px; }
-.landing .intro { font-size: 18px; max-width: 620px; }
-.landing .door { display: flex; align-items: center; gap: 10px; margin: 18px 0 28px; font-size: 14.5px; color: var(--ink-soft); }
-.act-banner { display: flex; align-items: flex-start; gap: 13px; border: 2px solid var(--sage); border-radius: 16px; background: var(--sage-soft); padding: 16px 20px; margin: 0 0 36px; font-size: 15px; line-height: 1.5; color: var(--ink); box-shadow: 4px 4px 0 var(--line); }
+.landing { max-width: 880px; margin: 0 auto; padding: 36px 24px 80px; }
+.landing .badge { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); border: 2px solid var(--accent); border-radius: 99px; padding: 4px 14px; margin-bottom: 14px; }
+.landing h1 { font-size: 58px; line-height: 1.05; margin: 0 0 10px; }
+.landing .intro { font-size: 17px; max-width: 600px; margin: 0; }
+.landing .door { display: flex; align-items: center; gap: 10px; margin: 14px 0 22px; font-size: 14.5px; color: var(--ink-soft); }
+.act-banner { display: flex; align-items: flex-start; gap: 13px; border: 2px solid var(--sage); border-radius: 16px; background: var(--sage-soft); padding: 16px 20px; margin: 6px 0 34px; font-size: 15px; line-height: 1.5; color: var(--ink); box-shadow: 4px 4px 0 var(--line); }
 .act-banner strong { color: var(--sage); }
+.act-banner a { color: var(--accent); font-weight: 600; }
 .act-banner .act-icon { flex: 0 0 auto; margin-top: 1px; }
 .voorwie { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 32px 0 8px; }
 .voorwie-item { border: 2px solid var(--ink); border-radius: 16px; background: var(--card); padding: 20px 22px; box-shadow: 4px 4px 0 var(--line); }
-.voorwie-item h3 { font-family: "Caveat", cursive; font-size: 26px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+.voorwie-item h3 { font-family: "Shantell Sans", cursive; font-size: 26px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
 .voorwie-item p { font-size: 14.5px; color: var(--ink-soft); margin: 0; }
 .voorwie-item a { color: var(--accent); font-weight: 600; }
-.sectiekop { font-size: 34px; margin: 44px 0 4px; }
-.sectie-intro { font-size: 15.5px; color: var(--ink-soft); max-width: 620px; margin-bottom: 24px; }
+.sectiekop { font-size: 34px; margin: 26px 0 4px; }
+.sectie-intro { font-size: 15.5px; color: var(--ink-soft); max-width: 600px; margin-bottom: 18px; }
 .sectie-intro a { color: var(--accent); }
 .door-foto { width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--ink); object-fit: cover; box-shadow: 2px 2px 0 var(--line); }
 .testimonial-strip { border: 2px solid var(--ink); border-radius: 16px; background: var(--card); padding: 18px 22px; margin: 6px 0 34px; box-shadow: 4px 4px 0 var(--line); font-size: 15px; }
 .leadcap { border: 2px solid var(--ink); border-radius: 18px; background: var(--accent-soft); padding: 24px 26px; margin: 0 0 34px; box-shadow: 4px 4px 0 var(--line); }
-.leadcap h2 { font-family: "Caveat", cursive; font-size: 28px; margin: 0 0 6px; }
+.leadcap h2 { font-family: "Shantell Sans", cursive; font-size: 28px; margin: 0 0 6px; }
 .leadcap p { font-size: 14.5px; margin: 0 0 14px; }
 .leadcap-velden { display: flex; flex-wrap: wrap; gap: 10px; }
 .leadcap-velden input[type="email"], .leadcap-velden input[type="text"] { flex: 1; min-width: 220px; border: 2px solid var(--ink); border-radius: 12px; padding: 11px 14px; font-family: "Inter", sans-serif; font-size: 15px; color: var(--ink); background: var(--card); }
@@ -188,12 +191,12 @@ th { background: var(--card); font-size: 13px; text-transform: uppercase; letter
 .module-card.binnenkort { opacity: .62; }
 .module-card .tag { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--sage); margin-bottom: 8px; }
 .module-card .tag.soon { color: var(--ink-soft); }
-.module-card h2 { font-family: "Caveat", cursive; font-size: 30px; font-weight: 700; margin: 0 0 8px; line-height: 1.1; }
+.module-card h2 { font-family: "Shantell Sans", cursive; font-size: 30px; font-weight: 700; margin: 0 0 8px; line-height: 1.1; }
 .module-card p { font-size: 14.5px; color: var(--ink-soft); flex: 1; }
 .module-card .meta { font-size: 13px; color: var(--ink-soft); margin-bottom: 14px; }
 .b2b { border: 2px solid var(--ink); border-radius: 18px; background: var(--sage-soft); padding: 24px 26px; box-shadow: 4px 4px 0 var(--line); display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
 .b2b .tekst { flex: 1; min-width: 260px; }
-.b2b h2 { font-family: "Caveat", cursive; font-size: 28px; margin: 0 0 6px; }
+.b2b h2 { font-family: "Shantell Sans", cursive; font-size: 28px; margin: 0 0 6px; }
 .b2b p { font-size: 14.5px; margin: 0; }
 .landing footer { margin-top: 44px; font-size: 13.5px; color: var(--ink-soft); }
 .landing footer a { color: var(--accent); }
@@ -213,7 +216,7 @@ th { background: var(--card); font-size: 13px; text-transform: uppercase; letter
 .ex-optie.juist { background: var(--sage-soft); border-color: var(--sage); opacity: 1; font-weight: 600; }
 .ex-optie.gekozen-fout { background: var(--accent-soft); border-color: var(--accent); opacity: 1; }
 .ex-uitleg { display: none; margin-top: 12px; font-size: 14.5px; background: var(--paper); border-radius: 10px; padding: 12px 14px; }
-.ex-score { font-family: "Caveat", cursive; font-size: 32px; text-align: center; margin: 8px 0 14px; }
+.ex-score { font-family: "Shantell Sans", cursive; font-size: 32px; text-align: center; margin: 8px 0 14px; }
 .examen-uitslag { display: none; border: 2px solid var(--ink); border-radius: 18px; background: var(--card); padding: 26px 24px; margin-top: 12px; box-shadow: 4px 4px 0 var(--line); text-align: center; }
 .ex-herkans { font-size: 15px; color: var(--ink-soft); margin-bottom: 16px; }
 .ex-herkans a { color: var(--accent); }
@@ -253,5 +256,11 @@ th { background: var(--card); font-size: 13px; text-transform: uppercase; letter
   aside { width: 100%; height: auto; position: static; border-right: none; border-bottom: 2px solid var(--line); }
   main { padding: 32px 18px 60px; }
   h1 { font-size: 36px; }
-  .landing h1 { font-size: 42px; }
+  .landing { padding: 28px 18px 60px; }
+  .landing h1 { font-size: 32px; line-height: 1.08; margin: 0 0 10px; }
+  .landing .intro { font-size: 16px; max-width: none; margin: 0 0 12px; }
+  .landing .door { margin: 12px 0 18px; }
+  .door-foto { width: 40px; height: 40px; }
+  .sectiekop { font-size: 26px; margin: 18px 0 4px; }
+  .sectie-intro { margin: 0 0 14px; }
 }
