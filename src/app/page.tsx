@@ -12,7 +12,7 @@ const ervaring = [
     label: "Achtergrond",
     items: [
       "AI-docent, Universiteit van Amsterdam",
-      "AI-expert, Alliander",
+      "AI-expert bij een grote netbeheerder",
       "Auteur, Koninklijke Boom Uitgevers",
     ],
   },
@@ -21,8 +21,8 @@ const ervaring = [
     items: ["GGD GHOR", "NIVE", "UvA/HvA"],
   },
   {
-    label: "Cursus- en advieswerk voor o.a.",
-    items: ["Winc Academy", "RVO"],
+    label: "Cursus- en projectwerk voor o.a.",
+    items: ["Winc Academy", "een rijksdienst"],
   },
 ];
 
@@ -56,10 +56,10 @@ export default function Home() {
               <span className="hand text-accent">jouw organisatie</span>
             </h1>
             <p className="mt-6 text-lg text-ink-soft">
-              Ik ben Max van den Broek. Ik help organisaties hun
-              AI-geletterdheid te regelen: met e-learnings op maat voor elke
-              doelgroep, hands-on trainingen en werkende prototypes. Nuchter,
-              praktisch, en met voorbeelden uit jullie eigen werk.
+              Ik ben Max van den Broek. Ik help organisaties AI-geletterd te
+              worden, met e-learnings op maat, hands-on trainingen en werkende
+              prototypes. Nuchter, praktisch, en met voorbeelden uit jullie
+              eigen werk.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link href="/contact" className="btn btn-primary">

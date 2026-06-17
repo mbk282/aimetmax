@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Over Max van den Broek",
   description:
-    "Max van den Broek: AI-trainer en auteur van AI-Pionier. MSc Logic (UvA), voormalig Senior AI-docent aan de UvA, was AI-expert bij Alliander, nu zelfstandig.",
+    "Max van den Broek: AI-trainer en auteur van AI-Pionier. MSc Logic (UvA), voormalig Senior AI-docent aan de UvA, was AI-expert bij een grote netbeheerder, nu zelfstandig.",
   alternates: { canonical: "/over" },
 };
 
@@ -77,11 +77,11 @@ export default function OverPage() {
         <p>
           Vier jaar lang was ik <strong>AI-docent aan de UvA</strong>, waar ik
           cursussen over (generatieve) AI ontwikkelde en honderden studenten en
-          professionals op weg hielp. Daarna was ik <strong>AI-expert bij
-          Alliander</strong>: daar gaf ik onder meer doelgroepgerichte
+          professionals op weg hielp. Daarna was ik <strong>AI-expert bij een
+          grote netbeheerder</strong>: daar gaf ik onder meer doelgroepgerichte
           AI-trainingen, naast het bouwen van proofs-of-concept en advies over
           verantwoord AI-gebruik. Inmiddels werk ik zelfstandig. Op dit moment
-          doe ik een opdracht voor de <strong>RVO</strong>, maakte ik een
+          doe ik een opdracht bij een <strong>rijksdienst</strong>, maakte ik een
           AI-cursus voor <strong>Winc Academy</strong>, en geef ik AI-trainingen
           en keynotes voor uiteenlopende organisaties.
         </p>

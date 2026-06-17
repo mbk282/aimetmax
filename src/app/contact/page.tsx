@@ -11,26 +11,26 @@ export const metadata: Metadata = {
 const aanbod = [
   {
     titel: "E-learning op maat",
-    vanaf: "vanaf € 8.500 per traject",
+    vanaf: "vanaf € 12.500 per traject",
     beschrijving:
       "Doelgroepspecifieke AI-e-learnings met jullie eigen voorbeelden, tools en beleid. Inclusief intake, doelgroepscan, 3 tot 5 modules met toetsing en certificaten, en een pilotronde. Schaalbaar naar het hele personeelsbestand en onderbouwd voor de AI-geletterdheidsplicht (artikel 4).",
     accent: true,
   },
   {
     titel: "Losse module of training",
-    vanaf: "module vanaf € 3.000 · incompany trainingsdag vanaf € 2.500",
+    vanaf: "module vanaf € 4.500 · incompany trainingsdag vanaf € 2.950",
     beschrijving:
       "Een enkele e-learningmodule op maat, of een hands-on incompany trainingsdag waarin je team meteen zelf oefent met de eigen werkpraktijk. Van Copilot voor controllers tot AI voor developers.",
   },
   {
     titel: "Update-abonnement",
-    vanaf: "vanaf € 1.250 per kwartaal",
+    vanaf: "vanaf € 1.500 per kwartaal",
     beschrijving:
       "AI-kennis veroudert snel. Met een kwartaalupdate houd ik jullie e-learnings actueel: nieuwe voorbeelden, nieuwe tools, en aanpassingen aan veranderende wetgeving. Zo blijft je materiaal up-to-date zonder dat je telkens een nieuw traject hoeft in te kopen.",
   },
   {
     titel: "Keynote of lezing",
-    vanaf: "vanaf € 2.500",
+    vanaf: "vanaf € 2.950",
     beschrijving:
       "Een inspirerende, toegankelijke en nuchtere lezing over AI voor conferenties, bedrijfsdagen en teambijeenkomsten. Beeldend, met herkenbare voorbeelden.",
   },
