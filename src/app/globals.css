@@ -3,7 +3,7 @@
 
 @theme inline {
   --font-sans: var(--font-inter);
-  --font-hand: var(--font-caveat);
+  --font-hand: var(--font-shantell);
 
   --color-paper: #faf6ee;
   --color-card: #fffdf8;
@@ -31,7 +31,7 @@ body {
 
 /* handgeschreven accent, zoals in de academy */
 .hand {
-  font-family: var(--font-caveat), "Caveat", cursive;
+  font-family: var(--font-shantell), "Shantell Sans", cursive;
   font-weight: 700;
 }
 

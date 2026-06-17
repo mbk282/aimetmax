@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Caveat } from "next/font/google";
+import { Inter, Shantell_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -9,8 +9,8 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const caveat = Caveat({
-  variable: "--font-caveat",
+const shantell = Shantell_Sans({
+  variable: "--font-shantell",
   weight: ["500", "700"],
   subsets: ["latin"],
 });
@@ -40,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="nl">
-      <body className={`${inter.variable} ${caveat.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${shantell.variable} font-sans antialiased`}>
         <Header />
         <main>{children}</main>
         <Footer />
