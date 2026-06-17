@@ -1,0 +1,169 @@
+<svg viewBox="0 0 690 940" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- AI-gesprekskaarten: voorkant doosje (huisstijl AI met Max). Vector-master, print-klaar. -->
+  <!-- Achtergrond creme tot de rand (bleed-vriendelijk) -->
+  <rect x="0" y="0" width="690" height="940" fill="#FAF6EE"/>
+
+  <!-- Decoratieve rand -->
+  <rect x="22" y="22" width="646" height="896" rx="38" fill="none" stroke="#2A2A2A" stroke-width="4.5"/>
+
+  <!-- 60 KAARTEN badge -->
+  <rect x="261" y="50" width="168" height="40" rx="20" fill="none" stroke="#E8590C" stroke-width="3"/>
+  <text x="345" y="77" text-anchor="middle" font-family="'Inter', sans-serif" font-size="19" font-weight="800" letter-spacing="3" fill="#E8590C">60 KAARTEN</text>
+
+  <!-- Titel -->
+  <text x="345" y="152" text-anchor="middle" font-family="'Shantell Sans', cursive" font-size="52" font-weight="800"><tspan fill="#E8590C">AI</tspan><tspan fill="#2A2A2A">-gesprekskaarten</tspan></text>
+  <!-- Oranje swoosh onder AI -->
+  <path d="M112 160 Q138 167 166 158" stroke="#E8590C" stroke-width="4" fill="none"/>
+
+  <!-- Tagline -->
+  <text x="345" y="196" text-anchor="middle" font-family="'Inter', sans-serif" font-size="21" fill="#5A5550">Ontdek hoe jouw team <tspan fill="#E8590C" font-weight="700">écht</tspan> over AI denkt.</text>
+
+  <!-- ====================== HERO ILLUSTRATIE ====================== -->
+  <!-- confetti -->
+  <g stroke-width="2.4">
+    <circle cx="150" cy="250" r="3" fill="#C98A1B" stroke="none"/>
+    <circle cx="545" cy="262" r="3.4" fill="#4C8577" stroke="none"/>
+    <circle cx="565" cy="360" r="3" fill="#E8590C" stroke="none"/>
+    <circle cx="135" cy="350" r="3" fill="#2F6E78" stroke="none"/>
+    <path d="M560 300 l7 7 M567 300 l-7 7" stroke="#C98A1B"/>
+    <path d="M128 300 l6 6 M134 300 l-6 6" stroke="#B5532E"/>
+    <circle cx="528" cy="240" r="2.4" fill="#875A6B" stroke="none"/>
+  </g>
+
+  <!-- Grote gedeelde spreekwolk met iconen -->
+  <g>
+    <!-- tails naar beide figuren -->
+    <path d="M248 376 L236 414 L274 380 Z" fill="#FFFDF8" stroke="#2A2A2A" stroke-width="3.6"/>
+    <path d="M444 376 L456 414 L418 380 Z" fill="#FFFDF8" stroke="#2A2A2A" stroke-width="3.6"/>
+    <rect x="163" y="232" width="364" height="150" rx="34" fill="#FFFDF8" stroke="#2A2A2A" stroke-width="3.8"/>
+
+    <!-- icoon: robot (sage) -->
+    <g transform="translate(208,276) scale(1.15)" stroke="#4C8577" stroke-width="2">
+      <path d="M12 3 V6"/><circle cx="12" cy="2" r="1.3" fill="#4C8577" stroke="none"/>
+      <rect x="5" y="6" width="14" height="13" rx="3" fill="#DCEAE5"/>
+      <circle cx="10" cy="12" r="1.4" fill="#4C8577" stroke="none"/><circle cx="14" cy="12" r="1.4" fill="#4C8577" stroke="none"/>
+      <path d="M9 16 H15"/>
+    </g>
+    <!-- icoon: lamp (goud) -->
+    <g transform="translate(290,266) scale(1.1)" stroke="#C98A1B" stroke-width="2">
+      <circle cx="12" cy="9" r="5.5" fill="#FFE8A3"/>
+      <path d="M9 16 H15 M10 18 H14"/>
+      <path d="M4 4 L6 6 M20 4 L18 6 M12 1 V2.5"/>
+    </g>
+    <!-- icoon: weegschaal (oranje) -->
+    <g transform="translate(368,276) scale(1.1)" stroke="#E8590C" stroke-width="2">
+      <path d="M12 5 V19 M5 8 H19"/>
+      <circle cx="12" cy="4.4" r="1.3" fill="#E8590C" stroke="none"/>
+      <path d="M5 8 Q3 13 7 13 Q9.5 13 5 8 M19 8 Q17 13 21 13 Q23.5 13 19 8"/>
+      <path d="M8 20 H16"/>
+    </g>
+    <!-- icoon: grafiek (teal) -->
+    <g transform="translate(444,272) scale(1.1)" stroke="#2F6E78" stroke-width="2">
+      <path d="M5 4 V19 H20"/>
+      <path d="M7 16 L11 11 L14 13 L19 6"/>
+      <path d="M16 6 H19 V9"/>
+    </g>
+    <!-- icoon: chat (oranje) -->
+    <g transform="translate(202,330) scale(1.1)" stroke="#E8590C" stroke-width="2">
+      <rect x="4" y="5" width="16" height="11" rx="3" fill="#FBE3D4"/>
+      <path d="M9 16 L8 20 L13 16 Z" fill="#FBE3D4"/>
+      <circle cx="9" cy="10.5" r="1" fill="#E8590C" stroke="none"/><circle cx="12" cy="10.5" r="1" fill="#E8590C" stroke="none"/><circle cx="15" cy="10.5" r="1" fill="#E8590C" stroke="none"/>
+    </g>
+    <!-- icoon: slot (terracotta) -->
+    <g transform="translate(286,334) scale(1.1)" stroke="#B5532E" stroke-width="2">
+      <rect x="6" y="10" width="12" height="9" rx="2" fill="#F2DBCF"/>
+      <path d="M9 10 V8 a3 3 0 0 1 6 0 V10"/>
+      <circle cx="12" cy="14" r="1.2" fill="#B5532E" stroke="none"/><path d="M12 14 V16"/>
+    </g>
+    <!-- icoon: vraagteken (sage) -->
+    <text x="368" y="358" text-anchor="middle" font-family="'Shantell Sans', cursive" font-size="30" font-weight="800" fill="#4C8577">?</text>
+    <!-- icoon: globe (mauve) -->
+    <g transform="translate(440,332) scale(1.1)" stroke="#875A6B" stroke-width="2">
+      <circle cx="12" cy="12" r="7" fill="#ECDCE2"/>
+      <path d="M5 12 H19 M12 5 Q7 12 12 19 Q17 12 12 5 M8 8 Q12 9.4 16 8 M8 16 Q12 14.6 16 16"/>
+    </g>
+  </g>
+
+  <!-- Kleine sage gespreksbubbel tussen de twee figuren -->
+  <g>
+    <path d="M314 452 L306 480 L332 456 Z" fill="#DCEAE5" stroke="#2A2A2A" stroke-width="3.4"/>
+    <rect x="272" y="398" width="146" height="58" rx="16" fill="#DCEAE5" stroke="#2A2A2A" stroke-width="3.4"/>
+    <path d="M292 416 H398 M292 430 H398 M292 444 H372" stroke="#4C8577" stroke-width="4"/>
+  </g>
+
+  <!-- Twee figuren -->
+  <g stroke="#2A2A2A" stroke-width="3.6">
+    <!-- links -->
+    <path d="M126 560 C128 514 150 503 175 503 C200 503 222 514 224 560 Z" fill="#DCEAE5"/>
+    <circle cx="175" cy="466" r="33" fill="#FFFDF8"/>
+    <!-- rechts -->
+    <path d="M466 560 C468 514 490 503 515 503 C540 503 562 514 564 560 Z" fill="#FBE3D4"/>
+    <circle cx="515" cy="466" r="33" fill="#FFFDF8"/>
+  </g>
+
+  <!-- ====================== CATEGORIEEN (3 types + spelregels) ====================== -->
+  <g>
+    <!-- Stelling (oranje) -->
+    <circle cx="150" cy="596" r="26" fill="#E8590C"/>
+    <g transform="translate(150,596)" stroke="#FFFDF8" stroke-width="2.4" fill="none">
+      <rect x="-9" y="-9" width="18" height="13" rx="3"/>
+      <path d="M-3 4 L-5 9 L1 4 Z" fill="#FFFDF8"/>
+    </g>
+    <text x="150" y="644" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#2A2A2A">Stelling</text>
+
+    <!-- Dilemma (goud) -->
+    <circle cx="280" cy="596" r="26" fill="#C98A1B"/>
+    <g transform="translate(280,596)" stroke="#FFFDF8" stroke-width="2.5" fill="none">
+      <path d="M0 9 V-1"/>
+      <path d="M0 -1 L-7 -8 M-7 -8 v3.4 M-7 -8 h3.4"/>
+      <path d="M0 -1 L7 -8 M7 -8 v3.4 M7 -8 h-3.4"/>
+    </g>
+    <text x="280" y="644" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#2A2A2A">Dilemma</text>
+
+    <!-- Open vraag (teal) -->
+    <circle cx="410" cy="596" r="26" fill="#2F6E78"/>
+    <text x="410" y="607" text-anchor="middle" font-family="'Shantell Sans', cursive" font-size="30" font-weight="800" fill="#FFFDF8">?</text>
+    <text x="410" y="644" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#2A2A2A">Open vraag</text>
+
+    <!-- Spelregels (mauve) -->
+    <circle cx="540" cy="596" r="26" fill="#875A6B"/>
+    <g transform="translate(540,596)" stroke="#FFFDF8" stroke-width="2.2" fill="none">
+      <path d="M-10 -7 l2 2 l3.2 -4 M-2 -6 H10"/>
+      <path d="M-10 0 l2 2 l3.2 -4 M-2 -1 H10"/>
+      <path d="M-10 7 l2 2 l3.2 -4 M-2 6 H10"/>
+    </g>
+    <text x="540" y="644" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#2A2A2A">Spelregels</text>
+  </g>
+
+  <!-- 6 thema-kleuren -->
+  <g>
+    <circle cx="280" cy="688" r="7" fill="#875A6B"/>
+    <circle cx="306" cy="688" r="7" fill="#4C8577"/>
+    <circle cx="332" cy="688" r="7" fill="#C98A1B"/>
+    <circle cx="358" cy="688" r="7" fill="#2F6E78"/>
+    <circle cx="384" cy="688" r="7" fill="#B5532E"/>
+    <circle cx="410" cy="688" r="7" fill="#E8590C"/>
+    <text x="345" y="713" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#5A5550">6 thema's</text>
+  </g>
+
+  <!-- USP-regel -->
+  <text x="345" y="742" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12.5" font-weight="700" letter-spacing="1.5" fill="#E8590C">WERKVORMEN  ·  FACILITATOR-NOTES  ·  DIRECT INZETBAAR</text>
+
+  <!-- ====================== VOET ====================== -->
+  <!-- Wordmark links -->
+  <text x="252" y="838" text-anchor="middle" font-family="'Shantell Sans', cursive" font-size="42" font-weight="800" fill="#2A2A2A">AI met Max</text>
+  <path d="M178 850 Q252 859 326 848" stroke="#E8590C" stroke-width="4" fill="none"/>
+  <text x="252" y="872" text-anchor="middle" font-family="'Inter', sans-serif" font-size="15" font-weight="600" fill="#5A5550">aimetmax.nl/kaarten</text>
+
+  <!-- QR-blok rechts -->
+  <g>
+    <rect x="450" y="782" width="194" height="106" rx="16" fill="#DCEAE5" stroke="#4C8577" stroke-width="2.5" stroke-dasharray="6 5"/>
+    <text x="463" y="812" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#2A2A2A">Inclusief QR</text>
+    <text x="463" y="830" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#5A5550">naar de gratis</text>
+    <text x="463" y="848" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#5A5550">online versie</text>
+    <g transform="translate(560,796) scale(2.0)" shape-rendering="crispEdges">
+      <rect x="0" y="0" width="37" height="37" fill="#FFFDF8"/>
+      <path stroke="#2A2A2A" stroke-width="1" d="M4 4.5h7m3 0h2m2 0h1m3 0h2m2 0h7M4 5.5h1m5 0h1m1 0h1m2 0h3m3 0h1m1 0h2m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m3 0h1m1 0h1m2 0h1m4 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m2 0h3m1 0h1m2 0h1m1 0h2m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h3m1 0h2m2 0h1m2 0h1m2 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m4 0h1m2 0h3m2 0h2m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h1m1 0h1m3 0h1m1 0h1M4 12.5h1m1 0h1m1 0h1m1 0h1m2 0h4m3 0h2m1 0h2m3 0h1m2 0h1M5 13.5h1m1 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h4m1 0h1m1 0h1m2 0h1m2 0h1M6 14.5h2m2 0h3m3 0h1m1 0h3m4 0h4m1 0h3M4 15.5h1m2 0h1m4 0h1m2 0h1m1 0h2m1 0h2m2 0h2m5 0h1M7 16.5h1m2 0h2m6 0h2m1 0h1m1 0h4m2 0h1m1 0h2M4 17.5h1m1 0h4m1 0h1m2 0h3m1 0h2m1 0h1m3 0h2m2 0h1m2 0h1M4 18.5h2m1 0h1m2 0h1m3 0h1m1 0h2m6 0h2m1 0h3m1 0h2M6 19.5h2m3 0h3m2 0h1m2 0h1m1 0h4m3 0h2m1 0h1M5 20.5h3m1 0h4m2 0h2m3 0h2m1 0h4m2 0h1m1 0h2M6 21.5h4m1 0h1m2 0h1m2 0h1m1 0h2m3 0h3m2 0h2m1 0h1M4 22.5h1m1 0h1m1 0h1m1 0h2m1 0h1m4 0h4m2 0h1m1 0h3m2 0h2M5 23.5h2m2 0h1m1 0h3m1 0h4m1 0h2m2 0h1m2 0h3m1 0h1M4 24.5h1m1 0h3m1 0h3m1 0h3m1 0h2m2 0h7M12 25.5h2m2 0h1m1 0h2m3 0h2m3 0h1m1 0h3M4 26.5h7m6 0h1m3 0h1m1 0h2m1 0h1m1 0h2m1 0h2M4 27.5h1m5 0h1m2 0h1m5 0h1m4 0h1m3 0h2m2 0h1M4 28.5h1m1 0h3m1 0h1m1 0h1m1 0h3m3 0h1m3 0h5M4 29.5h1m1 0h3m1 0h1m2 0h1m2 0h1m2 0h3m1 0h2m2 0h2m1 0h1M4 30.5h1m1 0h3m1 0h1m1 0h6m1 0h2m1 0h2m1 0h1m1 0h3m2 0h1M4 31.5h1m5 0h1m3 0h3m3 0h7m4 0h1M4 32.5h7m1 0h4m1 0h3m2 0h1m1 0h1m1 0h1m1 0h1m2 0h2"/>
+    </g>
+  </g>
+</svg>
