@@ -337,7 +337,17 @@
   function toonCertificaat(uitkomst, naam, score, totaal) {
     var nu = new Date();
     var datum = nu.toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" });
-    var certUrl = encodeURIComponent("https://www.aimetmax.nl/academy/examen.html");
+    var BADGE_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="120" height="120" role="img" aria-label="AI-geletterdheid badge, AI met Max academy">' +
+      '<defs><path id="arcTop" d="M 48 122 A 72 72 0 0 1 192 122" fill="none"/></defs>' +
+      '<circle cx="120" cy="120" r="116" fill="#E8590C"/>' +
+      '<circle cx="120" cy="120" r="103" fill="#FAF6EE" stroke="#2A2A2A" stroke-width="2"/>' +
+      '<text font-family="Shantell Sans, cursive" font-size="21" font-weight="700" letter-spacing="1" fill="#2A2A2A"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">AI-GELETTERDHEID</textPath></text>' +
+      '<circle cx="120" cy="110" r="31" fill="#4C8577"/>' +
+      '<path d="M105 110 l10 10 l19 -21" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<text x="120" y="166" text-anchor="middle" font-family="Shantell Sans, cursive" font-size="19" font-weight="700" fill="#2A2A2A">AI met Max</text>' +
+      '<text x="120" y="186" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="1.5" fill="#5A5550">ACADEMY · ARTIKEL 4</text>' +
+      '</svg>';
+    var certUrl = encodeURIComponent("https://www.aimetmax.nl/academy/badge.html");
     var liAdd = "https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME" +
       "&name=" + encodeURIComponent("AI-geletterdheid (eindtoets)") +
       "&organizationName=" + encodeURIComponent("AI met Max academy") +
@@ -347,6 +357,7 @@
     uitkomst.innerHTML =
       '<div class="certificaat">' +
         '<div class="cert-accentlijn"></div>' +
+        '<div style="text-align:center;margin-bottom:2px;">' + BADGE_SVG + '</div>' +
         '<div class="cert-kop hand">Certificaat van afronding</div>' +
         '<div class="cert-naam">' + escapeHtml(naam) + '</div>' +
         '<p class="cert-tekst">heeft de eindtoets AI-geletterdheid van de AI met Max academy met goed gevolg afgelegd</p>' +
@@ -357,6 +368,7 @@
       '</div>' +
       '<div class="cert-acties">' +
         '<button type="button" class="btn cert-print">Print of bewaar als PDF</button>' +
+        '<button type="button" class="btn cert-badge-download">Download je badge</button>' +
         '<a class="btn" target="_blank" rel="noopener" href="' + liAdd + '">Zet op je LinkedIn-profiel</a>' +
         '<a class="btn" target="_blank" rel="noopener" href="' + liShare + '">Deel op LinkedIn</a>' +
       '</div>' +
@@ -374,6 +386,14 @@
       window.addEventListener("afterprint", opruimen, { once: true });
       setTimeout(opruimen, 3000);
       window.print();
+    });
+    uitkomst.querySelector(".cert-badge-download").addEventListener("click", function () {
+      var blob = new Blob([BADGE_SVG], { type: "image/svg+xml" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url; a.download = "ai-geletterdheid-badge.svg";
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
     });
   }
 })();
