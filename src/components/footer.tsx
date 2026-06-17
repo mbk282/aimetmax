@@ -1,6 +1,10 @@
 import Link from "next/link";
+import { BEDRIJF } from "@/lib/bedrijf";
 
 export function Footer() {
+  const adresDeel = BEDRIJF.toonAdresInFooter
+    ? `${BEDRIJF.straat}, ${BEDRIJF.postcode} ${BEDRIJF.plaats}`
+    : BEDRIJF.plaats;
   return (
     <footer className="border-t-2 border-line bg-card">
       <div className="mx-auto max-w-5xl px-6 py-12">
@@ -73,11 +77,36 @@ export function Footer() {
                   LinkedIn
                 </a>
               </li>
+              <li>
+                <a
+                  href={`mailto:${BEDRIJF.email}`}
+                  className="text-ink-soft hover:text-accent"
+                >
+                  {BEDRIJF.email}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
-        <div className="mt-8 border-t-2 border-line pt-8 text-center text-sm text-ink-soft">
-          &copy; {new Date().getFullYear()} AI met Max &middot; Max van den Broek
+        <div className="mt-8 border-t-2 border-line pt-8 text-sm text-ink-soft">
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2">
+            <Link href="/privacy" className="hover:text-accent">
+              Privacy
+            </Link>
+            <Link href="/voorwaarden" className="hover:text-accent">
+              Algemene voorwaarden
+            </Link>
+            <Link href="/retour" className="hover:text-accent">
+              Retour &amp; herroeping
+            </Link>
+          </div>
+          <p className="mt-4 text-center">
+            {BEDRIJF.handelsnaam} &middot; {BEDRIJF.rechtsnaam} &middot; {adresDeel}{" "}
+            &middot; KvK {BEDRIJF.kvk} &middot; btw {BEDRIJF.btw}
+          </p>
+          <p className="mt-1 text-center">
+            &copy; {new Date().getFullYear()} {BEDRIJF.eigenaar}
+          </p>
         </div>
       </div>
     </footer>
