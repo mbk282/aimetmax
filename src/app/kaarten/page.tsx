@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Kaart,
   KaartType,
@@ -161,6 +162,23 @@ export default function KaartenPage() {
             Bekijk alle kaarten
           </a>
         </div>
+        <Link
+          href="/kaarten/bestel"
+          className="group mt-7 grid gap-3 rounded-2xl border-2 border-ink bg-hl p-4 shadow-[4px_4px_0_#2a2a2a] transition hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#2a2a2a] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:grid-cols-[auto_1fr_auto] sm:items-center"
+        >
+          <span className="w-fit rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-white">
+            Nieuw
+          </span>
+          <span className="text-sm text-ink-soft sm:text-base">
+            <strong className="text-ink">
+              De fysieke set is nu te reserveren.
+            </strong>{" "}
+            Tijdelijk 2 voor de prijs van 1.
+          </span>
+          <span className="text-sm font-bold text-accent group-hover:underline">
+            Bekijk de voorverkoop &rarr;
+          </span>
+        </Link>
         <div className="mt-6 flex flex-wrap gap-2">
           {themas.map((t) => (
             <span
@@ -387,10 +405,10 @@ export default function KaartenPage() {
 
       {/* -------------------------------------------------------- FYSIEK */}
       <section className="mx-auto max-w-5xl px-6 py-10">
-        <div className="warm-card grid items-center gap-6 p-6 sm:p-10 md:grid-cols-[1fr_auto]">
+        <div className="warm-card grid items-center gap-8 p-6 sm:p-10 md:grid-cols-[minmax(0,1fr)_280px]">
           <div>
             <span className="text-xs font-bold uppercase tracking-[0.12em] text-accent">
-              Binnenkort
+              Voorverkoop
             </span>
             <h2 className="hand mt-1 text-3xl font-bold text-ink">
               De fysieke set
@@ -399,20 +417,35 @@ export default function KaartenPage() {
               Een echt kaartspel in een doosje voelt anders dan een scherm: je
               schudt, deelt uit, legt op tafel. Ik maak een verzorgde fysieke
               set in de huisstijl, met de werkvormgids erbij, voor in workshops
-              en teamsessies. Wil je weten wanneer hij er is, of er een paar
-              voor je team reserveren?
+              en teamsessies. Tijdelijk kun je hem pre-orderen met 2 voor de
+              prijs van 1: eentje voor jezelf en eentje om cadeau te geven.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link href="/kaarten/bestel" className="btn btn-primary">
-                Bekijk de set
+                Pre-order de set
               </Link>
               <a href="#deck" className="btn btn-ghost">
                 Nu al online gebruiken
               </a>
             </div>
           </div>
-          <div className="mx-auto w-44">
-            <BoxMini />
+          <div className="grid grid-cols-2 gap-3">
+            <Image
+              src="/kaarten/doosje-voorkant.png"
+              alt="Voorkant van het doosje met AI-gesprekskaarten"
+              width={303}
+              height={445}
+              sizes="(max-width: 767px) 40vw, 130px"
+              className="h-auto w-full rounded-lg"
+            />
+            <Image
+              src="/kaarten/doosje-achterkant.png"
+              alt="Achterkant van het doosje met AI-gesprekskaarten"
+              width={313}
+              height={463}
+              sizes="(max-width: 767px) 40vw, 130px"
+              className="h-auto w-full rounded-lg"
+            />
           </div>
         </div>
       </section>
@@ -515,33 +548,6 @@ export default function KaartenPage() {
           </div>
         </div>
       )}
-    </div>
-  );
-}
-
-// Klein doosje-mockup in de huisstijl voor de "fysieke set"-sectie.
-function BoxMini() {
-  return (
-    <div
-      className="rounded-xl border-2 border-ink bg-paper p-4 text-center"
-      style={{ boxShadow: "5px 5px 0 #E5DCCB" }}
-    >
-      <div className="hand text-lg font-bold leading-tight text-accent">
-        AI-gesprekskaarten
-      </div>
-      <div className="mt-0.5 text-[10px] text-ink-soft">
-        Voer het goede gesprek over AI
-      </div>
-      <div className="mt-3 flex justify-center gap-1.5">
-        {themas.map((t) => (
-          <span
-            key={t.key}
-            className="h-2.5 w-2.5 rounded-full border border-ink"
-            style={{ background: t.kleur }}
-          />
-        ))}
-      </div>
-      <div className="hand mt-3 text-sm text-ink">AI met Max</div>
     </div>
   );
 }

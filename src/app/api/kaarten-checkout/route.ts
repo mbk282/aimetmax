@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { BESTEL } from "../../kaarten/bestel-config";
+import {
+  BESTEL,
+  berekenBestelling,
+  normaliseerAantal,
+} from "../../kaarten/bestel-config";
 
 // Maakt een Stripe Checkout-sessie voor de fysieke kaartenset. Werkt zodra
 // STRIPE_SECRET_KEY als environment variable is gezet; daarvoor geeft hij 503
@@ -11,13 +15,14 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "stripe_not_configured" }, { status: 503 });
   }
 
-  let aantal = 1;
+  let aantal: number = BESTEL.standaardAantal;
   try {
     const body = await req.json();
-    aantal = Math.min(Math.max(parseInt(String(body.aantal), 10) || 1, 1), 50);
+    aantal = normaliseerAantal(body.aantal);
   } catch {
-    aantal = 1;
+    aantal = BESTEL.standaardAantal;
   }
+  const bestelling = berekenBestelling(aantal);
 
   const origin =
     req.headers.get("origin") ||
@@ -26,23 +31,47 @@ export async function POST(req: Request) {
 
   try {
     const stripe = new Stripe(key);
+    const beschrijving =
+      bestelling.gratisSets > 0
+        ? `${bestelling.aantal} sets geleverd; ${bestelling.gratisSets} gratis via het voorverkoopaanbod.`
+        : `${bestelling.aantal} set geleverd als pre-order.`;
+
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      locale: "nl",
+      billing_address_collection: "auto",
       line_items: [
         {
-          quantity: aantal,
-          adjustable_quantity: { enabled: true, minimum: 1, maximum: 50 },
+          quantity: 1,
           price_data: {
             currency: BESTEL.valuta.toLowerCase(),
-            unit_amount: Math.round(BESTEL.prijs * 100),
+            unit_amount: Math.round(bestelling.totaal * 100),
+            tax_behavior: "inclusive",
             product_data: {
-              name: `${BESTEL.naam} (fysieke set)`,
-              description:
-                "54 gesprekskaarten + 6 spelregelkaarten in een doosje",
+              name: `${BESTEL.naam} - ${bestelling.aantal} set${bestelling.aantal === 1 ? "" : "s"} (pre-order)`,
+              description: beschrijving,
             },
           },
         },
       ],
+      metadata: {
+        product: "ai-gesprekskaarten",
+        preorder: String(BESTEL.preorder),
+        aanbod: BESTEL.preorderAanbod.actief
+          ? BESTEL.preorderAanbod.titel
+          : "geen",
+        aantal_sets: String(bestelling.aantal),
+        betaalde_sets: String(bestelling.betaaldeSets),
+        gratis_sets: String(bestelling.gratisSets),
+      },
+      payment_intent_data: {
+        metadata: {
+          product: "ai-gesprekskaarten",
+          aantal_sets: String(bestelling.aantal),
+          betaalde_sets: String(bestelling.betaaldeSets),
+          gratis_sets: String(bestelling.gratisSets),
+        },
+      },
       shipping_address_collection: {
         allowed_countries: [...BESTEL.verzendlanden],
       },
@@ -55,7 +84,7 @@ export async function POST(req: Request) {
           },
         },
       ],
-      success_url: `${origin}/kaarten/bestel/bedankt?ok=1`,
+      success_url: `${origin}/kaarten/bestel/bedankt?ok=1&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/kaarten/bestel`,
     });
     return NextResponse.json({ url: session.url });
