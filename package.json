@@ -6,10 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "drukwerk:kaarten": "node scripts/render-kaarten-drukwerk.js",
+    "drukwerk:doosje": "node scripts/render-doosje-voorstellen.js",
+    "drukwerk:regelboekje": "node scripts/render-regelboekje.js"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "gray-matter": "^4.0.3",
     "mammoth": "^1.12.0",
     "next": "16.1.6",
