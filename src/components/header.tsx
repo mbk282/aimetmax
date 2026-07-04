@@ -4,9 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 
 const links = [
-  { href: "/academy", label: "E-learnings", external: true },
-  { href: "/tools", label: "Gratis AI-tools" },
-  { href: "/blog", label: "Artikelen" },
+  { href: "/kaarten", label: "AI-kaarten" },
+  { href: "/academy", label: "E-learning", external: true },
   { href: "/boek", label: "Boek" },
   { href: "/over", label: "Over" },
 ];
@@ -59,8 +58,8 @@ export function Header() {
               className="font-medium text-ink-soft hover:text-accent"
             />
           ))}
-          <Link href="/contact" className="btn btn-primary !px-4 !py-2 text-sm">
-            Voor organisaties
+          <Link href="/kaarten/bestel" className="btn btn-primary !px-4 !py-2 text-sm">
+            Bestel de kaarten
           </Link>
         </div>
 
@@ -95,11 +94,11 @@ export function Header() {
               />
             ))}
             <Link
-              href="/contact"
+              href="/kaarten/bestel"
               onClick={close}
               className="btn btn-primary mt-2 text-sm"
             >
-              Voor organisaties
+              Bestel de kaarten
             </Link>
           </div>
         </div>

@@ -38,6 +38,7 @@ export const BESTEL = {
   inhoud: [
     "54 gesprekskaarten: stellingen, dilemma's en open vragen",
     "6 spelregelkaarten met werkvormen voor je sessie",
+    "4 jokers om zelf een stelling, dilemma of open vraag toe te voegen",
     "Facilitator-note op elke kaart (de crux van het gesprek)",
     "Stevig doosje in de huisstijl, met QR naar de gratis online versie",
   ],

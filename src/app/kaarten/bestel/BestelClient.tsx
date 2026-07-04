@@ -142,12 +142,12 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
           <div className="warm-card grid grid-cols-2 gap-4 overflow-hidden bg-card p-4 sm:p-5">
             <figure>
               <Image
-                src="/kaarten/doosje-voorkant.png"
-                alt="Voorkant van het doosje met AI-gesprekskaarten"
-                width={303}
-                height={445}
+                src="/kaarten/doosje-3d-voorkant.png"
+                alt="3D-productvisualisatie van de voorkant van het doosje met AI-gesprekskaarten"
+                width={1254}
+                height={1254}
                 sizes="(max-width: 1023px) 42vw, 240px"
-                className="mx-auto h-auto w-full rounded-lg"
+                className="mx-auto h-auto w-full rounded-xl"
                 priority
               />
               <figcaption className="mt-2 text-center text-xs font-semibold text-ink-soft">
@@ -156,18 +156,21 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
             </figure>
             <figure>
               <Image
-                src="/kaarten/doosje-achterkant.png"
-                alt="Achterkant van het doosje met AI-gesprekskaarten"
-                width={313}
-                height={463}
+                src="/kaarten/doosje-3d-achterkant.png"
+                alt="3D-productvisualisatie van de achterkant van het doosje met AI-gesprekskaarten"
+                width={1254}
+                height={1254}
                 sizes="(max-width: 1023px) 42vw, 240px"
-                className="mx-auto h-auto w-full rounded-lg"
+                className="mx-auto h-auto w-full rounded-xl"
                 priority
               />
               <figcaption className="mt-2 text-center text-xs font-semibold text-ink-soft">
                 Achterkant doosje
               </figcaption>
             </figure>
+            <p className="col-span-2 text-center text-[11px] leading-relaxed text-ink-soft">
+              Productvisualisatie — de definitieve opmaak kan licht afwijken.
+            </p>
           </div>
           <div className="warm-card bg-paper p-4">
             <Image
@@ -177,6 +180,7 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
               height={700}
               sizes="(max-width: 1023px) 90vw, 480px"
               className="mx-auto h-48 w-full object-contain sm:h-56"
+              priority
             />
             <p className="mt-2 text-center text-xs font-semibold text-ink-soft">
               Een kaart uit de set
@@ -194,8 +198,9 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
             {BESTEL.naam}
           </h1>
           <p className="mt-3 max-w-xl text-lg text-ink-soft">
-            {BESTEL.ondertitel}. Een fysieke set met 54 kaarten en spelregels
-            voor workshops, teamdagen en het eerste goede gesprek over AI.
+            {BESTEL.ondertitel}. Een fysieke set met 54 gesprekskaarten, 6
+            spelregelkaarten en 4 jokers voor workshops, teamdagen en het eerste
+            goede gesprek over AI.
           </p>
 
           <div className="mt-6 rounded-xl border-2 border-ink bg-hl p-5 shadow-[4px_4px_0_#2a2a2a]">

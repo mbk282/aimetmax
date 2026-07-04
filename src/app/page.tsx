@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { LeadCapture } from "@/components/lead-capture";
+import doosjeVoorkant from "../../public/kaarten/doosje-3d-voorkant.png";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -49,25 +50,25 @@ export default function Home() {
         <div className="flex flex-col-reverse items-start gap-10 md:flex-row md:items-center">
           <div className="max-w-2xl">
             <span className="inline-block rounded-full border-2 border-accent px-4 py-1 text-xs font-bold uppercase tracking-wider text-accent">
-              AI-trainer &amp; auteur van AI-Pionier
+              AI-expert &amp; auteur van AI-Pionier
             </span>
             <h1 className="mt-5 text-4xl font-bold tracking-tight text-ink sm:text-5xl">
-              AI werkend krijgen in{" "}
-              <span className="hand text-accent">jouw organisatie</span>
+              Ik bouw AI én zorg dat het{" "}
+              <span className="hand text-accent">landt</span>
             </h1>
             <p className="mt-6 text-lg text-ink-soft">
-              Ik ben Max van den Broek. Ik help organisaties AI-geletterd te
-              worden, met e-learnings op maat, hands-on trainingen en werkende
-              prototypes. Nuchter, praktisch, en met voorbeelden uit jullie
-              eigen werk.
+              Ik ben Max van den Broek. Ik bouw AI-toepassingen, train teams en
+              begeleid het gesprek over wat je met AI wilt: begrijpelijk,
+              praktisch en verantwoord. Auteur van AI-Pionier (Koninklijke Boom
+              Uitgevers).
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/contact" className="btn btn-primary">
-                Regel AI-geletterdheid voor je organisatie
+              <Link href="/kaarten" className="btn btn-primary">
+                Bekijk de AI-gesprekskaarten
               </Link>
-              <a href="/academy" className="btn btn-ghost">
-                Bekijk de gratis academy
-              </a>
+              <Link href="/over" className="btn btn-ghost">
+                Mijn verhaal
+              </Link>
             </div>
           </div>
           <div className="shrink-0">
@@ -85,8 +86,52 @@ export default function Home() {
         </div>
       </section>
 
+      {/* AI-gesprekskaarten (hoofdproject) */}
+      <section className="border-y-2 border-line bg-card py-16">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="flex flex-col items-center gap-10 md:flex-row">
+            <div className="shrink-0">
+              <div className="warm-card rotate-2 p-3">
+                <Image
+                  src={doosjeVoorkant}
+                  alt="Het doosje van de AI-gesprekskaarten"
+                  className="w-60 rounded-xl sm:w-72"
+                  priority
+                />
+              </div>
+            </div>
+            <div className="max-w-xl">
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">
+                Nieuw &middot; nu in voorverkoop
+              </p>
+              <h2 className="mt-2 hand text-3xl font-bold text-ink">
+                De AI-gesprekskaarten
+              </h2>
+              <p className="mt-3 text-ink-soft">
+                54 stellingen, dilemma&apos;s en open vragen waarmee je team het
+                echte gesprek over AI voert. Wat doen we ermee, waar liggen de
+                grenzen, wat spreken we af? Speel gratis online, print ze zelf,
+                of bestel de gedrukte set in een stevig doosje.
+              </p>
+              <p className="mt-3 text-sm font-semibold text-ink">
+                &euro; 29,95 &middot; voorverkoopactie: je krijgt er twee, één
+                voor jou en één om cadeau te geven.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-4">
+                <Link href="/kaarten/bestel" className="btn btn-primary">
+                  Bestel de gedrukte set
+                </Link>
+                <Link href="/kaarten" className="btn btn-ghost">
+                  Speel gratis online
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Credibility strip */}
-      <section className="border-y-2 border-line bg-card py-7">
+      <section className="border-b-2 border-line py-7">
         <div className="mx-auto flex max-w-5xl flex-col gap-3 px-6 sm:flex-row sm:justify-center sm:gap-12">
           {ervaring.map((groep) => (
             <div key={groep.label} className="text-center sm:text-left">
@@ -105,60 +150,116 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gratis academy (prominent) */}
+      {/* Boek + gratis e-learning */}
       <section className="py-16">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="warm-card flex flex-col items-start gap-8 p-8 md:flex-row md:items-center md:justify-between md:p-10">
-            <div className="max-w-2xl">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="warm-card p-8">
+              <div className="mb-5 w-fit -rotate-2 rounded-lg border-2 border-line bg-white p-1.5">
+                <Image
+                  src="/ai-pionier-cover.jpg"
+                  alt="Voorkant van het boek AI-Pionier"
+                  width={104}
+                  height={148}
+                  className="rounded-md"
+                />
+              </div>
               <p className="text-sm font-semibold uppercase tracking-wider text-accent">
-                Gratis e-learnings
+                Boek
               </p>
-              <h2 className="mt-2 hand text-3xl font-bold text-ink">
+              <h2 className="mt-2 hand text-2xl font-bold text-ink">
+                AI-Pionier
+              </h2>
+              <p className="mt-3 text-sm text-ink-soft">
+                Hoe jij ook begint met generatieve AI. Met 25+
+                praktijkvoorbeelden en antwoorden op de meestgehoorde bezwaren.
+                Uitgegeven door Koninklijke Boom Uitgevers.
+              </p>
+              <Link
+                href="/boek"
+                className="mt-4 inline-block font-semibold text-accent hover:text-accent-dark"
+              >
+                Meer over het boek &rarr;
+              </Link>
+            </div>
+            <div className="warm-card p-8">
+              <div className="mb-5">
+                <svg
+                  viewBox="0 0 120 70"
+                  className="h-[148px] w-auto"
+                  role="img"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M14 60 C 40 57, 84 61, 108 58"
+                    stroke="#2A2A2A"
+                    strokeWidth="2.5"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                  <g transform="rotate(-4 52 32)">
+                    <rect
+                      x="20"
+                      y="12"
+                      width="60"
+                      height="40"
+                      rx="6"
+                      fill="#FFFDF8"
+                      stroke="#2A2A2A"
+                      strokeWidth="2.5"
+                    />
+                    <path
+                      d="M28 24 l 36 -1 M28 32 l 28 0 M28 40 l 20 0"
+                      stroke="#2A2A2A"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      opacity="0.5"
+                    />
+                  </g>
+                  <path
+                    d="M84 52 l -4 10 M92 52 l 4 10"
+                    stroke="#E8590C"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  />
+                  <circle
+                    cx="88"
+                    cy="44"
+                    r="10"
+                    fill="#FFE8A3"
+                    stroke="#2A2A2A"
+                    strokeWidth="2.5"
+                  />
+                  <path
+                    d="M83.5 44 l 3 3 l 7 -7"
+                    stroke="#2A2A2A"
+                    strokeWidth="2.5"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <g stroke="#E8590C" strokeWidth="2" strokeLinecap="round">
+                    <path d="M103 16 l 5 -5 M107 26 l 7 -2 M98 9 l 1 -6" />
+                  </g>
+                </svg>
+              </div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">
+                Gratis e-learning
+              </p>
+              <h2 className="mt-2 hand text-2xl font-bold text-ink">
                 De AI met Max academy
               </h2>
-              <p className="mt-3 text-ink-soft">
-                Zes gratis e-learnings die je leren wat AI is, hoe het werkt en
-                hoe je het praktisch en verantwoord gebruikt. Met handgetekende
-                illustraties, oefeningen die je meteen zelf doet, quizzen en
-                certificaten. Ideaal om naar je team te sturen: het ondersteunt
-                de AI-geletterdheidsplicht (artikel 4 AI-verordening).
+              <p className="mt-3 text-sm text-ink-soft">
+                Gratis e-learnings over wat AI is, hoe het werkt en hoe je het
+                praktisch en verantwoord gebruikt. Met oefeningen, quizzen en
+                een certificaat. Stuur ze gerust door naar je team.
               </p>
-            </div>
-            <a href="/academy" className="btn btn-primary shrink-0">
-              Naar de academy
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Wat ik doe */}
-      <section className="border-t-2 border-line py-16">
-        <div className="mx-auto max-w-5xl px-6">
-          <h2 className="hand text-3xl font-bold text-ink">Wat ik voor je doe</h2>
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-            <div className="warm-card p-6">
-              <h3 className="font-bold text-ink">E-learnings op maat</h3>
-              <p className="mt-2 text-sm text-ink-soft">
-                Doelgroepgerichte AI-e-learnings met jullie eigen voorbeelden,
-                tools en beleid. Schaalbaar, met toetsing en certificaten, en
-                onderbouwing voor de AI-geletterdheidsplicht.
-              </p>
-            </div>
-            <div className="warm-card p-6">
-              <h3 className="font-bold text-ink">Trainingen &amp; keynotes</h3>
-              <p className="mt-2 text-sm text-ink-soft">
-                Hands-on trainingen waarin mensen meteen zelf oefenen, van
-                Copilot voor controllers tot AI voor developers. Plus
-                inspirerende, toegankelijke lezingen.
-              </p>
-            </div>
-            <div className="warm-card p-6">
-              <h3 className="font-bold text-ink">Prototypes &amp; POCs</h3>
-              <p className="mt-2 text-sm text-ink-soft">
-                Ik bouw werkende prototypes en simpele AI-tools, zodat je snel
-                ziet wat AI voor jouw team kan betekenen in plaats van erover te
-                praten.
-              </p>
+              <a
+                href="/academy"
+                className="mt-4 inline-block font-semibold text-accent hover:text-accent-dark"
+              >
+                Naar de academy &rarr;
+              </a>
             </div>
           </div>
         </div>
@@ -187,62 +288,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Lead capture */}
-      <section className="border-t-2 border-line py-16">
-        <div className="mx-auto max-w-5xl px-6">
-          <LeadCapture />
-        </div>
-      </section>
-
-      {/* Boek */}
+      {/* Samenwerken */}
       <section className="border-t-2 border-line py-16">
         <div className="mx-auto max-w-5xl px-6">
           <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-wider text-accent">
-              Boek
-            </p>
-            <h2 className="mt-2 hand text-3xl font-bold text-ink">AI-Pionier</h2>
+            <h2 className="hand text-3xl font-bold text-ink">Samenwerken?</h2>
             <p className="mt-3 text-ink-soft">
-              Hoe jij ook begint met generatieve AI. Met 25+ praktijkvoorbeelden
-              en antwoorden op de meestgehoorde bezwaren. Uitgegeven door
-              Koninklijke Boom Uitgevers.
+              Ik bouw AI-toepassingen en prototypes, geef trainingen en
+              keynotes, en begeleid werksessies over wat je organisatie met AI
+              wil. Mijn agenda zit op dit moment goed vol, maar voor een vraag,
+              een keynote of iets voor later: stuur gerust een bericht.
             </p>
-            <Link
-              href="/boek"
-              className="mt-4 inline-block font-semibold text-accent hover:text-accent-dark"
-            >
-              Meer over het boek &rarr;
-            </Link>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <a
+                href="https://www.linkedin.com/in/maxbroek"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
+                Stuur een bericht op LinkedIn
+              </a>
+              <Link href="/contact" className="btn btn-ghost">
+                Contact
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Gratis tools (lichter, onderaan) */}
-      <section className="border-t-2 border-line bg-card py-16">
+      {/* Lead capture */}
+      <section className="border-t-2 border-line py-16">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="hand text-3xl font-bold text-ink">Gratis tools en werkvormen</h2>
-          <p className="mt-2 max-w-3xl text-ink-soft">
-            Kleine, handige tools die direct in je browser draaien, zonder
-            account. Onder meer de{" "}
-            <Link href="/tools/ai-readiness-scorer" className="font-semibold text-accent hover:text-accent-dark">
-              Document AI-readiness Checker
-            </Link>{" "}
-            (is je kennisbank klaar voor Copilot?), een{" "}
-            <Link href="/tools/ai-act-checker" className="font-semibold text-accent hover:text-accent-dark">
-              AI Act-checker
-            </Link>
-            , en de{" "}
-            <Link href="/kaarten" className="font-semibold text-accent hover:text-accent-dark">
-              AI-gesprekskaarten
-            </Link>{" "}
-            om met je team het goede gesprek over AI te voeren. Je data blijft privé.
-          </p>
-          <Link
-            href="/tools"
-            className="mt-5 inline-block font-semibold text-accent hover:text-accent-dark"
-          >
-            Bekijk alle tools &rarr;
-          </Link>
+          <LeadCapture />
         </div>
       </section>
     </>

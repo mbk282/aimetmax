@@ -166,14 +166,24 @@ export default function KaartenPage() {
           href="/kaarten/bestel"
           className="group mt-7 grid gap-3 rounded-2xl border-2 border-ink bg-hl p-4 shadow-[4px_4px_0_#2a2a2a] transition hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#2a2a2a] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:grid-cols-[auto_1fr_auto] sm:items-center"
         >
-          <span className="w-fit rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-white">
-            Nieuw
-          </span>
-          <span className="text-sm text-ink-soft sm:text-base">
-            <strong className="text-ink">
-              De fysieke set is nu te reserveren.
-            </strong>{" "}
-            Tijdelijk 2 voor de prijs van 1.
+          <Image
+            src="/kaarten/doosje-3d-voorkant.png"
+            alt="3D-productvisualisatie van de voorkant van het doosje met AI-gesprekskaarten"
+            width={1254}
+            height={1254}
+            sizes="80px"
+            className="h-auto w-16 rounded-xl sm:w-20"
+          />
+          <span className="sm:text-base">
+            <span className="inline-block rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-white">
+              Nieuw
+            </span>
+            <span className="mt-2 block text-sm text-ink-soft sm:text-base">
+              <strong className="text-ink">
+                De fysieke set is nu te reserveren.
+              </strong>{" "}
+              Tijdelijk 2 voor de prijs van 1.
+            </span>
           </span>
           <span className="text-sm font-bold text-accent group-hover:underline">
             Bekijk de voorverkoop &rarr;
@@ -431,20 +441,20 @@ export default function KaartenPage() {
           </div>
           <div className="grid grid-cols-2 gap-3">
             <Image
-              src="/kaarten/doosje-voorkant.png"
-              alt="Voorkant van het doosje met AI-gesprekskaarten"
-              width={303}
-              height={445}
+              src="/kaarten/doosje-3d-voorkant.png"
+              alt="3D-productvisualisatie van de voorkant van het doosje met AI-gesprekskaarten"
+              width={1254}
+              height={1254}
               sizes="(max-width: 767px) 40vw, 130px"
-              className="h-auto w-full rounded-lg"
+              className="h-auto w-full rounded-xl"
             />
             <Image
-              src="/kaarten/doosje-achterkant.png"
-              alt="Achterkant van het doosje met AI-gesprekskaarten"
-              width={313}
-              height={463}
+              src="/kaarten/doosje-3d-achterkant.png"
+              alt="3D-productvisualisatie van de achterkant van het doosje met AI-gesprekskaarten"
+              width={1254}
+              height={1254}
               sizes="(max-width: 767px) 40vw, 130px"
-              className="h-auto w-full rounded-lg"
+              className="h-auto w-full rounded-xl"
             />
           </div>
         </div>

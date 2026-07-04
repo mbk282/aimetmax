@@ -204,8 +204,8 @@ export const kaarten: Kaart[] = [
     nr: 13,
     thema: "werk",
     type: "stelling",
-    tekst: `Een vergadering door AI laten samenvatten in plaats van zelf opletten maakt me een slechtere deelnemer.`,
-    crux: `Prikkelt omdat de tool juist als handig wordt verkocht. Spanning tussen aanwezigheid en gemak: als de AI toch alles vastlegt, waarom nog scherp luisteren? Een minderheid vindt dat juist bevrijdend: meer ruimte om mee te denken. Trek het naar de vraag wat een vergadering oplevert behalve een verslag.`,
+    tekst: `Een vergadering door AI laten samenvatten in plaats van zelf notities maken, maakt me een slechtere deelnemer.`,
+    crux: `Prikkelt omdat een AI-samenvatting juist als handig wordt verkocht. De ene kant verwerkt een gesprek door zelf te schrijven en onthoudt daardoor meer. De andere kant kan zonder notities beter luisteren en meedoen. Vraag door: wat doen je eigen notities voor jou dat een AI-verslag niet doet?`,
   },
   {
     id: "werk-5",
@@ -298,7 +298,7 @@ export const kaarten: Kaart[] = [
     nr: 24,
     thema: "leren",
     type: "open-vraag",
-    tekst: `Welke vaardigheid heb je besloten niet meer onder de knie te krijgen, omdat AI het toch wel doet? Denk aan formules in Excel, een nette mail in het Engels, of de techniek onder je werk. Noem er een.`,
+    tekst: `Welke vaardigheid leer je niet meer, omdat AI het toch wel doet? Denk aan een Excel-formule, een mail in het Engels of iets in een programma dat je vaak gebruikt. Noem er een.`,
     crux: `Ontlokt een concreet, persoonlijk moment dat de meeste mensen herkennen maar zelden hardop zeggen: iets wat je stilletjes hebt laten lopen ('dat zoek ik niet meer uit, AI fikst het wel'). De drie voorbeelden maken hem laagdrempelig genoeg om echt te antwoorden in plaats van te blijven hangen in 'tja, van alles'. Doorvragen: was dat een bewuste keuze of is het gewoon zo gegroeid? En zou je het erg vinden als AI er morgen mee stopt en je weer op jezelf bent aangewezen?`,
   },
   {
@@ -365,9 +365,9 @@ export const kaarten: Kaart[] = [
     id: "vertrouwen-5",
     nr: 32,
     thema: "vertrouwen",
-    type: "dilemma",
-    tekst: `Je ontdekt vlak voor de deadline een fout in een stuk dat met AI is gemaakt en dat al rondgaat in het team. De fout corrigeren betekent toegeven dat het werk minder grondig is nagekeken dan iedereen aanneemt. Stil herstellen kan ook, maar dan blijft staan dat het 'gewoon klopte'. Meld je hoe de fout erin kwam, of repareer je het zonder dat verhaal erbij?`,
-    crux: `Dit splijt omdat de ene kant zegt 'de fout is weg, dat is wat telt, de rest is ruis' en de andere kant zegt 'als je verzwijgt hoe het kon gebeuren, herhaalt het zich en dek je het gat in de controle toe'. Het gaat echt over AI: de fout en het ongemak komen voort uit werk dat met AI is gemaakt en te licht is nagekeken. Doorvragen: verandert je keuze als jij degene bent die het stuk had moeten controleren? En als een collega het stil zou repareren, zou jij dat dan correct vinden of als wegmoffelen zien?`,
+    type: "open-vraag",
+    tekst: `Er blijkt een fout te zitten in iets dat je met AI hebt gemaakt en zelf over het hoofd hebt gezien. Wat doe je, en hoe voelt dat?`,
+    crux: `Haal eerst de reactie op de fout naar boven: herstellen, vertellen, verdedigen of verbergen. Vraag daarna naar het gevoel eronder, zoals schaamte, schuld of twijfel aan de eigen controle. Doorvragen: voelt een gemiste AI-fout anders dan een fout die je helemaal zelf maakte? En verandert dat iets aan je verantwoordelijkheid?`,
     top: true,
   },
   {
@@ -450,8 +450,8 @@ export const kaarten: Kaart[] = [
     nr: 42,
     thema: "koers",
     type: "dilemma",
-    tekst: `Jullie team moet kiezen: het AI-budget in een dure alleskunner steken die een paar koplopers laat vliegen, of in simpele training zodat iedereen meekomt. Het geld is er maar voor een van de twee. Waar zet je op in?`,
-    crux: `Dwingt een echte koers-keuze op teamniveau, niet weer 'spreek ik die ene collega aan'. Snelheid van de voorhoede tegenover de groep bij elkaar houden: dezelfde tweedeling als koers-3, maar nu moet je er geld op zetten. Geen schoon antwoord: investeer je in de top dan groeit de kloof, investeer je in de basis dan rem je de koplopers. Vraag door: voor wie is dit budget er eigenlijk, en wie beslist dat nu in de praktijk?`,
+    tekst: `Jullie hebben geld voor een AI-training: een gevorderde training voor een paar koplopers, of een basistraining voor het hele team. Wat kies je?`,
+    crux: `Zet de koplopers sneller maken tegenover zorgen dat iedereen kan meedoen. Geen keuze is zonder nadeel: bij de gevorderde training kan de kloof groeien, bij de basistraining worden de koplopers minder uitgedaagd. Vraag door: wat heeft het team nu het hardst nodig, en voor wie is dit budget eigenlijk bedoeld?`,
   },
   {
     id: "koers-7",

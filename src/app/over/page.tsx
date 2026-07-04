@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Over Max van den Broek",
   description:
-    "Max van den Broek: AI-trainer en auteur van AI-Pionier. MSc Logic (UvA), voormalig Senior AI-docent aan de UvA, was AI-expert bij een grote netbeheerder, nu zelfstandig.",
+    "Max van den Broek: AI-expert en auteur van AI-Pionier. Bouwt AI-toepassingen, traint teams en begeleidt het goede gesprek over AI. MSc Logic (UvA), voormalig Senior AI-docent aan de UvA.",
   alternates: { canonical: "/over" },
 };
 
@@ -30,7 +30,7 @@ const personJsonLd = {
   name: "Max van den Broek",
   url: "https://aimetmax.nl/over",
   image: "https://aimetmax.nl/max-van-den-broek.jpg",
-  jobTitle: "AI-trainer en spreker",
+  jobTitle: "AI-expert en auteur",
   sameAs: ["https://www.linkedin.com/in/maxbroek"],
   knowsAbout: [
     "Kunstmatige intelligentie",
@@ -61,7 +61,7 @@ export default function OverPage() {
         <div>
           <h1 className="text-3xl font-bold text-ink sm:text-4xl">Over Max</h1>
           <p className="mt-2 text-ink-soft">
-            AI-trainer &middot; auteur van AI-Pionier &middot; voormalig
+            AI-expert &middot; auteur van AI-Pionier &middot; voormalig
             AI-docent aan de UvA
           </p>
         </div>
@@ -69,19 +69,22 @@ export default function OverPage() {
 
       <div className="mt-10 space-y-4 text-ink-soft">
         <p>
-          Ik ben Max van den Broek. Ik help organisaties om AI slim en
-          verantwoord te gebruiken: met trainingen, e-learnings op maat en
-          werkende prototypes. Mijn achtergrond is een MSc Logic aan de
-          Universiteit van Amsterdam.
+          Ik ben Max van den Broek. Ik werk op de hele breedte van AI in
+          organisaties: ik <strong>bouw</strong> AI-toepassingen en prototypes,
+          ik <strong>train</strong> teams en neem mensen mee, en ik begeleid
+          het <strong>gesprek</strong> over wat je met AI wilt en waar de
+          grenzen liggen. Die combinatie is precies het punt: wie zelf bouwt,
+          kan beter uitleggen. En wie goed uitlegt, krijgt AI ook echt in
+          gebruik.
         </p>
         <p>
           Vier jaar lang was ik <strong>AI-docent aan de UvA</strong>, waar ik
           cursussen over (generatieve) AI ontwikkelde en honderden studenten en
           professionals op weg hielp. Daarna was ik <strong>AI-expert bij een
-          grote netbeheerder</strong>: daar gaf ik onder meer doelgroepgerichte
-          AI-trainingen, naast het bouwen van proofs-of-concept en advies over
-          verantwoord AI-gebruik. Inmiddels werk ik zelfstandig. Op dit moment
-          doe ik een opdracht bij een <strong>rijksdienst</strong>, maakte ik een
+          grote netbeheerder</strong>: daar bouwde ik proofs-of-concept, gaf ik
+          doelgroepgerichte AI-trainingen en adviseerde ik over verantwoord
+          AI-gebruik. Inmiddels werk ik zelfstandig. Op dit moment bouw ik aan
+          AI-innovaties bij een <strong>rijksdienst</strong>, maakte ik een
           AI-cursus voor <strong>Winc Academy</strong>, en geef ik AI-trainingen
           en keynotes voor uiteenlopende organisaties.
         </p>
@@ -89,6 +92,26 @@ export default function OverPage() {
           Ik schreef het boek{" "}
           <strong>AI-Pionier: Hoe jij ook begint met generatieve AI</strong>,
           uitgegeven door Koninklijke Boom Uitgevers.
+        </p>
+        <p>
+          Naast mijn opdrachten maak ik eigen dingen: de gratis{" "}
+          <a
+            href="/academy"
+            className="font-semibold text-accent hover:text-accent-dark"
+          >
+            AI met Max academy
+          </a>{" "}
+          en de{" "}
+          <Link
+            href="/kaarten"
+            className="font-semibold text-accent hover:text-accent-dark"
+          >
+            AI-gesprekskaarten
+          </Link>
+          , een kaartspel waarmee teams het echte gesprek over AI voeren. Dat
+          laatste komt rechtstreeks uit mijn achtergrond in de filosofie (MSc
+          Logic, UvA): de belangrijkste vragen over AI gaan over wat we ermee
+          willen.
         </p>
 
         <h2 className="hand pt-6 text-2xl font-bold text-ink">
@@ -110,6 +133,10 @@ export default function OverPage() {
           <li>
             Ik bouw POC&apos;s en simpele AI-tools, en zorg dat mensen ze
             daadwerkelijk gaan gebruiken.
+          </li>
+          <li>
+            Verantwoord gebruik is geen bijzaak: ik help teams afspraken maken
+            over waar AI wel en niet past.
           </li>
         </ul>
       </div>
@@ -134,9 +161,17 @@ export default function OverPage() {
         van <mark className="font-semibold">8,2</mark>.
       </p>
 
-      <div className="mt-12">
-        <Link href="/contact" className="btn btn-primary">
-          Training of offerte aanvragen
+      <div className="mt-12 flex flex-wrap gap-4">
+        <a
+          href="https://www.linkedin.com/in/maxbroek"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary"
+        >
+          Volg me op LinkedIn
+        </a>
+        <Link href="/contact" className="btn btn-ghost">
+          Neem contact op
         </Link>
       </div>
     </section>

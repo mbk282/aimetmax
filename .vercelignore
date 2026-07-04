@@ -1,0 +1,12 @@
+.git
+.next
+node_modules
+tmp
+output
+drukwerk
+.agents
+.claude
+.playwright-mcp
+research
+elearning-poc
+linkedin
