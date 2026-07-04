@@ -30,6 +30,12 @@ const ervaring = [
 const testimonials = [
   {
     quote:
+      "Wat een tof initiatief Max. Ook met veel plezier die kaarten getrokken.",
+    name: "Ernst-Jan Pfauth",
+    role: "Medeoprichter van De Correspondent",
+  },
+  {
+    quote:
       "Max gaf een interessante en inspirerende workshop over AI op de kwartaalbijeenkomst van onze dienst. Heel beeldend, met duidelijke (en grappige) voorbeelden. Zowel beginners als gevorderde gebruikers gingen met nieuwe kennis naar huis (en minder angst voor AI).",
     name: "Olesia Sacharova",
     role: "Programmamanager Smart Buildings, UvA/HvA",
@@ -268,7 +274,7 @@ export default function Home() {
       {/* Testimonials */}
       <section className="border-t-2 border-line bg-card py-16">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="hand text-3xl font-bold text-ink">Wat deelnemers zeggen</h2>
+          <h2 className="hand text-3xl font-bold text-ink">Wat mensen over me zeggen</h2>
           <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
             {testimonials.map((t) => (
               <figure key={t.name} className="warm-card p-6">
