@@ -144,9 +144,10 @@ export default function KaartenPage() {
         <p className="mt-4 max-w-2xl text-lg text-ink-soft">
           Het goede gesprek over AI gaat niet over de techniek, maar over wat
           we ervan vinden. Mag je een mail door AI laten schrijven? Wat doe je
-          met die stagiair? Doen we te veel of te weinig? Deze 54 stellingen,
-          dilemma&apos;s en open vragen leggen het echte gesprek op tafel, zonder
-          dat je een AI-expert hoeft te zijn om het te begeleiden.
+          met die stagiair die sterk leunt op AI? Doen we te veel met AI of
+          juist te weinig? Deze 54 stellingen, dilemma&apos;s en open vragen leggen
+          het echte gesprek op tafel, zonder dat je een AI-expert hoeft te
+          zijn om het te begeleiden.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-3">
           <a href="#trekken" className="btn btn-primary">
