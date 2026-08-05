@@ -1,37 +1,37 @@
-import { Redis } from "@upstash/redis";
+import Stripe from "stripe";
+import { BESTEL } from "@/app/kaarten/bestel-config";
 
-// Live voorraadteller voor de fysieke AI-gesprekskaarten. Gebruikt Upstash
-// Redis (via Vercel Marketplace, env UPSTASH_REDIS_REST_URL/TOKEN). Zonder
-// die env-vars is er geen teller: de site valt terug op het statische
-// maxOnlineAantal uit bestel-config.ts, net als de Stripe-checkout zonder
-// STRIPE_SECRET_KEY.
-
-const KEY = "kaarten:voorraad";
-
-function client() {
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
-    return null;
-  }
-  return Redis.fromEnv();
-}
-
+// Live voorraadteller voor de fysieke AI-gesprekskaarten. Geen aparte
+// database: Stripe is toch al de bron van waarheid voor bestellingen, dus we
+// tellen daar simpelweg bij elke paginabezoek in op hoeveel er al verkocht
+// zijn en trekken dat af van BESTEL.startVoorraad. Geen webhook nodig (geen
+// risico dat een gemiste webhook de teller laat achterlopen).
+//
+// Verkoop je een keer buiten Stripe om (bijv. op factuur)? Verlaag dan
+// gewoon startVoorraad in bestel-config.ts met dat aantal.
 export async function leesVoorraad(): Promise<number | null> {
-  const redis = client();
-  if (!redis) return null;
-  const waarde = await redis.get<number>(KEY);
-  return typeof waarde === "number" ? waarde : null;
-}
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) return null;
 
-export async function verlaagVoorraad(aantal: number): Promise<void> {
-  const redis = client();
-  if (!redis) return;
-  const nieuw = await redis.decrby(KEY, aantal);
-  if (nieuw < 0) await redis.set(KEY, 0);
-}
+  const stripe = new Stripe(key);
+  let verkocht = 0;
+  let startingAfter: string | undefined;
 
-export async function zetVoorraad(aantal: number): Promise<number | null> {
-  const redis = client();
-  if (!redis) return null;
-  await redis.set(KEY, Math.max(0, Math.trunc(aantal)));
-  return leesVoorraad();
+  for (let pagina = 0; pagina < 10; pagina++) {
+    const resultaat = await stripe.checkout.sessions.list({
+      limit: 100,
+      status: "complete",
+      starting_after: startingAfter,
+    });
+    for (const session of resultaat.data) {
+      if (session.metadata?.product !== "ai-gesprekskaarten") continue;
+      if (session.payment_status !== "paid") continue;
+      const aantal = Number.parseInt(session.metadata?.aantal_sets ?? "", 10);
+      if (Number.isFinite(aantal)) verkocht += aantal;
+    }
+    if (!resultaat.has_more) break;
+    startingAfter = resultaat.data[resultaat.data.length - 1]?.id;
+  }
+
+  return Math.max(0, BESTEL.startVoorraad - verkocht);
 }

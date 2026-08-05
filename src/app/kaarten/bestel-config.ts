@@ -27,6 +27,11 @@ export const BESTEL = {
   },
   standaardAantal: 1,
   maxOnlineAantal: 150,
+  // Totaal online verkoopbare voorraad. src/lib/voorraad.ts telt bij Stripe
+  // op hoeveel er al betaald zijn en trekt dat hiervan af. Verkoop je een
+  // keer buiten Stripe om (bijv. op factuur)? Verlaag dit getal met dat
+  // aantal en redeploy.
+  startVoorraad: 150,
   aantalKeuzes: [1, 2, 10, 25, 100] as const,
   levertijd: "Meestal binnen 2 werkdagen verzonden, uiterlijk binnen een week.",
   // Verzending: gratis, in de prijs verwerkt. verzendregio bepaalt ook naar
