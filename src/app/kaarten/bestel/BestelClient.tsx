@@ -31,16 +31,26 @@ function presetLabel(aantal: number) {
   return "sets";
 }
 
-export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
+export function BestelClient({
+  stripeReady,
+  voorraad,
+}: {
+  stripeReady: boolean;
+  voorraad: number | null;
+}) {
   const [aantal, setAantal] = useState<number>(BESTEL.standaardAantal);
   const [status, setStatus] = useState("");
   const [bezig, setBezig] = useState(false);
+
+  const effectiefMax =
+    voorraad !== null ? Math.max(1, Math.min(BESTEL.maxOnlineAantal, voorraad)) : BESTEL.maxOnlineAantal;
+  const uitverkocht = voorraad !== null && voorraad <= 0;
 
   const bestelling = berekenBestelling(aantal);
   const mode: "stripe" | "reserve" = stripeReady ? "stripe" : "reserve";
 
   function wijzigAantal(next: unknown) {
-    setAantal(normaliseerAantal(next));
+    setAantal(Math.min(normaliseerAantal(next), effectiefMax));
     setStatus("");
   }
 
@@ -82,9 +92,13 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
     fd.append(
       "fields[leerwens]",
       [
-        `Pre-order AI-gesprekskaarten: ${setsTekst(bestelling.aantal)}`,
-        `Voorverkoop: betaalt voor ${setsTekst(bestelling.betaaldeSets)}`,
-        `Gratis sets: ${bestelling.gratisSets}`,
+        `Bestelling AI-gesprekskaarten: ${setsTekst(bestelling.aantal)}`,
+        ...(bestelling.gratisSets > 0
+          ? [
+              `Actie: betaalt voor ${setsTekst(bestelling.betaaldeSets)}`,
+              `Gratis sets: ${bestelling.gratisSets}`,
+            ]
+          : []),
       ].join(" | "),
     );
     fd.append("ml-submit", "1");
@@ -97,7 +111,7 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
       );
       setStatus(
         r.ok
-          ? "Gelukt. Je staat op de lijst en hoort als eerste wanneer je kunt bestellen. Check je inbox om te bevestigen."
+          ? "Gelukt. Je staat op de lijst; ik stuur je een betaallink of factuur zodra ik je bestelling verwerk. Check je inbox om te bevestigen."
           : "Dat ging mis. Mail me gerust direct op max@aimetmax.nl.",
       );
       if (r.ok) form.reset();
@@ -114,7 +128,11 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
       `Ik bestel de ${BESTEL.naam} graag op factuur.`,
       "",
       `Aantal sets: ${bestelling.aantal}`,
-      `Voorverkoopaanbod: betaalt voor ${bestelling.betaaldeSets} set(s), ${bestelling.gratisSets} gratis`,
+      ...(bestelling.gratisSets > 0
+        ? [
+            `Actie: betaalt voor ${bestelling.betaaldeSets} set(s), ${bestelling.gratisSets} gratis`,
+          ]
+        : []),
       `Totaal indicatief incl. btw: ${prijsTekst(bestelling.totaal)}`,
       "",
       "- Organisatie: ",
@@ -189,9 +207,18 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
         </div>
 
         <div>
-          {BESTEL.preorder && (
+          {BESTEL.preorder ? (
             <span className="inline-block rounded-full border-2 border-accent px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-accent">
               Pre-order
+            </span>
+          ) : uitverkocht ? (
+            <span className="inline-block rounded-full border-2 border-ink px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-ink">
+              Uitverkocht
+            </span>
+          ) : (
+            <span className="inline-block rounded-full border-2 border-sage px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-sage">
+              Op voorraad
+              {voorraad !== null ? ` · nog ${voorraad}` : ""}
             </span>
           )}
           <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink sm:text-5xl">
@@ -203,36 +230,38 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
             goede gesprek over AI.
           </p>
 
-          <div className="mt-6 rounded-xl border-2 border-ink bg-hl p-5 shadow-[4px_4px_0_#2a2a2a]">
-            <p className="text-xs font-bold uppercase tracking-[0.12em] text-accent">
-              {BESTEL.preorderAanbod.label}
-            </p>
-            <h2 className="hand mt-1 text-3xl font-bold text-ink">
-              {BESTEL.preorderAanbod.titel}
-            </h2>
-            <p className="mt-2 text-sm text-ink-soft">
-              {BESTEL.preorderAanbod.uitleg} Het aanbod loopt door bij grotere
-              aantallen: bij 10 sets betaal je voor 5, bij 100 sets betaal je
-              voor 50.
-            </p>
-          </div>
+          {BESTEL.preorderAanbod.actief && (
+            <div className="mt-6 rounded-xl border-2 border-ink bg-hl p-5 shadow-[4px_4px_0_#2a2a2a]">
+              <p className="text-xs font-bold uppercase tracking-[0.12em] text-accent">
+                {BESTEL.preorderAanbod.label}
+              </p>
+              <h2 className="hand mt-1 text-3xl font-bold text-ink">
+                {BESTEL.preorderAanbod.titel}
+              </h2>
+              <p className="mt-2 text-sm text-ink-soft">
+                {BESTEL.preorderAanbod.uitleg} Het aanbod loopt door bij
+                grotere aantallen: bij 10 sets betaal je voor 5, bij 100 sets
+                betaal je voor 50.
+              </p>
+            </div>
+          )}
 
           <div className="warm-card mt-7 p-5 sm:p-6">
             <div className="flex flex-wrap items-start justify-between gap-5">
               <div>
                 <p className="text-sm font-semibold text-ink-soft">
-                  Jouw preorder
+                  Jouw bestelling
                 </p>
                 <p className="mt-1 text-3xl font-bold text-ink">
                   {setsTekst(bestelling.aantal)} voor{" "}
                   {prijsTekst(bestelling.totaal)}
                 </p>
-                <p className="mt-1 text-sm text-ink-soft">
-                  Normaal {prijsTekst(bestelling.normalePrijs)}
-                  {bestelling.korting > 0
-                    ? `, je voordeel ${prijsTekst(bestelling.korting)}`
-                    : ". Vanaf 2 sets gaat het 2-voor-1 aanbod tellen."}
-                </p>
+                {bestelling.korting > 0 && (
+                  <p className="mt-1 text-sm text-ink-soft">
+                    Normaal {prijsTekst(bestelling.normalePrijs)}, je voordeel{" "}
+                    {prijsTekst(bestelling.korting)}
+                  </p>
+                )}
               </div>
               <div className="rounded-xl border-2 border-line bg-paper px-4 py-3">
                 <p className="text-xs font-bold uppercase tracking-[0.12em] text-ink-soft">
@@ -249,15 +278,19 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
               <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-5">
                 {BESTEL.aantalKeuzes.map((n) => {
                   const actief = bestelling.aantal === n;
+                  const beschikbaar = n <= effectiefMax;
                   return (
                     <button
                       type="button"
                       key={n}
+                      disabled={!beschikbaar}
                       onClick={() => wijzigAantal(n)}
                       className={`rounded-xl border-2 px-3 py-2 text-left transition ${
-                        actief
-                          ? "border-ink bg-accent text-white shadow-[3px_3px_0_#2a2a2a]"
-                          : "border-line bg-card text-ink hover:border-accent"
+                        !beschikbaar
+                          ? "cursor-not-allowed border-line bg-card text-ink-soft/50"
+                          : actief
+                            ? "border-ink bg-accent text-white shadow-[3px_3px_0_#2a2a2a]"
+                            : "border-line bg-card text-ink hover:border-accent"
                       }`}
                     >
                       <span className="block text-lg font-bold">{n}</span>
@@ -281,23 +314,36 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
                   id="aantal"
                   type="number"
                   min={1}
-                  max={BESTEL.maxOnlineAantal}
+                  max={effectiefMax}
                   step={1}
                   value={bestelling.aantal}
                   onChange={(e) => wijzigAantal(e.target.value)}
-                  className="w-32 rounded-xl border-2 border-ink bg-card px-3 py-2 text-ink outline-none focus:ring-4 focus:ring-hl"
+                  disabled={uitverkocht}
+                  className="w-32 rounded-xl border-2 border-ink bg-card px-3 py-2 text-ink outline-none focus:ring-4 focus:ring-hl disabled:opacity-50"
                 />
                 <span className="text-ink-soft">
-                  Online tot {BESTEL.maxOnlineAantal} sets.
+                  Online tot {effectiefMax} sets.
                 </span>
               </label>
             </fieldset>
 
-            {mode === "reserve" ? (
+            {uitverkocht ? (
+              <div className="mt-6 rounded-xl border-2 border-line bg-card p-4">
+                <p className="text-sm font-semibold text-ink">
+                  Online uitverkocht.
+                </p>
+                <p className="mt-1 text-sm text-ink-soft">
+                  Wil je toch een set (of meer), bijvoorbeeld voor een
+                  organisatie of grotere afname? Mail me, dan kijk ik wat er
+                  mogelijk is.
+                </p>
+              </div>
+            ) : mode === "reserve" ? (
               <form onSubmit={reserveer} className="mt-6">
                 <p className="text-sm text-ink-soft">
-                  De betaalomgeving staat nog niet live. Laat je e-mailadres
-                  achter, dan hou ik jouw preorder en het voorverkoopaanbod vast.
+                  Online betalen staat hier nog niet aan. Laat je e-mailadres
+                  achter, dan stuur ik je zelf een betaallink of factuur voor
+                  jouw bestelling.
                 </p>
                 <div className="mt-3 flex flex-wrap gap-3">
                   <input
@@ -310,7 +356,7 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
                     className="min-w-[220px] flex-1 rounded-xl border-2 border-ink bg-card px-4 py-3 text-ink outline-none focus:ring-4 focus:ring-hl"
                   />
                   <button type="submit" className="btn btn-primary">
-                    Reserveer mijn preorder
+                    Vraag een betaallink aan
                   </button>
                 </div>
                 <input
@@ -331,11 +377,11 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
                 >
                   {bezig
                     ? "Naar betalen..."
-                    : `Pre-order ${setsTekst(bestelling.aantal)}`}
+                    : `Bestel ${setsTekst(bestelling.aantal)}`}
                 </button>
                 <p className="mt-3 text-xs text-ink-soft">
                   Veilig betalen via een beveiligde betaalpagina. Je vult daar
-                  ook je verzendadres in. {BESTEL.levertijd}.
+                  ook je verzendadres in. {BESTEL.levertijd}
                 </p>
               </div>
             )}
@@ -364,8 +410,8 @@ export function BestelClient({ stripeReady }: { stripeReady: boolean }) {
             </p>
             <p className="mt-1 text-sm text-ink-soft">
               Voor organisaties, overheid, PO-nummers of aantallen boven{" "}
-              {BESTEL.maxOnlineAantal}: stuur je gegevens, dan ontvang je een
-              factuur of offerte.
+              {effectiefMax}: stuur je gegevens, dan ontvang je een factuur of
+              offerte.
             </p>
             <a
               href={

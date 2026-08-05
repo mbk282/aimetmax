@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Pre-order de AI-gesprekskaarten",
+  title: "Bestel de AI-gesprekskaarten",
   description:
-    "Pre-order de fysieke set AI-gesprekskaarten met tijdelijk 2-voor-1 voorverkoopaanbod: 54 gesprekskaarten, 6 spelregelkaarten en 4 jokers in een stevig doosje.",
+    "Bestel de fysieke set AI-gesprekskaarten: 54 gesprekskaarten, 6 spelregelkaarten en 4 jokers in een stevig doosje. Op voorraad, snel in huis.",
   openGraph: {
-    title: "AI-gesprekskaarten - pre-order de fysieke set",
+    title: "AI-gesprekskaarten - bestel de fysieke set",
     description:
-      "Tijdelijk 2 voor de prijs van 1. Voor het goede gesprek over AI met je team.",
+      "Op voorraad. Voor het goede gesprek over AI met je team.",
     images: ["/kaarten/doosje-voorkant.png"],
     type: "website",
   },

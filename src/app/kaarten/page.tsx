@@ -13,6 +13,7 @@ import {
   typeLabel,
 } from "./kaarten-data";
 import { KaartView } from "./kaart-visual";
+import { BESTEL } from "./bestel-config";
 
 const typeKeuzes: { key: KaartType; label: string }[] = [
   { key: "stelling", label: "Stellingen" },
@@ -162,6 +163,9 @@ export default function KaartenPage() {
           <a href="#deck" className="btn btn-ghost">
             Bekijk alle kaarten
           </a>
+          <Link href="/cards" className="btn btn-ghost" lang="en">
+            View the English edition
+          </Link>
         </div>
         <Link
           href="/kaarten/bestel"
@@ -180,14 +184,12 @@ export default function KaartenPage() {
               Nieuw
             </span>
             <span className="mt-2 block text-sm text-ink-soft sm:text-base">
-              <strong className="text-ink">
-                De fysieke set is nu te reserveren.
-              </strong>{" "}
-              Tijdelijk 2 voor de prijs van 1.
+              <strong className="text-ink">De fysieke set is er.</strong>{" "}
+              {BESTEL.levertijd}
             </span>
           </span>
           <span className="text-sm font-bold text-accent group-hover:underline">
-            Bekijk de voorverkoop &rarr;
+            Bekijk de bestelpagina &rarr;
           </span>
         </Link>
         <div className="mt-6 flex flex-wrap gap-2">
@@ -419,21 +421,20 @@ export default function KaartenPage() {
         <div className="warm-card grid items-center gap-8 p-6 sm:p-10 md:grid-cols-[minmax(0,1fr)_280px]">
           <div>
             <span className="text-xs font-bold uppercase tracking-[0.12em] text-accent">
-              Voorverkoop
+              Op voorraad
             </span>
             <h2 className="hand mt-1 text-3xl font-bold text-ink">
               De fysieke set
             </h2>
             <p className="mt-2 max-w-xl text-ink-soft">
               Een echt kaartspel in een doosje voelt anders dan een scherm: je
-              schudt, deelt uit, legt op tafel. Ik maak een verzorgde fysieke
-              set in de huisstijl, met de werkvormgids erbij, voor in workshops
-              en teamsessies. Tijdelijk kun je hem pre-orderen met 2 voor de
-              prijs van 1: eentje voor jezelf en eentje om cadeau te geven.
+              schudt, deelt uit, legt op tafel. De set is klaar: een verzorgde
+              uitgave in de huisstijl, met de werkvormgids erbij, voor in
+              workshops en teamsessies. {BESTEL.levertijd}
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link href="/kaarten/bestel" className="btn btn-primary">
-                Pre-order de set
+                Bestel de set
               </Link>
               <a href="#deck" className="btn btn-ghost">
                 Nu al online gebruiken
@@ -597,12 +598,12 @@ function KaartenLead() {
   return (
     <div className="warm-card bg-accent-soft p-8">
       <h2 className="hand text-3xl font-bold text-ink">
-        Krijg een seintje (en de print-versie)
+        Krijg een seintje bij nieuwe kaarten
       </h2>
       <p className="mt-2 max-w-2xl text-sm text-ink-soft">
-        Laat je e-mail achter en je hoort het als de fysieke set er is en als er
-        nieuwe kaarten bijkomen. Ik stuur hooguit een paar mails per jaar, alleen
-        als er echt iets nieuws is.
+        Laat je e-mail achter en je hoort het als er nieuwe kaarten of edities
+        bijkomen. Ik stuur hooguit een paar mails per jaar, alleen als er echt
+        iets nieuws is.
       </p>
       <form onSubmit={onSubmit} className="mt-5 flex flex-wrap gap-3">
         <input

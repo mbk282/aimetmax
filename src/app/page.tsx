@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { LeadCapture } from "@/components/lead-capture";
+import { BESTEL } from "./kaarten/bestel-config";
 import doosjeVoorkant from "../../public/kaarten/doosje-3d-voorkant.png";
 
 export const metadata: Metadata = {
@@ -108,7 +109,7 @@ export default function Home() {
             </div>
             <div className="max-w-xl">
               <p className="text-sm font-semibold uppercase tracking-wider text-accent">
-                Nieuw &middot; nu in voorverkoop
+                Nieuw &middot; nu op voorraad
               </p>
               <h2 className="mt-2 hand text-3xl font-bold text-ink">
                 De AI-gesprekskaarten
@@ -120,8 +121,8 @@ export default function Home() {
                 of bestel de gedrukte set in een stevig doosje.
               </p>
               <p className="mt-3 text-sm font-semibold text-ink">
-                &euro; 29,95 &middot; voorverkoopactie: je krijgt er twee, één
-                voor jou en één om cadeau te geven.
+                &euro; {BESTEL.prijs.toFixed(2).replace(".", ",")} &middot;{" "}
+                {BESTEL.levertijd}
               </p>
               <div className="mt-6 flex flex-wrap gap-4">
                 <Link href="/kaarten/bestel" className="btn btn-primary">
@@ -129,6 +130,9 @@ export default function Home() {
                 </Link>
                 <Link href="/kaarten" className="btn btn-ghost">
                   Speel gratis online
+                </Link>
+                <Link href="/cards" className="btn btn-ghost" lang="en">
+                  Complete English preview
                 </Link>
               </div>
             </div>

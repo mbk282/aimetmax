@@ -17,18 +17,18 @@ export const BESTEL = {
   valuta: "EUR",
   // true = pre-order (product nog niet op voorraad). Zet op false zodra je
   // voorraad in huis hebt.
-  preorder: true,
+  preorder: false,
   preorderAanbod: {
-    actief: true,
+    actief: false,
     label: "Tijdelijk voorverkoopaanbod",
     titel: "2 voor de prijs van 1",
     uitleg:
       "Standaard bestel je er twee: eentje voor jezelf en eentje om cadeau te geven.",
   },
-  standaardAantal: 2,
-  maxOnlineAantal: 250,
+  standaardAantal: 1,
+  maxOnlineAantal: 150,
   aantalKeuzes: [1, 2, 10, 25, 100] as const,
-  levertijd: "Verwacht na de zomer van 2026",
+  levertijd: "Meestal binnen 2 werkdagen verzonden, uiterlijk binnen een week.",
   // Verzending: gratis, in de prijs verwerkt. verzendregio bepaalt ook naar
   // welke landen de Stripe-checkout mag verzenden.
   gratisVerzending: true,

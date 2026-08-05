@@ -33,8 +33,8 @@ export async function POST(req: Request) {
     const stripe = new Stripe(key);
     const beschrijving =
       bestelling.gratisSets > 0
-        ? `${bestelling.aantal} sets geleverd; ${bestelling.gratisSets} gratis via het voorverkoopaanbod.`
-        : `${bestelling.aantal} set geleverd als pre-order.`;
+        ? `${bestelling.aantal} sets geleverd; ${bestelling.gratisSets} gratis via de actie.`
+        : `${bestelling.aantal} set${bestelling.aantal === 1 ? "" : "s"} geleverd.`;
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -48,7 +48,7 @@ export async function POST(req: Request) {
             unit_amount: Math.round(bestelling.totaal * 100),
             tax_behavior: "inclusive",
             product_data: {
-              name: `${BESTEL.naam} - ${bestelling.aantal} set${bestelling.aantal === 1 ? "" : "s"} (pre-order)`,
+              name: `${BESTEL.naam} - ${bestelling.aantal} set${bestelling.aantal === 1 ? "" : "s"}`,
               description: beschrijving,
             },
           },
