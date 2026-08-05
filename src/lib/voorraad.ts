@@ -1,5 +1,6 @@
 import Stripe from "stripe";
 import { BESTEL } from "@/app/kaarten/bestel-config";
+import { stripeSecretKey } from "@/lib/stripe-key";
 
 // Live voorraadteller voor de fysieke AI-gesprekskaarten. Geen aparte
 // database: Stripe is toch al de bron van waarheid voor bestellingen, dus we
@@ -10,7 +11,7 @@ import { BESTEL } from "@/app/kaarten/bestel-config";
 // Verkoop je een keer buiten Stripe om (bijv. op factuur)? Verlaag dan
 // gewoon startVoorraad in bestel-config.ts met dat aantal.
 export async function leesVoorraad(): Promise<number | null> {
-  const key = process.env.STRIPE_SECRET_KEY;
+  const key = stripeSecretKey();
   if (!key) return null;
 
   const stripe = new Stripe(key);

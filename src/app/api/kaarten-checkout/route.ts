@@ -5,12 +5,13 @@ import {
   berekenBestelling,
   normaliseerAantal,
 } from "../../kaarten/bestel-config";
+import { stripeSecretKey } from "@/lib/stripe-key";
 
 // Maakt een Stripe Checkout-sessie voor de fysieke kaartenset. Werkt zodra
 // STRIPE_SECRET_KEY als environment variable is gezet; daarvoor geeft hij 503
 // terug en valt de pagina terug op reserveren via e-mail.
 export async function POST(req: Request) {
-  const key = process.env.STRIPE_SECRET_KEY;
+  const key = stripeSecretKey();
   if (!key) {
     return NextResponse.json({ error: "stripe_not_configured" }, { status: 503 });
   }
