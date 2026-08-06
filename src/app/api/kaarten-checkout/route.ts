@@ -49,6 +49,11 @@ export async function POST(req: Request) {
       // Stripe-dashboard komen (dus iDEAL verschijnt vanzelf zodra hij is
       // goedgekeurd, en staat bij NL-bezoekers vooraan).
       wallet_options: { link: { display: "never" } },
+      // Bewust GEEN payment_method_types: dat dwingt de volgorde toch niet af
+      // (getest: Stripe sorteert de gehoste betaalpagina zelf, per bezoeker)
+      // en het zou betekenen dat een methode die je in het dashboard aanzet
+      // hier niet vanzelf verschijnt. Welke methodes je accepteert regel je
+      // dus in het Stripe-dashboard, niet hier.
       line_items: [
         {
           quantity: 1,
