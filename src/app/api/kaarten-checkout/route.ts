@@ -44,10 +44,10 @@ export async function POST(req: Request) {
       // Link (Stripe's eigen sneltoets met opgeslagen gegevens) kaapte het
       // hele betaalscherm: bekende bezoekers kregen eerst een "bevestig dat
       // jij het bent"-code en moesten op "Betalen zonder Link" klikken voor
-      // de gewone opties. Uit, zodat iDEAL/kaart/Bancontact direct in beeld
-      // staan. De rest van de betaalmethodes blijft dynamisch uit het
-      // Stripe-dashboard komen (dus iDEAL verschijnt vanzelf zodra hij is
-      // goedgekeurd, en staat bij NL-bezoekers vooraan).
+      // de gewone opties. Alleen Link staat dus uit; Apple Pay en Google Pay
+      // blijven gewoon werken (die verschijnen vanzelf op een apparaat waar
+      // een kaart klaarstaat). De rest van de betaalmethodes komt dynamisch
+      // uit het Stripe-dashboard.
       wallet_options: { link: { display: "never" } },
       // Bewust GEEN payment_method_types: dat dwingt de volgorde toch niet af
       // (getest: Stripe sorteert de gehoste betaalpagina zelf, per bezoeker)
