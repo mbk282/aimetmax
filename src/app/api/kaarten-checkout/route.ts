@@ -41,6 +41,14 @@ export async function POST(req: Request) {
       mode: "payment",
       locale: "nl",
       billing_address_collection: "auto",
+      // Link (Stripe's eigen sneltoets met opgeslagen gegevens) kaapte het
+      // hele betaalscherm: bekende bezoekers kregen eerst een "bevestig dat
+      // jij het bent"-code en moesten op "Betalen zonder Link" klikken voor
+      // de gewone opties. Uit, zodat iDEAL/kaart/Bancontact direct in beeld
+      // staan. De rest van de betaalmethodes blijft dynamisch uit het
+      // Stripe-dashboard komen (dus iDEAL verschijnt vanzelf zodra hij is
+      // goedgekeurd, en staat bij NL-bezoekers vooraan).
+      wallet_options: { link: { display: "never" } },
       line_items: [
         {
           quantity: 1,
