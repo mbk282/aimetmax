@@ -33,7 +33,8 @@ export const BESTEL = {
   // aantal en redeploy.
   startVoorraad: 150,
   aantalKeuzes: [1, 2, 10, 25, 100] as const,
-  levertijd: "Meestal binnen 2 werkdagen verzonden, uiterlijk binnen een week.",
+  levertijd:
+    "Vanwege vakantie worden bestellingen naar verwachting vanaf 25 augustus bezorgd.",
   // Verzending: gratis, in de prijs verwerkt. verzendregio bepaalt ook naar
   // welke landen de Stripe-checkout mag verzenden.
   gratisVerzending: true,

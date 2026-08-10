@@ -230,6 +230,18 @@ export function BestelClient({
             goede gesprek over AI.
           </p>
 
+          <aside
+            aria-label="Tijdelijk langere levertijd"
+            className="mt-6 rounded-xl border-2 border-accent bg-accent-soft p-4 shadow-[4px_4px_0_#2a2a2a]"
+          >
+            <p className="font-bold text-ink">
+              Vakantie: tijdelijk langere levertijd
+            </p>
+            <p className="mt-1 text-sm text-ink-soft">
+              Bestellen kan gewoon. {BESTEL.levertijd}
+            </p>
+          </aside>
+
           {BESTEL.preorderAanbod.actief && (
             <div className="mt-6 rounded-xl border-2 border-ink bg-hl p-5 shadow-[4px_4px_0_#2a2a2a]">
               <p className="text-xs font-bold uppercase tracking-[0.12em] text-accent">
