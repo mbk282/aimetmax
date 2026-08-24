@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy" },
 };
 
-const bijgewerkt = "14 juni 2026";
+const bijgewerkt = "24 augustus 2026";
 
 export default function PrivacyPage() {
   return (
@@ -46,6 +46,11 @@ export default function PrivacyPage() {
               <strong>Bestelling van de gesprekskaarten:</strong> de gegevens die
               nodig zijn om je bestelling en factuur te verwerken en te bezorgen
               (naam, adres, e-mailadres, betaal- en bestelgegevens).
+            </li>
+            <li>
+              <strong>Herroeping:</strong> je naam, e-mailadres, besteldatum en
+              het aantal sets dat je herroept, om je verklaring aan de juiste
+              Stripe-bestelling te koppelen en de ontvangst te bevestigen.
             </li>
             <li>
               <strong>Contact:</strong> als je mailt of een formulier invult, de

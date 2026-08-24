@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/retour" },
 };
 
-const bijgewerkt = "14 juni 2026";
+const bijgewerkt = "24 augustus 2026";
 
 export default function RetourPage() {
   return (
@@ -37,13 +37,29 @@ export default function RetourPage() {
         <div>
           <h2 className="hand text-2xl font-bold text-ink">Hoe je herroept</h2>
           <p className="mt-3">
-            Stuur binnen de bedenktijd een bericht naar{" "}
+            Gebruik binnen de bedenktijd de duidelijke online functie{" "}
+            <a href="/herroepen" className="font-semibold text-accent hover:text-accent-dark">
+              Hier de overeenkomst ontbinden
+            </a>
+            . Je vult de gegevens uit je bestelbevestiging in en kunt daarna
+            direct een ontvangstbevestiging downloaden. Je hoeft geen reden te
+            geven.
+          </p>
+          <p className="mt-3">
+            Je mag ook het{" "}
+            <a
+              href="/downloads/modelformulier-herroeping.txt"
+              className="font-semibold text-accent hover:text-accent-dark"
+            >
+              modelformulier voor herroeping
+            </a>{" "}
+            invullen en mailen naar{" "}
             <a href={`mailto:${BEDRIJF.email}`} className="font-semibold text-accent hover:text-accent-dark">
               {BEDRIJF.email}
-            </a>{" "}
-            dat je de aankoop wilt herroepen. Je hoeft geen reden te geven. Daarna
-            stuur je de kaarten binnen 14 dagen terug. De kosten van de retourzending
-            zijn voor jou, tenzij we iets anders afspreken.
+            </a>
+            . Na je herroeping stuur je de kaarten binnen 14 dagen terug. De
+            kosten van de retourzending zijn voor jou, tenzij we iets anders
+            afspreken.
           </p>
         </div>
 

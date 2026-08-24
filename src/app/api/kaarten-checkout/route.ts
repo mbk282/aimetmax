@@ -77,6 +77,9 @@ export async function POST(req: Request) {
         aantal_sets: String(bestelling.aantal),
         betaalde_sets: String(bestelling.betaaldeSets),
         gratis_sets: String(bestelling.gratisSets),
+        staffelkorting_percentage: String(
+          Math.round(bestelling.kortingPercentage * 100),
+        ),
       },
       payment_intent_data: {
         metadata: {
@@ -84,6 +87,9 @@ export async function POST(req: Request) {
           aantal_sets: String(bestelling.aantal),
           betaalde_sets: String(bestelling.betaaldeSets),
           gratis_sets: String(bestelling.gratisSets),
+          staffelkorting_percentage: String(
+            Math.round(bestelling.kortingPercentage * 100),
+          ),
         },
       },
       shipping_address_collection: {

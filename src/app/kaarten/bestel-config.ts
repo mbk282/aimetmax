@@ -13,7 +13,7 @@
 export const BESTEL = {
   naam: "AI-gesprekskaarten",
   ondertitel: "Voer het goede gesprek over AI met je team",
-  prijs: 29.95,
+  prijs: 34.95,
   valuta: "EUR",
   // true = pre-order (product nog niet op voorraad). Zet op false zodra je
   // voorraad in huis hebt.
@@ -32,13 +32,20 @@ export const BESTEL = {
   // keer buiten Stripe om (bijv. op factuur)? Verlaag dit getal met dat
   // aantal en redeploy.
   startVoorraad: 150,
-  aantalKeuzes: [1, 2, 10, 25, 100] as const,
-  levertijd:
-    "Vanwege vakantie worden bestellingen naar verwachting vanaf 25 augustus bezorgd.",
+  aantalKeuzes: [1, 2, 10, 30, 100] as const,
+  // Veilige staffel, ook als de set later onder de vaste boekenprijs zou
+  // vallen: max. 5% vanaf 10, max. 10% vanaf 30 en vrij vanaf 100 stuks.
+  // Hoogste drempel eerst, zodat Array.find direct de juiste staffel pakt.
+  bulkStaffels: [
+    { vanaf: 100, korting: 0.2, label: "Eventtarief" },
+    { vanaf: 30, korting: 0.1, label: "Organisatietarief" },
+    { vanaf: 10, korting: 0.05, label: "Teamtarief" },
+  ] as const,
+  levertijd: "Op voorraad en doorgaans binnen 1-2 werkdagen verzonden.",
   // Verzending: gratis, in de prijs verwerkt. verzendregio bepaalt ook naar
   // welke landen de Stripe-checkout mag verzenden.
   gratisVerzending: true,
-  verzendregio: "Nederland en Belgie",
+  verzendregio: "Nederland en België",
   verzendlanden: ["NL", "BE"] as const,
   retourdagen: 14,
   inhoud: [
@@ -66,13 +73,27 @@ export function normaliseerAantal(aantal: unknown) {
 
 export function berekenBestelling(aantalInput: unknown) {
   const aantal = normaliseerAantal(aantalInput);
+  const rondBedrag = (bedrag: number) =>
+    Math.round((bedrag + Number.EPSILON) * 100) / 100;
+  const preorderActie = BESTEL.preorder && BESTEL.preorderAanbod.actief;
   const betaaldeSets =
-    BESTEL.preorder && BESTEL.preorderAanbod.actief
+    preorderActie
       ? Math.ceil(aantal / 2)
       : aantal;
   const gratisSets = Math.max(0, aantal - betaaldeSets);
-  const normalePrijs = aantal * BESTEL.prijs;
-  const totaal = betaaldeSets * BESTEL.prijs;
+  const bulkStaffel = preorderActie
+    ? null
+    : BESTEL.bulkStaffels.find((staffel) => aantal >= staffel.vanaf) ?? null;
+  const kortingPercentage = bulkStaffel?.korting ?? 0;
+  const normalePrijs = rondBedrag(aantal * BESTEL.prijs);
+  const totaalZonderAfronding = preorderActie
+    ? betaaldeSets * BESTEL.prijs
+    : normalePrijs * (1 - kortingPercentage);
+  // Rond een staffelbedrag naar boven af op centen. Zo komt de effectieve
+  // korting door afronding nooit boven het wettelijke maximum uit.
+  const totaal = kortingPercentage > 0
+    ? Math.ceil(totaalZonderAfronding * 100 - 1e-9) / 100
+    : rondBedrag(totaalZonderAfronding);
 
   return {
     aantal,
@@ -80,7 +101,9 @@ export function berekenBestelling(aantalInput: unknown) {
     gratisSets,
     normalePrijs,
     totaal,
-    korting: Math.max(0, normalePrijs - totaal),
+    korting: rondBedrag(Math.max(0, normalePrijs - totaal)),
     prijsPerSet: totaal / aantal,
+    bulkStaffel,
+    kortingPercentage,
   };
 }

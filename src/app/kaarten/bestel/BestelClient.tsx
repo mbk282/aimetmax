@@ -26,7 +26,7 @@ function presetLabel(aantal: number) {
   if (aantal === 1) return "los";
   if (aantal === 2) return "cadeau";
   if (aantal === 10) return "team";
-  if (aantal === 25) return "afdeling";
+  if (aantal === 30) return "organisatie";
   if (aantal === 100) return "event";
   return "sets";
 }
@@ -186,9 +186,6 @@ export function BestelClient({
                 Achterkant doosje
               </figcaption>
             </figure>
-            <p className="col-span-2 text-center text-[11px] leading-relaxed text-ink-soft">
-              Productvisualisatie — de definitieve opmaak kan licht afwijken.
-            </p>
           </div>
           <div className="warm-card bg-paper p-4">
             <Image
@@ -225,22 +222,10 @@ export function BestelClient({
             {BESTEL.naam}
           </h1>
           <p className="mt-3 max-w-xl text-lg text-ink-soft">
-            {BESTEL.ondertitel}. Een fysieke set met 54 gesprekskaarten, 6
-            spelregelkaarten en 4 jokers voor workshops, teamdagen en het eerste
-            goede gesprek over AI.
+            {BESTEL.ondertitel}. Een complete, direct inzetbare teamsessie met 54
+            gesprekskaarten, 6 spelregelkaarten, 4 jokers en een facilitator-note
+            op elke kaart. Geen voorbereiding of AI-expertise nodig.
           </p>
-
-          <aside
-            aria-label="Tijdelijk langere levertijd"
-            className="mt-6 rounded-xl border-2 border-accent bg-accent-soft p-4 shadow-[4px_4px_0_#2a2a2a]"
-          >
-            <p className="font-bold text-ink">
-              Vakantie: tijdelijk langere levertijd
-            </p>
-            <p className="mt-1 text-sm text-ink-soft">
-              Bestellen kan gewoon. {BESTEL.levertijd}
-            </p>
-          </aside>
 
           {BESTEL.preorderAanbod.actief && (
             <div className="mt-6 rounded-xl border-2 border-ink bg-hl p-5 shadow-[4px_4px_0_#2a2a2a]">
@@ -268,12 +253,19 @@ export function BestelClient({
                   {setsTekst(bestelling.aantal)} voor{" "}
                   {prijsTekst(bestelling.totaal)}
                 </p>
-                {bestelling.korting > 0 && (
-                  <p className="mt-1 text-sm text-ink-soft">
-                    Normaal {prijsTekst(bestelling.normalePrijs)}, je voordeel{" "}
-                    {prijsTekst(bestelling.korting)}
-                  </p>
-                )}
+                {bestelling.korting > 0 ? (
+                  <div className="mt-1 text-sm text-ink-soft">
+                    <p>
+                      Normaal {prijsTekst(bestelling.normalePrijs)}, je voordeel{" "}
+                      {prijsTekst(bestelling.korting)}
+                    </p>
+                    {bestelling.bulkStaffel ? (
+                      <p className="font-semibold text-sage">
+                        {bestelling.bulkStaffel.label}: {Math.round(bestelling.kortingPercentage * 100)}% staffelkorting
+                      </p>
+                    ) : null}
+                  </div>
+                ) : null}
               </div>
               <div className="rounded-xl border-2 border-line bg-paper px-4 py-3">
                 <p className="text-xs font-bold uppercase tracking-[0.12em] text-ink-soft">
@@ -337,6 +329,11 @@ export function BestelClient({
                   Online tot {effectiefMax} sets.
                 </span>
               </label>
+              <p className="mt-3 text-xs text-ink-soft">
+                Staffelkorting voor organisaties: 5% vanaf 10 sets, 10% vanaf
+                30 sets en 20% vanaf 100 sets. De korting wordt automatisch
+                verwerkt.
+              </p>
             </fieldset>
 
             {uitverkocht ? (
@@ -389,7 +386,7 @@ export function BestelClient({
                 >
                   {bezig
                     ? "Naar betalen..."
-                    : `Bestel ${setsTekst(bestelling.aantal)}`}
+                    : `Bestel en betaal ${setsTekst(bestelling.aantal)}`}
                 </button>
                 <p className="mt-3 text-xs text-ink-soft">
                   Veilig betalen via een beveiligde betaalpagina. Je vult daar

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BEDRIJF } from "@/lib/bedrijf";
+import { ProtectedPhone } from "@/components/protected-phone";
 
 export function Footer() {
   const adresDeel = BEDRIJF.toonAdresInFooter
@@ -85,6 +86,9 @@ export function Footer() {
                   {BEDRIJF.email}
                 </a>
               </li>
+              <li>
+                <ProtectedPhone />
+              </li>
             </ul>
           </div>
         </div>
@@ -98,6 +102,9 @@ export function Footer() {
             </Link>
             <Link href="/retour" className="hover:text-accent">
               Retour &amp; herroeping
+            </Link>
+            <Link href="/herroepen" className="font-semibold hover:text-accent">
+              Overeenkomst ontbinden
             </Link>
           </div>
           <p className="mt-4 text-center">
