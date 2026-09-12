@@ -11,8 +11,8 @@
 //    Zolang er geen sleutel is, blijft het een nette reservering via e-mail.
 
 export const BESTEL = {
-  naam: "AI-gesprekskaarten",
-  ondertitel: "Voer het goede gesprek over AI met je team",
+  naam: "Praten over AI",
+  ondertitel: "Ontdek hoe jouw team écht denkt over AI",
   prijs: 34.95,
   valuta: "EUR",
   // true = pre-order (product nog niet op voorraad). Zet op false zodra je
@@ -50,10 +50,9 @@ export const BESTEL = {
   retourdagen: 14,
   inhoud: [
     "54 gesprekskaarten: stellingen, dilemma's en open vragen",
-    "6 spelregelkaarten met werkvormen voor je sessie",
-    "4 jokers om zelf een stelling, dilemma of open vraag toe te voegen",
-    "Facilitator-note op elke kaart (de crux van het gesprek)",
-    "Stevig doosje in de huisstijl, met QR naar de gratis online versie",
+    "10 jokers om zelf een stelling, dilemma of open vraag toe te voegen",
+    "Regelboekje van 8 pagina's met werkvormen en begeleidingstips",
+    "Stevig doosje in de huisstijl, met QR naar de online versie en facilitator-notes",
   ],
 } as const;
 

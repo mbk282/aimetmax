@@ -22,14 +22,11 @@ function setsTekst(aantal: number) {
   return `${aantal} set${aantal === 1 ? "" : "s"}`;
 }
 
-function presetLabel(aantal: number) {
-  if (aantal === 1) return "los";
-  if (aantal === 2) return "cadeau";
-  if (aantal === 10) return "team";
-  if (aantal === 30) return "organisatie";
-  if (aantal === 100) return "event";
-  return "sets";
-}
+const fotos = [
+  { src: "/kaarten/fotos/kaarten-in-de-hand.jpeg", alt: "Praten over AI: gesprekskaarten in de hand, met het open doosje op tafel", label: "Kaarten in de hand", width: 1756, height: 2048 },
+  { src: "/kaarten/fotos/open-doosje.jpeg", alt: "Het open doosje Praten over AI met regelboekje en een waaier gesprekskaarten", label: "Doosje en inhoud", width: 1536, height: 2048 },
+  { src: "/kaarten/fotos/doosjes.jpeg", alt: "De fysieke doosjes Praten over AI, met de voorkant en zijkant zichtbaar", label: "Het doosje", width: 2048, height: 1824 },
+] as const;
 
 export function BestelClient({
   stripeReady,
@@ -39,8 +36,11 @@ export function BestelClient({
   voorraad: number | null;
 }) {
   const [aantal, setAantal] = useState<number>(BESTEL.standaardAantal);
+  const [aantalInvoer, setAantalInvoer] = useState<string>(String(BESTEL.standaardAantal));
   const [status, setStatus] = useState("");
   const [bezig, setBezig] = useState(false);
+  const [fotoIndex, setFotoIndex] = useState(0);
+  const foto = fotos[fotoIndex];
 
   const effectiefMax =
     voorraad !== null ? Math.max(1, Math.min(BESTEL.maxOnlineAantal, voorraad)) : BESTEL.maxOnlineAantal;
@@ -50,7 +50,9 @@ export function BestelClient({
   const mode: "stripe" | "reserve" = stripeReady ? "stripe" : "reserve";
 
   function wijzigAantal(next: unknown) {
-    setAantal(Math.min(normaliseerAantal(next), effectiefMax));
+    const genormaliseerd = Math.min(normaliseerAantal(next), effectiefMax);
+    setAantal(genormaliseerd);
+    setAantalInvoer(next === "" ? "" : String(genormaliseerd));
     setStatus("");
   }
 
@@ -92,7 +94,7 @@ export function BestelClient({
     fd.append(
       "fields[leerwens]",
       [
-        `Bestelling AI-gesprekskaarten: ${setsTekst(bestelling.aantal)}`,
+        `Bestelling ${BESTEL.naam}: ${setsTekst(bestelling.aantal)}`,
         ...(bestelling.gratisSets > 0
           ? [
               `Actie: betaalt voor ${setsTekst(bestelling.betaaldeSets)}`,
@@ -147,327 +149,163 @@ export function BestelClient({
   };
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-12">
-      <Link
-        href="/kaarten"
-        className="text-sm font-medium text-ink-soft hover:text-accent"
-      >
-        &larr; Terug naar de kaarten
+    <section className="mx-auto max-w-6xl px-5 py-7 sm:px-6 sm:py-10">
+      <Link href="/kaarten" className="text-sm text-ink-soft underline-offset-4 hover:underline">
+        &larr; Bekijk de online kaarten
       </Link>
 
-      <div className="mt-6 grid items-start gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1fr)]">
-        <div className="space-y-4">
-          <div className="warm-card grid grid-cols-2 gap-4 overflow-hidden bg-card p-4 sm:p-5">
-            <figure>
-              <Image
-                src="/kaarten/doosje-3d-voorkant.png"
-                alt="3D-productvisualisatie van de voorkant van het doosje met AI-gesprekskaarten"
-                width={1254}
-                height={1254}
-                sizes="(max-width: 1023px) 42vw, 240px"
-                className="mx-auto h-auto w-full rounded-xl"
-                priority
-              />
-              <figcaption className="mt-2 text-center text-xs font-semibold text-ink-soft">
-                Voorkant doosje
-              </figcaption>
-            </figure>
-            <figure>
-              <Image
-                src="/kaarten/doosje-3d-achterkant.png"
-                alt="3D-productvisualisatie van de achterkant van het doosje met AI-gesprekskaarten"
-                width={1254}
-                height={1254}
-                sizes="(max-width: 1023px) 42vw, 240px"
-                className="mx-auto h-auto w-full rounded-xl"
-                priority
-              />
-              <figcaption className="mt-2 text-center text-xs font-semibold text-ink-soft">
-                Achterkant doosje
-              </figcaption>
-            </figure>
-          </div>
-          <div className="warm-card bg-paper p-4">
-            <Image
-              src="/preview/kaart-voorkant.png"
-              alt="Voorbeeld van een AI-gesprekskaart uit de set"
-              width={500}
-              height={700}
-              sizes="(max-width: 1023px) 90vw, 480px"
-              className="mx-auto h-48 w-full object-contain sm:h-56"
-              priority
-            />
-            <p className="mt-2 text-center text-xs font-semibold text-ink-soft">
-              Een kaart uit de set
-            </p>
-          </div>
-        </div>
-
-        <div>
-          {BESTEL.preorder ? (
-            <span className="inline-block rounded-full border-2 border-accent px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-accent">
-              Pre-order
-            </span>
-          ) : uitverkocht ? (
-            <span className="inline-block rounded-full border-2 border-ink px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-ink">
-              Uitverkocht
-            </span>
-          ) : (
-            <span className="inline-block rounded-full border-2 border-sage px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-sage">
-              Op voorraad
-              {voorraad !== null ? ` · nog ${voorraad}` : ""}
-            </span>
-          )}
-          <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+      <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-x-14 lg:gap-y-0">
+        <div className="lg:col-start-2 lg:row-start-1">
+          <h1 className="hand text-4xl leading-tight text-ink sm:text-5xl">
             {BESTEL.naam}
           </h1>
-          <p className="mt-3 max-w-xl text-lg text-ink-soft">
-            {BESTEL.ondertitel}. Een complete, direct inzetbare teamsessie met 54
-            gesprekskaarten, 6 spelregelkaarten, 4 jokers en een facilitator-note
-            op elke kaart. Geen voorbereiding of AI-expertise nodig.
+          <p className="mt-3 text-base leading-relaxed text-ink-soft sm:text-lg">
+            54 gesprekskaarten om te ontdekken hoe jouw team écht denkt over AI.
+            Pak een kaart en begin het gesprek.
+          </p>
+          <p className="mt-2 hidden text-sm text-ink-soft lg:block">
+            Voor je teamoverleg, workshop of studiedag. Geen AI-kennis nodig.
+          </p>
+        </div>
+
+        <div className="min-w-0 lg:col-start-1 lg:row-span-2 lg:row-start-1">
+          <div id="productfoto" className="overflow-hidden rounded-2xl bg-line/40">
+            <Image
+              key={foto.src}
+              src={foto.src}
+              alt={foto.alt}
+              width={foto.width}
+              height={foto.height}
+              sizes="(max-width: 1023px) 100vw, 540px"
+              className={`h-60 w-full object-contain sm:h-[420px] lg:h-[560px] ${fotoIndex === 1 ? "-rotate-90 scale-95" : ""}`}
+              priority={fotoIndex === 0}
+            />
+          </div>
+          <div className="mt-3 flex gap-3" role="group" aria-label="Productfoto's">
+            {fotos.map((item, index) => (
+              <button
+                key={item.src}
+                type="button"
+                onClick={() => setFotoIndex(index)}
+                aria-label={item.label}
+                aria-pressed={fotoIndex === index}
+                aria-controls="productfoto"
+                className={`overflow-hidden rounded-lg border-2 p-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${fotoIndex === index ? "border-accent" : "border-transparent hover:border-ink-soft"}`}
+              >
+                <Image src={item.src} alt="" width={72} height={72} sizes="72px" className={`h-12 w-12 rounded object-cover sm:h-[72px] sm:w-[72px] ${index === 1 ? "-rotate-90" : ""}`} />
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="min-w-0 lg:col-start-2 lg:row-start-2 lg:pt-6">
+          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+            <p className="text-3xl font-bold text-ink">{prijsTekst(BESTEL.prijs)}</p>
+            <span className="text-sm text-ink-soft">per set</span>
+          </div>
+          <p className="mt-2 text-sm text-ink-soft">
+            Inclusief btw en gratis verzending in {BESTEL.verzendregio}.
+          </p>
+          <p className="mt-2 text-sm text-ink-soft">
+            {uitverkocht ? "Tijdelijk uitverkocht." : BESTEL.preorder ? "Pre-order" : BESTEL.levertijd}
           </p>
 
-          {BESTEL.preorderAanbod.actief && (
-            <div className="mt-6 rounded-xl border-2 border-ink bg-hl p-5 shadow-[4px_4px_0_#2a2a2a]">
-              <p className="text-xs font-bold uppercase tracking-[0.12em] text-accent">
-                {BESTEL.preorderAanbod.label}
+          {BESTEL.preorder && BESTEL.preorderAanbod.actief && (
+            <p className="mt-4 text-sm font-semibold text-ink">
+              {BESTEL.preorderAanbod.titel}. {BESTEL.preorderAanbod.uitleg}
+            </p>
+          )}
+
+          <div className="mt-6 flex items-center justify-between gap-4">
+            <label htmlFor="aantal" className="text-sm font-semibold text-ink">Aantal sets</label>
+            <input
+              id="aantal"
+              type="number"
+              min={1}
+              max={effectiefMax}
+              step={1}
+              value={aantalInvoer}
+              onChange={(e) => wijzigAantal(e.target.value)}
+              onBlur={() => setAantalInvoer(String(bestelling.aantal))}
+              disabled={uitverkocht || bezig}
+              className="w-24 rounded-lg border border-ink-soft bg-card px-3 py-2.5 text-base text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:opacity-50"
+            />
+          </div>
+          {bestelling.aantal > 1 && (
+            <div className="mt-3 text-sm text-ink" aria-live="polite">
+              <p className="flex justify-between gap-3 font-semibold">
+                <span>Totaal voor {setsTekst(bestelling.aantal)}</span>
+                <span>{prijsTekst(bestelling.totaal)}</span>
               </p>
-              <h2 className="hand mt-1 text-3xl font-bold text-ink">
-                {BESTEL.preorderAanbod.titel}
-              </h2>
-              <p className="mt-2 text-sm text-ink-soft">
-                {BESTEL.preorderAanbod.uitleg} Het aanbod loopt door bij
-                grotere aantallen: bij 10 sets betaal je voor 5, bij 100 sets
-                betaal je voor 50.
-              </p>
+              {bestelling.bulkStaffel && (
+                <p className="mt-1 text-ink-soft">
+                  {Math.round(bestelling.kortingPercentage * 100)}% staffelkorting verrekend.
+                </p>
+              )}
+              {bestelling.gratisSets > 0 && (
+                <p className="mt-1 text-ink-soft">{bestelling.gratisSets} set(s) gratis via de actie.</p>
+              )}
             </div>
           )}
 
-          <div className="warm-card mt-7 p-5 sm:p-6">
-            <div className="flex flex-wrap items-start justify-between gap-5">
-              <div>
-                <p className="text-sm font-semibold text-ink-soft">
-                  Jouw bestelling
-                </p>
-                <p className="mt-1 text-3xl font-bold text-ink">
-                  {setsTekst(bestelling.aantal)} voor{" "}
-                  {prijsTekst(bestelling.totaal)}
-                </p>
-                {bestelling.korting > 0 ? (
-                  <div className="mt-1 text-sm text-ink-soft">
-                    <p>
-                      Normaal {prijsTekst(bestelling.normalePrijs)}, je voordeel{" "}
-                      {prijsTekst(bestelling.korting)}
-                    </p>
-                    {bestelling.bulkStaffel ? (
-                      <p className="font-semibold text-sage">
-                        {bestelling.bulkStaffel.label}: {Math.round(bestelling.kortingPercentage * 100)}% staffelkorting
-                      </p>
-                    ) : null}
-                  </div>
-                ) : null}
-              </div>
-              <div className="rounded-xl border-2 border-line bg-paper px-4 py-3">
-                <p className="text-xs font-bold uppercase tracking-[0.12em] text-ink-soft">
-                  Per set
-                </p>
-                <p className="text-xl font-bold text-ink">
-                  {prijsTekst(bestelling.prijsPerSet)}
-                </p>
-              </div>
-            </div>
-
-            <fieldset className="mt-6">
-              <legend className="text-sm font-bold text-ink">Aantal sets</legend>
-              <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-5">
-                {BESTEL.aantalKeuzes.map((n) => {
-                  const actief = bestelling.aantal === n;
-                  const beschikbaar = n <= effectiefMax;
-                  return (
-                    <button
-                      type="button"
-                      key={n}
-                      disabled={!beschikbaar}
-                      onClick={() => wijzigAantal(n)}
-                      className={`rounded-xl border-2 px-3 py-2 text-left transition ${
-                        !beschikbaar
-                          ? "cursor-not-allowed border-line bg-card text-ink-soft/50"
-                          : actief
-                            ? "border-ink bg-accent text-white shadow-[3px_3px_0_#2a2a2a]"
-                            : "border-line bg-card text-ink hover:border-accent"
-                      }`}
-                    >
-                      <span className="block text-lg font-bold">{n}</span>
-                      <span
-                        className={`block text-xs ${
-                          actief ? "text-white/85" : "text-ink-soft"
-                        }`}
-                      >
-                        {presetLabel(n)}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-              <label
-                htmlFor="aantal"
-                className="mt-3 flex flex-wrap items-center gap-3 text-sm font-medium text-ink"
-              >
-                Eigen aantal
-                <input
-                  id="aantal"
-                  type="number"
-                  min={1}
-                  max={effectiefMax}
-                  step={1}
-                  value={bestelling.aantal}
-                  onChange={(e) => wijzigAantal(e.target.value)}
-                  disabled={uitverkocht}
-                  className="w-32 rounded-xl border-2 border-ink bg-card px-3 py-2 text-ink outline-none focus:ring-4 focus:ring-hl disabled:opacity-50"
-                />
-                <span className="text-ink-soft">
-                  Online tot {effectiefMax} sets.
-                </span>
-              </label>
-              <p className="mt-3 text-xs text-ink-soft">
-                Staffelkorting voor organisaties: 5% vanaf 10 sets, 10% vanaf
-                30 sets en 20% vanaf 100 sets. De korting wordt automatisch
-                verwerkt.
+          {uitverkocht ? (
+            <p className="mt-5 text-sm text-ink-soft">
+              Mail <a href="mailto:max@aimetmax.nl" className="underline">max@aimetmax.nl</a> voor de mogelijkheden.
+            </p>
+          ) : mode === "reserve" ? (
+            <form onSubmit={reserveer} className="mt-5">
+              <p className="text-sm text-ink-soft">
+                Laat je e-mailadres achter, dan stuur ik je een betaallink of factuur.
               </p>
-            </fieldset>
+              <label htmlFor="bestel-email" className="mt-3 block text-sm font-medium">E-mailadres</label>
+              <input id="bestel-email" type="email" name="email" required autoComplete="email" className="mt-1 w-full rounded-lg border border-ink-soft bg-card px-3 py-3 focus-visible:outline-2 focus-visible:outline-accent" />
+              <button type="submit" className="btn btn-primary mt-3 w-full">Vraag een betaallink aan</button>
+              <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-px w-px opacity-0" />
+            </form>
+          ) : (
+            <div className="mt-5">
+              <button
+                onClick={checkout}
+                disabled={bezig}
+                className="btn btn-primary w-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent disabled:cursor-wait disabled:opacity-70"
+              >
+                {bezig ? "Naar betalen..." : `Bestel ${setsTekst(bestelling.aantal)}`}
+              </button>
+              <p className="mt-3 text-center text-xs text-ink-soft">
+                Veilig betalen. Je verzendadres vul je in bij het afrekenen.
+              </p>
+            </div>
+          )}
+          <p role="status" aria-live="polite" className={status ? "mt-3 text-sm font-semibold text-ink" : "sr-only"}>{status}</p>
 
-            {uitverkocht ? (
-              <div className="mt-6 rounded-xl border-2 border-line bg-card p-4">
-                <p className="text-sm font-semibold text-ink">
-                  Online uitverkocht.
-                </p>
-                <p className="mt-1 text-sm text-ink-soft">
-                  Wil je toch een set (of meer), bijvoorbeeld voor een
-                  organisatie of grotere afname? Mail me, dan kijk ik wat er
-                  mogelijk is.
-                </p>
-              </div>
-            ) : mode === "reserve" ? (
-              <form onSubmit={reserveer} className="mt-6">
-                <p className="text-sm text-ink-soft">
-                  Online betalen staat hier nog niet aan. Laat je e-mailadres
-                  achter, dan stuur ik je zelf een betaallink of factuur voor
-                  jouw bestelling.
-                </p>
-                <div className="mt-3 flex flex-wrap gap-3">
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="Je e-mailadres"
-                    aria-label="Je e-mailadres"
-                    autoComplete="email"
-                    className="min-w-[220px] flex-1 rounded-xl border-2 border-ink bg-card px-4 py-3 text-ink outline-none focus:ring-4 focus:ring-hl"
-                  />
-                  <button type="submit" className="btn btn-primary">
-                    Vraag een betaallink aan
-                  </button>
-                </div>
-                <input
-                  type="text"
-                  name="website"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                  className="absolute -left-[9999px] h-px w-px opacity-0"
-                />
-              </form>
-            ) : (
-              <div className="mt-6">
-                <button
-                  onClick={checkout}
-                  disabled={bezig}
-                  className="btn btn-primary disabled:cursor-wait disabled:opacity-70"
-                >
-                  {bezig
-                    ? "Naar betalen..."
-                    : `Bestel en betaal ${setsTekst(bestelling.aantal)}`}
-                </button>
-                <p className="mt-3 text-xs text-ink-soft">
-                  Veilig betalen via een beveiligde betaalpagina. Je vult daar
-                  ook je verzendadres in. {BESTEL.levertijd}
-                </p>
-              </div>
-            )}
-
-            {status ? (
-              <p className="mt-3 text-sm font-semibold text-sage">{status}</p>
-            ) : null}
-
-            <p className="mt-4 text-xs text-ink-soft">
-              Prijzen zijn inclusief btw en gratis verzending in{" "}
-              {BESTEL.verzendregio}. Door te bestellen ga je akkoord met de{" "}
-              <Link href="/voorwaarden" className="font-semibold underline">
-                voorwaarden
-              </Link>{" "}
-              en het{" "}
-              <Link href="/retour" className="font-semibold underline">
-                retourbeleid
-              </Link>
-              .
-            </p>
-          </div>
-
-          <div className="mt-6 rounded-xl border-2 border-line bg-card p-4">
-            <p className="text-sm font-semibold text-ink">
-              Liever op factuur bestellen?
-            </p>
-            <p className="mt-1 text-sm text-ink-soft">
-              Voor organisaties, overheid, PO-nummers of aantallen boven{" "}
-              {effectiefMax}: stuur je gegevens, dan ontvang je een factuur of
-              offerte.
-            </p>
-            <a
-              href={
-                "mailto:max@aimetmax.nl?subject=" +
-                encodeURIComponent(factuurMail.subject) +
-                "&body=" +
-                encodeURIComponent(factuurMail.body)
-              }
-              className="btn btn-ghost mt-3"
-            >
-              Bestel op factuur
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-12 grid gap-4 md:grid-cols-[1fr_0.8fr]">
-        <div className="warm-card bg-sage-soft p-6 sm:p-8">
-          <h2 className="hand text-2xl font-bold text-ink">
-            Wat zit er in de doos?
-          </h2>
-          <ul className="mt-4 space-y-2">
-            {BESTEL.inhoud.map((r) => (
-              <li key={r} className="flex gap-2 text-sm text-ink">
-                <span className="font-bold text-sage">&#10003;</span>
-                {r}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="warm-card bg-accent-soft p-6 sm:p-8">
-          <h2 className="hand text-2xl font-bold text-ink">
-            Eerst proberen?
-          </h2>
-          <p className="mt-3 text-sm text-ink-soft">
-            De hele set staat gratis online. Gebruik hem direct in een sessie,
-            of print de gratis versie thuis.
+          <p className="mt-4 text-center text-sm text-ink-soft">
+            Liever <a
+              href={"mailto:max@aimetmax.nl?subject=" + encodeURIComponent(factuurMail.subject) + "&body=" + encodeURIComponent(factuurMail.body)}
+              className="font-medium text-ink underline underline-offset-4"
+            >op factuur bestellen</a>?
           </p>
-          <div className="mt-4 flex flex-wrap gap-3">
-            <Link href="/kaarten" className="btn btn-primary">
-              Online gebruiken
-            </Link>
-            <Link href="/kaarten/print" className="btn btn-ghost">
-              Printversie
-            </Link>
+
+          <div className="mt-7 divide-y divide-line border-y border-line">
+            <details className="py-4">
+              <summary className="cursor-pointer text-sm font-semibold text-ink focus-visible:outline-2 focus-visible:outline-accent">Wat zit er in de doos?</summary>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-ink-soft">
+                {BESTEL.inhoud.map((regel) => <li key={regel}>{regel}</li>)}
+              </ul>
+            </details>
+            <details className="py-4">
+              <summary className="cursor-pointer text-sm font-semibold text-ink focus-visible:outline-2 focus-visible:outline-accent">Meer sets voor je organisatie?</summary>
+              <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+                5% korting vanaf 10 sets, 10% vanaf 30 sets en 20% vanaf 100 sets.
+                De korting wordt automatisch verrekend. Voor een offerte of inkoopordernummer kun je op factuur bestellen.
+              </p>
+            </details>
           </div>
+          <p className="mt-5 text-sm text-ink-soft">
+            Eerst een kaart bekijken? <Link href="/kaarten#deck" className="underline underline-offset-4">Bekijk de gratis online set</Link>.
+          </p>
+          <p className="mt-4 text-xs leading-relaxed text-ink-soft">
+            Door te bestellen ga je akkoord met de <Link href="/voorwaarden" className="underline">voorwaarden</Link> en het <Link href="/retour" className="underline">retourbeleid</Link>.
+          </p>
         </div>
       </div>
     </section>

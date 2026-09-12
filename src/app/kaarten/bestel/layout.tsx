@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Bestel de AI-gesprekskaarten",
+  title: "Bestel Praten over AI",
   description:
-    "Bestel de fysieke set AI-gesprekskaarten: 54 gesprekskaarten, 6 spelregelkaarten en 4 jokers in een stevig doosje. Op voorraad, snel in huis.",
+    "Bestel Praten over AI: 54 gesprekskaarten, 10 jokers en een regelboekje van 8 pagina's in een stevig doosje. Op voorraad, snel in huis.",
   openGraph: {
-    title: "AI-gesprekskaarten - bestel de fysieke set",
+    title: "Praten over AI - bestel de fysieke kaartenset",
     description:
       "Op voorraad. Voor het goede gesprek over AI met je team.",
-    images: ["/kaarten/doosje-voorkant.png"],
+    images: [{ url: "/kaarten/fotos/kaarten-in-de-hand.jpeg", width: 1756, height: 2048, alt: "Praten over AI: de fysieke gesprekskaarten en het doosje" }],
     type: "website",
   },
 };

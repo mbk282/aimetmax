@@ -172,10 +172,10 @@ export default function KaartenPage() {
           className="group mt-7 grid gap-3 rounded-2xl border-2 border-ink bg-hl p-4 shadow-[4px_4px_0_#2a2a2a] transition hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#2a2a2a] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:grid-cols-[auto_1fr_auto] sm:items-center"
         >
           <Image
-            src="/kaarten/doosje-3d-voorkant.png"
-            alt="3D-productvisualisatie van de voorkant van het doosje met AI-gesprekskaarten"
-            width={1254}
-            height={1254}
+            src="/kaarten/fotos/kaarten-in-de-hand.jpeg"
+            alt="Praten over AI: de gesprekskaarten in de hand met het doosje op tafel"
+            width={1756}
+            height={2048}
             sizes="80px"
             className="h-auto w-16 rounded-xl sm:w-20"
           />
@@ -443,18 +443,18 @@ export default function KaartenPage() {
           </div>
           <div className="grid grid-cols-2 gap-3">
             <Image
-              src="/kaarten/doosje-3d-voorkant.png"
-              alt="3D-productvisualisatie van de voorkant van het doosje met AI-gesprekskaarten"
-              width={1254}
-              height={1254}
+              src="/kaarten/fotos/kaarten-in-de-hand.jpeg"
+              alt="Praten over AI: de gesprekskaarten in de hand met het doosje op tafel"
+              width={1756}
+              height={2048}
               sizes="(max-width: 767px) 40vw, 130px"
               className="h-auto w-full rounded-xl"
             />
             <Image
-              src="/kaarten/doosje-3d-achterkant.png"
-              alt="3D-productvisualisatie van de achterkant van het doosje met AI-gesprekskaarten"
-              width={1254}
-              height={1254}
+              src="/kaarten/fotos/doosjes.jpeg"
+              alt="De fysieke doosjes Praten over AI"
+              width={2048}
+              height={1824}
               sizes="(max-width: 767px) 40vw, 130px"
               className="h-auto w-full rounded-xl"
             />
