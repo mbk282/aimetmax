@@ -4,10 +4,28 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { MDXComponents } from "mdx/types";
+import remarkGfm from "remark-gfm";
 
 type Params = Promise<{ slug: string }>;
 
 const mdxComponents: MDXComponents = {
+  table: (props) => (
+    <div className="mb-6 overflow-x-auto">
+      <table className="w-full border-collapse text-sm" {...props} />
+    </div>
+  ),
+  th: (props) => (
+    <th
+      className="border-b-2 border-ink px-3 py-2 font-semibold text-ink [&:not([align])]:text-left"
+      {...props}
+    />
+  ),
+  td: (props) => (
+    <td
+      className="border-b border-line px-3 py-2 align-top leading-6 text-ink-soft"
+      {...props}
+    />
+  ),
   h2: (props) => (
     <h2
       className="mt-10 mb-4 border-b border-line pb-2 text-2xl font-bold text-ink"
@@ -159,7 +177,11 @@ export default async function BlogPostPage({
         </header>
 
         <div className="mt-10">
-          <MDXRemote source={post.content} components={mdxComponents} />
+          <MDXRemote
+            source={post.content}
+            components={mdxComponents}
+            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+          />
         </div>
 
         {related.length > 0 && (
