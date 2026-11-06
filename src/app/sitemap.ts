@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/academy",
     "/kaarten",
     "/kaarten/bestel",
+    "/kaarten/zakelijk",
     "/tools",
     "/tools/ai-readiness-scorer",
     "/tools/ai-beleid-generator",

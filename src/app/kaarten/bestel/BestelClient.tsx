@@ -299,6 +299,11 @@ export function BestelClient({
                 5% korting vanaf 10 sets, 10% vanaf 30 sets en 20% vanaf 100 sets.
                 De korting wordt automatisch verrekend. Voor een offerte of inkoopordernummer kun je op factuur bestellen.
               </p>
+              <p className="mt-2 text-sm">
+                <Link href="/kaarten/zakelijk" className="font-medium text-ink underline underline-offset-4">
+                  Alles over bestellen voor je organisatie
+                </Link>
+              </p>
             </details>
           </div>
           <p className="mt-5 text-sm text-ink-soft">

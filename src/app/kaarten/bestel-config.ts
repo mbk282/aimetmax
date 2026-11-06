@@ -106,3 +106,13 @@ export function berekenBestelling(aantalInput: unknown) {
     kortingPercentage,
   };
 }
+
+// Zakelijke landingspagina /kaarten/zakelijk.
+export const ZAKELIJK = {
+  // Regel over levering rond de feestdagen. Zet op null om hem te verbergen
+  // (bijvoorbeeld na de kerst).
+  feestdagenMelding:
+    "Voor de feestdagen: bestel 30 sets of meer graag vóór 4 december, dan stemmen we de leverdatum samen af. Kleinere aantallen kun je tot en met 16 december bestellen voor levering vóór de kerst." as string | null,
+  // Voorbeeldaantallen in de prijstabel; de prijzen komen uit berekenBestelling.
+  voorbeeldAantallen: [1, 10, 30, 100] as const,
+} as const;
