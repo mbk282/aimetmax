@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy" },
 };
 
-const bijgewerkt = "24 augustus 2026";
+const bijgewerkt = "7 november 2026";
 
 export default function PrivacyPage() {
   return (
@@ -73,6 +73,15 @@ export default function PrivacyPage() {
             terecht. Voor het tonen van lettertypen in de academy worden
             webfonts van Google geladen; daarbij kan je IP-adres aan Google worden
             doorgegeven.
+          </p>
+          <p className="mt-3">
+            Kom je binnen via een link met campagnegegevens (zoals
+            utm_source=linkedin) of vanaf een andere website, dan onthoudt je
+            browser dat alleen voor dat tabblad (sessionStorage, geen cookie).
+            Van een andere website bewaar ik alleen de domeinnaam, niet het
+            volledige adres. Bestel je de gesprekskaarten, dan gaat die herkomst
+            mee naar Stripe bij je bestelling, zodat ik weet welke kanalen
+            werken. Bestel je niet, dan verdwijnt het als je het tabblad sluit.
           </p>
         </div>
 

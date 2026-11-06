@@ -8,6 +8,7 @@ import {
   berekenBestelling,
   normaliseerAantal,
 } from "../bestel-config";
+import { leesHerkomst } from "@/lib/herkomst";
 
 const prijsFormatter = new Intl.NumberFormat("nl-NL", {
   style: "currency",
@@ -63,7 +64,7 @@ export function BestelClient({
       const r = await fetch("/api/kaarten-checkout", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ aantal: bestelling.aantal }),
+        body: JSON.stringify({ aantal: bestelling.aantal, herkomst: leesHerkomst() }),
       });
       const d = await r.json();
       if (d.url) {

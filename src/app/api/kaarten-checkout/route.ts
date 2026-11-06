@@ -6,6 +6,7 @@ import {
   normaliseerAantal,
 } from "../../kaarten/bestel-config";
 import { stripeSecretKey } from "@/lib/stripe-key";
+import { herkomstAlsMetadata, schoonHerkomst } from "@/lib/herkomst";
 
 // Maakt een Stripe Checkout-sessie voor de fysieke kaartenset. Werkt zodra
 // STRIPE_SECRET_KEY als environment variable is gezet; daarvoor geeft hij 503
@@ -17,9 +18,13 @@ export async function POST(req: Request) {
   }
 
   let aantal: number = BESTEL.standaardAantal;
+  // Herkomst (utm/verwijzende site) uit de browser; zie src/lib/herkomst.ts.
+  // Wordt opgeschoond en alleen als metadata bij de sessie bewaard.
+  let bron: Record<string, string> = {};
   try {
     const body = await req.json();
     aantal = normaliseerAantal(body.aantal);
+    bron = herkomstAlsMetadata(schoonHerkomst(body.herkomst));
   } catch {
     aantal = BESTEL.standaardAantal;
   }
@@ -80,6 +85,7 @@ export async function POST(req: Request) {
         staffelkorting_percentage: String(
           Math.round(bestelling.kortingPercentage * 100),
         ),
+        ...bron,
       },
       payment_intent_data: {
         metadata: {
@@ -90,6 +96,7 @@ export async function POST(req: Request) {
           staffelkorting_percentage: String(
             Math.round(bestelling.kortingPercentage * 100),
           ),
+          ...bron,
         },
       },
       shipping_address_collection: {
