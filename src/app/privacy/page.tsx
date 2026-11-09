@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy" },
 };
 
-const bijgewerkt = "7 november 2026";
+const bijgewerkt = "9 november 2026";
 
 export default function PrivacyPage() {
   return (
@@ -67,7 +67,13 @@ export default function PrivacyPage() {
         <div>
           <h2 className="hand text-2xl font-bold text-ink">Cookies en tracking</h2>
           <p className="mt-3">
-            Deze site gebruikt geen tracking- of advertentiecookies. De voortgang
+            Deze site gebruikt geen tracking- of advertentiecookies. Om te zien hoe
+            de site gebruikt wordt, draait PostHog (servers in de EU): het houdt bij
+            welke pagina&apos;s bekeken worden en maakt sessie-opnames van klikken en
+            scrollen. Ingevulde velden en tekst in de tools worden in die opnames
+            afgeschermd. PostHog zet hiervoor geen cookies en bewaart niets in je
+            browser; sluit je de pagina, dan begint een volgend bezoek als nieuw.
+            De voortgang
             en quizscores in de academy worden alleen lokaal in je eigen browser
             bewaard (localStorage); die gegevens komen niet bij mij op een server
             terecht. Voor het tonen van lettertypen in de academy worden
@@ -93,6 +99,7 @@ export default function PrivacyPage() {
           </p>
           <ul className="mt-3 list-disc space-y-2 pl-5">
             <li><strong>Vercel</strong> - hosting van de website.</li>
+            <li><strong>PostHog</strong> - bezoekstatistieken en sessie-opnames (servers in de EU).</li>
             <li><strong>MailerLite</strong> - verzending en beheer van de nieuwsbrief.</li>
             <li><strong>Stripe</strong> - afhandeling van betalingen (bij een bestelling).</li>
             <li><strong>Google Fonts</strong> - lettertypen in de academy.</li>
