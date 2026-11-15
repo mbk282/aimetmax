@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/boek",
     "/contact",
     "/methode",
+    "/onderzoek/sinterklaasjournaal",
+    "/onderzoek/sinterklaasjournaal/methode",
     "/academy",
     "/kaarten",
     "/kaarten/bestel",
