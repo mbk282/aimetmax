@@ -16,7 +16,7 @@ function table(host, head, rows) { const d = document.createElement('details'); 
 
 function btPanels() {
   const host = document.getElementById('c-bt-panels');
-  const Q = [['engst', 'Enger'], ['luchtigst', 'Luchtiger'], ['ongerustste_einde', 'Ongeruster einde']];
+  const Q = [['luchtigst', 'Luchtiger'], ['engst', 'Enger'], ['ongerustste_einde', 'Ongeruster einde']];
   Q.forEach(([key, title]) => {
     const box = document.createElement('div'); box.innerHTML = `<h5>${title}</h5>`; host.appendChild(box);
     const W = 320, H = 236, m = { l: 42, r: 8, t: 16, b: 28 };
@@ -36,7 +36,7 @@ function btPanels() {
       bindTip(dot, `<b>${d.y}${d.y === 2026 ? ' (loopt nog)' : ''}</b>${title}: ${pct(d.p)} kans om te winnen van een gemiddelde aflevering (onzekerheid ${pct(d.lo)} tot ${pct(d.hi)})`);
     });
   });
-  table(document.getElementById('c-bt'), ['Jaar', 'Enger', 'Luchtiger', 'Ongeruster einde'], DATA.bt.engst.map((d, i) => [d.y, pct(d.p), pct(DATA.bt.luchtigst[i].p), pct(DATA.bt.ongerustste_einde[i].p)]));
+  table(document.getElementById('c-bt'), ['Jaar', 'Luchtiger', 'Enger', 'Ongeruster einde'], DATA.bt.engst.map((d, i) => [d.y, pct(DATA.bt.luchtigst[i].p), pct(d.p), pct(DATA.bt.ongerustste_einde[i].p)]));
 }
 
 function days() {

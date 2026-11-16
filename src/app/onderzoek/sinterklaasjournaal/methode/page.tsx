@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Methode: is het Sinterklaasjournaal enger geworden?",
+  title: "Methode: waar is de lol gebleven in het Sinterklaasjournaal?",
   description:
     "Hoe ik 200 afleveringen van het Sinterklaasjournaal blind liet vergelijken door AI: vooraf vastgelegd plan, paarsgewijze oordelen, probleemlogboeken, betrouwbaarheid, beperkingen en downloadbare data.",
   alternates: { canonical: "/onderzoek/sinterklaasjournaal/methode" },
@@ -59,7 +59,7 @@ export default function MethodePage() {
       <p className="mt-5 text-lg">
         Dit is de verantwoording bij{" "}
         <Link href={BASE} className="font-medium text-accent underline underline-offset-2">
-          Is het Sinterklaasjournaal enger geworden?
+          Waar is de lol gebleven in het Sinterklaasjournaal?
         </Link>
         . Hier staat welke bronnen ik gebruikte, hoe ik mat, hoe betrouwbaar dat is, wat niet lukte en wat het onderzoek
         niet kan zeggen. De data staan onderaan.
@@ -68,8 +68,9 @@ export default function MethodePage() {
       <H2>In het kort</H2>
       <p>
         Ik heb het Sinterklaasjournaal per seizoen vergeleken, niet per groep jaren. De kern is een blinde
-        paarsgewijze vergelijking: een AI-model (Claude Haiku) las steeds twee afleveringen uit verschillende jaren,
-        zonder jaartallen of namen, en koos welke van de twee enger, luchtiger of verontrustender was. Daarnaast
+        paarsgewijze vergelijking: twee verschillende AI-modellen (Claude Haiku en DeepSeek) lazen steeds twee
+        afleveringen uit verschillende jaren, zonder jaartallen of namen, en kozen welke van de twee enger, luchtiger
+        of verontrustender was. Daarnaast
         maakten AI-agents per seizoen een logboek van alle problemen in het verhaal. Het analyseplan, met hypotheses,
         maten en de ernstschaal, legde ik vast vóór ik de analyses draaide.
       </p>
@@ -98,8 +99,10 @@ export default function MethodePage() {
       <H2>3. Paarsgewijze vergelijking</H2>
       <p>
         Voor elk paar seizoenen met minstens vijf afleveringen koos ik tot vier paren afleveringen die op dezelfde plek
-        in het seizoen stonden (maximaal drie dagen verschil tot 5 december). Dat gaf 167 paren. Elk paar werd twee keer
-        beoordeeld, één keer in elke volgorde, door verschillende Haiku-agents: 334 oordelen. Per paar vier vragen:
+        in het seizoen stonden (maximaal drie dagen verschil tot 5 december). Dat gaf 167 paren, die Claude Haiku in
+        beide volgordes beoordeelde (334 oordelen). Daarna beoordeelde DeepSeek (deepseek-chat) dezelfde 167 paren
+        plus 846 extra paren (maximaal twee dagen verschil, elke aflevering hooguit twee keer per seizoenspaar), ook in
+        beide volgordes: 2.026 oordelen. In totaal 2.360 oordelen over 1.013 paren. Per paar vier vragen:
         welke is enger voor een kind van vijf, welke is luchtiger, na welke gaat een kind ongeruster naar bed, en in
         welke spelen problemen die zowel echt als erg zijn.
       </p>
@@ -111,8 +114,11 @@ export default function MethodePage() {
       <Table
         head={["Controle", "Uitkomst"]}
         rows={[
-          ["Voorkeur voor de eerste of tweede aflevering", "47 tot 53 procent: geen duidelijke voorkeur"],
-          ["Zelfde antwoord in beide volgordes", "79 procent (luchtiger) tot 87 procent (ongeruster einde)"],
+          ["Voorkeur voor eerste of tweede aflevering, Haiku", "47 tot 53 procent: geen duidelijke voorkeur"],
+          ["Voorkeur voor eerste of tweede aflevering, DeepSeek", "kiest vaker de tweede (57 tot 68 procent bij enger, ongeruster einde en echt en erg); valt weg doordat elk paar in beide volgordes is beoordeeld"],
+          ["Zelfde antwoord in beide volgordes, Haiku", "79 procent (luchtiger) tot 87 procent (ongeruster einde)"],
+          ["Zelfde antwoord in beide volgordes, DeepSeek", "75 procent (ongeruster einde) tot 85 procent (luchtiger)"],
+          ["Haiku en DeepSeek eens op dezelfde paren", "83 procent (enger, ongeruster einde), 77 procent (luchtiger), 72 procent (echt en erg)"],
           ["Trend per tien jaar, enger", "duidelijk positief (95%-interval ligt boven nul)"],
           ["Trend per tien jaar, luchtiger", "duidelijk negatief"],
           ["Trend per tien jaar, ongeruster einde", "duidelijk positief"],
@@ -160,7 +166,16 @@ export default function MethodePage() {
         exploratief.
       </p>
 
-      <H2>7. Wat niet lukte</H2>
+      <H2>7. Beeld</H2>
+      <p>
+        Van vier afleveringen uit 2009-2018 en vier uit 2023-2024 analyseerde ik elke seconde, ruim 5.000 beelden:
+        helderheid, verzadiging, warmte (rood min blauw), kleurrijkheid (de maat van Hasler en Süsstrunk) en het
+        aandeel duidelijk rode pixels. De twaalf beelden per periode in het artikel zijn met een vaste willekeurige
+        trekking gekozen. De aflevering uit 2004 (een donkere VHS-opname) en die uit 2017 (met gebarentolk in beeld)
+        tellen hier niet mee. Van na 2024 en van vóór 2009 heb ik geen bruikbare video.
+      </p>
+
+      <H2>8. Wat niet lukte</H2>
       <ul className="mb-4 ml-6 list-disc space-y-2">
         <li>
           Achtergrondmuziek. Ik probeerde drie manieren: een AudioSet-model op de geluidsband, hetzelfde na het
@@ -174,7 +189,7 @@ export default function MethodePage() {
         <li>Een simpel sentimentmodel per zin liet maar een klein verschil zien; dat staat niet in het artikel.</li>
       </ul>
 
-      <H2>8. Beperkingen</H2>
+      <H2>9. Beperkingen</H2>
       <ul className="mb-4 ml-6 list-disc space-y-2">
         <li>2023 en 2024 ontbreken, en van vóór 2013 zijn bijna geen ondertitels te vinden.</li>
         <li>AI-beoordelaars zijn geen kinderen. Ze lezen tekst, zonder beeld, muziek of toon van stemmen.</li>

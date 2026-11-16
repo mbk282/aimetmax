@@ -8,10 +8,10 @@ import data from "./data.json";
 const alfa = Alfa_Slab_One({ weight: "400", subsets: ["latin"], variable: "--font-alfa" });
 const plex = IBM_Plex_Mono({ weight: ["400", "600"], subsets: ["latin"], variable: "--font-plex-mono" });
 
-const TITLE = "Is het Sinterklaasjournaal enger geworden?";
+const TITLE = "Waar is de lol gebleven in het Sinterklaasjournaal?";
 const DESCRIPTION =
-  "Ik liet AI 200 afleveringen van het Sinterklaasjournaal blind vergelijken. Het programma is enger en minder luchtig geworden, met 2025 als uitschieter: militairen, een bom en noodpakketten.";
-const PUBLISHED = "2026-11-15";
+  "Ik liet twee AI-modellen 200 afleveringen van het Sinterklaasjournaal blind vergelijken. Het programma is duidelijk minder luchtig geworden, 2025 was het engst, en dit jaar is het minder eng maar de luchtigheid is niet terug.";
+const PUBLISHED = "2026-11-16";
 
 export const metadata: Metadata = {
   title: { absolute: `${TITLE} | AI met Max` },
