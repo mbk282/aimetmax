@@ -10,7 +10,7 @@ const plex = IBM_Plex_Mono({ weight: ["400", "600"], subsets: ["latin"], variabl
 
 const TITLE = "Is het Sinterklaasjournaal enger geworden?";
 const DESCRIPTION =
-  "Data-onderzoek naar 26 seizoenen verhaallijnen en 200 uitzendingen van het Sinterklaasjournaal: het wordt langzaam spannender, en vroeger ging het mis door een gekke piet, nu door een echte ramp.";
+  "Ik liet AI 200 afleveringen van het Sinterklaasjournaal blind vergelijken. Het programma is enger en minder luchtig geworden, met 2025 als uitschieter: militairen, een bom en noodpakketten.";
 const PUBLISHED = "2026-11-15";
 
 export const metadata: Metadata = {

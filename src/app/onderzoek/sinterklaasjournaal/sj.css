@@ -83,3 +83,10 @@
   .sj .stack-row { grid-template-columns: 1fr; gap: 4px; }
 }
 @media (prefers-reduced-motion: reduce) { .sj-tip { transition: none; } }
+.sj .mini3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.sj .mini3 h5 { margin: 0 0 4px; font-size: 0.9rem; font-weight: 800; }
+.sj .timeline { list-style: none; padding-left: 0; margin: 22px 0; display: grid; gap: 10px; border-left: 3px solid var(--rule); }
+.sj .timeline li { padding-left: 16px; position: relative; }
+.sj .timeline li::before { content: ""; position: absolute; left: -8px; top: 0.45em; width: 13px; height: 13px; border-radius: 50%; background: var(--sint); border: 2px solid var(--paper); }
+.sj .timeline .d { display: block; font-family: var(--f-mono); font-size: 0.78rem; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+@media (max-width: 640px) { .sj .mini3 { grid-template-columns: 1fr; } }
