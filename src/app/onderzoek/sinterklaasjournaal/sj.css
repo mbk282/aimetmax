@@ -90,3 +90,10 @@
 .sj .timeline li::before { content: ""; position: absolute; left: -8px; top: 0.45em; width: 13px; height: 13px; border-radius: 50%; background: var(--sint); border: 2px solid var(--paper); }
 .sj .timeline .d { display: block; font-family: var(--f-mono); font-size: 0.78rem; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
 @media (max-width: 640px) { .sj .mini3 { grid-template-columns: 1fr; } }
+.sj .grp { font-family: var(--f-mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--muted); margin: 14px 0 6px; }
+.sj .mini { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.sj .mini h5 { margin: 0 0 2px; font-size: 0.86rem; font-weight: 800; }
+.sj .mini .legend { grid-column: span 2; align-self: center; display: grid; gap: 6px; font-size: 0.82rem; color: var(--muted); padding-left: 8px; }
+.sj .mini .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 7px; vertical-align: -1px; box-sizing: border-box; }
+.sj .mini .legend .ln::before { content: ""; display: inline-block; width: 16px; border-top: 1.5px solid var(--muted); margin-right: 7px; vertical-align: 3px; }
+@media (max-width: 640px) { .sj .mini { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sj .sheets.keep2 { grid-template-columns: 1fr 1fr; gap: 8px; } }

@@ -6,7 +6,6 @@ export function renderCharts(root: HTMLElement, DATA: any): () => void {
 const css = n => getComputedStyle(root).getPropertyValue(n).trim();
 const NS = 'http://www.w3.org/2000/svg';
 const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
-
 function showTip(ev, html) { tip.innerHTML = html; tip.style.opacity = 1; const x = Math.min(ev.clientX + 14, window.innerWidth - 300); tip.style.left = x + 'px'; tip.style.top = (ev.clientY + 14) + 'px'; }
 function hideTip() { tip.style.opacity = 0; }
 function bindTip(node, html) { node.addEventListener('mousemove', e => showTip(e, html)); node.addEventListener('mouseleave', hideTip); node.setAttribute('tabindex', '0'); node.addEventListener('focus', () => { const r = node.getBoundingClientRect(); showTip({ clientX: r.right, clientY: r.top }, html); }); node.addEventListener('blur', hideTip); }
@@ -14,29 +13,40 @@ const pct = v => Math.round(v * 100) + '%';
 const nl = v => String(v).replace('.', ',');
 function table(host, head, rows) { const d = document.createElement('details'); d.innerHTML = '<summary>Bekijk de cijfers</summary><div class="tbl"><table><thead><tr>' + head.map(h => `<th>${h}</th>`).join('') + '</tr></thead><tbody>' + rows.map(r => '<tr>' + r.map(c => `<td>${c}</td>`).join('') + '</tr>').join('') + '</tbody></table></div>'; host.appendChild(d); }
 
+const QS = {
+  heavy: [['engst', 'Enger'], ['spannendst', 'Spannender'], ['negatiefst', 'Negatiever'], ['ongerustst', 'Ongeruster'], ['ongerustste_einde', 'Ongeruster einde']],
+  light: [['luchtigst', 'Luchtiger'], ['grappigst', 'Grappiger'], ['gezelligst', 'Gezelliger']],
+};
+const BASE = [2013, 2014, 2016];
 function btPanels() {
-  const host = document.getElementById('c-bt-panels');
-  const Q = [['luchtigst', 'Luchtiger'], ['engst', 'Enger'], ['ongerustste_einde', 'Ongeruster einde']];
-  Q.forEach(([key, title]) => {
-    const box = document.createElement('div'); box.innerHTML = `<h5>${title}</h5>`; host.appendChild(box);
-    const W = 320, H = 236, m = { l: 42, r: 8, t: 16, b: 28 };
-    const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': `${title}: kans per jaar dat een aflevering wint van een gemiddelde aflevering` }, box);
-    const D = DATA.bt[key];
-    const slots = []; D.forEach((d, i) => { if (i && d.y - D[i - 1].y > 1) slots.push(null); slots.push(d.y); });
-    const sw = (W - m.l - m.r) / slots.length, x = y => m.l + (slots.indexOf(y) + 0.5) * sw;
-    const y = v => m.t + (1 - v) * (H - m.t - m.b);
-    const g = el('g', { class: 'grid' }, svg);
-    [0, .25, .5, .75, 1].forEach(v => { el('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v) }, g); const t = el('text', { x: m.l - 6, y: y(v) + 4, 'text-anchor': 'end' }, svg); t.textContent = pct(v); });
-    el('line', { x1: m.l, x2: W - m.r, y1: y(.5), y2: y(.5), stroke: css('--muted'), 'stroke-width': 1.2, 'stroke-dasharray': '3 3' }, svg);
-    slots.forEach((s, i) => { if (s === null || ![2013, 2016, 2019, 2022, 2025].includes(s)) return; const t = el('text', { x: m.l + (i + .5) * sw, y: H - 10, 'text-anchor': 'middle' }, svg); t.textContent = "'" + String(s).slice(2); });
-    D.forEach(d => {
-      const c = d.y === 2025 ? css('--sint') : d.y === 2026 ? css('--goud') : css('--s1');
-      el('line', { x1: x(d.y), x2: x(d.y), y1: y(d.lo), y2: y(d.hi), stroke: c, 'stroke-width': 2, 'stroke-linecap': 'round', opacity: .55 }, svg);
-      const dot = el('circle', { cx: x(d.y), cy: y(d.p), r: 5, fill: c, stroke: css('--card'), 'stroke-width': 1.5 }, svg);
-      bindTip(dot, `<b>${d.y}${d.y === 2026 ? ' (loopt nog)' : ''}</b>${title}: ${pct(d.p)} kans om te winnen van een gemiddelde aflevering (onzekerheid ${pct(d.lo)} tot ${pct(d.hi)})`);
+  [['heavy', 'c-bt-heavy'], ['light', 'c-bt-light']].forEach(([grp, id]) => {
+    const host = document.getElementById(id);
+    QS[grp].forEach(([key, title]) => {
+      const box = document.createElement('div'); box.innerHTML = `<h5>${title}</h5>`; host.appendChild(box);
+      const W = 220, H = 190, m = { l: 34, r: 6, t: 12, b: 24 };
+      const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': `${title} dan 2013-2016: kans per jaar` }, box);
+      const D = DATA.bt[key];
+      const slots = []; D.forEach((d, i) => { if (i && d.y - D[i - 1].y > 1) slots.push(null); slots.push(d.y); });
+      const sw = (W - m.l - m.r) / slots.length, x = y => m.l + (slots.indexOf(y) + 0.5) * sw;
+      const y = v => m.t + (1 - v) * (H - m.t - m.b);
+      const g = el('g', { class: 'grid' }, svg);
+      [0, .25, .5, .75, 1].forEach(v => { el('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v) }, g); const t = el('text', { x: m.l - 5, y: y(v) + 4, 'text-anchor': 'end' }, svg); t.textContent = pct(v); });
+      el('line', { x1: m.l, x2: W - m.r, y1: y(.5), y2: y(.5), stroke: css('--muted'), 'stroke-width': 1.4 }, svg);
+      slots.forEach((s, i) => { if (s === null || ![2013, 2018, 2022, 2026].includes(s)) return; const t = el('text', { x: m.l + (i + .5) * sw, y: H - 8, 'text-anchor': 'middle' }, svg); t.textContent = "'" + String(s).slice(2); });
+      D.forEach(d => {
+        const c = d.y === 2025 ? css('--sint') : d.y === 2026 ? css('--goud') : css('--s1');
+        const base = BASE.includes(d.y);
+        el('line', { x1: x(d.y), x2: x(d.y), y1: y(d.lo), y2: y(d.hi), stroke: c, 'stroke-width': 2, 'stroke-linecap': 'round', opacity: .5 }, svg);
+        const dot = el('circle', { cx: x(d.y), cy: y(d.p), r: 4.5, fill: base ? css('--card') : c, stroke: base ? c : css('--card'), 'stroke-width': base ? 2 : 1.5 }, svg);
+        bindTip(dot, `<b>${d.y}${d.y === 2026 ? ' (loopt nog)' : ''}${base ? ' (startjaar)' : ''}</b>${title} dan een aflevering uit 2013-2016: ${pct(d.p)} (onzekerheid ${pct(d.lo)} tot ${pct(d.hi)})`);
+      });
     });
   });
-  table(document.getElementById('c-bt'), ['Jaar', 'Luchtiger', 'Enger', 'Ongeruster einde'], DATA.bt.engst.map((d, i) => [d.y, pct(DATA.bt.luchtigst[i].p), pct(d.p), pct(DATA.bt.ongerustste_einde[i].p)]));
+  const leg = document.createElement('div'); leg.className = 'legend';
+  leg.innerHTML = `<span><i style="border:2px solid ${css('--s1')}"></i>2013, 2014, 2016: de startjaren</span><span><i style="background:${css('--s1')}"></i>2018-2022</span><span><i style="background:${css('--sint')}"></i>2025</span><span><i style="background:${css('--goud')}"></i>2026, loopt nog</span><span class="ln">Lijn op 50%: net zo als 2013-2016</span>`;
+  document.getElementById('c-bt-light').appendChild(leg);
+  const all = [...QS.heavy, ...QS.light];
+  table(document.getElementById('c-bt'), ['Jaar', ...all.map(q => q[1])], DATA.bt.engst.map((d, i) => [d.y, ...all.map(q => pct(DATA.bt[q[0]][i].p))]));
 }
 
 function days() {
@@ -60,7 +70,7 @@ function days() {
 }
 
 function render() {
-  document.getElementById('c-bt-panels').innerHTML = '';
+  ['c-bt-heavy', 'c-bt-light'].forEach(id => document.getElementById(id).innerHTML = '');
   ['c-bt', 'c-days'].forEach(id => document.getElementById(id).querySelectorAll(':scope > svg, :scope > details').forEach(c => c.remove()));
   btPanels(); days();
 }

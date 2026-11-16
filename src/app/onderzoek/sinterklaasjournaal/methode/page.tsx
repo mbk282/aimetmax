@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Methode: waar is de lol gebleven in het Sinterklaasjournaal?",
+  title: "Methode: is het Sinterklaasjournaal enger geworden?",
   description:
     "Hoe ik 200 afleveringen van het Sinterklaasjournaal blind liet vergelijken door AI: vooraf vastgelegd plan, paarsgewijze oordelen, probleemlogboeken, betrouwbaarheid, beperkingen en downloadbare data.",
   alternates: { canonical: "/onderzoek/sinterklaasjournaal/methode" },
@@ -59,7 +59,7 @@ export default function MethodePage() {
       <p className="mt-5 text-lg">
         Dit is de verantwoording bij{" "}
         <Link href={BASE} className="font-medium text-accent underline underline-offset-2">
-          Waar is de lol gebleven in het Sinterklaasjournaal?
+          Is het Sinterklaasjournaal enger geworden?
         </Link>
         . Hier staat welke bronnen ik gebruikte, hoe ik mat, hoe betrouwbaar dat is, wat niet lukte en wat het onderzoek
         niet kan zeggen. De data staan onderaan.
@@ -69,8 +69,9 @@ export default function MethodePage() {
       <p>
         Ik heb het Sinterklaasjournaal per seizoen vergeleken, niet per groep jaren. De kern is een blinde
         paarsgewijze vergelijking: twee verschillende AI-modellen (Claude Haiku en DeepSeek) lazen steeds twee
-        afleveringen uit verschillende jaren, zonder jaartallen of namen, en kozen welke van de twee enger, luchtiger
-        of verontrustender was. Daarnaast
+        afleveringen uit verschillende jaren, zonder jaartallen of namen, en beantwoordden acht vragen: welke van de
+        twee is enger, spannender, negatiever, maakt ongeruster, heeft een ongeruster einde, is luchtiger, grappiger
+        en gezelliger. Elk seizoen is vergeleken met de eerste gemeten seizoenen, 2013-2016. Daarnaast
         maakten AI-agents per seizoen een logboek van alle problemen in het verhaal. Het analyseplan, met hypotheses,
         maten en de ernstschaal, legde ik vast vóór ik de analyses draaide.
       </p>
@@ -99,29 +100,39 @@ export default function MethodePage() {
       <H2>3. Paarsgewijze vergelijking</H2>
       <p>
         Voor elk paar seizoenen met minstens vijf afleveringen koos ik tot vier paren afleveringen die op dezelfde plek
-        in het seizoen stonden (maximaal drie dagen verschil tot 5 december). Dat gaf 167 paren, die Claude Haiku in
-        beide volgordes beoordeelde (334 oordelen). Daarna beoordeelde DeepSeek (deepseek-chat) dezelfde 167 paren
-        plus 846 extra paren (maximaal twee dagen verschil, elke aflevering hooguit twee keer per seizoenspaar), ook in
-        beide volgordes: 2.026 oordelen. In totaal 2.360 oordelen over 1.013 paren. Per paar vier vragen:
-        welke is enger voor een kind van vijf, welke is luchtiger, na welke gaat een kind ongeruster naar bed, en in
-        welke spelen problemen die zowel echt als erg zijn.
+        in het seizoen stonden (maximaal drie dagen verschil tot 5 december). Dat gaf 167 paren. Daarna kwamen er 846
+        paren bij (maximaal twee dagen verschil, elke aflevering hooguit twee keer per seizoenspaar): samen 1.013
+        paren. Elk paar is in beide volgordes beoordeeld.
+      </p>
+      <p>
+        Per oordeel acht vragen, steeds vanuit een kind van vijf: welke is enger (dreiging, gevaar), spannender
+        (onzekerheid), negatiever van toon, van welke wordt een kind ongeruster over de hele aflevering, na welke gaat
+        het ongeruster naar bed, welke is luchtiger, grappiger en gezelliger. DeepSeek (deepseek-chat) beoordeelde alle
+        1.013 paren (2.026 oordelen), Claude Haiku de oorspronkelijke 167 (334 oordelen). Samen 2.360 oordelen.
+      </p>
+      <p>
+        Een eerdere versie van dit stuk gebruikte vier vragen (enger, luchtiger, ongeruster einde, echt en erg) en zette
+        elk jaar af tegen het gemiddelde van alle jaren. Op 16 november 2026 heb ik, vóór het draaien, vastgelegd dat ik
+        dezelfde paren opnieuw liet beoordelen op de acht vragen hierboven en elk jaar zou afzetten tegen 2013-2016. Het
+        gemiddelde van alle jaren is een slecht nulpunt, omdat de recente jaren daar zelf in zitten. Mijn eigen
+        referentie zou het programma uit mijn kindertijd zijn (rond 2001), maar daarvan zijn bijna geen ondertitels.
+        2013, 2014 en 2016 zijn de eerste seizoenen met minstens vijf afleveringen.
       </p>
       <p>
         Uit alle oordelen schat een Bradley-Terry-model per seizoen een sterkte. In het artikel staat die als de kans
-        dat een aflevering uit dat seizoen wint van een gemiddelde aflevering. De onzekerheid is berekend door de
-        oordelen 400 keer opnieuw te trekken (bootstrap).
+        dat een aflevering uit dat seizoen wint van een aflevering uit 2013-2016. De onzekerheid is berekend door de
+        paren 400 keer opnieuw te trekken (bootstrap, beide volgordes van een paar steeds samen).
       </p>
       <Table
         head={["Controle", "Uitkomst"]}
         rows={[
-          ["Voorkeur voor eerste of tweede aflevering, Haiku", "47 tot 53 procent: geen duidelijke voorkeur"],
-          ["Voorkeur voor eerste of tweede aflevering, DeepSeek", "kiest vaker de tweede (57 tot 68 procent bij enger, ongeruster einde en echt en erg); valt weg doordat elk paar in beide volgordes is beoordeeld"],
-          ["Zelfde antwoord in beide volgordes, Haiku", "79 procent (luchtiger) tot 87 procent (ongeruster einde)"],
-          ["Zelfde antwoord in beide volgordes, DeepSeek", "75 procent (ongeruster einde) tot 85 procent (luchtiger)"],
-          ["Haiku en DeepSeek eens op dezelfde paren", "83 procent (enger, ongeruster einde), 77 procent (luchtiger), 72 procent (echt en erg)"],
-          ["Trend per tien jaar, enger", "duidelijk positief (95%-interval ligt boven nul)"],
-          ["Trend per tien jaar, luchtiger", "duidelijk negatief"],
-          ["Trend per tien jaar, ongeruster einde", "duidelijk positief"],
+          ["Voorkeur voor eerste of tweede aflevering, Haiku", "45 tot 52 procent: geen duidelijke voorkeur"],
+          ["Voorkeur voor eerste of tweede aflevering, DeepSeek", "kiest bij de zware vragen vaker de tweede (59 tot 64 procent), bij luchtiger vaker de eerste (58 procent); valt weg doordat elk paar in beide volgordes is beoordeeld"],
+          ["Zelfde antwoord in beide volgordes, Haiku", "75 procent (grappiger) tot 86 procent (ongeruster einde)"],
+          ["Zelfde antwoord in beide volgordes, DeepSeek", "71 procent (ongeruster einde) tot 82 procent (gezelliger)"],
+          ["Haiku en DeepSeek eens op dezelfde paren", "68 procent (grappiger) tot 80 procent (spannender)"],
+          ["Trend per tien jaar", "bij alle acht vragen duidelijk: positief bij de vijf zware vragen, negatief bij luchtiger, grappiger en gezelliger (95%-interval steeds aan één kant van nul)"],
+          ["2026 per model", "de modellen verschillen alleen bij enger duidelijk: DeepSeek 70 procent, Haiku 48 procent (Haiku beoordeelde 62 oordelen met een aflevering uit 2026, DeepSeek 252). Bij de andere zeven vragen liggen ze hooguit 8 procentpunt uit elkaar"],
         ]}
       />
 
@@ -170,8 +181,11 @@ export default function MethodePage() {
       <p>
         Van vier afleveringen uit 2009-2018 en vier uit 2023-2024 analyseerde ik elke seconde, ruim 5.000 beelden:
         helderheid, verzadiging, warmte (rood min blauw), kleurrijkheid (de maat van Hasler en Süsstrunk) en het
-        aandeel duidelijk rode pixels. De twaalf beelden per periode in het artikel zijn met een vaste willekeurige
-        trekking gekozen. De aflevering uit 2004 (een donkere VHS-opname) en die uit 2017 (met gebarentolk in beeld)
+        aandeel duidelijk rode pixels. Voor de mozaïeken in het artikel zijn per aflevering 250 beelden met een vaste
+        willekeurige trekking gekozen (1.000 per periode) en in willekeurige volgorde gezet. De kleurstrook eronder
+        toont de gemiddelde kleur van elk van die 1.000 beelden, gesorteerd op tint; beelden met weinig kleur
+        (verzadiging onder 25 procent of erg donker) staan rechts. Toen was 66 procent van de beelden duidelijk gekleurd,
+        nu 56 procent. De aflevering uit 2004 (een donkere VHS-opname) en die uit 2017 (met gebarentolk in beeld)
         tellen hier niet mee. Van na 2024 en van vóór 2009 heb ik geen bruikbare video.
       </p>
 

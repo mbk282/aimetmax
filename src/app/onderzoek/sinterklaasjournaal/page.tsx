@@ -8,9 +8,9 @@ import data from "./data.json";
 const alfa = Alfa_Slab_One({ weight: "400", subsets: ["latin"], variable: "--font-alfa" });
 const plex = IBM_Plex_Mono({ weight: ["400", "600"], subsets: ["latin"], variable: "--font-plex-mono" });
 
-const TITLE = "Waar is de lol gebleven in het Sinterklaasjournaal?";
+const TITLE = "Is het Sinterklaasjournaal enger geworden?";
 const DESCRIPTION =
-  "Ik liet twee AI-modellen 200 afleveringen van het Sinterklaasjournaal blind vergelijken. Het programma is duidelijk minder luchtig geworden, 2025 was het engst, en dit jaar is het minder eng maar de luchtigheid is niet terug.";
+  "Ik liet twee AI-modellen 200 afleveringen van het Sinterklaasjournaal blind vergelijken. Tot en met 2021 bleef het ongeveer gelijk. Sinds 2022 is het enger, negatiever en vooral minder grappig. 2025 was de piek; dit jaar is het minder eng, maar niet vrolijker.";
 const PUBLISHED = "2026-11-16";
 
 export const metadata: Metadata = {
