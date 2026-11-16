@@ -13,40 +13,36 @@ const pct = v => Math.round(v * 100) + '%';
 const nl = v => String(v).replace('.', ',');
 function table(host, head, rows) { const d = document.createElement('details'); d.innerHTML = '<summary>Bekijk de cijfers</summary><div class="tbl"><table><thead><tr>' + head.map(h => `<th>${h}</th>`).join('') + '</tr></thead><tbody>' + rows.map(r => '<tr>' + r.map(c => `<td>${c}</td>`).join('') + '</tr>').join('') + '</tbody></table></div>'; host.appendChild(d); }
 
-const QS = {
-  heavy: [['engst', 'Enger'], ['spannendst', 'Spannender'], ['negatiefst', 'Negatiever'], ['ongerustst', 'Ongeruster'], ['ongerustste_einde', 'Ongeruster einde']],
-  light: [['luchtigst', 'Luchtiger'], ['grappigst', 'Grappiger'], ['gezelligst', 'Gezelliger']],
-};
+const QS = [['engst', 'Enger'], ['spannendst', 'Spannender'], ['negatiefst', 'Negatiever'], ['luchtigst', 'Luchtiger'], ['grappigst', 'Grappiger']];
+const QS_TABLE = [['engst', 'Enger'], ['spannendst', 'Spannender'], ['negatiefst', 'Negatiever'], ['ongerustst', 'Ongeruster'], ['ongerustste_einde', 'Ongeruster einde'], ['luchtigst', 'Luchtiger'], ['grappigst', 'Grappiger'], ['gezelligst', 'Gezelliger']];
 const BASE = [2013, 2014, 2016];
 function btPanels() {
-  [['heavy', 'c-bt-heavy'], ['light', 'c-bt-light']].forEach(([grp, id]) => {
-    const host = document.getElementById(id);
-    QS[grp].forEach(([key, title]) => {
-      const box = document.createElement('div'); box.innerHTML = `<h5>${title}</h5>`; host.appendChild(box);
-      const W = 220, H = 190, m = { l: 34, r: 6, t: 12, b: 24 };
-      const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': `${title} dan 2013-2016: kans per jaar` }, box);
-      const D = DATA.bt[key];
-      const slots = []; D.forEach((d, i) => { if (i && d.y - D[i - 1].y > 1) slots.push(null); slots.push(d.y); });
-      const sw = (W - m.l - m.r) / slots.length, x = y => m.l + (slots.indexOf(y) + 0.5) * sw;
-      const y = v => m.t + (1 - v) * (H - m.t - m.b);
-      const g = el('g', { class: 'grid' }, svg);
-      [0, .25, .5, .75, 1].forEach(v => { el('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v) }, g); const t = el('text', { x: m.l - 5, y: y(v) + 4, 'text-anchor': 'end' }, svg); t.textContent = pct(v); });
-      el('line', { x1: m.l, x2: W - m.r, y1: y(.5), y2: y(.5), stroke: css('--muted'), 'stroke-width': 1.4 }, svg);
-      slots.forEach((s, i) => { if (s === null || ![2013, 2018, 2022, 2026].includes(s)) return; const t = el('text', { x: m.l + (i + .5) * sw, y: H - 8, 'text-anchor': 'middle' }, svg); t.textContent = "'" + String(s).slice(2); });
-      D.forEach(d => {
-        const c = d.y === 2025 ? css('--sint') : d.y === 2026 ? css('--goud') : css('--s1');
-        const base = BASE.includes(d.y);
-        el('line', { x1: x(d.y), x2: x(d.y), y1: y(d.lo), y2: y(d.hi), stroke: c, 'stroke-width': 2, 'stroke-linecap': 'round', opacity: .5 }, svg);
-        const dot = el('circle', { cx: x(d.y), cy: y(d.p), r: 4.5, fill: base ? css('--card') : c, stroke: base ? c : css('--card'), 'stroke-width': base ? 2 : 1.5 }, svg);
-        bindTip(dot, `<b>${d.y}${d.y === 2026 ? ' (loopt nog)' : ''}${base ? ' (startjaar)' : ''}</b>${title} dan een aflevering uit 2013-2016: ${pct(d.p)} (onzekerheid ${pct(d.lo)} tot ${pct(d.hi)})`);
-      });
+  const host = document.getElementById('c-bt-panels');
+  QS.forEach(([key, title]) => {
+    const box = document.createElement('div'); box.innerHTML = `<h5>${title}</h5>`; host.appendChild(box);
+    if (key === 'luchtigst') box.className = 'sep';
+    const W = 190, H = 176, m = { l: 32, r: 6, t: 12, b: 24 };
+    const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': `${title} dan 2013-2016: kans per jaar` }, box);
+    const D = DATA.bt[key];
+    const slots = []; D.forEach((d, i) => { if (i && d.y - D[i - 1].y > 1) slots.push(null); slots.push(d.y); });
+    const sw = (W - m.l - m.r) / slots.length, x = y => m.l + (slots.indexOf(y) + 0.5) * sw;
+    const y = v => m.t + (1 - v) * (H - m.t - m.b);
+    const g = el('g', { class: 'grid' }, svg);
+    [0, .25, .5, .75, 1].forEach(v => { el('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v) }, g); const t = el('text', { x: m.l - 5, y: y(v) + 4, 'text-anchor': 'end' }, svg); t.textContent = pct(v); });
+    el('line', { x1: m.l, x2: W - m.r, y1: y(.5), y2: y(.5), stroke: css('--muted'), 'stroke-width': 1.4 }, svg);
+    slots.forEach((s, i) => { if (s === null || ![2013, 2018, 2022, 2026].includes(s)) return; const t = el('text', { x: m.l + (i + .5) * sw, y: H - 8, 'text-anchor': 'middle' }, svg); t.textContent = "'" + String(s).slice(2); });
+    D.forEach(d => {
+      const c = d.y === 2025 ? css('--sint') : d.y === 2026 ? css('--goud') : css('--s1');
+      const base = BASE.includes(d.y);
+      el('line', { x1: x(d.y), x2: x(d.y), y1: y(d.lo), y2: y(d.hi), stroke: c, 'stroke-width': 2, 'stroke-linecap': 'round', opacity: .5 }, svg);
+      const dot = el('circle', { cx: x(d.y), cy: y(d.p), r: 4, fill: base ? css('--card') : c, stroke: base ? c : css('--card'), 'stroke-width': base ? 2 : 1.5 }, svg);
+      bindTip(dot, `<b>${d.y}${d.y === 2026 ? ' (loopt nog)' : ''}${base ? ' (startjaar)' : ''}</b>${title} dan een aflevering uit 2013-2016: ${pct(d.p)} (onzekerheid ${pct(d.lo)} tot ${pct(d.hi)})`);
     });
   });
   const leg = document.createElement('div'); leg.className = 'legend';
   leg.innerHTML = `<span><i style="border:2px solid ${css('--s1')}"></i>2013, 2014, 2016: de startjaren</span><span><i style="background:${css('--s1')}"></i>2018-2022</span><span><i style="background:${css('--sint')}"></i>2025</span><span><i style="background:${css('--goud')}"></i>2026, loopt nog</span><span class="ln">Lijn op 50%: net zo als 2013-2016</span>`;
-  document.getElementById('c-bt-light').appendChild(leg);
-  const all = [...QS.heavy, ...QS.light];
-  table(document.getElementById('c-bt'), ['Jaar', ...all.map(q => q[1])], DATA.bt.engst.map((d, i) => [d.y, ...all.map(q => pct(DATA.bt[q[0]][i].p))]));
+  host.appendChild(leg);
+  table(document.getElementById('c-bt'), ['Jaar', ...QS_TABLE.map(q => q[1])], DATA.bt.engst.map((d, i) => [d.y, ...QS_TABLE.map(q => pct(DATA.bt[q[0]][i].p))]));
 }
 
 function days() {
@@ -70,7 +66,7 @@ function days() {
 }
 
 function render() {
-  ['c-bt-heavy', 'c-bt-light'].forEach(id => document.getElementById(id).innerHTML = '');
+  document.getElementById('c-bt-panels').innerHTML = '';
   ['c-bt', 'c-days'].forEach(id => document.getElementById(id).querySelectorAll(':scope > svg, :scope > details').forEach(c => c.remove()));
   btPanels(); days();
 }

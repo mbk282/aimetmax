@@ -93,7 +93,10 @@
 .sj .grp { font-family: var(--f-mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--muted); margin: 14px 0 6px; }
 .sj .mini { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
 .sj .mini h5 { margin: 0 0 2px; font-size: 0.86rem; font-weight: 800; }
-.sj .mini .legend { grid-column: span 2; align-self: center; display: grid; gap: 6px; font-size: 0.82rem; color: var(--muted); padding-left: 8px; }
+.sj .mini .legend { grid-column: 1 / -1; align-self: auto; display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.82rem; color: var(--muted); margin: 4px 0 0; padding-left: 0; }
+.sj .mini .sep { position: relative; }
+.sj .mini .sep::before { content: ""; position: absolute; left: -7px; top: 2px; bottom: 4px; border-left: 1px solid var(--rule); }
 .sj .mini .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 7px; vertical-align: -1px; box-sizing: border-box; }
 .sj .mini .legend .ln::before { content: ""; display: inline-block; width: 16px; border-top: 1.5px solid var(--muted); margin-right: 7px; vertical-align: 3px; }
-@media (max-width: 640px) { .sj .mini { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sj .sheets.keep2 { grid-template-columns: 1fr 1fr; gap: 8px; } }
+@media (max-width: 640px) { .sj .mini { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sj .mini .legend { grid-column: auto; display: grid; gap: 6px; align-content: center; margin: 0; } .sj .mini .sep::before { display: none; } .sj .sheets.keep2 { grid-template-columns: 1fr 1fr; gap: 8px; } }
+@media (max-width: 420px) { .sj h1 { font-size: 8.2vw; } }
