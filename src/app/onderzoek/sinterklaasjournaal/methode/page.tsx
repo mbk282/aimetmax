@@ -1,21 +1,108 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+const SITE = "https://aimetmax.nl";
+const BASE = "/onderzoek/sinterklaasjournaal";
+const PATH = `${BASE}/methode`;
+const URL_PAGE = `${SITE}${PATH}`;
+const CHART = `${BASE}/img/grafiek-sinterklaasjournaal.png`;
+const OG = `${BASE}/og.jpg`;
+
+const TITLE = "Methode en data: is het Sinterklaasjournaal enger geworden?";
+const DESCRIPTION =
+  "Hoe het Sinterklaasjournaal is gemeten: 238 afleveringen uit twaalf seizoenen (2013-2026), 3.574 blinde oordelen van de AI-modellen DeepSeek en Claude Haiku. Kerncijfers per seizoen, de exacte prompt, controles, beperkingen, een grafiek en vrij te gebruiken data.";
+
 export const metadata: Metadata = {
-  title: "Methode: is het Sinterklaasjournaal enger geworden?",
-  description:
-    "Hoe ik 238 afleveringen van het Sinterklaasjournaal uit twaalf seizoenen blind liet vergelijken door AI: bronnen, de exacte vraag aan de modellen, 3.574 oordelen, betrouwbaarheid, beperkingen en downloadbare data.",
-  alternates: { canonical: "/onderzoek/sinterklaasjournaal/methode" },
+  title: { absolute: `${TITLE} | AI met Max` },
+  description: DESCRIPTION,
+  alternates: { canonical: PATH },
+  openGraph: {
+    type: "article",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: PATH,
+    publishedTime: "2026-11-17",
+    modifiedTime: "2026-11-17",
+    authors: ["Max van den Broek"],
+    images: [{ url: OG, width: 1200, height: 630, alt: "Is het Sinterklaasjournaal enger geworden?" }],
+  },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: [OG] },
 };
 
-const BASE = "/onderzoek/sinterklaasjournaal";
+const AUTHOR = { "@type": "Person", name: "Max van den Broek", url: `${SITE}/over` };
+const LICENSE_NOTE =
+  "Vrij te gebruiken met bronvermelding (Max van den Broek, aimetmax.nl); online met een link naar de methodepagina.";
 
-function H2({ children }: { children: React.ReactNode }) {
-  return <h2 className="mt-12 mb-3 text-2xl font-bold text-ink">{children}</h2>;
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: TITLE,
+    description: DESCRIPTION,
+    inLanguage: "nl",
+    datePublished: "2026-11-17",
+    dateModified: "2026-11-17",
+    author: AUTHOR,
+    publisher: { "@type": "Organization", name: "AI met Max", url: SITE },
+    image: [`${SITE}${OG}`, `${SITE}${CHART}`],
+    mainEntityOfPage: URL_PAGE,
+    isPartOf: { "@type": "Article", headline: "Is het Sinterklaasjournaal enger geworden?", url: `${SITE}${BASE}` },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: "Sinterklaasjournaal 2013-2026: blinde AI-vergelijking van afleveringen",
+    description:
+      "Per seizoen de geschatte kans dat een aflevering van het Sinterklaasjournaal enger, spannender, negatiever, luchtiger, grappiger (en drie andere vragen) wordt gevonden dan een aflevering uit 2013-2016, met 95%-intervallen. Gebaseerd op 3.574 blinde paarsgewijze oordelen van DeepSeek en Claude Haiku over de ondertitels van 238 afleveringen. Plus alle losse oordelen en een codering van de Wikipedia-samenvattingen per seizoen (2001-2026).",
+    url: URL_PAGE,
+    inLanguage: "nl",
+    creator: AUTHOR,
+    datePublished: "2026-11-17",
+    dateModified: "2026-11-17",
+    temporalCoverage: "2001/2026",
+    isAccessibleForFree: true,
+    license: { "@type": "CreativeWork", name: LICENSE_NOTE, url: `${URL_PAGE}#citeren` },
+    keywords: ["Sinterklaasjournaal", "NTR", "kindertelevisie", "AI", "Bradley-Terry", "ondertitels"],
+    distribution: [
+      {
+        "@type": "DataDownload",
+        name: "jaren.csv",
+        description: "Per seizoen de kans per vraag ten opzichte van 2013-2016, met 95%-interval, plus het aantal dagen dat een probleem openstaat (uit de probleemlogboeken), het aantal afleveringen, zendtijd liedjes en aandeel kinderen helpen.",
+        encodingFormat: "text/csv",
+        contentUrl: `${SITE}${BASE}/data/jaren.csv`,
+      },
+      {
+        "@type": "DataDownload",
+        name: "oordelen.csv",
+        description: "Alle 3.574 blinde oordelen met de korte reden van het model.",
+        encodingFormat: "text/csv",
+        contentUrl: `${SITE}${BASE}/data/oordelen.csv`,
+      },
+      {
+        "@type": "DataDownload",
+        name: "wikipedia-seizoenen.csv",
+        description: "Codering van de verhaallijn per seizoen op basis van Wikipedia, 2001-2026.",
+        encodingFormat: "text/csv",
+        contentUrl: `${SITE}${BASE}/data/wikipedia-seizoenen.csv`,
+      },
+    ],
+  },
+];
+
+function H2({ id, children }: { id?: string; children: React.ReactNode }) {
+  return (
+    <h2 id={id} className="mt-12 mb-3 scroll-mt-24 text-2xl font-bold text-ink">
+      {children}
+    </h2>
+  );
 }
 
-function H3({ children }: { children: React.ReactNode }) {
-  return <h3 className="mt-8 mb-2 text-lg font-semibold text-ink">{children}</h3>;
+function H3({ id, children }: { id?: string; children: React.ReactNode }) {
+  return (
+    <h3 id={id} className="mt-8 mb-2 scroll-mt-24 text-lg font-semibold text-ink">
+      {children}
+    </h3>
+  );
 }
 
 function Table({ head, rows }: { head: string[]; rows: string[][] }) {
@@ -24,8 +111,8 @@ function Table({ head, rows }: { head: string[]; rows: string[][] }) {
       <table className="w-full border-collapse text-sm">
         <thead>
           <tr>
-            {head.map((h) => (
-              <th key={h} className="border-b-2 border-ink px-3 py-2 text-left font-semibold text-ink">
+            {head.map((h, i) => (
+              <th key={`${h}-${i}`} className="border-b-2 border-ink px-3 py-2 text-left font-semibold text-ink">
                 {h}
               </th>
             ))}
@@ -134,104 +221,170 @@ Op dezelfde 1.013 paren (beide volgordes) worden acht vragen gesteld, door DeepS
 - engst, spannendst, negatiefst, ongerustst (de hele aflevering), ongerustste_einde, luchtigst, grappigst, gezelligst.
 Rapportage per seizoen als kans om te winnen van een aflevering uit 2013-2016 (de eerste gemeten seizoenen met minstens vijf afleveringen: 2013, 2014, 2016), met bootstrap-interval. Alle acht vragen worden gerapporteerd, ook als ze geen trend laten zien.`;
 
+// Kans om te winnen van een aflevering uit 2013-2016, in hele procenten (jaren.csv, half naar boven afgerond).
+const KERN: string[][] = [
+  ["2013", "5", "45", "42", "43", "59", "56"],
+  ["2014", "12", "58", "49", "62", "43", "49"],
+  ["2016", "23", "47", "59", "45", "48", "46"],
+  ["2018", "20", "49", "55", "50", "51", "58"],
+  ["2019", "22", "57", "56", "48", "50", "60"],
+  ["2020", "25", "51", "52", "46", "54", "64"],
+  ["2021", "27", "59", "65", "58", "43", "52"],
+  ["2022", "26", "73", "75", "71", "26", "34"],
+  ["2023", "22", "76", "79", "73", "24", "33"],
+  ["2024", "24", "76", "74", "74", "23", "29"],
+  ["2025", "25", "79", "84", "78", "16", "23"],
+  ["2026*", "7", "69", "73", "78", "25", "16"],
+];
+
+const TOC: [string, string][] = [
+  ["kerncijfers", "Kerncijfers per seizoen en grafiek"],
+  ["bronnen", "Bronnen en seizoenen"],
+  ["blind", "Blind maken, en wat toch doorlekt"],
+  ["vragen", "Paren, de exacte prompt en de modellen"],
+  ["berekening", "Van oordelen naar percentages"],
+  ["uitkomsten", "Uitkomsten per vraag en per model"],
+  ["controles", "Controles en trend"],
+  ["robuustheid", "Robuustheidstest zonder geluidsbeschrijvingen"],
+  ["plan", "Wat vooraf vastlag"],
+  ["logboeken", "Probleemlogboeken per seizoen"],
+  ["wikipedia", "Wikipedia, 26 seizoenen"],
+  ["verkenning", "Open verkenning, liedjes en beeld"],
+  ["niet-gelukt", "Wat niet lukte"],
+  ["beperkingen", "Beperkingen"],
+  ["data", "Data downloaden"],
+  ["citeren", "Citeren en gebruiken"],
+  ["wie", "Wie deed dit"],
+  ["analyseplan", "Bijlage: het analyseplan"],
+];
+
+const CITATIE =
+  "Van den Broek, M. (2026). Is het Sinterklaasjournaal enger geworden? Methode en data. AI met Max. https://aimetmax.nl/onderzoek/sinterklaasjournaal/methode";
+
+const BRONREGEL =
+  "Bron: analyse van Max van den Broek (aimetmax.nl) van 3.574 blinde oordelen van de AI-modellen DeepSeek en Claude Haiku over 238 afleveringen.";
+
 export default function MethodePage() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-16 text-ink-soft [&_p]:mb-4 [&_p]:leading-7">
-      <p className="text-sm font-semibold uppercase tracking-wider text-accent">Onderzoek · methode</p>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <p className="text-sm font-semibold uppercase tracking-wider text-accent">Onderzoek · methode en data</p>
       <h1 className="mt-2 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
         Hoe ik het Sinterklaasjournaal heb gemeten
       </h1>
+      <p className="mt-3 text-sm">
+        Max van den Broek · 17 november 2026
+      </p>
       <p className="mt-5 text-lg">
-        Dit is de verantwoording bij{" "}
+        Dit is de verantwoording bij het artikel{" "}
         <Link href={BASE} className="font-medium text-accent underline underline-offset-2">
           Is het Sinterklaasjournaal enger geworden?
         </Link>
-        . Hier staat welke bronnen ik gebruikte, wat ik de AI-modellen precies vroeg, hoe ik van oordelen naar
-        percentages kwam, hoe betrouwbaar dat is, wat niet lukte en wat het onderzoek niet kan zeggen. De data en het
-        vooraf vastgelegde analyseplan staan onderaan.
+        . Hier staat wat ik heb gemeten, hoe, hoe betrouwbaar het is en wat het niet laat zien. Cijfers, grafiek en
+        data zijn vrij te gebruiken met bronvermelding (zie <A href="#citeren">Citeren en gebruiken</A>).
       </p>
 
-      <div className="my-8 rounded-xl border border-line bg-card p-5 sm:p-6 [&_p]:mb-3">
-        <p className="text-sm font-semibold uppercase tracking-wider text-accent">Aanvulling 17 november 2026</p>
+      <div id="samenvatting" className="my-8 scroll-mt-24 rounded-xl border border-line bg-card p-5 sm:p-6 [&_p]:mb-3">
+        <p className="text-sm font-semibold uppercase tracking-wider text-accent">In het kort</p>
         <p>
-          In de eerste versie van deze pagina stond dat de ondertitels van 2023 en 2024 niet online te vinden waren. Dat
-          klopte niet. Ze staan op de ondertitelserver van de NPO-speler. Mijn zoektocht op 15 november liep vast op
-          verbindingsfouten (DNS-fouten), en mijn script telde die fouten stilletjes als “geen aflevering”. Op 17
-          november heb ik opnieuw gezocht, nu zonder verbindingsfouten, en beide seizoenen compleet gevonden.
+          <strong className="text-ink">Wat is gemeten.</strong> Twee AI-modellen, DeepSeek en Claude Haiku, lazen
+          steeds de ondertitels van twee afleveringen uit verschillende seizoenen, zonder jaartallen of namen. Per paar
+          kozen ze welke aflevering enger, spannender, negatiever, luchtiger, grappiger enzovoort is. Dat zijn 3.574
+          oordelen over 238 afleveringen uit twaalf seizoenen tussen 2013 en 2026. Elk seizoen is afgezet tegen
+          2013-2016.
         </p>
-        <p>
-          Ik heb 2023 en 2024 toegevoegd met precies dezelfde opzet: dezelfde blindering, dezelfde regels voor de paren,
-          dezelfde acht vragen en dezelfde opdracht voor de probleemlogboeken. Alleen de vergelijkingen met 2023 of 2024
-          zijn nieuw; de eerdere oordelen zijn niet opnieuw gedaan. De cijfers uit de paarsgewijze vergelijking en de
-          probleemlogboeken gaan nu over twaalf seizoenen; de themacodering en de liedjes (sectie 6 en 7) niet.
-        </p>
+        <p className="font-semibold text-ink">De belangrijkste uitkomsten:</p>
+        <ul className="mb-3 ml-6 list-disc space-y-2">
+          <li>
+            Tot en met 2020 is er weinig verschil met 2013-2016. De kans dat een aflevering uit 2018-2020 enger
+            wordt gevonden dan een aflevering uit 2013-2016 ligt tussen 49 en 57 procent (50 procent is geen
+            verschil). 2021 ligt iets hoger: enger 59, spannender 65 procent.
+          </li>
+          <li>
+            In 2022 maakt het programma een sprong. Afleveringen worden in 73 procent van de gevallen enger gevonden
+            dan een aflevering uit 2013-2016, en nog maar in 34 procent grappiger.
+          </li>
+          <li>
+            2025 is de piek: enger 79 procent, spannender 84 procent, luchtiger 16 procent en grappiger 23 procent.
+          </li>
+          <li>
+            De eerste zeven afleveringen van 2026 zijn iets minder eng (69 procent) en iets luchtiger (25 procent)
+            dan 2025, maar het minst grappig van alle seizoenen: 16 procent. Over enger in 2026 verschillen de
+            modellen: DeepSeek 72, Haiku 56 procent. Zeven afleveringen is weinig; de marges zijn breed.
+          </li>
+          <li>
+            Volgens probleemlogboeken die twee Haiku-codeurs per seizoen bijhielden, blijven problemen in het verhaal
+            langer open: gemiddeld 4,5 dagen per seizoen tot en met 2019, 7,2 dagen sinds 2020 (zie{" "}
+            <A href="#logboeken">Probleemlogboeken</A>).
+          </li>
+        </ul>
         <p className="mb-0">
-          De conclusies veranderden niet: tot en met 2021 weinig verschil met 2013-2016, een sprong in 2022 en een piek
-          in 2025. 2023 en 2024 sluiten daarop aan: enger, spannender en negatiever dan elk seizoen tot en met 2021, en
-          minder luchtig en grappig. Omdat elk seizoen nu ook tegen 2023 en 2024 is afgezet, verschuiven de
-          gecombineerde cijfers van de andere seizoenen hooguit 3 procentpunten (enger in 2026 van 66 naar 69 procent).
-          Bij Haiku apart verschuift enger in 2026 van 48 naar 56 procent, met een brede marge.
+          <strong className="text-ink">Wat het niet laat zien.</strong> Dit is geen onderzoek bij kinderen. De modellen
+          lezen alleen tekst, zonder beeld, muziek of stemmen. Het blind maken is niet waterdicht (zie{" "}
+          <A href="#blind">Blind maken</A> en de <A href="#robuustheid">robuustheidstest</A>). Het onderzoek beschrijft
+          wat er veranderde, niet waarom.
         </p>
       </div>
 
-      <div className="my-8 rounded-xl border border-line bg-card p-5 sm:p-6 [&_p]:mb-3">
-        <p className="text-sm font-semibold uppercase tracking-wider text-accent">Voor journalisten</p>
-        <p>
-          <strong className="text-ink">Wat is gemeten.</strong> Twee AI-modellen (DeepSeek en Claude Haiku) lazen blind
-          de ondertitels van twee afleveringen uit verschillende seizoenen en kozen per vraag welke van de twee enger,
-          spannender, negatiever, luchtiger, grappiger enzovoort is. Samen 3.574 oordelen over 1.456 verschillende paren
-          (83 paren heeft DeepSeek dubbel beoordeeld, twee keer in beide volgordes, zie sectie 3), uit 238 afleveringen van twaalf seizoenen
-          tussen 2013 en 2026.
-        </p>
-        <p>
-          <strong className="text-ink">Kerncijfers.</strong> Geschatte kans dat een aflevering uit een seizoen enger
-          wordt gevonden dan een aflevering uit 2013-2016 (50 procent is geen verschil): 2021 59 procent, 2022 73, 2023
-          76, 2024 76, 2025 79 en 2026 69 procent (alleen de eerste zeven afleveringen). Bij dat laatste cijfer zijn de
-          modellen het niet eens: DeepSeek komt op 72, Haiku op 56 procent. Luchtiger in 2025: 16 procent, grappiger: 23
-          procent. Het beeld is een sprong in 2022, met een piek in 2025.
-        </p>
-        <p>
-          <strong className="text-ink">Wat het niet is.</strong> Geen onderzoek bij kinderen. De modellen lezen tekst,
-          zonder beeld, muziek of stemmen. Het blind maken is niet waterdicht (zie sectie 2 en de robuustheidstest
-          daarna). Het onderzoek beschrijft wat er veranderde, niet waarom.
-        </p>
-        <p>
-          <strong className="text-ink">Bronvermelding.</strong> “Analyse van Max van den Broek (AI met Max) op basis
-          van 3.574 blinde vergelijkingen van afleveringen door de AI-modellen DeepSeek en Claude Haiku.”
-        </p>
-        <p className="mb-0">
-          <strong className="text-ink">Meer nodig?</strong> De scripts, de prompts en de ruwe oordelen stuur ik op
-          verzoek.{" "}
-          <Link href="/contact" className="font-medium text-accent underline underline-offset-2">
-            Neem contact op
-          </Link>
-          .
-        </p>
-      </div>
+      <nav aria-label="Inhoud" className="my-8 rounded-xl border border-line p-5 sm:p-6">
+        <p className="text-sm font-semibold uppercase tracking-wider text-accent">Inhoud</p>
+        <ol className="ml-6 list-decimal space-y-1 text-sm leading-6">
+          {TOC.map(([id, label]) => (
+            <li key={id}>
+              <a className="text-ink underline decoration-line underline-offset-2 hover:text-accent" href={`#${id}`}>
+                {label}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
 
-      <H2>In het kort</H2>
+      <H2 id="kerncijfers">Kerncijfers per seizoen</H2>
       <p>
-        Ik heb het Sinterklaasjournaal per seizoen vergeleken, niet per groep jaren. De kern is een blinde
-        paarsgewijze vergelijking. Een AI-model las steeds twee afleveringen uit verschillende seizoenen, zonder
-        jaartallen of namen, en beantwoordde acht vragen: welke van de twee is enger, spannender, negatiever, maakt
-        ongeruster, heeft een ongeruster einde, is luchtiger, grappiger en gezelliger. DeepSeek beoordeelde alle paren,
-        Claude Haiku een deel ervan. Elk seizoen is afgezet tegen de eerste gemeten seizoenen: 2013, 2014 en 2016.
+        Geschatte kans, in procenten, dat een aflevering uit dat seizoen enger, spannender, negatiever, luchtiger of
+        grappiger wordt gevonden dan een aflevering uit 2013-2016. 50 procent betekent: net zo als 2013-2016. Beide
+        modellen samen. De marges staan in de grafiek en in <A href={`${BASE}/data/jaren.csv`}>jaren.csv</A>.
       </p>
-      <p>
-        Daarnaast maakten AI-agents per seizoen een logboek van alle problemen in het verhaal, en codeerden ze de
-        Wikipedia-samenvattingen van alle seizoenen sinds 2001. Na een eerste verkennende ronde legde ik op 16 november
-        2026 een analyseplan vast, met hypotheses, maten en de ernstschaal, vóór de analyses in dit stuk (zie sectie 3
-        voor wat er daarvoor al bekend was).
+      <Table
+        head={["Seizoen", "Afleveringen", "Enger", "Spannender", "Negatiever", "Luchtiger", "Grappiger"]}
+        rows={KERN}
+      />
+      <p className="text-sm">
+        * 2026: alleen de eerste zeven afleveringen (9 tot en met 15 november 2026). 2015 en 2017 ontbreken, want
+        daarvan zijn maar drie afleveringen met ondertitels te vinden. De drie andere vragen (ongeruster, ongeruster
+        einde, gezelliger) staan bij <A href="#uitkomsten">Uitkomsten</A>.
       </p>
 
-      <H2>1. Bronnen</H2>
+      <figure id="grafiek" className="my-8 scroll-mt-24">
+        <a href={CHART}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={CHART}
+            width={2000}
+            height={1320}
+            loading="lazy"
+            className="h-auto w-full rounded-lg border border-line bg-white"
+            alt="Vijf kleine grafieken per seizoen, 2013 tot en met 2026. Bij enger, spannender en negatiever liggen de seizoenen tot en met 2020 rond de 50 procent, net als 2013-2016, en 2021 iets hoger. Vanaf 2022 liggen ze rond 70 tot 80 procent, met een piek in 2025 (enger 79, spannender 84 procent). Bij luchtiger en grappiger zakken de seizoenen vanaf 2022 naar 16 tot 34 procent. Grappiger is het laagst in 2026: 16 procent."
+          />
+        </a>
+        <figcaption className="mt-3 text-sm leading-6">
+          Per seizoen de kans om te winnen van een aflevering uit 2013-2016, met 95%-marge. Grijs: de drie
+          ijkseizoenen.{" "}
+          <a className="font-medium text-accent underline underline-offset-2" href={CHART} download>
+            Download de grafiek (PNG, 2000 pixels breed)
+          </a>
+          . Vrij te gebruiken met bronvermelding; online graag met een link naar deze pagina.
+        </figcaption>
+      </figure>
+
+      <H2 id="bronnen">Bronnen</H2>
       <Table
         head={["Bron", "Wat", "Omvang"]}
         rows={[
           [
             "NPO-ondertitels (888)",
-            "Ondertitels van gewone afleveringen (tot 20 minuten), opgespoord via gearchiveerde npostart.nl-pagina's in het Wayback-archief en via NPO Start; die van 2023 en 2024 rechtstreeks op de ondertitelserver van de NPO-speler (cdn.npoplayer.nl)",
-            "247 gewone afleveringen met ondertitels: 244 uit 2013-2026, plus 1 uit 2008 en 2 uit 2012. In de paarsgewijze vergelijking zitten 238 afleveringen uit twaalf seizoenen (zie de tabel hieronder).",
+            "Ondertitels van gewone afleveringen (tot 20 minuten). Opgespoord via gearchiveerde npostart.nl-pagina's in het Wayback-archief, via NPO Start en via de ondertitelserver van de NPO-speler (cdn.npoplayer.nl), waar de ondertitels van 2023 en 2024 staan.",
+            "247 gewone afleveringen met ondertitels: 244 uit 2013-2026, plus 1 uit 2008 en 2 uit 2012. In de paarsgewijze vergelijking zitten 238 afleveringen uit twaalf seizoenen.",
           ],
           ["Wikipedia", "Samenvatting van de verhaallijn per seizoen", "26 seizoenen, 2001-2026"],
           [
@@ -244,10 +397,10 @@ export default function MethodePage() {
       <p>
         Alle vergelijkingen over de jaren gebruiken één soort bron: de ondertitels. Ondertitels en spraakherkenning van
         dezelfde uitzending leveren duidelijk verschillende tekst op. Spraakherkenning gebruik ik daarom alleen voor
-        citaten uit afleveringen zonder ondertitels, nooit in de vergelijkingen over de jaren.
+        citaten uit afleveringen zonder ondertitels, nooit in de vergelijkingen.
       </p>
 
-      <H3>Welke seizoenen meedoen</H3>
+      <H3 id="seizoenen">Welke seizoenen meedoen</H3>
       <p>
         Volgens het vooraf vastgelegde plan doen alleen seizoenen met minstens vijf afleveringen mee. Dat zijn er
         twaalf. 2008 (1 aflevering), 2012 (2), 2015 (3) en 2017 (3) vallen af.
@@ -271,30 +424,28 @@ export default function MethodePage() {
       />
       <p>
         Elk oordeel telt bij twee seizoenen mee, daarom is de som van de laatste kolom groter dan 3.574. Wikipedia telt
-        mogelijk ook speciale afleveringen mee, dus de vergelijking met de kolom ervoor is een benadering. In alle
-        seizoenen telt het weekoverzicht op zondag (ongeveer tien minuten) als gewone aflevering. De jaaroverzichten van
-        ongeveer 40 minuten vallen in alle seizoenen af door de grens van 20 minuten.
+        mogelijk ook speciale afleveringen mee, dus de vergelijking met die kolom is een benadering. In alle seizoenen
+        telt het weekoverzicht op zondag (ongeveer tien minuten) als gewone aflevering. De jaaroverzichten van ongeveer
+        40 minuten vallen overal af door de grens van 20 minuten.
       </p>
       <p>
         2021, 2023, 2024 en 2025 zijn compleet. 2016, 2018, 2019, 2020 en 2022 missen een paar afleveringen, maar lopen
         van ongeveer het begin van het seizoen tot een of twee dagen voor 5 december. 2014 is voor de helft aanwezig,
         verspreid over het seizoen. 2013 heeft maar vijf afleveringen, vanaf 16 november. 2026 loopt nog: alleen de
-        eerste zeven afleveringen (9 tot en met 15 november 2026), die alleen zijn vergeleken met afleveringen van
-        dezelfde plek in eerdere seizoenen.
+        eerste zeven afleveringen, die alleen zijn vergeleken met afleveringen van dezelfde plek in eerdere seizoenen.
       </p>
       <p>
-        2023 (19 gewone afleveringen en 3 weekoverzichten) en 2024 (21 gewone afleveringen en 3 weekoverzichten) vond ik
-        pas op 17 november 2026 (zie de aanvulling bovenaan). Een eerdere zoektocht op 15 november liep vast op
-        DNS-fouten, die mijn script stilletjes telde als “geen aflevering”. Op 17 november heb ik de nummers
-        VPWON_1343402 tot en met VPWON_1368755 opnieuw doorzocht, zonder verbindingsfouten. De ondertitelbestanden
-        hebben geen uitzenddatum. Die heb ik afgeleid uit de volgorde van de afleveringen (per week zes gewone
-        afleveringen en op zondag een weekoverzicht) en gecontroleerd met twee kopieën in het Internet Archive
-        (aflevering 1 van 2023 op 13 november 2023, aflevering 1 van 2024 op 11 november 2024), met de live-aflevering
-        van de intocht (Gorinchem, zaterdag 18 november 2023; Vijfheerenlanden, zaterdag 16 november 2024) en met de
-        Tweede Kamerverkiezingen van 22 november 2023 (“Nederland stemt”).
+        De ondertitels van 2023 (19 gewone afleveringen en 3 weekoverzichten) en 2024 (21 gewone afleveringen en 3
+        weekoverzichten) komen van de ondertitelserver van de NPO-speler, gevonden door de programmanummers
+        VPWON_1343402 tot en met VPWON_1368755 te doorzoeken. Die bestanden hebben geen uitzenddatum. De datum heb ik
+        afgeleid uit de volgorde van de afleveringen (per week zes gewone afleveringen en op zondag een weekoverzicht).
+        Gecontroleerd met twee kopieën in het Internet Archive (aflevering 1 van 2023 op 13 november 2023, aflevering 1
+        van 2024 op 11 november 2024), met de live-aflevering van de intocht (Gorinchem, zaterdag 18 november 2023;
+        Vijfheerenlanden, zaterdag 16 november 2024) en met de Tweede Kamerverkiezingen van 22 november 2023
+        (“Nederland stemt”).
       </p>
 
-      <H2>2. Blind maken</H2>
+      <H2 id="blind">Blind maken, en wat toch doorlekt</H2>
       <p>
         Uit elke tekst haalde ik jaartallen, datums en de namen van de presentatoren (Dieuwertje Blok, Merel Westrik).
         Elke aflevering kreeg een willekeurige code. Bovenaan elk bestand staat alleen die code en het aantal dagen
@@ -307,8 +458,8 @@ export default function MethodePage() {
           geluidsbeschrijvingen in hoofdletters (“SPANNENDE MUZIEK”, “GEHUIL”). Vanaf 2022 staan ze in kleine letters
           tussen haakjes (“(spannende muziek)”, “(muziek)”). Zulke beschrijvingen tussen haakjes komen 0 keer voor in
           2013-2021, 198 keer in 2022, 121 keer in 2023, 146 keer in 2024, 172 keer in 2025 en 45 keer in 2026
-          (sprekerslabels zoals “(regie:)” niet meegeteld). Een model kan daaraan zien of een
-          aflevering van vóór of na 2022 is. Het leest die beschrijvingen ook gewoon mee.
+          (sprekerslabels zoals “(regie:)” niet meegeteld). Een model kan daaraan zien of een aflevering van voor of
+          na 2022 is. Het leest die beschrijvingen ook gewoon mee.
         </li>
         <li>
           <strong className="text-ink">Een naam.</strong> In 7 van de 247 teksten bleef de naam Dieuwertje staan,
@@ -328,62 +479,31 @@ export default function MethodePage() {
         </li>
       </ul>
       <p>
-        De modellen kregen dus geen jaartal te zien, maar konden soms raden of een aflevering oud of nieuw is. Dat de
-        grootste sprong precies in 2022 zit, het jaar waarin de notatie verandert, kan daar deels door komen. Daarom heb
-        ik DeepSeek alle oordelen opnieuw laten doen op teksten zonder geluidsbeschrijvingen; zie de robuustheidstest
-        hieronder.
+        De modellen zagen dus geen jaartal, maar konden soms raden of een aflevering oud of nieuw is. Dat de grootste
+        sprong precies in 2022 zit, het jaar waarin de notatie verandert, kan daar deels door komen. Daarom heb ik alle
+        oordelen van DeepSeek opnieuw laten doen op teksten zonder geluidsbeschrijvingen. De omslag in 2022 bleef
+        staan (zie de <A href="#robuustheid">robuustheidstest</A>).
       </p>
 
-      <H2>Robuustheidstest: zonder geluidsbeschrijvingen</H2>
-      <p>
-        Waarom deze test: de ondertitels noteren geluid en muziek vanaf 2022 anders (tussen haakjes in plaats van in
-        hoofdletters), precies in het jaar van de omslag. Een model kon daaraan dus soms zien of een aflevering van voor
-        of na 2022 is, en het las beschrijvingen als “spannende muziek” mee. Deze test heb ik pas bedacht na de eerste
-        uitkomsten, naar aanleiding van een controle van deze methode. De cijfers in het artikel komen uit de
-        oorspronkelijke run.
-      </p>
-      <p>
-        Wat: DeepSeek beoordeelde alle 3.078 oordelen opnieuw, met dezelfde paren, prompt en instellingen, maar op
-        teksten waaruit alles tussen haakjes, alle woorden in hoofdletters (geluidsbeschrijvingen) en de resterende
-        presentatornamen zijn gehaald (script clean_blind.py). Daarna staan er in geen enkel seizoen nog haakjes of
-        hoofdletterwoorden in de teksten. Alleen de bezittelijke vorm “Dieuwertjes” bleef in twee teksten staan (één
-        uit 2018, één uit 2023).
-      </p>
-      <p>
-        Uitkomst: per vraag gaf DeepSeek in 88 tot 90 procent van de oordelen hetzelfde antwoord als op de originele
-        tekst. De scores per seizoen verschuiven hooguit 4 procentpunten, en de omslag in 2022 blijft staan.
-      </p>
-      <Table
-        head={["Alleen DeepSeek: origineel / zonder geluidsbeschrijvingen", "2021", "2022", "2023", "2024", "2025", "2026"]}
-        rows={[
-          ["Enger", "61 / 58", "74 / 72", "76 / 76", "77 / 77", "81 / 81", "72 / 69"],
-          ["Spannender", "65 / 64", "75 / 76", "78 / 80", "74 / 73", "84 / 84", "72 / 73"],
-          ["Negatiever", "58 / 56", "70 / 70", "73 / 71", "71 / 72", "78 / 78", "78 / 79"],
-          ["Luchtiger", "40 / 40", "26 / 25", "24 / 23", "23 / 23", "17 / 15", "26 / 25"],
-          ["Grappiger", "50 / 49", "32 / 34", "33 / 34", "30 / 29", "24 / 23", "17 / 16"],
-        ]}
-      />
+      <H2 id="vragen">Paren, de exacte prompt en de modellen</H2>
 
-      <H2>3. Paarsgewijze vergelijking</H2>
-
-      <H3>Paren</H3>
+      <H3 id="paren">Paren</H3>
       <p>
-        Ik koppelde steeds twee afleveringen uit verschillende seizoenen die even ver voor 5 december lagen. Eerst koos
-        ik voor elk paar seizoenen tot vier paren, op 10, 37, 63 en 90 procent van de periode die beide seizoenen
-        gemeen hebben: samen 248 paren, waarvan 241 op precies hetzelfde aantal dagen voor 5 december en 7 met één dag
-        verschil. Daarna kwamen er 1.291 paren bij, met maximaal twee dagen verschil, elke aflevering hooguit twee keer
-        per seizoenspaar en hooguit 24 paren per seizoenspaar.
+        Een paar bestaat steeds uit twee afleveringen uit verschillende seizoenen die even ver voor 5 december liggen.
+        De basisset: voor elk paar seizoenen tot vier paren, op 10, 37, 63 en 90 procent van de periode die beide
+        seizoenen gemeen hebben. Dat zijn 248 paren, waarvan 241 op precies hetzelfde aantal dagen voor 5 december en
+        7 met één dag verschil. De uitbreiding: 1.291 paren met maximaal twee dagen verschil, elke aflevering hooguit
+        twee keer per seizoenspaar en hooguit 24 paren per seizoenspaar.
       </p>
       <p>
-        Samen zijn dat 1.539 paren, waarvan 1.456 verschillend: 83 nieuwe paren bleken gelijk aan een van de eerste 248
-        en heeft DeepSeek dus twee keer in beide volgordes beoordeeld. Van de 1.456 paren liggen er 415 op dezelfde dag, 537 op één
-        dag verschil en 504 op twee dagen. Paren binnen één seizoen zijn er niet. Alle 66 combinaties van de twaalf
-        seizoenen komen voor, met 2 tot 28 paren per combinatie; 2013 tegen 2026 heeft er maar 2. Elk paar is in beide
-        volgordes beoordeeld. De paren met 2023 of 2024 zijn op 17 november 2026 met dezelfde regels samengesteld; de
-        paren tussen de andere seizoenen zijn niet veranderd.
+        Samen zijn dat 1.539 paren, waarvan 1.456 verschillend. 83 paren uit de uitbreiding zijn gelijk aan een paar
+        uit de basisset; die heeft DeepSeek dus twee keer in beide volgordes beoordeeld. Van de 1.456 paren liggen er
+        415 op dezelfde dag, 537 op één dag verschil en 504 op twee dagen. Paren binnen één seizoen zijn er niet. Alle
+        66 combinaties van de twaalf seizoenen komen voor, met 2 tot 28 paren per combinatie; 2013 tegen 2026 heeft er
+        maar 2. Elk paar is in beide volgordes beoordeeld.
       </p>
 
-      <H3>De exacte vraag aan de modellen</H3>
+      <H3 id="prompt">De exacte vraag aan de modellen</H3>
       <p>
         Dit is de letterlijke prompt die DeepSeek per paar kreeg. Op de plek van de accolades staat de geblindeerde
         ondertiteltekst, zonder de kopregel van het bestand. Systeembericht:
@@ -398,34 +518,39 @@ export default function MethodePage() {
         de afleveringen op dezelfde plek in het seizoen staan. Dat zijn keuzes die het oordeel kunnen kleuren.
       </p>
 
-      <H3>Modellen en uitvoering</H3>
+      <H3 id="modellen">Modellen en uitvoering</H3>
       <Table
         head={["", "DeepSeek", "Claude Haiku"]}
         rows={[
-          ["Model", "deepseek-chat, via de DeepSeek-API", "Claude Haiku, via subagents in Claude Code"],
+          ["Model", "deepseek-chat, via de DeepSeek-API", "Claude Haiku (claude-haiku-5-5), via subagents in Claude Code"],
           ["Instellingen", "temperature 0,3, JSON-modus; een antwoord telt alleen als alle acht sleutels geldig zijn, anders opnieuw (maximaal 6 pogingen)", "standaardinstellingen, geen temperature ingesteld"],
-          ["Werkwijze", "één paar per verzoek", "ongeveer vier paren per opdracht (125 opdrachten); op één opdracht na (uit de ronde van 17 november) zaten de twee volgordes van hetzelfde paar nooit in dezelfde opdracht"],
-          ["Paren", "alle 1.539 paren, in beide volgordes", "de 248 paren uit de eerste opzet, in beide volgordes"],
+          ["Werkwijze", "één paar per verzoek", "ongeveer vier paren per opdracht (125 opdrachten); op één opdracht na zaten de twee volgordes van hetzelfde paar nooit in dezelfde opdracht"],
+          ["Paren", "alle 1.539 paren, in beide volgordes", "de 248 paren uit de basisset, in beide volgordes"],
           ["Oordelen", "3.078, geen mislukte verzoeken", "496"],
-          ["Datum", "16 november 2026; paren met 2023 of 2024 op 17 november 2026", "16 november 2026; paren met 2023 of 2024 op 17 november 2026"],
+          ["Datum", "16 en 17 november 2026", "16 en 17 november 2026"],
         ]}
       />
       <p>
         Samen zijn dat 3.574 oordelen. Elk oordeel bevat ook een korte reden van het model (gemiddeld 19 woorden bij
-        DeepSeek en 29 bij Haiku).
+        DeepSeek en 29 bij Haiku). Alle oordelen staan in <A href={`${BASE}/data/oordelen.csv`}>oordelen.csv</A>.
       </p>
 
-      <H3>Van oordelen naar percentages</H3>
+      <H2 id="berekening">Van oordelen naar percentages</H2>
       <p>
         Uit alle oordelen van beide modellen samen schat een Bradley-Terry-model per seizoen een sterkte per vraag.
         “Gelijk” telt als half gewonnen. Dat kwam weinig voor: bij DeepSeek in hooguit 0,8 procent van de oordelen, bij
         Haiku in hooguit 2,6 procent (allebei bij enger). Omdat DeepSeek alle paren beoordeelde en Haiku alleen de
-        eerste 248, bestaat de gecombineerde schatting voor 86 procent uit oordelen van DeepSeek.
+        basisset, bestaat de gecombineerde schatting voor 86 procent uit oordelen van DeepSeek.
       </p>
       <p>
-        In het artikel staat die sterkte als de geschatte kans dat een aflevering uit dat seizoen wint van een
-        aflevering uit 2013, 2014 of 2016. Het nulpunt is het gemiddelde van die drie seizoenen, en ze tellen even zwaar,
-        ook al heeft 2013 maar vijf afleveringen. Het is een modelschatting, geen geteld percentage.
+        Die sterkte staat hier als de geschatte kans dat een aflevering uit dat seizoen wint van een aflevering uit
+        2013, 2014 of 2016. Het nulpunt is het gemiddelde van die drie seizoenen, en ze tellen even zwaar, ook al heeft
+        2013 maar vijf afleveringen. Het is een modelschatting, geen geteld percentage.
+      </p>
+      <p>
+        Waarom 2013-2016 als nulpunt: het gemiddelde van alle jaren is een slecht nulpunt, omdat de recente jaren daar
+        zelf in zitten. Van het programma rond 2001 zijn bijna geen ondertitels. 2013, 2014 en 2016 zijn de eerste
+        seizoenen met minstens vijf afleveringen.
       </p>
       <p>
         Zo lees je de percentages: 50 procent betekent dat een aflevering uit dat seizoen even vaak wint als verliest van
@@ -436,11 +561,15 @@ export default function MethodePage() {
       <p>
         De onzekerheid berekende ik door de paren opnieuw te trekken (bootstrap): 400 keer voor de gecombineerde
         schatting, 200 keer per model apart. De twee volgordes van een paar bleven steeds samen. De marges zijn
-        95%-intervallen: de 2,5e tot 97,5e percentiel van die herhalingen. Zie sectie 10 voor waarom ze waarschijnlijk te
-        smal zijn.
+        95%-intervallen: de 2,5e tot 97,5e percentiel van die herhalingen. Ze zijn waarschijnlijk te smal (zie{" "}
+        <A href="#beperkingen">Beperkingen</A>).
+      </p>
+      <p>
+        Alle percentages zijn afgerond vanaf de schattingen met drie decimalen in jaren.csv, op dezelfde manier als in
+        het artikel. Daardoor kan een cijfer een punt afwijken van de onafgeronde schatting.
       </p>
 
-      <H3>Uitkomsten per seizoen</H3>
+      <H2 id="uitkomsten">Uitkomsten per vraag</H2>
       <p>Beide modellen samen, in procenten (kans om te winnen van een aflevering uit 2013-2016):</p>
       <Table
         head={["Vraag", "2013", "2014", "2016", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"]}
@@ -456,17 +585,34 @@ export default function MethodePage() {
         ]}
       />
       <p>
-        De grafiek in het artikel toont vijf vragen: enger, spannender, negatiever, luchtiger en grappiger. Ongeruster,
-        ongeruster einde en gezelliger geven hetzelfde beeld (2025: 84, 85 en 21 procent). Ze staan zonder marges in de
-        tabel in het artikel en in de tabel hierboven, en met marges in jaren.csv.
-      </p>
-      <p>
-        Alle percentages op deze pagina zijn afgerond vanaf de schattingen met drie decimalen, zoals die in jaren.csv
-        staan, op dezelfde manier als in het artikel. Daardoor kan een cijfer een punt afwijken van de onafgeronde
-        schatting.
+        De grafiek toont vijf vragen. Ongeruster, ongeruster einde en gezelliger geven hetzelfde beeld (2025: 84, 85 en
+        21 procent). De marges van alle acht vragen staan in jaren.csv.
       </p>
 
-      <H3>Controles</H3>
+      <H3 id="per-model">Per model</H3>
+      <p>Percentages voor 2022 / 2023 / 2024 / 2025 / 2026, per model en samen:</p>
+      <Table
+        head={["Vraag", "DeepSeek", "Haiku", "Samen"]}
+        rows={[
+          ["Enger", "74 / 76 / 77 / 81 / 72", "71 / 71 / 72 / 69 / 56", "73 / 76 / 76 / 79 / 69"],
+          ["Spannender", "75 / 78 / 74 / 84 / 72", "75 / 87 / 72 / 84 / 76", "75 / 79 / 74 / 84 / 73"],
+          ["Negatiever", "70 / 73 / 71 / 78 / 78", "79 / 77 / 86 / 81 / 78", "71 / 73 / 74 / 78 / 78"],
+          ["Ongeruster", "75 / 76 / 78 / 84 / 73", "74 / 76 / 89 / 87 / 72", "75 / 76 / 80 / 84 / 73"],
+          ["Ongeruster einde", "70 / 71 / 76 / 85 / 74", "60 / 69 / 86 / 84 / 74", "69 / 70 / 78 / 85 / 74"],
+          ["Luchtiger", "26 / 24 / 23 / 17 / 26", "31 / 27 / 19 / 14 / 20", "26 / 24 / 23 / 16 / 25"],
+          ["Grappiger", "32 / 33 / 30 / 24 / 17", "43 / 34 / 22 / 16 / 13", "34 / 33 / 29 / 23 / 16"],
+          ["Gezelliger", "30 / 27 / 25 / 19 / 35", "44 / 32 / 35 / 35 / 45", "32 / 28 / 27 / 21 / 36"],
+        ]}
+      />
+      <p>
+        De twee modellen komen van 2022 tot en met 2026 bij alle acht vragen aan dezelfde kant van 50 uit. De grootste
+        verschillen zijn enger in 2026 (DeepSeek 72, Haiku 56 procent) en gezelliger in 2025 (19 tegen 35). Daarna komen
+        negatiever in 2024 (71 tegen 86) en gezelliger in 2022 (30 tegen 44). De 69 procent voor enger in 2026 komt dus
+        vooral van DeepSeek. Haiku beoordeelde alleen de 248 paren uit de basisset, dus de marges van Haiku zijn veel
+        breder (voor enger in 2026: 42 tot 70 procent).
+      </p>
+
+      <H2 id="controles">Controles en trend</H2>
       <Table
         head={["Controle", "Uitkomst"]}
         rows={[
@@ -482,7 +628,7 @@ export default function MethodePage() {
         niet mee in de controle op beide volgordes.
       </p>
 
-      <H3>Trend per tien jaar</H3>
+      <H3 id="trend">Trend per tien jaar</H3>
       <p>
         Als samenvatting heb ik per vraag een rechte lijn door de seizoenen getrokken, op de log-odds-schaal. De tabel
         toont de helling per tien jaar met het 95%-interval. Positief betekent: meer van dat. Een helling van +1 betekent
@@ -507,56 +653,68 @@ export default function MethodePage() {
         samenvatting: de seizoenen laten vooral een sprong in 2022 zien, geen geleidelijke stijging.
       </p>
 
-      <H3>Per model</H3>
-      <p>Percentages voor 2022 / 2023 / 2024 / 2025 / 2026, per model en samen:</p>
+      <H2 id="robuustheid">Robuustheidstest: zonder geluidsbeschrijvingen</H2>
+      <p>
+        Waarom: de ondertitels noteren geluid en muziek vanaf 2022 anders, precies in het jaar van de omslag (zie{" "}
+        <A href="#blind">Blind maken</A>). Een model kon daaraan soms zien of een aflevering van voor of na 2022 is, en
+        het las beschrijvingen als “spannende muziek” mee. Deze test stond niet in het analyseplan. Ik heb hem gedaan
+        na een controle van de methode, toen de uitkomsten al bekend waren. De cijfers op deze pagina en in het artikel
+        komen uit de oorspronkelijke run.
+      </p>
+      <p>
+        Wat: DeepSeek beoordeelde alle 3.078 oordelen opnieuw, met dezelfde paren, prompt en instellingen, maar op
+        teksten waaruit alles tussen haakjes, alle woorden in hoofdletters (geluidsbeschrijvingen) en de resterende
+        presentatornamen zijn gehaald. Daarna staan er in geen enkel seizoen nog haakjes of hoofdletterwoorden in de
+        teksten. Alleen de bezittelijke vorm “Dieuwertjes” bleef in twee teksten staan (één uit 2018, één uit 2023).
+      </p>
+      <p>
+        Uitkomst: per vraag gaf DeepSeek in 88 tot 90 procent van de oordelen hetzelfde antwoord als op de originele
+        tekst. De scores per seizoen verschuiven hooguit 4 procentpunten, en de omslag in 2022 blijft staan.
+      </p>
       <Table
-        head={["Vraag", "DeepSeek", "Haiku", "Samen"]}
+        head={["Alleen DeepSeek: origineel / zonder geluidsbeschrijvingen", "2021", "2022", "2023", "2024", "2025", "2026"]}
         rows={[
-          ["Enger", "74 / 76 / 77 / 81 / 72", "71 / 71 / 72 / 69 / 56", "73 / 76 / 76 / 79 / 69"],
-          ["Spannender", "75 / 78 / 74 / 84 / 72", "75 / 87 / 72 / 84 / 76", "75 / 79 / 74 / 84 / 73"],
-          ["Negatiever", "70 / 73 / 71 / 78 / 78", "79 / 77 / 86 / 81 / 78", "71 / 73 / 74 / 78 / 78"],
-          ["Ongeruster", "75 / 76 / 78 / 84 / 73", "74 / 76 / 89 / 87 / 72", "75 / 76 / 80 / 84 / 73"],
-          ["Ongeruster einde", "70 / 71 / 76 / 85 / 74", "60 / 69 / 86 / 84 / 74", "69 / 70 / 78 / 85 / 74"],
-          ["Luchtiger", "26 / 24 / 23 / 17 / 26", "31 / 27 / 19 / 14 / 20", "26 / 24 / 23 / 16 / 25"],
-          ["Grappiger", "32 / 33 / 30 / 24 / 17", "43 / 34 / 22 / 16 / 13", "34 / 33 / 29 / 23 / 16"],
-          ["Gezelliger", "30 / 27 / 25 / 19 / 35", "44 / 32 / 35 / 35 / 45", "32 / 28 / 27 / 21 / 36"],
+          ["Enger", "61 / 58", "74 / 72", "76 / 76", "77 / 77", "81 / 81", "72 / 69"],
+          ["Spannender", "65 / 64", "75 / 76", "78 / 80", "74 / 73", "84 / 84", "72 / 73"],
+          ["Negatiever", "58 / 56", "70 / 70", "73 / 71", "71 / 72", "78 / 78", "78 / 79"],
+          ["Luchtiger", "40 / 40", "26 / 25", "24 / 23", "23 / 23", "17 / 15", "26 / 25"],
+          ["Grappiger", "50 / 49", "32 / 34", "33 / 34", "30 / 29", "24 / 23", "17 / 16"],
         ]}
       />
-      <p>
-        De twee modellen komen van 2022 tot en met 2026 bij alle acht vragen aan dezelfde kant van 50 uit. De grootste
-        verschillen zijn enger in 2026 (DeepSeek 72, Haiku 56 procent) en gezelliger in 2025 (19 tegen 35). Daarna komen
-        negatiever in 2024 (71 tegen 86) en gezelliger in 2022 (30 tegen 44). De 69 procent voor enger in 2026 in het
-        artikel komt dus vooral van DeepSeek. Haiku beoordeelde alleen de 248 paren uit de eerste opzet, dus de marges
-        van Haiku zijn veel breder (voor enger in 2026: 42 tot 70 procent).
-      </p>
 
-      <H3>Wat vooraf vastlag en wat later kwam</H3>
-      <p>
-        Op 15 november 2026 deed ik een eerste verkennende ronde: codering per zin en per aflevering, een
-        sentimentmodel, muziekanalyse en een eerste versie van het artikel. Op 16 november legde ik het analyseplan vast
-        (zie de bijlage onderaan). Een eerste versie van de paarsgewijze vergelijking gebruikte vier vragen (enger,
-        luchtiger, ongeruster einde, echt en erg) en zette elk jaar af tegen het gemiddelde van alle jaren.
-      </p>
-      <p>
-        Daarna heb ik, nog op 16 november, in een aanvulling op het plan vastgelegd dat ik dezelfde paren opnieuw liet
-        beoordelen op de acht vragen hierboven en elk jaar zou afzetten tegen 2013-2016. Die keuze maakte ik nadat ik de
-        uitkomsten van de versie met vier vragen had gezien, maar vóór het draaien van de nieuwe ronde. Die eerste versie
-        liet hetzelfde beeld zien, een sprong in 2022 en een piek in 2025 (DeepSeek, enger tegenover het gemiddelde van
-        alle jaren: 2021 53, 2022 70, 2025 79 procent).
-      </p>
-      <p>
-        Waarom een ander nulpunt: het gemiddelde van alle jaren is een slecht nulpunt, omdat de recente jaren daar zelf
-        in zitten. Mijn eigen referentie zou het programma uit mijn kindertijd zijn (rond 2001), maar daarvan zijn bijna
-        geen ondertitels. 2013, 2014 en 2016 zijn de eerste seizoenen met minstens vijf afleveringen. Het plan staat
-        niet bij een externe registratiedienst. De volledige tekst staat als bijlage op deze pagina.
-      </p>
-      <p>
-        2023 en 2024 kwamen er op 17 november bij, nadat ik de uitkomsten van de andere seizoenen al had gezien. Het
-        plan zegt dat de ondertitels van 2013-2026 meedoen waar ze beschikbaar zijn en dat ik geen jaren weglaat. Ik
-        heb ze daarom toegevoegd zonder iets aan de opzet, de vragen of de analyse te veranderen.
-      </p>
+      <H2 id="plan">Wat vooraf vastlag</H2>
+      <ul className="mb-4 ml-6 list-disc space-y-2">
+        <li>
+          <strong className="text-ink">15 november 2026: verkenning.</strong> Een eerste, verkennende ronde: codering
+          per zin en per aflevering, een sentimentmodel, muziekanalyse en een conceptversie van het artikel.
+        </li>
+        <li>
+          <strong className="text-ink">16 november 2026: analyseplan.</strong> Daarna legde ik het analyseplan vast,
+          met hypotheses, maten en de ernstschaal (volledige tekst in de <A href="#analyseplan">bijlage</A>). Het plan
+          staat niet bij een externe registratiedienst.
+        </li>
+        <li>
+          <strong className="text-ink">Acht vragen en nulpunt 2013-2016.</strong> Een eerste paarsgewijze ronde
+          gebruikte vier vragen (enger, luchtiger, ongeruster einde, echt en erg) en zette elk jaar af tegen het
+          gemiddelde van alle jaren. Die liet hetzelfde beeld zien: een sprong in 2022 en een piek in 2025 (DeepSeek,
+          enger tegenover het gemiddelde van alle jaren: 2021 53, 2022 70, 2025 79 procent). Na het zien daarvan, maar
+          vóór de ronde met acht vragen, legde ik de acht vragen en het nulpunt 2013-2016 vast in het plan.
+        </li>
+        <li>
+          <strong className="text-ink">Alle seizoenen.</strong> Het plan zegt dat de ondertitels van 2013-2026 meedoen
+          waar ze beschikbaar zijn, en dat ik geen jaren weglaat. Alle twaalf seizoenen zijn met dezelfde opzet,
+          vragen en analyse beoordeeld. De ondertitels van 2023 en 2024 vond ik pas na de ronde met acht vragen op de
+          andere tien seizoenen (via de ondertitelserver van de NPO-speler, zie{" "}
+          <A href="#seizoenen">Welke seizoenen meedoen</A>). Ze zijn daarna met dezelfde paarregels, prompt,
+          instellingen en analyse toegevoegd.
+        </li>
+        <li>
+          <strong className="text-ink">Robuustheidstest.</strong> Niet vooraf vastgelegd; gedaan na een controle van de
+          methode (zie <A href="#robuustheid">Robuustheidstest</A>).
+        </li>
+      </ul>
 
-      <H2>4. Probleemlogboek per seizoen</H2>
+      <H2 id="logboeken">Probleemlogboeken per seizoen</H2>
       <p>
         Per seizoen lazen twee Haiku-agents los van elkaar alle afleveringen op volgorde en noteerden elk probleem: in
         welke aflevering het begint, wanneer het is opgelost, hoe erg het is en of het realistisch is. Waar de intocht
@@ -576,12 +734,13 @@ export default function MethodePage() {
         De maat “dagen open” is het aantal dagen tussen de aflevering waarin een probleem begint en de aflevering
         waarin het is opgelost (gerekend in dagen tot 5 december), voor problemen met ernst 2 of hoger, gewogen naar
         ernst. Een probleem dat niet wordt opgelost, telt mee tot de laatste aflevering die ik heb. In het lopende
-        seizoen 2026 (afleveringen tot en met 15 november) is de duur daardoor te kort. Daarom laat het artikel 2026 bij
-        deze maat weg; de waarde 3,8 in jaren.csv is niet bruikbaar. In 2013 en 2014 ontbreken veel afleveringen,
-        waardoor begin en einde van een probleem minder precies vastliggen.
+        seizoen 2026 (afleveringen tot en met 15 november) is de duur daardoor te kort. Daarom laat ik 2026 bij deze
+        maat weg; de waarde 3,8 in jaren.csv is niet bruikbaar. In 2013 en 2014 ontbreken veel afleveringen, waardoor
+        begin en einde van een probleem minder precies vastliggen.
       </p>
       <p>
-        De twee agents kwamen bij “dagen open” per seizoen dicht bij elkaar uit (correlatie 0,82). jaren.csv geeft het
+        De twee agents kwamen bij “dagen open” per seizoen dicht bij elkaar uit (correlatie 0,82 over alle twaalf
+        seizoenen, 0,81 zonder 2026). jaren.csv geeft het
         gemiddelde van de twee en daarnaast de laagste en de hoogste. Over andere maten waren ze het minder eens, zoals
         de hoogste ernst (0,51) en of een probleem komisch gebracht werd (0,37). Die gebruik ik daarom niet als
         hoofdresultaat.
@@ -589,13 +748,14 @@ export default function MethodePage() {
       <p>
         Tot en met 2019 stond een probleem gemiddeld 3,6 tot 5,6 dagen open, sinds 2020 meestal 6 tot 9 dagen.
         Gemiddeld over de seizoenen is dat 4,5 dagen tot en met 2019 en 7,2 dagen sinds 2020 (2026 niet meegeteld). 2023
-        is de uitzondering: 5,3 dagen. Daar lagen de twee logboeken ook het verst uit elkaar van alle seizoenen sinds 2020 (4,5 en 6,1 dagen).
+        is de uitzondering: 5,3 dagen. Daar lagen de twee logboeken ook het verst uit elkaar van alle seizoenen sinds
+        2020 (4,5 en 6,1 dagen).
       </p>
       <p>
         Vooraf had ik ook twee andere maten vastgelegd. Het aandeel problemen dat echt én erg is (realistisch en ernst 4
         of 5) laat in de logboeken geen trend zien, en de codeurs waren het er matig over eens (correlatie 0,67). Het
         aantal ernstige problemen dat in de laatste drie dagen voor 5 december nog openstaat, ligt de meeste jaren rond
-        2, met 3 in 2013 en 2023, 4 in 2022 en 3,5 in 2024 en 2025 (correlatie tussen codeurs 0,78). De regressie per
+        2, met 3 in 2013 en 2023, 4 in 2022 en 3,5 in 2024 en 2025 (correlatie tussen codeurs 0,63, zonder 2026). De regressie per
         aflevering uit het plan heb ik niet gedraaid; ik gebruik de schatting per seizoen.
       </p>
       <Table
@@ -617,31 +777,36 @@ export default function MethodePage() {
       />
       <p>Alle kolommen zijn het gemiddelde van de twee logboeken.</p>
 
-      <H2>5. Wikipedia, alle 26 seizoenen</H2>
+      <H2 id="wikipedia">Wikipedia, alle 26 seizoenen</H2>
       <p>
         Twee Haiku-codeurs lazen de anonieme seizoenssamenvattingen en codeerden de problemen met dezelfde ernstschaal.
         Over het aantal echte én erge problemen waren ze het goed eens (correlatie 0,95). Er is geen duidelijke trend
         over de 26 jaar. De Wikipedia-codering komt bovendien slecht overeen met de logboeken uit de ondertitels
-        (correlatie 0,27 voor het aandeel echt én erg). Samenvattingen door fans zijn dus geen sterk meetinstrument. In het artikel gebruik ik ze
-        alleen voor de vaststelling dat er geen duidelijke trend te zien is.
+        (correlatie 0,27 voor het aandeel echt én erg). Samenvattingen door fans zijn dus geen sterk meetinstrument. Ik
+        gebruik ze alleen voor de vaststelling dat er geen duidelijke trend te zien is.
       </p>
 
-      <H2>6. Open verkenning en thema’s</H2>
+      <H2 id="verkenning">Open verkenning, liedjes en beeld</H2>
+      <p>
+        Deze drie onderdelen zijn exploratief. Ze komen uit de verkennende fase of zijn na het bekijken van de data
+        gekozen. Ze tellen niet mee in de hoofdconclusie.
+      </p>
+
+      <H3 id="themas">Thema’s</H3>
       <p>
         Vijftien Haiku-agents kregen elk een blind paar afleveringen en beschreven vrij waarin die verschillen. Vijf
-        thema’s die daaruit kwamen, liet ik daarna door Haiku op de 201 afleveringen coderen die ik toen had: of
-        kinderen helpen, hoe aanwezig Sinterklaas is, het soort humor, het aandeel reportages en hoe de aflevering
-        eindigt. 2023 en 2024 zijn hier niet gecodeerd, omdat ik die seizoenen pas later vond. Omdat deze thema’s pas
-        na het bekijken van de data zijn gekozen, zijn ze exploratief. Ze staan daarom niet in het artikel. Hieronder
-        de twee die het meest opvielen.
+        thema’s die daaruit kwamen, liet ik daarna door Haiku coderen op de 201 afleveringen uit de verkennende fase:
+        of kinderen helpen, hoe aanwezig Sinterklaas is, het soort humor, het aandeel reportages en hoe de aflevering
+        eindigt. 2023 en 2024 zaten niet in die set en zijn hier niet gecodeerd. Hieronder de twee die het meest
+        opvielen.
       </p>
       <p>
         <strong className="text-ink">Kinderen helpen.</strong> In de strenge telling tel ik een aflevering alleen mee
         als kinderen nodig zijn om het probleem in het verhaal op te lossen. Dat was zo in 14 van de 25 afleveringen uit
         2025 (56 procent), vooral via de oproep aan kijkers om puzzelstukjes te zoeken, en in de andere gecodeerde
-        seizoenen in hooguit 23 procent (2022). Deze strenge telling is een herindeling van de beschrijvingen van Haiku en daarmee
-        extra subjectief. Een ruimere telling, waarbij elk kind telt dat in beeld helpt of meedoet, geeft in bijna alle
-        jaren hogere cijfers en geen duidelijke piek in 2025.
+        seizoenen in hooguit 23 procent (2022). Deze strenge telling is een herindeling van de beschrijvingen van Haiku
+        en daarmee extra subjectief. Een ruimere telling, waarbij elk kind telt dat in beeld helpt of meedoet, geeft in
+        bijna alle jaren hogere cijfers en geen duidelijke piek in 2025.
       </p>
       <p>
         <strong className="text-ink">Einde.</strong> Haiku legde per aflevering vast of die open en onrustig eindigt.
@@ -664,9 +829,9 @@ export default function MethodePage() {
         ]}
       />
 
-      <H2>7. Zendtijd liedjes</H2>
+      <H3 id="liedjes">Zendtijd liedjes</H3>
       <p>
-        In de eerste, verkennende ronde (15 november 2026) gaf Claude Haiku elke ondertitelzin een functie: dreiging,
+        In de verkennende ronde (15 november 2026) gaf Claude Haiku elke ondertitelzin een functie: dreiging,
         oplossing, grap of spel, lied, gezelligheid, informatie of vooruitblik. “Zendtijd liedjes” is het aandeel van de
         duur van alle zinnen dat als lied is gecodeerd. Dat daalde van 3,4 procent in 2016 naar 1,3 procent in 2025 en
         0,7 procent in 2026 (in die ronde zes afleveringen). 2018 lag al op 1,1 procent. 2023 en 2024 zaten niet in die
@@ -681,7 +846,7 @@ export default function MethodePage() {
         beschrijving), verschilt per periode, en dat kan de telling beïnvloeden.
       </p>
 
-      <H2>8. Beeld</H2>
+      <H3 id="beeld">Beeld</H3>
       <p>
         Van vier afleveringen uit 2009-2018 en vier uit 2023-2024 analyseerde ik elke seconde, ruim 5.000 beelden:
         helderheid, verzadiging, warmte (rood min blauw), kleurrijkheid (de maat van Hasler en Süsstrunk) en het
@@ -689,36 +854,40 @@ export default function MethodePage() {
         willekeurige trekking gekozen (1.000 per periode) en in willekeurige volgorde gezet. De kleurstrook eronder
         toont de gemiddelde kleur van elk van die 1.000 beelden, gesorteerd op tint; beelden met weinig kleur
         (verzadiging onder 25 procent of erg donker) staan rechts. Toen was 66 procent van de beelden duidelijk gekleurd,
-        nu 56 procent. Over alle beelden per seconde (2.680 toen, 2.473 nu) daalde het aandeel duidelijk rode pixels van
-        gemiddeld 16 naar 9 procent, de kleurrijkheid met 20 procent (van 56 naar 45) en de helderheid met 12 procent
-        (van 82 naar 72). Dit zijn gemiddelden van vier afleveringen per periode. De aflevering uit 2004 (een donkere VHS-opname) en die uit 2017 (met gebarentolk in beeld)
-        tellen hier niet mee. Van na 2024 en van vóór 2009 heb ik geen bruikbare video.
+        nu 56 procent.
+      </p>
+      <p>
+        Over alle beelden per seconde (2.680 toen, 2.473 nu) daalde het aandeel duidelijk rode pixels van gemiddeld 16
+        naar 9 procent, de kleurrijkheid met 20 procent (van 56 naar 45) en de helderheid met 12 procent (van 82 naar
+        72). Dit zijn gemiddelden van vier afleveringen per periode. De aflevering uit 2004 (een donkere VHS-opname) en
+        die uit 2017 (met gebarentolk in beeld) tellen niet mee. Van na 2024 en van voor 2009 heb ik geen bruikbare
+        video.
       </p>
 
-      <H2>9. Wat niet lukte</H2>
+      <H2 id="niet-gelukt">Wat niet lukte</H2>
       <ul className="mb-4 ml-6 list-disc space-y-2">
         <li>
           Achtergrondmuziek. Ik probeerde drie manieren: een AudioSet-model op de geluidsband, hetzelfde na het
           scheiden van stem en muziek (Demucs), en toonsoortherkenning. De uitkomsten waren onderling tegenstrijdig, de
           opnames te verschillend van kwaliteit. De afleveringen van 2025 staan wel op NPO Start, maar met
-          kopieerbeveiliging, dus hun geluid kon ik niet analyseren. Hypothese H4 uit het plan kan ik
-          daarom niet beantwoorden.
+          kopieerbeveiliging, dus hun geluid kon ik niet analyseren. Hypothese H4 uit het plan kan ik daarom niet
+          beantwoorden.
         </li>
         <li>
           Muziekbeschrijvingen in de ondertitels (“SPANNENDE MUZIEK” of “(spannende muziek)”) staan er in alle jaren
           in. Maar de notatie veranderde in 2022 en het aantal schommelt sterk per seizoen (spannende, dreigende,
-          geheimzinnige of mysterieuze muziek: 0 keer in 2016, 7 in 2020, 13 in 2022, 4 in 2025). Als maat voor een trend zijn ze
-          daarom niet bruikbaar. De AI-beoordelaars lazen ze wel mee (zie sectie 2).
+          geheimzinnige of mysterieuze muziek: 0 keer in 2016, 7 in 2020, 13 in 2022, 5 in 2025). Als maat voor een
+          trend zijn ze daarom niet bruikbaar. De AI-beoordelaars lazen ze wel mee (zie <A href="#blind">Blind maken</A>).
         </li>
         <li>Een simpel sentimentmodel per zin liet maar een klein verschil zien; dat staat niet in het artikel.</li>
       </ul>
 
-      <H2>10. Beperkingen</H2>
+      <H2 id="beperkingen">Beperkingen</H2>
       <ul className="mb-4 ml-6 list-disc space-y-2">
         <li>
-          Van vóór 2013 zijn bijna geen ondertitels te vinden, van 2015 en 2017 maar drie afleveringen, en van 2026 gaat
-          het alleen om de eerste zeven afleveringen. 2023 en 2024 zijn later toegevoegd (zie de aanvulling bovenaan);
-          voor de themacodering en de liedjes (sectie 6 en 7) zijn ze niet gecodeerd.
+          Van voor 2013 zijn bijna geen ondertitels te vinden, van 2015 en 2017 maar drie afleveringen, en van 2026 gaat
+          het alleen om de eerste zeven afleveringen. Voor de themacodering en de liedjes zijn 2023 en 2024 niet
+          gecodeerd.
         </li>
         <li>
           AI-beoordelaars zijn geen kinderen. Ze lezen wat er gezegd wordt, plus de geluidsbeschrijvingen die de
@@ -726,7 +895,8 @@ export default function MethodePage() {
         </li>
         <li>
           Het blind maken is niet waterdicht. Vooral de andere notatie van geluid vanaf 2022 kan een model laten zien dat
-          een aflevering recent is (zie sectie 2 en de robuustheidstest).
+          een aflevering recent is (zie <A href="#blind">Blind maken</A> en de{" "}
+          <A href="#robuustheid">robuustheidstest</A>).
         </li>
         <li>
           De onzekerheidsmarges houden er geen rekening mee dat dezelfde aflevering in veel paren voorkomt (gemiddeld
@@ -740,35 +910,21 @@ export default function MethodePage() {
         <li>
           Beide modellen kunnen eigen voorkeuren hebben, bijvoorbeeld voor de langere tekst. Recente afleveringen zijn
           wat langer: in 2013-2016 gemiddeld zo’n 1.270 woorden, in 2023 zo’n 1.380, in 2024 zo’n 1.410, in 2025 zo’n
-          1.440 en in 2026 zo’n 1.500. Meer tekst
-          kan meer gebeurtenissen bevatten. Of dat de oordelen beïnvloedt, heb ik niet apart getoetst.
+          1.440 en in 2026 zo’n 1.500. Meer tekst kan meer gebeurtenissen bevatten. Of dat de oordelen beïnvloedt, heb
+          ik niet apart getoetst.
         </li>
         <li>De gecombineerde cijfers komen voor 86 procent van DeepSeek.</li>
         <li>De analyse beschrijft wat er veranderde, niet waarom.</li>
       </ul>
 
-      <H2>11. Wie deed dit, en met welke tools</H2>
-      <p>
-        Dit onderzoek deed ik, Max van den Broek, op eigen initiatief en zonder opdrachtgever. Ik ben freelance
-        AI-expert, geef trainingen over AI en schreef het boek AI-Pionier. Ik heb geen band met de NTR of de NPO.
-      </p>
-      <Table
-        head={["Tool", "Waarvoor"]}
-        rows={[
-          ["DeepSeek (deepseek-chat)", "blinde paarsgewijze oordelen, alle 1.539 paren"],
-          ["Claude Haiku", "blinde paarsgewijze oordelen (248 paren), probleemlogboeken, Wikipedia-codering, open verkenning, themacodering en de codering per zin; 15 tot en met 17 november 2026, via subagents in Claude Code"],
-          ["Claude Code", "hulp bij het schrijven van de analysecode en de dataverwerking"],
-          ["ElevenLabs Scribe", "spraakherkenning van de video-afleveringen, alleen voor citaten, niet voor de vergelijkingen"],
-        ]}
-      />
-
-      <H2>Data</H2>
+      <H2 id="data">Data downloaden</H2>
       <ul className="mb-4 ml-6 list-disc space-y-2">
         <li>
           <A href={`${BASE}/data/jaren.csv`}>jaren.csv</A> - per seizoen de kans per vraag ten opzichte van 2013-2016
           met 95%-interval (kolommen kans_enger_vs_2013_2016 met _lo en _hi, en zo verder voor alle acht vragen), dagen
           open (gemiddelde van twee codeurs, met de laagste en hoogste codeur), aantal afleveringen, zendtijd liedjes en
-          aandeel afleveringen waarin kinderen helpen (strenge telling; die laatste twee zijn leeg voor 2023 en 2024)
+          aandeel afleveringen waarin kinderen helpen (strenge telling; die laatste twee zijn leeg voor 2023 en 2024).
+          Let op: dagen open voor 2026 (3,8) is niet bruikbaar, het seizoen loopt nog.
         </li>
         <li>
           <A href={`${BASE}/data/oordelen.csv`}>oordelen.csv</A> - alle 3.574 blinde oordelen: model (deepseek-chat of
@@ -779,33 +935,73 @@ export default function MethodePage() {
           <A href={`${BASE}/data/wikipedia-seizoenen.csv`}>wikipedia-seizoenen.csv</A> - de codering van de verhaallijn
           per seizoen (2001-2026): aantal problemen, aantal en aandeel echt én erg, hoogste ernst
         </li>
+        <li>
+          <A href={CHART}>grafiek-sinterklaasjournaal.png</A> - de grafiek met vijf vragen per seizoen, 2000 pixels
+          breed
+        </li>
       </ul>
-
-      <H3>Code, prompts en ruwe data</H3>
       <p>
         Er is geen openbare code-repository. Op verzoek stuur ik de analysecode (Bradley-Terry en bootstrap, in
         Python), het script dat DeepSeek aanstuurde, de opdrachten aan Haiku, de koppeling tussen codes en afleveringen
         en de probleemlogboeken. De ondertitels zelf deel ik niet openbaar, omdat die van de NPO zijn.
       </p>
+
+      <H2 id="citeren">Citeren en gebruiken</H2>
       <p>
-        Vragen over de aanpak of de data?{" "}
+        Cijfers, tabellen en de grafiek mag je overnemen, ook in print, met bronvermelding (zie hieronder). Online graag
+        met een link naar deze pagina. De CSV-bestanden mag je hergebruiken, ook voor eigen analyses, met dezelfde
+        bronvermelding. Dit geldt niet voor stills, mozaïeken en gifjes uit uitzendingen in het artikel: dat beeld is
+        van de NPO/NTR.
+      </p>
+      <p className="mb-2 font-semibold text-ink">Korte bronvermelding, bijvoorbeeld onder een grafiek:</p>
+      <Pre>{BRONREGEL}</Pre>
+      <p className="mb-2 font-semibold text-ink">Volledige verwijzing:</p>
+      <Pre>{CITATIE}</Pre>
+      <p>
+        Link bij voorkeur naar deze pagina, <A href={PATH}>aimetmax.nl/onderzoek/sinterklaasjournaal/methode</A>, of naar
+        een sectie, zoals <A href={`${PATH}#kerncijfers`}>#kerncijfers</A> of <A href={`${PATH}#beperkingen`}>#beperkingen</A>.
+        Het artikel staat op <A href={BASE}>aimetmax.nl/onderzoek/sinterklaasjournaal</A>.
+      </p>
+      <p>
+        Vragen, een interview, of de scripts en ruwe oordelen nodig?{" "}
         <Link href="/contact" className="font-medium text-accent underline underline-offset-2">
           Neem contact op
         </Link>
         .
       </p>
 
-      <H2>Bijlage: het vooraf vastgelegde analyseplan</H2>
+      <H2 id="wie">Wie deed dit, en met welke tools</H2>
       <p>
-        Dit is de volledige, ongewijzigde tekst van het plan, inclusief de aanvulling van 16 november 2026. Wat in dit
-        plan staat maar niet is uitgevoerd of anders is gedaan, staat hierboven bij de betreffende sectie. De aantallen
-        in de aanvulling (1.013 paren, 167 paren) gaan over de opzet van vóór 17 november, toen 2023 en 2024 er nog niet
-        in zaten.
+        Dit onderzoek deed ik, Max van den Broek, op eigen initiatief en zonder opdrachtgever. Ik ben freelance
+        AI-expert, geef trainingen over AI en schreef het boek AI-Pionier. Ik heb geen band met de NTR of de NPO.
+      </p>
+      <Table
+        head={["Tool", "Waarvoor"]}
+        rows={[
+          ["DeepSeek (deepseek-chat)", "blinde paarsgewijze oordelen, alle 1.539 paren, en de robuustheidstest"],
+          ["Claude Haiku (claude-haiku-5-5)", "blinde paarsgewijze oordelen (248 paren), probleemlogboeken, Wikipedia-codering, open verkenning, themacodering en de codering per zin; 15 tot en met 17 november 2026, via subagents in Claude Code"],
+          ["Claude Code", "hulp bij het schrijven van de analysecode en de dataverwerking"],
+          ["ElevenLabs Scribe", "spraakherkenning van de video-afleveringen, alleen voor citaten, niet voor de vergelijkingen"],
+        ]}
+      />
+
+      <H2 id="analyseplan">Bijlage: het vooraf vastgelegde analyseplan</H2>
+      <p>
+        Dit is de volledige, ongewijzigde tekst van het plan van 16 november 2026. Wat in dit plan staat maar niet is
+        uitgevoerd of anders is gedaan, staat hierboven bij het betreffende onderdeel. De aantallen in het laatste deel
+        (1.013 paren, waarvan 167 in de basisset) gaan over de tien seizoenen zonder 2023 en 2024. Met die twee
+        seizoenen erbij, volgens dezelfde regels, zijn het 1.539 paren en 248 in de basisset.
       </p>
       <details className="my-5 rounded-lg border border-line bg-card p-4">
         <summary className="cursor-pointer font-semibold text-ink">Toon het analyseplan</summary>
         <Pre>{PREREGISTRATIE}</Pre>
       </details>
+
+      <p className="mt-12">
+        <Link href={BASE} className="font-medium text-accent underline underline-offset-2">
+          Terug naar het artikel: Is het Sinterklaasjournaal enger geworden?
+        </Link>
+      </p>
     </section>
   );
 }
