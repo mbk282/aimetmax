@@ -644,7 +644,8 @@ export default function MethodePage() {
         <li>
           Achtergrondmuziek. Ik probeerde drie manieren: een AudioSet-model op de geluidsband, hetzelfde na het
           scheiden van stem en muziek (Demucs), en toonsoortherkenning. De uitkomsten waren onderling tegenstrijdig, de
-          opnames te verschillend van kwaliteit, en van 2025 is geen audio beschikbaar. Hypothese H4 uit het plan kan ik
+          opnames te verschillend van kwaliteit. De afleveringen van 2025 staan wel op NPO Start, maar met
+          kopieerbeveiliging, dus hun geluid kon ik niet analyseren. Hypothese H4 uit het plan kan ik
           daarom niet beantwoorden.
         </li>
         <li>
