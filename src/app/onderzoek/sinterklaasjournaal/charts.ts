@@ -55,7 +55,7 @@ function days() {
   const y = v => m.t + (10 - v) / 10 * (H - m.t - m.b);
   const g = el('g', { class: 'grid' }, svg);
   [0, 2, 4, 6, 8, 10].forEach(v => { el('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v) }, g); const t = el('text', { x: m.l - 6, y: y(v) + 4, 'text-anchor': 'end' }, svg); t.textContent = v; });
-  slots.forEach((s, i) => { const t = el('text', { x: m.l + (i + .5) * bw, y: H - 10, 'text-anchor': 'middle' }, svg); t.textContent = s === null ? '23-24' : s; if (s === null) t.setAttribute('opacity', .6); });
+  slots.forEach((s, i) => { const t = el('text', { x: m.l + (i + .5) * bw, y: H - 10, 'text-anchor': 'middle' }, svg); t.textContent = s === null ? String(slots[i - 1] + 1).slice(2) : s; if (s === null) t.setAttribute('opacity', .6); });
   D.forEach(d => {
     const partial = d.n_eps < 15, c = d.year === 2025 ? css('--sint') : css('--nu');
     const r = el('rect', { x: x(d.year) + 6, y: y(d.days), width: bw - 12, height: y(0) - y(d.days), rx: 3, fill: c, opacity: partial ? .45 : 1 }, svg);
