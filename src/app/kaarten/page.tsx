@@ -466,12 +466,12 @@ export default function KaartenPage() {
       <section className="mx-auto max-w-5xl px-6 py-10">
         <div className="warm-card bg-sage-soft p-6 sm:p-10">
           <h2 className="hand text-3xl font-bold text-ink">
-            Van gesprek naar aantoonbare AI-geletterdheid
+            Van gesprek naar AI-geletterdheid
           </h2>
           <p className="mt-2 max-w-2xl text-ink-soft">
             Deze kaarten zijn de laagdrempelige eerste stap. Artikel 4 van de EU
-            AI-verordening verplicht organisaties die AI inzetten al sinds
-            februari 2025 om hun mensen er wegwijs in te maken. Wil je het echt
+            AI-verordening verplicht organisaties die AI inzetten om de
+            AI-geletterdheid van hun mensen te ondersteunen. Wil je het echt
             op maat voor jouw organisatie, met jullie eigen voorbeelden en
             beleid? Ik bouw e-learnings en trainingen die blijven hangen.
           </p>
